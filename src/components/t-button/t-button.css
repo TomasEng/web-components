@@ -1,0 +1,33 @@
+button {
+  --gradient-offset: 10%;
+  --gradient-top: calc(50% - var(--gradient-offset));
+  --gradient-bottom: calc(50% + var(--gradient-offset));
+  background: linear-gradient(to top, hsl(var(--base-hue), var(--base-saturation), var(--gradient-top)), hsl(var(--base-hue), var(--base-saturation), var(--gradient-bottom)));
+  cursor: pointer;
+  border-radius: 100px;
+  border: 1px solid hsl(var(--base-hue), var(--base-saturation), 30%);
+  font-size: 1rem;
+  padding: .5rem;
+  --shadow-size: 1px;
+  --shadow-blur: calc(var(--shadow-size) * 2);
+  --inset-shadow-size: 0px;
+  --inset-shadow-blur: calc(var(--inset-shadow-size) * 2);
+  --transistion-duration: 0.2s;
+  box-shadow:
+    0 var(--shadow-size) var(--shadow-blur) var(--shadow-size) rgba(255, 255, 255, 0.9),
+    0 calc(var(--shadow-size) * 2) var(--shadow-blur) rgba(0, 0, 0, 0.4),
+    0 calc(var(--shadow-size) * -1) var(--shadow-blur) rgba(0, 0, 0, 0.4),
+    inset 0 0 var(--inset-shadow-blur) var(--inset-shadow-size) rgba(0, 0, 0, 0.2);
+  color: white;
+  transition: box-shadow var(--transistion-duration);
+}
+
+button:hover {
+  --inset-shadow-size: 2px;
+}
+
+button:active {
+  --inset-shadow-size: 0px;
+  --transistion-duration: 0s;
+  --gradient-offset: 0%;
+}
