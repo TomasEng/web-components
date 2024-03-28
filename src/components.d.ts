@@ -8,6 +8,11 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
     interface TButton {
     }
+    interface THeading {
+        "level": 1 | 2 | 3 | 4 | 5 | 6;
+    }
+    interface TLayout {
+    }
 }
 declare global {
     interface HTMLTButtonElement extends Components.TButton, HTMLStencilElement {
@@ -16,15 +21,36 @@ declare global {
         prototype: HTMLTButtonElement;
         new (): HTMLTButtonElement;
     };
+    interface HTMLTHeadingElement extends Components.THeading, HTMLStencilElement {
+    }
+    var HTMLTHeadingElement: {
+        prototype: HTMLTHeadingElement;
+        new (): HTMLTHeadingElement;
+    };
+    interface HTMLTLayoutElement extends Components.TLayout, HTMLStencilElement {
+    }
+    var HTMLTLayoutElement: {
+        prototype: HTMLTLayoutElement;
+        new (): HTMLTLayoutElement;
+    };
     interface HTMLElementTagNameMap {
         "t-button": HTMLTButtonElement;
+        "t-heading": HTMLTHeadingElement;
+        "t-layout": HTMLTLayoutElement;
     }
 }
 declare namespace LocalJSX {
     interface TButton {
     }
+    interface THeading {
+        "level"?: 1 | 2 | 3 | 4 | 5 | 6;
+    }
+    interface TLayout {
+    }
     interface IntrinsicElements {
         "t-button": TButton;
+        "t-heading": THeading;
+        "t-layout": TLayout;
     }
 }
 export { LocalJSX as JSX };
@@ -32,6 +58,8 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "t-button": LocalJSX.TButton & JSXBase.HTMLAttributes<HTMLTButtonElement>;
+            "t-heading": LocalJSX.THeading & JSXBase.HTMLAttributes<HTMLTHeadingElement>;
+            "t-layout": LocalJSX.TLayout & JSXBase.HTMLAttributes<HTMLTLayoutElement>;
         }
     }
 }
