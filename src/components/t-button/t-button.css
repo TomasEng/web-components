@@ -2,10 +2,10 @@ button {
   --gradient-offset: 10%;
   --gradient-top: calc(50% - var(--gradient-offset));
   --gradient-bottom: calc(50% + var(--gradient-offset));
-  background: linear-gradient(to top, hsl(var(--base-hue), var(--base-saturation), var(--gradient-top)), hsl(var(--base-hue), var(--base-saturation), var(--gradient-bottom)));
+  background: linear-gradient(to top, hsl(var(--t-base-hue), var(--t-base-saturation), var(--gradient-top)), hsl(var(--t-base-hue), var(--t-base-saturation), var(--gradient-bottom)));
   cursor: pointer;
   border-radius: 100px;
-  border: 1px solid hsl(var(--base-hue), var(--base-saturation), 30%);
+  border: 1px solid hsl(var(--t-base-hue), var(--t-base-saturation), 30%);
   font-size: 1rem;
   padding: .5rem;
   --shadow-size: 1px;

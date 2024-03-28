@@ -13,6 +13,8 @@ export namespace Components {
     }
     interface TLayout {
     }
+    interface TSwitch {
+    }
 }
 declare global {
     interface HTMLTButtonElement extends Components.TButton, HTMLStencilElement {
@@ -33,10 +35,17 @@ declare global {
         prototype: HTMLTLayoutElement;
         new (): HTMLTLayoutElement;
     };
+    interface HTMLTSwitchElement extends Components.TSwitch, HTMLStencilElement {
+    }
+    var HTMLTSwitchElement: {
+        prototype: HTMLTSwitchElement;
+        new (): HTMLTSwitchElement;
+    };
     interface HTMLElementTagNameMap {
         "t-button": HTMLTButtonElement;
         "t-heading": HTMLTHeadingElement;
         "t-layout": HTMLTLayoutElement;
+        "t-switch": HTMLTSwitchElement;
     }
 }
 declare namespace LocalJSX {
@@ -47,10 +56,13 @@ declare namespace LocalJSX {
     }
     interface TLayout {
     }
+    interface TSwitch {
+    }
     interface IntrinsicElements {
         "t-button": TButton;
         "t-heading": THeading;
         "t-layout": TLayout;
+        "t-switch": TSwitch;
     }
 }
 export { LocalJSX as JSX };
@@ -60,6 +72,7 @@ declare module "@stencil/core" {
             "t-button": LocalJSX.TButton & JSXBase.HTMLAttributes<HTMLTButtonElement>;
             "t-heading": LocalJSX.THeading & JSXBase.HTMLAttributes<HTMLTHeadingElement>;
             "t-layout": LocalJSX.TLayout & JSXBase.HTMLAttributes<HTMLTLayoutElement>;
+            "t-switch": LocalJSX.TSwitch & JSXBase.HTMLAttributes<HTMLTSwitchElement>;
         }
     }
 }

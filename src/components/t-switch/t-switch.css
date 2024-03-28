@@ -1,0 +1,80 @@
+.wrapper {
+  display: inline-flex;
+  flex-direction: row;
+  gap: var(--t-spacing-inline);
+  align-items: center;
+}
+
+.switch {
+  --gradient-offset: 10%;
+  --gradient-top: calc(50% + var(--gradient-offset));
+  --gradient-bottom: calc(50% - var(--gradient-offset));
+  --height: 1.5rem;
+  --padding: 1px;
+  --width: calc(var(--height) * 2);
+  --hover-translate: 4px;
+  position: relative;
+  display: inline-block;
+  height: var(--height);
+  width: var(--width);
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  --saturation: 0%;
+  background: linear-gradient(
+    to top,
+    hsl(var(--t-base-hue), var(--saturation), var(--gradient-top)),
+    hsl(var(--t-base-hue), var(--saturation), var(--gradient-bottom))
+  );
+  border-radius: 100px;
+  bottom: 0;
+  box-shadow: #0004 0 1px 2px 1px inset;
+  box-sizing: border-box;
+  cursor: pointer;
+  height: var(--height);
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: .4s;
+  width: var(--width);
+}
+
+.slider:before {
+  aspect-ratio: 1;
+  background-color: #fcfcfc;
+  border-radius: 50%;
+  bottom: var(--padding);
+  box-shadow: #0003 -1px -1px 2px inset, #fff 1px 1px 2px inset;
+  content: "";
+  height: calc(var(--height) - var(--padding) * 2);
+  left: var(--padding);
+  position: absolute;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  --saturation: var(--t-base-saturation);
+}
+
+input:checked + .slider:before {
+  transform: translateX(calc(var(--width) - var(--height)));
+}
+
+.switch:focus-within .slider {
+  outline: #000 auto 2px;
+}
+
+.wrapper:hover .slider:before {
+  transform: translateX(var(--hover-translate));
+}
+
+.wrapper:hover input:checked + .slider:before {
+  transform: translateX(calc(var(--width) - var(--height) - var(--hover-translate)));
+}

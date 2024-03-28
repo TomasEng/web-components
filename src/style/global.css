@@ -1,7 +1,8 @@
 :root {
-  --base-hue: 160deg;
-  --base-saturation: 75%;
-  --base-colour: hsl(var(--base-hue), var(--base-saturation), 50%);
+  --t-base-hue: 160deg;
+  --t-base-saturation: 75%;
+  --t-base-colour: hsl(var(--t-base-hue), var(--t-base-saturation), 50%);
+  --t-spacing-inline: calc(1rem / 4);
 
   font-family: Arial, sans-serif;
   font-size: 1rem;
