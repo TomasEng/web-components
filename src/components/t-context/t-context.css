@@ -1,0 +1,11 @@
+div {
+  --t-page-background-colour: #f5f5f5;
+  --t-layout-background-colour: #fff;
+  --t-font-colour-default: #000;
+}
+
+.dark {
+  --t-page-background-colour: #333;
+  --t-layout-background-colour: #444;
+  --t-font-colour-default: #fff;
+}

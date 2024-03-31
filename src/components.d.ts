@@ -6,7 +6,14 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
+    interface PageHome {
+    }
     interface TButton {
+    }
+    interface TContext {
+        "baseHue": number;
+        "baseSaturation": number;
+        "darkMode": boolean;
     }
     interface THeading {
         "level": 1 | 2 | 3 | 4 | 5 | 6;
@@ -14,14 +21,31 @@ export namespace Components {
     interface TLayout {
     }
     interface TSwitch {
+        "checked": boolean;
     }
 }
+export interface TSwitchCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLTSwitchElement;
+}
 declare global {
+    interface HTMLPageHomeElement extends Components.PageHome, HTMLStencilElement {
+    }
+    var HTMLPageHomeElement: {
+        prototype: HTMLPageHomeElement;
+        new (): HTMLPageHomeElement;
+    };
     interface HTMLTButtonElement extends Components.TButton, HTMLStencilElement {
     }
     var HTMLTButtonElement: {
         prototype: HTMLTButtonElement;
         new (): HTMLTButtonElement;
+    };
+    interface HTMLTContextElement extends Components.TContext, HTMLStencilElement {
+    }
+    var HTMLTContextElement: {
+        prototype: HTMLTContextElement;
+        new (): HTMLTContextElement;
     };
     interface HTMLTHeadingElement extends Components.THeading, HTMLStencilElement {
     }
@@ -35,21 +59,41 @@ declare global {
         prototype: HTMLTLayoutElement;
         new (): HTMLTLayoutElement;
     };
+    interface HTMLTSwitchElementEventMap {
+        "switch": boolean;
+    }
     interface HTMLTSwitchElement extends Components.TSwitch, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLTSwitchElementEventMap>(type: K, listener: (this: HTMLTSwitchElement, ev: TSwitchCustomEvent<HTMLTSwitchElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLTSwitchElementEventMap>(type: K, listener: (this: HTMLTSwitchElement, ev: TSwitchCustomEvent<HTMLTSwitchElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLTSwitchElement: {
         prototype: HTMLTSwitchElement;
         new (): HTMLTSwitchElement;
     };
     interface HTMLElementTagNameMap {
+        "page-home": HTMLPageHomeElement;
         "t-button": HTMLTButtonElement;
+        "t-context": HTMLTContextElement;
         "t-heading": HTMLTHeadingElement;
         "t-layout": HTMLTLayoutElement;
         "t-switch": HTMLTSwitchElement;
     }
 }
 declare namespace LocalJSX {
+    interface PageHome {
+    }
     interface TButton {
+    }
+    interface TContext {
+        "baseHue"?: number;
+        "baseSaturation"?: number;
+        "darkMode"?: boolean;
     }
     interface THeading {
         "level"?: 1 | 2 | 3 | 4 | 5 | 6;
@@ -57,9 +101,13 @@ declare namespace LocalJSX {
     interface TLayout {
     }
     interface TSwitch {
+        "checked"?: boolean;
+        "onSwitch"?: (event: TSwitchCustomEvent<boolean>) => void;
     }
     interface IntrinsicElements {
+        "page-home": PageHome;
         "t-button": TButton;
+        "t-context": TContext;
         "t-heading": THeading;
         "t-layout": TLayout;
         "t-switch": TSwitch;
@@ -69,7 +117,9 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "page-home": LocalJSX.PageHome & JSXBase.HTMLAttributes<HTMLPageHomeElement>;
             "t-button": LocalJSX.TButton & JSXBase.HTMLAttributes<HTMLTButtonElement>;
+            "t-context": LocalJSX.TContext & JSXBase.HTMLAttributes<HTMLTContextElement>;
             "t-heading": LocalJSX.THeading & JSXBase.HTMLAttributes<HTMLTHeadingElement>;
             "t-layout": LocalJSX.TLayout & JSXBase.HTMLAttributes<HTMLTLayoutElement>;
             "t-switch": LocalJSX.TSwitch & JSXBase.HTMLAttributes<HTMLTSwitchElement>;

@@ -29,8 +29,8 @@
   --saturation: 0%;
   background: linear-gradient(
     to top,
-    hsl(var(--t-base-hue), var(--saturation), var(--gradient-top)),
-    hsl(var(--t-base-hue), var(--saturation), var(--gradient-bottom))
+    hsl(var(--t-base-colour-hue), var(--saturation), var(--gradient-top)),
+    hsl(var(--t-base-colour-hue), var(--saturation), var(--gradient-bottom))
   );
   border-radius: 100px;
   bottom: 0;
@@ -60,14 +60,14 @@
 }
 
 input:checked + .slider {
-  --saturation: var(--t-base-saturation);
+  --saturation: var(--t-base-colour-saturation);
 }
 
 input:checked + .slider:before {
   transform: translateX(calc(var(--width) - var(--height)));
 }
 
-.switch:focus-within .slider {
+.switch:has(:focus-visible) .slider {
   outline: #000 auto 2px;
 }
 
