@@ -22,7 +22,7 @@ button {
     0 calc(var(--shadow-size) * 2) var(--shadow-blur) rgba(0, 0, 0, 0.4),
     0 calc(var(--shadow-size) * -1) var(--shadow-blur) rgba(0, 0, 0, 0.4),
     inset 0 0 var(--inset-shadow-blur) var(--inset-shadow-size) rgba(0, 0, 0, 0.2);
-  color: white;
+  color: var(--t-font-colour-default);
   transition: box-shadow var(--transistion-duration);
 }
 
