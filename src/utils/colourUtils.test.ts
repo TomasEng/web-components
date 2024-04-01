@@ -1,5 +1,5 @@
 import { Chromator, Hsl } from 'chromator';
-import { calculateContrast, getDecreasedLuminanceByContrast, getIncreasedLuminanceByContrast } from './colourUtils';
+import { calculateContrast, getDecreasedLuminanceByContrastFromColour, getIncreasedLuminanceByContrastFromColour } from './colourUtils';
 
 describe('colourUtils', () => {
   describe('calculateContrast', () => {
@@ -30,7 +30,7 @@ describe('colourUtils', () => {
       const baseLuminance = 0.1;
       baseColour.setRelativeLuminance(baseLuminance);
       const targetContrast = 2;
-      const result = getIncreasedLuminanceByContrast(baseColour, targetContrast);
+      const result = getIncreasedLuminanceByContrastFromColour(baseColour, targetContrast);
       const resultColour = baseColour.copy().setRelativeLuminance(result);
       const resultContrast = calculateContrast(baseColour, resultColour);
       expect(resultContrast).toBeCloseTo(targetContrast, 4);
@@ -42,7 +42,7 @@ describe('colourUtils', () => {
       const baseLuminance = 0.9;
       baseColour.setRelativeLuminance(baseLuminance);
       const targetContrast = 2;
-      const result = getIncreasedLuminanceByContrast(baseColour, targetContrast);
+      const result = getIncreasedLuminanceByContrastFromColour(baseColour, targetContrast);
       expect(result).toBeUndefined();
     });
   });
@@ -54,7 +54,7 @@ describe('colourUtils', () => {
       const baseLuminance = 0.9;
       baseColour.setRelativeLuminance(baseLuminance);
       const targetContrast = 2;
-      const result = getDecreasedLuminanceByContrast(baseColour, targetContrast);
+      const result = getDecreasedLuminanceByContrastFromColour(baseColour, targetContrast);
       const resultColour = baseColour.copy().setRelativeLuminance(result);
       const resultContrast = calculateContrast(baseColour, resultColour);
       expect(resultContrast).toBeCloseTo(targetContrast, 4);
@@ -66,7 +66,7 @@ describe('colourUtils', () => {
       const baseLuminance = 0.01;
       baseColour.setRelativeLuminance(baseLuminance);
       const targetContrast = 2;
-      const result = getDecreasedLuminanceByContrast(baseColour, targetContrast);
+      const result = getDecreasedLuminanceByContrastFromColour(baseColour, targetContrast);
       expect(result).toBeUndefined();
     });
   });

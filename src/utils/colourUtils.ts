@@ -1,14 +1,22 @@
 import { Chromator } from 'chromator';
 
-export const getIncreasedLuminanceByContrast = (colour: Chromator, contrast: number): number | undefined => {
+export const getIncreasedLuminanceByContrastFromColour = (colour: Chromator, contrast: number): number | undefined => {
   const luminance = colour.getRelativeLuminance();
-  const targetLuminance = contrast * (luminance + 0.05) - 0.05;
+  return getIncreasedLuminanceByContrast(luminance, contrast);
+};
+
+export const getIncreasedLuminanceByContrast = (baseLuminance: number, contrast: number): number | undefined => {
+  const targetLuminance = contrast * (baseLuminance + 0.05) - 0.05;
   return targetLuminance > 1 ? undefined : targetLuminance;
 };
 
-export const getDecreasedLuminanceByContrast = (colour: Chromator, contrast: number): number | undefined => {
+export const getDecreasedLuminanceByContrastFromColour = (colour: Chromator, contrast: number): number | undefined => {
   const luminance = colour.getRelativeLuminance();
-  const targetLuminance = (luminance + 0.05) / contrast - 0.05;
+  return getDecreasedLuminanceByContrast(luminance, contrast);
+};
+
+export const getDecreasedLuminanceByContrast = (baseLuminance: number, contrast: number): number | undefined => {
+  const targetLuminance = (baseLuminance + 0.05) / contrast - 0.05;
   return targetLuminance < 0 ? undefined : targetLuminance;
 };
 

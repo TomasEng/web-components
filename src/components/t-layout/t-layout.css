@@ -1,10 +1,10 @@
 .wrapper {
   width: 100%;
-  background-color: var(--t-page-background-colour);
+  background-color: lch(from var(--t-page-background-colour) calc(l * 0.9) c h);
 }
 
 .layout {
-  background-color: var(--t-layout-background-colour);
+  background-color: var(--t-page-background-colour);
   box-shadow: #0003 0 4rem 4rem;
   box-sizing: border-box;
   color: var(--t-font-colour-default);
