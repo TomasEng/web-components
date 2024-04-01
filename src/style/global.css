@@ -1,6 +1,7 @@
 :root {
   --t-spacing-inline: calc(1rem / 4);
   --t-spacing-default: 1rem;
+  --t-spacing-in-group: calc(var(--t-spacing-default) / 2);
 
   font-family: Calibri, Arial, sans-serif;
   font-size: 1rem;

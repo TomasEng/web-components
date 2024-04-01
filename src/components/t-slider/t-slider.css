@@ -1,0 +1,35 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--t-spacing-in-group);
+  width: min-content;
+}
+
+input {
+  --height: 1rem;
+  -webkit-appearance: none;
+  appearance: none;
+  height: var(--height);
+  background: var(--slider-background, grey);
+  border-radius: calc(var(--height) / 2);
+}
+
+input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: var(--height);
+  aspect-ratio: 1;
+  background-color: transparent;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 0 2px #fff, 0 0 0 4px #000;
+}
+
+input::-moz-range-thumb {
+  width: var(--height);
+  aspect-ratio: 1;
+  background-color: transparent;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 0 2px #fff, 0 0 0 4px #000;
+}

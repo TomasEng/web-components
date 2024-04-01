@@ -24,17 +24,12 @@ export class TContext {
 
   @Element() element: HTMLElement;
 
-  connectedCallback() {
-    const baseColour = this.baseColour();
-    const { hue, saturation } = baseColour.getHsl();
-    this.setCssVariable('--t-base-colour-hue', hue.toFixed() + 'deg');
-    this.setCssVariable('--t-base-colour-saturation', asPercents(saturation));
-  }
-
   render() {
     const modeClass = this.darkMode ? 'dark' : 'light';
     const baseColour = this.baseColour();
-    const { lightness } = baseColour.getHsl();
+    const { hue, saturation, lightness } = baseColour.getHsl();
+    this.setCssVariable('--t-base-colour-hue', hue.toFixed() + 'deg');
+    this.setCssVariable('--t-base-colour-saturation', asPercents(saturation));
     this.setCssVariable('--t-page-background-colour', this.pageBackgroundColour().getHexCode());
     this.setCssVariable('--t-base-colour', baseColour.getHexCode());
     this.setCssVariable('--t-base-colour-lightness', asPercents(lightness));

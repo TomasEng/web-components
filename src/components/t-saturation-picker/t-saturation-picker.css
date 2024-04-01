@@ -1,0 +1,7 @@
+:host {
+  --slider-background: linear-gradient(
+    to right,
+    hsl(var(--t-base-colour-hue), 0%, 50%),
+    hsl(var(--t-base-colour-hue), 100%, 50%)
+  );
+}

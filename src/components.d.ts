@@ -10,6 +10,8 @@ export namespace Components {
     }
     interface TButton {
     }
+    interface TColumn {
+    }
     interface TContext {
         "baseHue": number;
         "baseSaturation": number;
@@ -18,11 +20,37 @@ export namespace Components {
     interface THeading {
         "level": 1 | 2 | 3 | 4 | 5 | 6;
     }
+    interface THuePicker {
+        "label": string;
+    }
     interface TLayout {
+    }
+    interface TRow {
+    }
+    interface TSaturationPicker {
+        "label": string;
+    }
+    interface TSlider {
+        "label": string;
+        "max": number;
+        "min": number;
+        "step": number;
     }
     interface TSwitch {
         "checked": boolean;
     }
+}
+export interface THuePickerCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLTHuePickerElement;
+}
+export interface TSaturationPickerCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLTSaturationPickerElement;
+}
+export interface TSliderCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLTSliderElement;
 }
 export interface TSwitchCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -41,6 +69,12 @@ declare global {
         prototype: HTMLTButtonElement;
         new (): HTMLTButtonElement;
     };
+    interface HTMLTColumnElement extends Components.TColumn, HTMLStencilElement {
+    }
+    var HTMLTColumnElement: {
+        prototype: HTMLTColumnElement;
+        new (): HTMLTColumnElement;
+    };
     interface HTMLTContextElement extends Components.TContext, HTMLStencilElement {
     }
     var HTMLTContextElement: {
@@ -53,11 +87,68 @@ declare global {
         prototype: HTMLTHeadingElement;
         new (): HTMLTHeadingElement;
     };
+    interface HTMLTHuePickerElementEventMap {
+        "hueChange": number;
+    }
+    interface HTMLTHuePickerElement extends Components.THuePicker, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLTHuePickerElementEventMap>(type: K, listener: (this: HTMLTHuePickerElement, ev: THuePickerCustomEvent<HTMLTHuePickerElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLTHuePickerElementEventMap>(type: K, listener: (this: HTMLTHuePickerElement, ev: THuePickerCustomEvent<HTMLTHuePickerElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLTHuePickerElement: {
+        prototype: HTMLTHuePickerElement;
+        new (): HTMLTHuePickerElement;
+    };
     interface HTMLTLayoutElement extends Components.TLayout, HTMLStencilElement {
     }
     var HTMLTLayoutElement: {
         prototype: HTMLTLayoutElement;
         new (): HTMLTLayoutElement;
+    };
+    interface HTMLTRowElement extends Components.TRow, HTMLStencilElement {
+    }
+    var HTMLTRowElement: {
+        prototype: HTMLTRowElement;
+        new (): HTMLTRowElement;
+    };
+    interface HTMLTSaturationPickerElementEventMap {
+        "saturationChange": number;
+    }
+    interface HTMLTSaturationPickerElement extends Components.TSaturationPicker, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLTSaturationPickerElementEventMap>(type: K, listener: (this: HTMLTSaturationPickerElement, ev: TSaturationPickerCustomEvent<HTMLTSaturationPickerElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLTSaturationPickerElementEventMap>(type: K, listener: (this: HTMLTSaturationPickerElement, ev: TSaturationPickerCustomEvent<HTMLTSaturationPickerElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLTSaturationPickerElement: {
+        prototype: HTMLTSaturationPickerElement;
+        new (): HTMLTSaturationPickerElement;
+    };
+    interface HTMLTSliderElementEventMap {
+        "sliderChange": number;
+    }
+    interface HTMLTSliderElement extends Components.TSlider, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLTSliderElementEventMap>(type: K, listener: (this: HTMLTSliderElement, ev: TSliderCustomEvent<HTMLTSliderElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLTSliderElementEventMap>(type: K, listener: (this: HTMLTSliderElement, ev: TSliderCustomEvent<HTMLTSliderElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLTSliderElement: {
+        prototype: HTMLTSliderElement;
+        new (): HTMLTSliderElement;
     };
     interface HTMLTSwitchElementEventMap {
         "switch": boolean;
@@ -79,9 +170,14 @@ declare global {
     interface HTMLElementTagNameMap {
         "page-home": HTMLPageHomeElement;
         "t-button": HTMLTButtonElement;
+        "t-column": HTMLTColumnElement;
         "t-context": HTMLTContextElement;
         "t-heading": HTMLTHeadingElement;
+        "t-hue-picker": HTMLTHuePickerElement;
         "t-layout": HTMLTLayoutElement;
+        "t-row": HTMLTRowElement;
+        "t-saturation-picker": HTMLTSaturationPickerElement;
+        "t-slider": HTMLTSliderElement;
         "t-switch": HTMLTSwitchElement;
     }
 }
@@ -89,6 +185,8 @@ declare namespace LocalJSX {
     interface PageHome {
     }
     interface TButton {
+    }
+    interface TColumn {
     }
     interface TContext {
         "baseHue"?: number;
@@ -98,7 +196,24 @@ declare namespace LocalJSX {
     interface THeading {
         "level"?: 1 | 2 | 3 | 4 | 5 | 6;
     }
+    interface THuePicker {
+        "label"?: string;
+        "onHueChange"?: (event: THuePickerCustomEvent<number>) => void;
+    }
     interface TLayout {
+    }
+    interface TRow {
+    }
+    interface TSaturationPicker {
+        "label"?: string;
+        "onSaturationChange"?: (event: TSaturationPickerCustomEvent<number>) => void;
+    }
+    interface TSlider {
+        "label"?: string;
+        "max"?: number;
+        "min"?: number;
+        "onSliderChange"?: (event: TSliderCustomEvent<number>) => void;
+        "step"?: number;
     }
     interface TSwitch {
         "checked"?: boolean;
@@ -107,9 +222,14 @@ declare namespace LocalJSX {
     interface IntrinsicElements {
         "page-home": PageHome;
         "t-button": TButton;
+        "t-column": TColumn;
         "t-context": TContext;
         "t-heading": THeading;
+        "t-hue-picker": THuePicker;
         "t-layout": TLayout;
+        "t-row": TRow;
+        "t-saturation-picker": TSaturationPicker;
+        "t-slider": TSlider;
         "t-switch": TSwitch;
     }
 }
@@ -119,9 +239,14 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "page-home": LocalJSX.PageHome & JSXBase.HTMLAttributes<HTMLPageHomeElement>;
             "t-button": LocalJSX.TButton & JSXBase.HTMLAttributes<HTMLTButtonElement>;
+            "t-column": LocalJSX.TColumn & JSXBase.HTMLAttributes<HTMLTColumnElement>;
             "t-context": LocalJSX.TContext & JSXBase.HTMLAttributes<HTMLTContextElement>;
             "t-heading": LocalJSX.THeading & JSXBase.HTMLAttributes<HTMLTHeadingElement>;
+            "t-hue-picker": LocalJSX.THuePicker & JSXBase.HTMLAttributes<HTMLTHuePickerElement>;
             "t-layout": LocalJSX.TLayout & JSXBase.HTMLAttributes<HTMLTLayoutElement>;
+            "t-row": LocalJSX.TRow & JSXBase.HTMLAttributes<HTMLTRowElement>;
+            "t-saturation-picker": LocalJSX.TSaturationPicker & JSXBase.HTMLAttributes<HTMLTSaturationPickerElement>;
+            "t-slider": LocalJSX.TSlider & JSXBase.HTMLAttributes<HTMLTSliderElement>;
             "t-switch": LocalJSX.TSwitch & JSXBase.HTMLAttributes<HTMLTSwitchElement>;
         }
     }
