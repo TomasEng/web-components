@@ -1,4 +1,5 @@
 div {
   display: flex;
   gap: var(--t-spacing-default);
+  align-items: center;
 }

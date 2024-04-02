@@ -3,7 +3,7 @@ import { Chromator, Hsl } from 'chromator';
 import { asPercents } from '../../utils/utils';
 import {
   BASE_COLOUR_LUMINANCE_DARK_MODE, BASE_COLOUR_LUMINANCE_LIGHT_MODE,
-  DARK_MODE_BACKGROUND_LUMINANCE, DEFAULT_BORDER_TO_BACKGROUND_CONTRAST,
+  DARK_MODE_BACKGROUND_LUMINANCE, DEFAULT_BORDER_TO_BACKGROUND_CONTRAST, INPUT_FIELD_TO_PAGE_CONTRAST,
   LIGHT_MODE_BACKGROUND_LUMINANCE,
 } from '../../constants';
 import {
@@ -34,8 +34,9 @@ export class TContext {
     this.setCssVariable('--t-base-colour', baseColour.getHexCode());
     this.setCssVariable('--t-base-colour-lightness', asPercents(lightness));
     this.setCssVariable('--t-base-border-colour', this.baseBorderColour().getHexCode());
+    this.setCssVariable('--t-input-field-background-colour', this.inputFieldColour().getHexCode());
 
-    return <div class={modeClass}><slot/></div>;
+    return <div class={'root ' + modeClass}><slot/></div>;
   }
 
   private baseColour(): Chromator {
@@ -67,6 +68,18 @@ export class TContext {
     return this.darkMode
       ? getIncreasedLuminanceByContrast(DARK_MODE_BACKGROUND_LUMINANCE, DEFAULT_BORDER_TO_BACKGROUND_CONTRAST)
       : getDecreasedLuminanceByContrast(LIGHT_MODE_BACKGROUND_LUMINANCE, DEFAULT_BORDER_TO_BACKGROUND_CONTRAST);
+  }
+
+  private inputFieldColour(): Chromator {
+    const fieldColour = new Chromator('#fff');
+    fieldColour.setRelativeLuminance(this.inputFieldColourLuminance());
+    return fieldColour;
+  }
+
+  private inputFieldColourLuminance(): number {
+    return this.darkMode
+      ? getIncreasedLuminanceByContrast(DARK_MODE_BACKGROUND_LUMINANCE, INPUT_FIELD_TO_PAGE_CONTRAST)
+      : getDecreasedLuminanceByContrast(LIGHT_MODE_BACKGROUND_LUMINANCE, INPUT_FIELD_TO_PAGE_CONTRAST);
   }
 
   private setCssVariable(key: `--t-${string}`, value: string) {

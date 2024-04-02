@@ -23,6 +23,12 @@ export namespace Components {
     interface THuePicker {
         "label": string;
     }
+    interface TIntegerPicker {
+        "label": string;
+        "max": number;
+        "min": number;
+        "value": number;
+    }
     interface TLayout {
     }
     interface TRow {
@@ -43,6 +49,10 @@ export namespace Components {
 export interface THuePickerCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLTHuePickerElement;
+}
+export interface TIntegerPickerCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLTIntegerPickerElement;
 }
 export interface TSaturationPickerCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -103,6 +113,23 @@ declare global {
     var HTMLTHuePickerElement: {
         prototype: HTMLTHuePickerElement;
         new (): HTMLTHuePickerElement;
+    };
+    interface HTMLTIntegerPickerElementEventMap {
+        "event": number;
+    }
+    interface HTMLTIntegerPickerElement extends Components.TIntegerPicker, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLTIntegerPickerElementEventMap>(type: K, listener: (this: HTMLTIntegerPickerElement, ev: TIntegerPickerCustomEvent<HTMLTIntegerPickerElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLTIntegerPickerElementEventMap>(type: K, listener: (this: HTMLTIntegerPickerElement, ev: TIntegerPickerCustomEvent<HTMLTIntegerPickerElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLTIntegerPickerElement: {
+        prototype: HTMLTIntegerPickerElement;
+        new (): HTMLTIntegerPickerElement;
     };
     interface HTMLTLayoutElement extends Components.TLayout, HTMLStencilElement {
     }
@@ -174,6 +201,7 @@ declare global {
         "t-context": HTMLTContextElement;
         "t-heading": HTMLTHeadingElement;
         "t-hue-picker": HTMLTHuePickerElement;
+        "t-integer-picker": HTMLTIntegerPickerElement;
         "t-layout": HTMLTLayoutElement;
         "t-row": HTMLTRowElement;
         "t-saturation-picker": HTMLTSaturationPickerElement;
@@ -199,6 +227,13 @@ declare namespace LocalJSX {
     interface THuePicker {
         "label"?: string;
         "onHueChange"?: (event: THuePickerCustomEvent<number>) => void;
+    }
+    interface TIntegerPicker {
+        "label"?: string;
+        "max"?: number;
+        "min"?: number;
+        "onEvent"?: (event: TIntegerPickerCustomEvent<number>) => void;
+        "value"?: number;
     }
     interface TLayout {
     }
@@ -226,6 +261,7 @@ declare namespace LocalJSX {
         "t-context": TContext;
         "t-heading": THeading;
         "t-hue-picker": THuePicker;
+        "t-integer-picker": TIntegerPicker;
         "t-layout": TLayout;
         "t-row": TRow;
         "t-saturation-picker": TSaturationPicker;
@@ -243,6 +279,7 @@ declare module "@stencil/core" {
             "t-context": LocalJSX.TContext & JSXBase.HTMLAttributes<HTMLTContextElement>;
             "t-heading": LocalJSX.THeading & JSXBase.HTMLAttributes<HTMLTHeadingElement>;
             "t-hue-picker": LocalJSX.THuePicker & JSXBase.HTMLAttributes<HTMLTHuePickerElement>;
+            "t-integer-picker": LocalJSX.TIntegerPicker & JSXBase.HTMLAttributes<HTMLTIntegerPickerElement>;
             "t-layout": LocalJSX.TLayout & JSXBase.HTMLAttributes<HTMLTLayoutElement>;
             "t-row": LocalJSX.TRow & JSXBase.HTMLAttributes<HTMLTRowElement>;
             "t-saturation-picker": LocalJSX.TSaturationPicker & JSXBase.HTMLAttributes<HTMLTSaturationPickerElement>;

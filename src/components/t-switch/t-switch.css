@@ -48,7 +48,7 @@
   position: absolute;
   right: 0;
   top: 0;
-  transition: .4s;
+  transition: var(--t-transition-duration-long);
   width: var(--width);
 }
 
@@ -62,7 +62,7 @@
   height: calc(var(--height) - var(--padding) * 2 - var(--border-width) * 2);
   left: var(--padding);
   position: absolute;
-  transition: .4s;
+  transition: var(--t-transition-duration-short);
 }
 
 input:checked + .slider {
