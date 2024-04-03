@@ -31,6 +31,8 @@
     "chromator": "0.0.5"
   },
   "devDependencies": {
+    "@stencil/state-tunnel": "1.0.1",
+    "@stencil/store": "^2.0.15",
     "@types/jest": "^29.5.6",
     "@types/node": "^16.18.11",
     "jest": "29.7.0",

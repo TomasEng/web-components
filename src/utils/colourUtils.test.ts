@@ -1,5 +1,10 @@
 import { Chromator, Hsl } from 'chromator';
-import { calculateContrast, getDecreasedLuminanceByContrastFromColour, getIncreasedLuminanceByContrastFromColour } from './colourUtils';
+import {
+  calculateContrast,
+  componentHue,
+  getDecreasedLuminanceByContrastFromColour,
+  getIncreasedLuminanceByContrastFromColour,
+} from './colourUtils';
 
 describe('colourUtils', () => {
   describe('calculateContrast', () => {
@@ -68,6 +73,25 @@ describe('colourUtils', () => {
       const targetContrast = 2;
       const result = getDecreasedLuminanceByContrastFromColour(baseColour, targetContrast);
       expect(result).toBeUndefined();
+    });
+  });
+
+  describe('componentHue', () => {
+    it.each([
+      [0, 0, 0],
+      [0, 0.25, 90],
+      [0, 0.5, 180],
+      [0, 0.75, 270],
+      [0, 1, 0],
+      [180, 0, 180],
+      [180, 0.25, 270],
+      [180, 0.5, 0],
+      [180, 0.75, 90],
+      [180, 1, 180],
+      [0, 2, 0],
+      [180, 2, 180]
+    ])('Returns the expected hue when the base hue is %d and the offset is %d', (baseHue, offset, expected) => {
+      expect(componentHue(baseHue, offset)).toBe(expected);
     });
   });
 });

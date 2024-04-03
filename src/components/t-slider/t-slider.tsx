@@ -11,6 +11,7 @@ export class TSlider {
   @Prop() min: number = 0;
   @Prop() step: number = 0.01;
   @Prop() label: string;
+  @Prop() value: number;
 
   @Event() sliderChange: EventEmitter<number>;
 
@@ -29,6 +30,7 @@ export class TSlider {
         onInput={this.handleInput}
         step={this.step}
         type="range"
+        value={this.value}
       />
     </div>;
   }

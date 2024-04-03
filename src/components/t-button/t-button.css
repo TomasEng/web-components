@@ -28,3 +28,7 @@ button:active {
   --transistion-duration: 0s;
   background: var(--t-base-colour);
 }
+
+* {
+  --t-base-colour-hue-offset: 180;
+}

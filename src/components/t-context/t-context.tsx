@@ -1,4 +1,5 @@
 import { Component, h, Prop, Element } from '@stencil/core';
+
 import { Chromator, Hsl } from 'chromator';
 import { asPercents } from '../../utils/utils';
 import {
@@ -11,6 +12,7 @@ import {
   getIncreasedLuminanceByContrast,
   getIncreasedLuminanceByContrastFromColour,
 } from '../../utils/colourUtils';
+import state from '../../store';
 
 @Component({
   tag: 't-context',
@@ -25,6 +27,9 @@ export class TContext {
   @Element() element: HTMLElement;
 
   render() {
+    state.darkMode = this.darkMode;
+    state.baseHue = this.baseHue;
+    state.baseSaturation = this.baseSaturation;
     const modeClass = this.darkMode ? 'dark' : 'light';
     const baseColour = this.baseColour();
     const { hue, saturation, lightness } = baseColour.getHsl();
@@ -36,7 +41,9 @@ export class TContext {
     this.setCssVariable('--t-base-border-colour', this.baseBorderColour().getHexCode());
     this.setCssVariable('--t-input-field-background-colour', this.inputFieldColour().getHexCode());
 
-    return <div class={'root ' + modeClass}><slot/></div>;
+    return <div class={'root ' + modeClass}>
+      <slot/>
+    </div>;
   }
 
   private baseColour(): Chromator {

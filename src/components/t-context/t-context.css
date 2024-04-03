@@ -1,6 +1,13 @@
 .root {
   --t-base-border-colour: unset;
-  --t-base-colour: unset;
+  --t-base-colour-hue: unset;
+  --t-base-colour-lightness: unset;
+  --t-base-colour-saturation: unset;
+  --t-base-colour: hsl(
+    calc(var(--t-base-colour-hue) + var(--t-base-colour-hue-offset, 0) * 1turn),
+    var(--t-base-colour-saturation),
+    var(--t-base-colour-lightness)
+  );
   --t-base-fill-colour: var(--t-base-border-colour);
   --t-font-colour-default: var(--t-full-contrast-colour);
   --t-input-field-background-colour: unset;
@@ -10,6 +17,7 @@
   --t-transition-duration-long: calc(--t-transition-duration-medium * 2);
   --t-transition-duration-medium: calc(--t-transition-duration-short * 2);
   --t-transition-duration-short: 0.1s;
+  --t-background-background-colour: lch(from var(--t-page-background-colour) calc(l * 0.9) h c);
 }
 
 @media (prefers-reduced-motion) {
@@ -24,13 +32,11 @@
 }
 
 .root.light {
-  --t-background-background-colour: #f5f5f5;
   --t-selection-font-colour: white;
   --t-full-contrast-colour: black;
 }
 
 .root.dark {
-  --t-background-background-colour: #444;
   --t-selection-font-colour: black;
   --t-full-contrast-colour: white;
 }

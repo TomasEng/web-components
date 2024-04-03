@@ -9,6 +9,7 @@ import { TSliderCustomEvent } from '../../components';
 export class THuePicker {
 
   @Prop() label: string;
+  @Prop() value: number;
 
   @Event() hueChange: EventEmitter<number>;
 
@@ -22,6 +23,7 @@ export class THuePicker {
       min={0}
       onSliderChange={this.handleSliderChange}
       step={1}
+      value={this.value}
     />;
   }
 }

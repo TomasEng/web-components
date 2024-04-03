@@ -9,6 +9,7 @@ import { TSliderCustomEvent } from '../../components';
 export class TSaturationPicker {
 
   @Prop() label: string;
+  @Prop() value: number;
 
   @Event() saturationChange: EventEmitter<number>;
 
@@ -22,6 +23,7 @@ export class TSaturationPicker {
       min={0}
       onSliderChange={this.handleSliderChange}
       step={0.01}
+      value={this.value}
     />;
   }
 }

@@ -27,3 +27,13 @@ export const calculateContrast = (colour1: Chromator, colour2: Chromator): numbe
   const darker = Math.min(luminance1, luminance2);
   return (lighter + 0.05) / (darker + 0.05);
 };
+
+export const componentHue = (baseHueInDegrees: number, offsetInTurns: number): number => {
+  const offsetInDegrees = offsetInTurns * 360;
+  return hueOffsetInDegrees(baseHueInDegrees, offsetInDegrees);
+};
+
+const hueOffsetInDegrees = (hue1: number, hue2: number): number => {
+  const sum = hue1 + hue2;
+  return sum % 360;
+};

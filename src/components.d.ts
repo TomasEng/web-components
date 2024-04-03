@@ -5,10 +5,16 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { ComponentHue } from "./types/ComponentHue";
+export { ComponentHue } from "./types/ComponentHue";
 export namespace Components {
+    interface InternalStyleProvider {
+        "hueOffsetInTurns": number;
+    }
     interface PageHome {
     }
     interface TButton {
+        "hue": ComponentHue;
     }
     interface TColumn {
     }
@@ -22,8 +28,10 @@ export namespace Components {
     }
     interface THuePicker {
         "label": string;
+        "value": number;
     }
     interface TIntegerPicker {
+        "hue": ComponentHue;
         "label": string;
         "max": number;
         "min": number;
@@ -35,15 +43,18 @@ export namespace Components {
     }
     interface TSaturationPicker {
         "label": string;
+        "value": number;
     }
     interface TSlider {
         "label": string;
         "max": number;
         "min": number;
         "step": number;
+        "value": number;
     }
     interface TSwitch {
         "checked": boolean;
+        "hue": number;
     }
 }
 export interface THuePickerCustomEvent<T> extends CustomEvent<T> {
@@ -67,6 +78,12 @@ export interface TSwitchCustomEvent<T> extends CustomEvent<T> {
     target: HTMLTSwitchElement;
 }
 declare global {
+    interface HTMLInternalStyleProviderElement extends Components.InternalStyleProvider, HTMLStencilElement {
+    }
+    var HTMLInternalStyleProviderElement: {
+        prototype: HTMLInternalStyleProviderElement;
+        new (): HTMLInternalStyleProviderElement;
+    };
     interface HTMLPageHomeElement extends Components.PageHome, HTMLStencilElement {
     }
     var HTMLPageHomeElement: {
@@ -115,7 +132,7 @@ declare global {
         new (): HTMLTHuePickerElement;
     };
     interface HTMLTIntegerPickerElementEventMap {
-        "event": number;
+        "integerChange": number;
     }
     interface HTMLTIntegerPickerElement extends Components.TIntegerPicker, HTMLStencilElement {
         addEventListener<K extends keyof HTMLTIntegerPickerElementEventMap>(type: K, listener: (this: HTMLTIntegerPickerElement, ev: TIntegerPickerCustomEvent<HTMLTIntegerPickerElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -195,6 +212,7 @@ declare global {
         new (): HTMLTSwitchElement;
     };
     interface HTMLElementTagNameMap {
+        "internal-style-provider": HTMLInternalStyleProviderElement;
         "page-home": HTMLPageHomeElement;
         "t-button": HTMLTButtonElement;
         "t-column": HTMLTColumnElement;
@@ -210,9 +228,13 @@ declare global {
     }
 }
 declare namespace LocalJSX {
+    interface InternalStyleProvider {
+        "hueOffsetInTurns"?: number;
+    }
     interface PageHome {
     }
     interface TButton {
+        "hue"?: ComponentHue;
     }
     interface TColumn {
     }
@@ -227,12 +249,14 @@ declare namespace LocalJSX {
     interface THuePicker {
         "label"?: string;
         "onHueChange"?: (event: THuePickerCustomEvent<number>) => void;
+        "value"?: number;
     }
     interface TIntegerPicker {
+        "hue"?: ComponentHue;
         "label"?: string;
         "max"?: number;
         "min"?: number;
-        "onEvent"?: (event: TIntegerPickerCustomEvent<number>) => void;
+        "onIntegerChange"?: (event: TIntegerPickerCustomEvent<number>) => void;
         "value"?: number;
     }
     interface TLayout {
@@ -242,6 +266,7 @@ declare namespace LocalJSX {
     interface TSaturationPicker {
         "label"?: string;
         "onSaturationChange"?: (event: TSaturationPickerCustomEvent<number>) => void;
+        "value"?: number;
     }
     interface TSlider {
         "label"?: string;
@@ -249,12 +274,15 @@ declare namespace LocalJSX {
         "min"?: number;
         "onSliderChange"?: (event: TSliderCustomEvent<number>) => void;
         "step"?: number;
+        "value"?: number;
     }
     interface TSwitch {
         "checked"?: boolean;
+        "hue"?: number;
         "onSwitch"?: (event: TSwitchCustomEvent<boolean>) => void;
     }
     interface IntrinsicElements {
+        "internal-style-provider": InternalStyleProvider;
         "page-home": PageHome;
         "t-button": TButton;
         "t-column": TColumn;
@@ -273,6 +301,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "internal-style-provider": LocalJSX.InternalStyleProvider & JSXBase.HTMLAttributes<HTMLInternalStyleProviderElement>;
             "page-home": LocalJSX.PageHome & JSXBase.HTMLAttributes<HTMLPageHomeElement>;
             "t-button": LocalJSX.TButton & JSXBase.HTMLAttributes<HTMLTButtonElement>;
             "t-column": LocalJSX.TColumn & JSXBase.HTMLAttributes<HTMLTColumnElement>;

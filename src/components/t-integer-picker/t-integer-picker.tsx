@@ -1,9 +1,10 @@
 import { Component, h, Prop, Event, EventEmitter } from '@stencil/core';
+import { ComponentHue } from '../../types/ComponentHue';
 
 @Component({
   tag: 't-integer-picker',
   styleUrl: 't-integer-picker.css',
-  shadow: true
+  shadow: true,
 })
 export class TIntegerPicker {
 
@@ -11,24 +12,27 @@ export class TIntegerPicker {
   @Prop() value: number;
   @Prop() min: number;
   @Prop() max: number;
+  @Prop() hue: ComponentHue;
 
-  @Event() event: EventEmitter<number>;
+  @Event() integerChange: EventEmitter<number>;
 
   private handleChange = (event: InputEvent) => {
     const target = event.target as HTMLInputElement;
-    this.event.emit(target.valueAsNumber);
-  }
+    this.integerChange.emit(target.valueAsNumber);
+  };
 
   render() {
-    return <div class='wrapper'>
-      <label>{this.label}</label>
-      <input
-        type="number"
-        min={this.min}
-        max={this.max}
-        value={this.value}
-        onChange={this.handleChange}
-      />
-    </div>;
+    return <internal-style-provider hueOffsetInTurns={this.hue}>
+      <div class="wrapper">
+        <label>{this.label}</label>
+        <input
+          type="number"
+          min={this.min}
+          max={this.max}
+          value={this.value}
+          onChange={this.handleChange}
+        />
+      </div>
+    </internal-style-provider>;
   }
 }
