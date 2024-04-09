@@ -6,7 +6,9 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { ComponentHue } from "./types/ComponentHue";
+import { TSelectOption } from "./components/t-select/TSelectOption";
 export { ComponentHue } from "./types/ComponentHue";
+export { TSelectOption } from "./components/t-select/TSelectOption";
 export namespace Components {
     interface InternalInputWrapper {
         "hueOffsetInTurns": number;
@@ -47,6 +49,12 @@ export namespace Components {
     interface TSaturationPicker {
         "label": string;
         "value": number;
+    }
+    interface TSelect {
+        "hue": ComponentHue;
+        "label": string;
+        "options": TSelectOption[];
+        "value": string;
     }
     interface TSlider {
         "label": string;
@@ -191,6 +199,12 @@ declare global {
         prototype: HTMLTSaturationPickerElement;
         new (): HTMLTSaturationPickerElement;
     };
+    interface HTMLTSelectElement extends Components.TSelect, HTMLStencilElement {
+    }
+    var HTMLTSelectElement: {
+        prototype: HTMLTSelectElement;
+        new (): HTMLTSelectElement;
+    };
     interface HTMLTSliderElementEventMap {
         "sliderChange": number;
     }
@@ -244,6 +258,7 @@ declare global {
         "t-layout": HTMLTLayoutElement;
         "t-row": HTMLTRowElement;
         "t-saturation-picker": HTMLTSaturationPickerElement;
+        "t-select": HTMLTSelectElement;
         "t-slider": HTMLTSliderElement;
         "t-switch": HTMLTSwitchElement;
         "t-textfield": HTMLTTextfieldElement;
@@ -293,6 +308,12 @@ declare namespace LocalJSX {
         "onSaturationChange"?: (event: TSaturationPickerCustomEvent<number>) => void;
         "value"?: number;
     }
+    interface TSelect {
+        "hue"?: ComponentHue;
+        "label"?: string;
+        "options"?: TSelectOption[];
+        "value"?: string;
+    }
     interface TSlider {
         "label"?: string;
         "max"?: number;
@@ -324,6 +345,7 @@ declare namespace LocalJSX {
         "t-layout": TLayout;
         "t-row": TRow;
         "t-saturation-picker": TSaturationPicker;
+        "t-select": TSelect;
         "t-slider": TSlider;
         "t-switch": TSwitch;
         "t-textfield": TTextfield;
@@ -345,6 +367,7 @@ declare module "@stencil/core" {
             "t-layout": LocalJSX.TLayout & JSXBase.HTMLAttributes<HTMLTLayoutElement>;
             "t-row": LocalJSX.TRow & JSXBase.HTMLAttributes<HTMLTRowElement>;
             "t-saturation-picker": LocalJSX.TSaturationPicker & JSXBase.HTMLAttributes<HTMLTSaturationPickerElement>;
+            "t-select": LocalJSX.TSelect & JSXBase.HTMLAttributes<HTMLTSelectElement>;
             "t-slider": LocalJSX.TSlider & JSXBase.HTMLAttributes<HTMLTSliderElement>;
             "t-switch": LocalJSX.TSwitch & JSXBase.HTMLAttributes<HTMLTSwitchElement>;
             "t-textfield": LocalJSX.TTextfield & JSXBase.HTMLAttributes<HTMLTTextfieldElement>;

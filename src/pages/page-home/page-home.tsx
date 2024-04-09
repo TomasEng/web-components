@@ -2,7 +2,7 @@ import { Component, h, JSX, State, Fragment } from '@stencil/core';
 import {
   THuePickerCustomEvent,
   TIntegerPickerCustomEvent,
-  TSaturationPickerCustomEvent,
+  TSaturationPickerCustomEvent, TSelectOption,
   TSwitchCustomEvent,
 } from '../../components';
 import { integerArray } from '../../utils/numberUtils';
@@ -64,6 +64,17 @@ export class PageHome {
           {this.renderPreview(
             hue => <t-textfield hue={hue} label="Test"/>,
             'Tekstfelt',
+          )}
+          {this.renderPreview(
+          hue => {
+            const options: TSelectOption[] = [
+              {value: '1', label: 'Alternativ 1'},
+              {value: '2', label: 'Alternativ 2'},
+              {value: '3', label: 'Alternativ 3'},
+            ];
+            return <t-select hue={hue} label="Alternativer" options={options} value="1"/>;
+          },
+            'Nedtrekksliste'
           )}
         </t-layout>
       </t-context>
