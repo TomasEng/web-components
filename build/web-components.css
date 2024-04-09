@@ -1,1 +1,14 @@
-:root{--t-spacing-inline:calc(1rem / 4);--t-spacing-default:1rem;--t-spacing-in-group:calc(var(--t-spacing-default) / 2);--t-default-font-size:1rem;font-family:Calibri, Arial, sans-serif;font-size:var(--t-default-font-size)}body{margin:0;padding:0}
+:root {
+  --t-spacing-inline: calc(1rem / 4);
+  --t-spacing-default: 1rem;
+  --t-spacing-in-group: calc(var(--t-spacing-default) / 2);
+  --t-default-font-size: 1rem;
+
+  font-family: Calibri, Arial, sans-serif;
+  font-size: var(--t-default-font-size);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
