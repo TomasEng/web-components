@@ -3,7 +3,7 @@ import { ComponentHue } from '../../types/ComponentHue';
 
 @Component({
   tag: 't-integer-picker',
-  styleUrl: 't-integer-picker.css',
+  styleUrls: ['t-integer-picker.css', '../../style/text-input.css'],
   shadow: true,
 })
 export class TIntegerPicker {
@@ -23,16 +23,19 @@ export class TIntegerPicker {
 
   render() {
     return <internal-style-provider hueOffsetInTurns={this.hue}>
-      <div class="wrapper">
-        <label>{this.label}</label>
+      <internal-input-wrapper>
+        <label htmlFor="input" slot="label">{this.label}</label>
         <input
-          type="number"
-          min={this.min}
+          class="text-input"
+          id="input"
           max={this.max}
-          value={this.value}
+          min={this.min}
           onChange={this.handleChange}
+          slot="input"
+          type="number"
+          value={this.value}
         />
-      </div>
+      </internal-input-wrapper>
     </internal-style-provider>;
   }
 }

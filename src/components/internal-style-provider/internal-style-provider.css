@@ -1,0 +1,5 @@
+:host {
+  --t-base-colour: oklch(var(--t-base-colour-lightness) var(--t-base-colour-chroma) var(--t-base-colour-hue));
+  --t-selection-background-colour: var(--t-base-fill-colour);
+}
+

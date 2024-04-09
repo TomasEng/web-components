@@ -3,10 +3,11 @@
   --t-base-colour-hue: unset;
   --t-base-colour-lightness: unset;
   --t-base-colour-saturation: unset;
-  --t-base-colour: hsl(
-    calc(var(--t-base-colour-hue) + var(--t-base-colour-hue-offset, 0) * 1turn),
-    var(--t-base-colour-saturation),
+  --t-base-colour-chroma: unset;
+  --t-base-colour: oklch(
     var(--t-base-colour-lightness)
+    var(--t-base-colour-chroma)
+    calc(var(--t-base-colour-hue) + var(--t-base-colour-hue-offset, 0) * 1turn)
   );
   --t-base-fill-colour: var(--t-base-border-colour);
   --t-font-colour-default: var(--t-full-contrast-colour);

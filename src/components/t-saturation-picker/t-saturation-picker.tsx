@@ -19,7 +19,7 @@ export class TSaturationPicker {
   render() {
     return <t-slider
       label={this.label}
-      max={1}
+      max={0.3}
       min={0}
       onSliderChange={this.handleSliderChange}
       step={0.01}

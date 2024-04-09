@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "@stencil/core": "4.13.0",
-    "chromator": "0.0.5"
+    "chromator": "0.0.9"
   },
   "devDependencies": {
     "@stencil/state-tunnel": "1.0.1",

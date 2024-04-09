@@ -1,9 +1,13 @@
 import { Component, h, Prop, Element } from '@stencil/core';
-import { Chromator, Hsl } from 'chromator';
+import { Chromator, Hsl, Oklch } from 'chromator';
 import {
   BASE_COLOUR_LUMINANCE_DARK_MODE,
   BASE_COLOUR_LUMINANCE_LIGHT_MODE,
-  DARK_MODE_BACKGROUND_LUMINANCE, DEFAULT_BORDER_TO_BACKGROUND_CONTRAST, LIGHT_MODE_BACKGROUND_LUMINANCE,
+  DARK_MODE_BACKGROUND_LUMINANCE,
+  DEFAULT_BORDER_TO_BACKGROUND_CONTRAST,
+  GRADIENT_FACTOR_DARK_MODE,
+  GRADIENT_FACTOR_LIGHT_MODE,
+  LIGHT_MODE_BACKGROUND_LUMINANCE,
 } from '../../constants';
 import { asPercents } from '../../utils/utils';
 import state from '../../store';
@@ -11,6 +15,7 @@ import { getDecreasedLuminanceByContrast, getIncreasedLuminanceByContrast } from
 
 @Component({
   tag: 'internal-style-provider',
+  styleUrl: 'internal-style-provider.css',
   shadow: true,
 })
 export class InternalStyleProvider {
@@ -22,12 +27,13 @@ export class InternalStyleProvider {
   render() {
     const hue = this.hueWithOffset();
     const baseColour = this.baseColour();
-    const { lightness } = baseColour.getHsl();
+    const { l } = baseColour.getOklch();
     this.setCssVariable('--t-base-colour-hue', hue.toFixed() + 'deg');
-    this.setCssVariable('--t-base-colour-lightness', asPercents(lightness));
-    this.setCssVariable('--t-base-colour', 'hsl(var(--t-base-colour-hue), var(--t-base-colour-saturation), var(--t-base-colour-lightness))');
-    this.setCssVariable('--t-base-border-colour', this.baseContrastColour().getHexCode());
-    this.setCssVariable('--t-base-fill-colour', this.baseContrastColour().getHexCode());
+    this.setCssVariable('--t-base-colour-lightness', asPercents(l));
+    this.setCssVariable('--t-base-colour', 'oklch(var(--t-base-colour-lightness) var(--t-base-colour-chroma, 0.4) var(--t-base-colour-hue))');
+    this.setCssVariable('--t-base-border-colour', this.baseContrastColour().getOklchCode());
+    this.setCssVariable('--t-base-fill-colour', this.baseContrastColour().getOklchCode());
+    this.setCssVariable('--t-gradient-factor', this.gradientFactor().toFixed(2));
     return <slot/>;
   }
 
@@ -36,10 +42,10 @@ export class InternalStyleProvider {
   }
 
   private baseColour(): Chromator {
-    const { baseSaturation } = state;
+    const { baseChroma } = state;
     const hue = this.hueWithOffset();
-    const baseHsl: Hsl = { hue, saturation: baseSaturation, lightness: 0.5 };
-    return new Chromator(baseHsl).setRelativeLuminance(this.baseColourLuminance());
+    const baseOklch: Oklch = { hue, chroma: baseChroma, l: 0.5 };
+    return new Chromator(baseOklch).setRelativeLuminance(this.baseColourLuminance(), 'oklch');
   }
 
   private baseColourLuminance(): number {
@@ -47,13 +53,17 @@ export class InternalStyleProvider {
   }
 
   private baseContrastColour(): Chromator {
-    return this.baseColour().copy().setRelativeLuminance(this.baseContrastColourLuminance());
+    return this.baseColour().copy().setRelativeLuminance(this.baseContrastColourLuminance(), 'oklch');
   }
 
   private baseContrastColourLuminance(): number {
     return state.darkMode
       ? getIncreasedLuminanceByContrast(DARK_MODE_BACKGROUND_LUMINANCE, DEFAULT_BORDER_TO_BACKGROUND_CONTRAST)
       : getDecreasedLuminanceByContrast(LIGHT_MODE_BACKGROUND_LUMINANCE, DEFAULT_BORDER_TO_BACKGROUND_CONTRAST);
+  }
+
+  private gradientFactor(): number {
+    return state.darkMode ? GRADIENT_FACTOR_DARK_MODE : GRADIENT_FACTOR_LIGHT_MODE;
   }
 
   private setCssVariable(key: `--t-${string}`, value: string) {

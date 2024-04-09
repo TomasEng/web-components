@@ -3,12 +3,14 @@ button {
   --shadow-blur: calc(var(--shadow-size) * 2);
   --inset-shadow-size: 0px;
   --inset-shadow-blur: calc(var(--inset-shadow-size) * 2);
-  --transistion-duration: 0.2s;
+  --t-gradient-factor: unset;
+  --gradient-term: calc(l * var(--t-gradient-factor));
+  --button-colour: var(--t-base-colour);
   background: linear-gradient(
     to top,
-    lch(from var(--t-base-colour) calc(l * 0.8) c h),
-    var(--t-base-colour),
-    lch(from var(--t-base-colour) calc(l * 1.2) c h)
+    oklch(from var(--button-colour) calc((l - var(--gradient-term))) c h),
+    oklch(from var(--button-colour) l c h),
+    oklch(from var(--button-colour) calc((l + var(--gradient-term))) c h)
   );
   cursor: pointer;
   border-radius: 100px;
@@ -20,13 +22,14 @@ button {
 }
 
 button:hover {
-  --inset-shadow-size: 2px;
+  --inset-shadow-size: 0.5rem;
+  --button-colour: oklch(from var(--t-base-colour) calc(l + var(--gradient-term) / 2) c h);
 }
 
 button:active {
   --inset-shadow-size: 0px;
   --transistion-duration: 0s;
-  background: var(--t-base-colour);
+  --gradient-factor: 0;
 }
 
 * {

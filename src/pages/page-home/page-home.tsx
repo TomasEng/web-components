@@ -14,7 +14,7 @@ export class PageHome {
 
   @State() darkMode = false;
   @State() baseHue = 160;
-  @State() baseSaturation = 1;
+  @State() baseChroma = 0.3;
   @State() numberOfHues = 3;
 
   handleSetDarkMode = ({detail}: TSwitchCustomEvent<boolean>) => {
@@ -26,7 +26,7 @@ export class PageHome {
   }
 
   handleSaturationChange = ({detail}: TSaturationPickerCustomEvent<number>) => {
-    this.baseSaturation = detail;
+    this.baseChroma = detail;
   }
 
   handleNumberOfHuesChange = ({detail}: TIntegerPickerCustomEvent<number>) => {
@@ -35,14 +35,14 @@ export class PageHome {
 
   render(): JSX.Element {
     return (
-      <t-context darkMode={this.darkMode} baseHue={this.baseHue} baseSaturation={this.baseSaturation}>
+      <t-context darkMode={this.darkMode} baseHue={this.baseHue} baseChroma={this.baseChroma}>
         <t-layout>
           <t-heading level={1}>Tomas sitt designsystem</t-heading>
           <t-heading level={2}>Innstillinger</t-heading>
           <t-row>
             <t-switch onSwitch={this.handleSetDarkMode} checked={this.darkMode}>Mørk modus</t-switch>
             <t-hue-picker label="Hovedfargetone" onHueChange={this.handleHueChange} value={this.baseHue}/>
-            <t-saturation-picker label="Metning" onSaturationChange={this.handleSaturationChange} value={this.baseSaturation}/>
+            <t-saturation-picker label="Metning" onSaturationChange={this.handleSaturationChange} value={this.baseChroma}/>
             <t-integer-picker label="Antall fargetoner" onIntegerChange={this.handleNumberOfHuesChange} value={this.numberOfHues} min={1} max={10}/>
           </t-row>
           <t-heading level={2}>Komponenter</t-heading>
@@ -60,6 +60,10 @@ export class PageHome {
           {this.renderPreview(
             hue => <t-integer-picker hue={hue} label="Antall" value={5} min={0} max={10}/>,
             'Tallvelger',
+          )}
+          {this.renderPreview(
+            hue => <t-textfield hue={hue} label="Test"/>,
+            'Tekstfelt',
           )}
         </t-layout>
       </t-context>

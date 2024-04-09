@@ -27,18 +27,18 @@
 .slider {
   --gradient-factor: -0.1;
   --chroma: 0;
-  --fill-colour: lch(from var(--t-base-fill-colour) l var(--chroma) h);
+  --fill-colour: var(--t-input-field-background-colour);
   background: linear-gradient(
     to bottom,
-    lch(from var(--fill-colour) calc(l * (1 + var(--gradient-factor))) c h),
+    oklch(from var(--fill-colour) calc(l * (1 + var(--gradient-factor))) c h),
     var(--fill-colour),
-    lch(from var(--fill-colour) calc(l * (1 - var(--gradient-factor))) c h)
+    oklch(from var(--fill-colour) calc(l * (1 - var(--gradient-factor))) c h)
   );
   border-radius: 100px;
   border:
     var(--border-width)
     solid
-    lch(from var(--t-base-border-colour) l var(--chroma) h);
+    var(--t-base-border-colour);
   bottom: 0;
   box-shadow: #0004 0 1px 2px 1px inset;
   box-sizing: border-box;
@@ -54,7 +54,7 @@
 
 .slider:before {
   aspect-ratio: 1;
-  background-color: var(--t-page-background-colour);
+  background-color: var(--t-base-fill-colour);
   border-radius: 50%;
   top: var(--padding);
   content: "";
@@ -66,7 +66,7 @@
 }
 
 input:checked + .slider {
-  --chroma: c;
+  --chroma: 0.4;
   --gradient-factor: 0.1;
   --fill-colour: var(--t-base-fill-colour);
   box-shadow: none;
@@ -74,6 +74,7 @@ input:checked + .slider {
 
 input:checked + .slider:before {
   transform: translateX(calc(var(--width) - var(--height)));
+  background-color: var(--t-page-background-colour);
 }
 
 .switch:has(:focus-visible) .slider {

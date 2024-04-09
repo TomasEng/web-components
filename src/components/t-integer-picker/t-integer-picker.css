@@ -1,40 +1,6 @@
-.wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: var(--t-spacing-in-group);
-  width: min-content;
-}
-
-input {
-  --font-size: var(--t-default-font-size);
-  --height: 1.5rem;
-  --padding: calc((var(--height) - var(--t-default-font-size))/2);
-  background-color: var(--t-input-field-background-colour);
-  border-radius: 6px;
-  border: 1px solid var(--t-base-border-colour);
-  box-shadow: inset 1px 1px 1px rgba(0,0,0,0.3);
-  box-sizing: border-box;
-  line-height: var(--font-size);
-  outline: none;
-  padding: var(--padding);
-  transition: var(--t-transition-duration-medium);
-  color: var(--t-font-colour-default);
-}
-
-input:focus {
-  transform: scale(1.05);
-  background-color: var(--t-page-background-colour);
-  box-shadow: rgb(from var(--t-base-border-colour) r g b / 0.2) 0 0 24px;
-}
-
 input::-webkit-inner-spin-button {
   height: var(--height);
   cursor: pointer;
   margin-right: calc(-1 * var(--padding));
   margin-left: var(--padding);
-}
-
-input::selection {
-  background-color: var(--t-selection-background-colour);
-  color: var(--t-selection-font-colour);
 }

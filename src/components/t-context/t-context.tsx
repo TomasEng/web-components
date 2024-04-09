@@ -1,16 +1,18 @@
 import { Component, h, Prop, Element } from '@stencil/core';
 
-import { Chromator, Hsl } from 'chromator';
+import { Chromator, Hsl, Oklch } from 'chromator';
 import { asPercents } from '../../utils/utils';
 import {
-  BASE_COLOUR_LUMINANCE_DARK_MODE, BASE_COLOUR_LUMINANCE_LIGHT_MODE,
-  DARK_MODE_BACKGROUND_LUMINANCE, DEFAULT_BORDER_TO_BACKGROUND_CONTRAST, INPUT_FIELD_TO_PAGE_CONTRAST,
+  BASE_COLOUR_LUMINANCE_DARK_MODE,
+  BASE_COLOUR_LUMINANCE_LIGHT_MODE,
+  DARK_MODE_BACKGROUND_LUMINANCE,
+  DEFAULT_BORDER_TO_BACKGROUND_CONTRAST,
+  INPUT_FIELD_TO_PAGE_CONTRAST,
   LIGHT_MODE_BACKGROUND_LUMINANCE,
 } from '../../constants';
 import {
   getDecreasedLuminanceByContrast,
   getIncreasedLuminanceByContrast,
-  getIncreasedLuminanceByContrastFromColour,
 } from '../../utils/colourUtils';
 import state from '../../store';
 
@@ -22,22 +24,22 @@ export class TContext {
 
   @Prop() darkMode: boolean = false;
   @Prop() baseHue: number = 160;
-  @Prop() baseSaturation: number = 1;
+  @Prop() baseChroma: number = 0.3;
 
   @Element() element: HTMLElement;
 
   render() {
     state.darkMode = this.darkMode;
     state.baseHue = this.baseHue;
-    state.baseSaturation = this.baseSaturation;
+    state.baseChroma = this.baseChroma;
     const modeClass = this.darkMode ? 'dark' : 'light';
     const baseColour = this.baseColour();
-    const { hue, saturation, lightness } = baseColour.getHsl();
+    const { hue, chroma, l } = baseColour.getOklch();
     this.setCssVariable('--t-base-colour-hue', hue.toFixed() + 'deg');
-    this.setCssVariable('--t-base-colour-saturation', asPercents(saturation));
+    this.setCssVariable('--t-base-colour-chroma', chroma.toFixed(2));
     this.setCssVariable('--t-page-background-colour', this.pageBackgroundColour().getHexCode());
-    this.setCssVariable('--t-base-colour', baseColour.getHexCode());
-    this.setCssVariable('--t-base-colour-lightness', asPercents(lightness));
+    this.setCssVariable('--t-base-colour', baseColour.getOklchCode());
+    this.setCssVariable('--t-base-colour-lightness', asPercents(l));
     this.setCssVariable('--t-base-border-colour', this.baseBorderColour().getHexCode());
     this.setCssVariable('--t-input-field-background-colour', this.inputFieldColour().getHexCode());
 
@@ -48,9 +50,9 @@ export class TContext {
 
   private baseColour(): Chromator {
     const hue = this.baseHue;
-    const saturation = this.baseSaturation;
-    const hsl: Hsl = { hue, saturation, lightness: 0.5 };
-    return new Chromator(hsl).setRelativeLuminance(this.baseColourLuminance());
+    const chroma = this.baseChroma;
+    const oklch: Oklch = { hue, chroma, l: 0.5 };
+    return new Chromator(oklch).setRelativeLuminance(this.baseColourLuminance(), 'oklch');
   }
 
   private baseColourLuminance(): number {
@@ -59,7 +61,7 @@ export class TContext {
 
   private pageBackgroundColour(): Chromator {
     const backgroundColour = new Chromator('#fff');
-    backgroundColour.setRelativeLuminance(this.pageBackgroundLuminance());
+    backgroundColour.setRelativeLuminance(this.pageBackgroundLuminance(), 'oklch');
     return backgroundColour;
   }
 
@@ -68,7 +70,7 @@ export class TContext {
   }
 
   private baseBorderColour(): Chromator {
-    return this.baseColour().copy().setRelativeLuminance(this.baseBorderColourLuminance());
+    return this.baseColour().copy().setRelativeLuminance(this.baseBorderColourLuminance(), 'oklch');
   }
 
   private baseBorderColourLuminance(): number {
@@ -79,7 +81,7 @@ export class TContext {
 
   private inputFieldColour(): Chromator {
     const fieldColour = new Chromator('#fff');
-    fieldColour.setRelativeLuminance(this.inputFieldColourLuminance());
+    fieldColour.setRelativeLuminance(this.inputFieldColourLuminance(), 'oklch');
     return fieldColour;
   }
 

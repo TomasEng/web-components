@@ -8,6 +8,9 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { ComponentHue } from "./types/ComponentHue";
 export { ComponentHue } from "./types/ComponentHue";
 export namespace Components {
+    interface InternalInputWrapper {
+        "hueOffsetInTurns": number;
+    }
     interface InternalStyleProvider {
         "hueOffsetInTurns": number;
     }
@@ -19,8 +22,8 @@ export namespace Components {
     interface TColumn {
     }
     interface TContext {
+        "baseChroma": number;
         "baseHue": number;
-        "baseSaturation": number;
         "darkMode": boolean;
     }
     interface THeading {
@@ -56,6 +59,11 @@ export namespace Components {
         "checked": boolean;
         "hue": number;
     }
+    interface TTextfield {
+        "hue": ComponentHue;
+        "label": string;
+        "value": string;
+    }
 }
 export interface THuePickerCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -78,6 +86,12 @@ export interface TSwitchCustomEvent<T> extends CustomEvent<T> {
     target: HTMLTSwitchElement;
 }
 declare global {
+    interface HTMLInternalInputWrapperElement extends Components.InternalInputWrapper, HTMLStencilElement {
+    }
+    var HTMLInternalInputWrapperElement: {
+        prototype: HTMLInternalInputWrapperElement;
+        new (): HTMLInternalInputWrapperElement;
+    };
     interface HTMLInternalStyleProviderElement extends Components.InternalStyleProvider, HTMLStencilElement {
     }
     var HTMLInternalStyleProviderElement: {
@@ -211,7 +225,14 @@ declare global {
         prototype: HTMLTSwitchElement;
         new (): HTMLTSwitchElement;
     };
+    interface HTMLTTextfieldElement extends Components.TTextfield, HTMLStencilElement {
+    }
+    var HTMLTTextfieldElement: {
+        prototype: HTMLTTextfieldElement;
+        new (): HTMLTTextfieldElement;
+    };
     interface HTMLElementTagNameMap {
+        "internal-input-wrapper": HTMLInternalInputWrapperElement;
         "internal-style-provider": HTMLInternalStyleProviderElement;
         "page-home": HTMLPageHomeElement;
         "t-button": HTMLTButtonElement;
@@ -225,9 +246,13 @@ declare global {
         "t-saturation-picker": HTMLTSaturationPickerElement;
         "t-slider": HTMLTSliderElement;
         "t-switch": HTMLTSwitchElement;
+        "t-textfield": HTMLTTextfieldElement;
     }
 }
 declare namespace LocalJSX {
+    interface InternalInputWrapper {
+        "hueOffsetInTurns"?: number;
+    }
     interface InternalStyleProvider {
         "hueOffsetInTurns"?: number;
     }
@@ -239,8 +264,8 @@ declare namespace LocalJSX {
     interface TColumn {
     }
     interface TContext {
+        "baseChroma"?: number;
         "baseHue"?: number;
-        "baseSaturation"?: number;
         "darkMode"?: boolean;
     }
     interface THeading {
@@ -281,7 +306,13 @@ declare namespace LocalJSX {
         "hue"?: number;
         "onSwitch"?: (event: TSwitchCustomEvent<boolean>) => void;
     }
+    interface TTextfield {
+        "hue"?: ComponentHue;
+        "label"?: string;
+        "value"?: string;
+    }
     interface IntrinsicElements {
+        "internal-input-wrapper": InternalInputWrapper;
         "internal-style-provider": InternalStyleProvider;
         "page-home": PageHome;
         "t-button": TButton;
@@ -295,12 +326,14 @@ declare namespace LocalJSX {
         "t-saturation-picker": TSaturationPicker;
         "t-slider": TSlider;
         "t-switch": TSwitch;
+        "t-textfield": TTextfield;
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "internal-input-wrapper": LocalJSX.InternalInputWrapper & JSXBase.HTMLAttributes<HTMLInternalInputWrapperElement>;
             "internal-style-provider": LocalJSX.InternalStyleProvider & JSXBase.HTMLAttributes<HTMLInternalStyleProviderElement>;
             "page-home": LocalJSX.PageHome & JSXBase.HTMLAttributes<HTMLPageHomeElement>;
             "t-button": LocalJSX.TButton & JSXBase.HTMLAttributes<HTMLTButtonElement>;
@@ -314,6 +347,7 @@ declare module "@stencil/core" {
             "t-saturation-picker": LocalJSX.TSaturationPicker & JSXBase.HTMLAttributes<HTMLTSaturationPickerElement>;
             "t-slider": LocalJSX.TSlider & JSXBase.HTMLAttributes<HTMLTSliderElement>;
             "t-switch": LocalJSX.TSwitch & JSXBase.HTMLAttributes<HTMLTSwitchElement>;
+            "t-textfield": LocalJSX.TTextfield & JSXBase.HTMLAttributes<HTMLTTextfieldElement>;
         }
     }
 }
