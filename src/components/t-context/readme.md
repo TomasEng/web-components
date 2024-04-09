@@ -7,11 +7,11 @@
 
 ## Properties
 
-| Property         | Attribute         | Description | Type      | Default |
-| ---------------- | ----------------- | ----------- | --------- | ------- |
-| `baseHue`        | `base-hue`        |             | `number`  | `160`   |
-| `baseSaturation` | `base-saturation` |             | `number`  | `1`     |
-| `darkMode`       | `dark-mode`       |             | `boolean` | `false` |
+| Property     | Attribute     | Description | Type      | Default |
+| ------------ | ------------- | ----------- | --------- | ------- |
+| `baseChroma` | `base-chroma` |             | `number`  | `0.3`   |
+| `baseHue`    | `base-hue`    |             | `number`  | `160`   |
+| `darkMode`   | `dark-mode`   |             | `boolean` | `false` |
 
 
 ## Dependencies

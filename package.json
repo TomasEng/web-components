@@ -24,7 +24,8 @@
     "start": "stencil build --dev --watch --serve",
     "test": "stencil test --spec --e2e",
     "test.watch": "stencil test --spec --e2e --watchAll",
-    "generate": "stencil generate"
+    "generate": "stencil generate",
+    "deploy": "gh-pages -d www"
   },
   "dependencies": {
     "@stencil/core": "4.13.0",
@@ -35,6 +36,7 @@
     "@stencil/store": "^2.0.15",
     "@types/jest": "^29.5.6",
     "@types/node": "^16.18.11",
+    "gh-pages": "6.1.1",
     "jest": "29.7.0",
     "jest-cli": "^29.7.0",
     "ts-jest": "^29.1.1",
