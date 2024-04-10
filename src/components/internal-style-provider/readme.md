@@ -17,7 +17,9 @@
 ### Used by
 
  - [t-button](../t-button)
+ - [t-dropdown-menu](../t-dropdown)
  - [t-integer-picker](../t-integer-picker)
+ - [t-mode-picker](../t-mode-picker)
  - [t-select](../t-select)
  - [t-switch](../t-switch)
  - [t-textfield](../t-textfield)
@@ -26,7 +28,9 @@
 ```mermaid
 graph TD;
   t-button --> internal-style-provider
+  t-dropdown-menu --> internal-style-provider
   t-integer-picker --> internal-style-provider
+  t-mode-picker --> internal-style-provider
   t-select --> internal-style-provider
   t-switch --> internal-style-provider
   t-textfield --> internal-style-provider

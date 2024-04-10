@@ -1,4 +1,4 @@
-button {
+.t-button {
   --shadow-size: 1px;
   --shadow-blur: calc(var(--shadow-size) * 2);
   --inset-shadow-size: 0px;
@@ -12,21 +12,23 @@ button {
     oklch(from var(--button-colour) l c h),
     oklch(from var(--button-colour) calc((l + var(--gradient-term))) c h)
   );
-  cursor: pointer;
   border-radius: 100px;
+  border: 1px solid var(--t-base-border-colour);
+  color: var(--t-font-colour-default);
+  cursor: pointer;
+  display: inline-flex;
   font-size: 1rem;
   padding: .5rem;
-  color: var(--t-font-colour-default);
   transition: box-shadow var(--transistion-duration);
-  border: 1px solid var(--t-base-border-colour);
+  line-height: 1;
 }
 
-button:hover {
+.t-button:hover {
   --inset-shadow-size: 0.5rem;
   --button-colour: oklch(from var(--t-base-colour) calc(l + var(--gradient-term) / 2) c h);
 }
 
-button:active {
+.t-button:active {
   --inset-shadow-size: 0px;
   --transistion-duration: 0s;
   --gradient-factor: 0;

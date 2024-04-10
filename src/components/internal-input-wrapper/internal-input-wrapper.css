@@ -4,3 +4,7 @@
   gap: var(--t-spacing-in-group);
   width: min-content;
 }
+
+.wrapper.left {
+  flex-direction: row;
+}

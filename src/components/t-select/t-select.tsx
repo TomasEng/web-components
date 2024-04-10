@@ -1,6 +1,7 @@
 import { Component, h, Prop } from '@stencil/core';
 import { ComponentHue } from '../../types/ComponentHue';
 import { TSelectOption } from './TSelectOption';
+import { LabelPlacement } from '../../types/LabelPlacement';
 
 @Component({
   tag: 't-select',
@@ -13,10 +14,11 @@ export class TSelect {
   @Prop() label: string;
   @Prop() options: TSelectOption[];
   @Prop() value: string;
+  @Prop() labelPlacement: LabelPlacement = 'top';
 
   render() {
     return <internal-style-provider hueOffsetInTurns={this.hue}>
-      <internal-input-wrapper>
+      <internal-input-wrapper labelPlacement={this.labelPlacement}>
         <label htmlFor="input" slot="label">{this.label}</label>
         <select
           slot="input"

@@ -1,6 +1,6 @@
 import { Component, h, Prop, Element } from '@stencil/core';
 
-import { Chromator, Hsl, Oklch } from 'chromator';
+import { Chromator, Oklch } from 'chromator';
 import { asPercents } from '../../utils/utils';
 import {
   BASE_COLOUR_LUMINANCE_DARK_MODE,
@@ -22,17 +22,16 @@ import state from '../../store';
 })
 export class TContext {
 
-  @Prop() darkMode: boolean = false;
   @Prop() baseHue: number = 160;
   @Prop() baseChroma: number = 0.3;
 
   @Element() element: HTMLElement;
 
   render() {
-    state.darkMode = this.darkMode;
     state.baseHue = this.baseHue;
     state.baseChroma = this.baseChroma;
-    const modeClass = this.darkMode ? 'dark' : 'light';
+
+    const modeClass = state.mode;
     const baseColour = this.baseColour();
     const { hue, chroma, l } = baseColour.getOklch();
     this.setCssVariable('--t-base-colour-hue', hue.toFixed() + 'deg');
@@ -56,7 +55,11 @@ export class TContext {
   }
 
   private baseColourLuminance(): number {
-    return this.darkMode ? BASE_COLOUR_LUMINANCE_DARK_MODE : BASE_COLOUR_LUMINANCE_LIGHT_MODE;
+    return this.isDarkMode() ? BASE_COLOUR_LUMINANCE_DARK_MODE : BASE_COLOUR_LUMINANCE_LIGHT_MODE;
+  }
+
+  private isDarkMode(): boolean {
+    return state.mode === 'dark';
   }
 
   private pageBackgroundColour(): Chromator {
@@ -66,7 +69,7 @@ export class TContext {
   }
 
   private pageBackgroundLuminance(): number {
-    return this.darkMode ? DARK_MODE_BACKGROUND_LUMINANCE : LIGHT_MODE_BACKGROUND_LUMINANCE;
+    return this.isDarkMode() ? DARK_MODE_BACKGROUND_LUMINANCE : LIGHT_MODE_BACKGROUND_LUMINANCE;
   }
 
   private baseBorderColour(): Chromator {
@@ -74,7 +77,7 @@ export class TContext {
   }
 
   private baseBorderColourLuminance(): number {
-    return this.darkMode
+    return this.isDarkMode()
       ? getIncreasedLuminanceByContrast(DARK_MODE_BACKGROUND_LUMINANCE, DEFAULT_BORDER_TO_BACKGROUND_CONTRAST)
       : getDecreasedLuminanceByContrast(LIGHT_MODE_BACKGROUND_LUMINANCE, DEFAULT_BORDER_TO_BACKGROUND_CONTRAST);
   }
@@ -86,7 +89,7 @@ export class TContext {
   }
 
   private inputFieldColourLuminance(): number {
-    return this.darkMode
+    return this.isDarkMode()
       ? getIncreasedLuminanceByContrast(DARK_MODE_BACKGROUND_LUMINANCE, INPUT_FIELD_TO_PAGE_CONTRAST)
       : getDecreasedLuminanceByContrast(LIGHT_MODE_BACKGROUND_LUMINANCE, INPUT_FIELD_TO_PAGE_CONTRAST);
   }

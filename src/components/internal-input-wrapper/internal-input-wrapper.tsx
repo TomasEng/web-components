@@ -1,4 +1,5 @@
 import { Component, h, Prop, Element } from '@stencil/core';
+import { LabelPlacement } from '../../types/LabelPlacement';
 
 @Component({
   tag: 'internal-input-wrapper',
@@ -7,12 +8,12 @@ import { Component, h, Prop, Element } from '@stencil/core';
 })
 export class InternalStyleProvider {
 
-  @Prop() hueOffsetInTurns: number = 0;
+  @Prop() labelPlacement: LabelPlacement = 'top';
 
   @Element() element: HTMLElement;
 
   render() {
-    return <div class="wrapper">
+    return <div class={'wrapper ' + this.labelPlacement}>
       <slot name='label'/>
       <slot name='input'/>
     </div>;

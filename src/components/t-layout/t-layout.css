@@ -1,6 +1,6 @@
 .wrapper {
   width: 100%;
-  background-color: lch(from var(--t-page-background-colour) calc(l * 0.9) c h);
+  background-color: oklch(from var(--t-page-background-colour) calc(l * 0.9) c h);
 }
 
 .layout {

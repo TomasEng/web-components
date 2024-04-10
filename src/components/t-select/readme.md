@@ -7,12 +7,13 @@
 
 ## Properties
 
-| Property  | Attribute | Description | Type              | Default     |
-| --------- | --------- | ----------- | ----------------- | ----------- |
-| `hue`     | `hue`     |             | `number`          | `0`         |
-| `label`   | `label`   |             | `string`          | `undefined` |
-| `options` | --        |             | `TSelectOption[]` | `undefined` |
-| `value`   | `value`   |             | `string`          | `undefined` |
+| Property         | Attribute         | Description | Type              | Default     |
+| ---------------- | ----------------- | ----------- | ----------------- | ----------- |
+| `hue`            | `hue`             |             | `number`          | `0`         |
+| `label`          | `label`           |             | `string`          | `undefined` |
+| `labelPlacement` | `label-placement` |             | `"left" \| "top"` | `'top'`     |
+| `options`        | --                |             | `TSelectOption[]` | `undefined` |
+| `value`          | `value`           |             | `string`          | `undefined` |
 
 
 ## Dependencies

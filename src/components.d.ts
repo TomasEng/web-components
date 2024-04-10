@@ -5,13 +5,21 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { LabelPlacement } from "./types/LabelPlacement";
 import { ComponentHue } from "./types/ComponentHue";
+import { ButtonAttributes } from "./types/HTMLAttributes";
+import { VNode } from "@stencil/core";
+import { TDropdownMenuItem } from "./components/t-dropdown/TDropdownMenuItem";
 import { TSelectOption } from "./components/t-select/TSelectOption";
+export { LabelPlacement } from "./types/LabelPlacement";
 export { ComponentHue } from "./types/ComponentHue";
+export { ButtonAttributes } from "./types/HTMLAttributes";
+export { VNode } from "@stencil/core";
+export { TDropdownMenuItem } from "./components/t-dropdown/TDropdownMenuItem";
 export { TSelectOption } from "./components/t-select/TSelectOption";
 export namespace Components {
     interface InternalInputWrapper {
-        "hueOffsetInTurns": number;
+        "labelPlacement": LabelPlacement;
     }
     interface InternalStyleProvider {
         "hueOffsetInTurns": number;
@@ -19,6 +27,7 @@ export namespace Components {
     interface PageHome {
     }
     interface TButton {
+        "buttonAttributes": ButtonAttributes;
         "hue": ComponentHue;
     }
     interface TColumn {
@@ -26,7 +35,13 @@ export namespace Components {
     interface TContext {
         "baseChroma": number;
         "baseHue": number;
-        "darkMode": boolean;
+    }
+    interface TDropdownMenu {
+        "buttonAttributes": ButtonAttributes;
+        "hue": ComponentHue;
+        "items": TDropdownMenuItem[];
+        "label": VNode | string;
+        "value": string;
     }
     interface THeading {
         "level": 1 | 2 | 3 | 4 | 5 | 6;
@@ -44,6 +59,10 @@ export namespace Components {
     }
     interface TLayout {
     }
+    interface TModePicker {
+        "hue": ComponentHue;
+        "systemSelected": boolean;
+    }
     interface TRow {
     }
     interface TSaturationPicker {
@@ -53,6 +72,7 @@ export namespace Components {
     interface TSelect {
         "hue": ComponentHue;
         "label": string;
+        "labelPlacement": LabelPlacement;
         "options": TSelectOption[];
         "value": string;
     }
@@ -130,6 +150,12 @@ declare global {
         prototype: HTMLTContextElement;
         new (): HTMLTContextElement;
     };
+    interface HTMLTDropdownMenuElement extends Components.TDropdownMenu, HTMLStencilElement {
+    }
+    var HTMLTDropdownMenuElement: {
+        prototype: HTMLTDropdownMenuElement;
+        new (): HTMLTDropdownMenuElement;
+    };
     interface HTMLTHeadingElement extends Components.THeading, HTMLStencilElement {
     }
     var HTMLTHeadingElement: {
@@ -175,6 +201,12 @@ declare global {
     var HTMLTLayoutElement: {
         prototype: HTMLTLayoutElement;
         new (): HTMLTLayoutElement;
+    };
+    interface HTMLTModePickerElement extends Components.TModePicker, HTMLStencilElement {
+    }
+    var HTMLTModePickerElement: {
+        prototype: HTMLTModePickerElement;
+        new (): HTMLTModePickerElement;
     };
     interface HTMLTRowElement extends Components.TRow, HTMLStencilElement {
     }
@@ -252,10 +284,12 @@ declare global {
         "t-button": HTMLTButtonElement;
         "t-column": HTMLTColumnElement;
         "t-context": HTMLTContextElement;
+        "t-dropdown-menu": HTMLTDropdownMenuElement;
         "t-heading": HTMLTHeadingElement;
         "t-hue-picker": HTMLTHuePickerElement;
         "t-integer-picker": HTMLTIntegerPickerElement;
         "t-layout": HTMLTLayoutElement;
+        "t-mode-picker": HTMLTModePickerElement;
         "t-row": HTMLTRowElement;
         "t-saturation-picker": HTMLTSaturationPickerElement;
         "t-select": HTMLTSelectElement;
@@ -266,7 +300,7 @@ declare global {
 }
 declare namespace LocalJSX {
     interface InternalInputWrapper {
-        "hueOffsetInTurns"?: number;
+        "labelPlacement"?: LabelPlacement;
     }
     interface InternalStyleProvider {
         "hueOffsetInTurns"?: number;
@@ -274,6 +308,7 @@ declare namespace LocalJSX {
     interface PageHome {
     }
     interface TButton {
+        "buttonAttributes"?: ButtonAttributes;
         "hue"?: ComponentHue;
     }
     interface TColumn {
@@ -281,7 +316,13 @@ declare namespace LocalJSX {
     interface TContext {
         "baseChroma"?: number;
         "baseHue"?: number;
-        "darkMode"?: boolean;
+    }
+    interface TDropdownMenu {
+        "buttonAttributes"?: ButtonAttributes;
+        "hue"?: ComponentHue;
+        "items"?: TDropdownMenuItem[];
+        "label"?: VNode | string;
+        "value"?: string;
     }
     interface THeading {
         "level"?: 1 | 2 | 3 | 4 | 5 | 6;
@@ -301,6 +342,10 @@ declare namespace LocalJSX {
     }
     interface TLayout {
     }
+    interface TModePicker {
+        "hue"?: ComponentHue;
+        "systemSelected"?: boolean;
+    }
     interface TRow {
     }
     interface TSaturationPicker {
@@ -311,6 +356,7 @@ declare namespace LocalJSX {
     interface TSelect {
         "hue"?: ComponentHue;
         "label"?: string;
+        "labelPlacement"?: LabelPlacement;
         "options"?: TSelectOption[];
         "value"?: string;
     }
@@ -339,10 +385,12 @@ declare namespace LocalJSX {
         "t-button": TButton;
         "t-column": TColumn;
         "t-context": TContext;
+        "t-dropdown-menu": TDropdownMenu;
         "t-heading": THeading;
         "t-hue-picker": THuePicker;
         "t-integer-picker": TIntegerPicker;
         "t-layout": TLayout;
+        "t-mode-picker": TModePicker;
         "t-row": TRow;
         "t-saturation-picker": TSaturationPicker;
         "t-select": TSelect;
@@ -361,10 +409,12 @@ declare module "@stencil/core" {
             "t-button": LocalJSX.TButton & JSXBase.HTMLAttributes<HTMLTButtonElement>;
             "t-column": LocalJSX.TColumn & JSXBase.HTMLAttributes<HTMLTColumnElement>;
             "t-context": LocalJSX.TContext & JSXBase.HTMLAttributes<HTMLTContextElement>;
+            "t-dropdown-menu": LocalJSX.TDropdownMenu & JSXBase.HTMLAttributes<HTMLTDropdownMenuElement>;
             "t-heading": LocalJSX.THeading & JSXBase.HTMLAttributes<HTMLTHeadingElement>;
             "t-hue-picker": LocalJSX.THuePicker & JSXBase.HTMLAttributes<HTMLTHuePickerElement>;
             "t-integer-picker": LocalJSX.TIntegerPicker & JSXBase.HTMLAttributes<HTMLTIntegerPickerElement>;
             "t-layout": LocalJSX.TLayout & JSXBase.HTMLAttributes<HTMLTLayoutElement>;
+            "t-mode-picker": LocalJSX.TModePicker & JSXBase.HTMLAttributes<HTMLTModePickerElement>;
             "t-row": LocalJSX.TRow & JSXBase.HTMLAttributes<HTMLTRowElement>;
             "t-saturation-picker": LocalJSX.TSaturationPicker & JSXBase.HTMLAttributes<HTMLTSaturationPickerElement>;
             "t-select": LocalJSX.TSelect & JSXBase.HTMLAttributes<HTMLTSelectElement>;

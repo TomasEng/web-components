@@ -1,3 +1,5 @@
+@import "~bootstrap/dist/css/bootstrap.min.css";
+
 .root {
   --t-base-border-colour: unset;
   --t-base-colour-hue: unset;
@@ -9,16 +11,20 @@
     var(--t-base-colour-chroma)
     calc(var(--t-base-colour-hue) + var(--t-base-colour-hue-offset, 0) * 1turn)
   );
+  --t-background-background-colour: oklch(from var(--t-page-background-colour) calc(l * 0.9) h c);
   --t-base-fill-colour: var(--t-base-border-colour);
   --t-font-colour-default: var(--t-full-contrast-colour);
   --t-input-field-background-colour: unset;
   --t-page-background-colour: unset;
+  --t-popover-alpha: 0.75;
+  --t-popover-backdrop-filter: blur(8px);
+  --t-popover-border-radius: 6px;
+  --t-popover-shadow: #000c 0 4px 12px;
   --t-selection-background-colour: var(--t-base-fill-colour);
   --t-selection-font-colour: var(--t-font-colour-default);
   --t-transition-duration-long: calc(--t-transition-duration-medium * 2);
   --t-transition-duration-medium: calc(--t-transition-duration-short * 2);
   --t-transition-duration-short: 0.1s;
-  --t-background-background-colour: lch(from var(--t-page-background-colour) calc(l * 0.9) h c);
 }
 
 @media (prefers-reduced-motion) {
@@ -35,9 +41,11 @@
 .root.light {
   --t-selection-font-colour: white;
   --t-full-contrast-colour: black;
+  --t-mode-colour-scaling: 1;
 }
 
 .root.dark {
   --t-selection-font-colour: black;
   --t-full-contrast-colour: white;
+  --t-mode-colour-scaling: -1;
 }

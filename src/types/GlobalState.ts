@@ -1,5 +1,8 @@
+import { Mode, SelectedMode } from './Mode';
+
 export type GlobalState = {
-  darkMode: boolean;
+  selectedMode: SelectedMode;
+  mode: Mode;
   baseHue: number;
   baseChroma: number;
 }

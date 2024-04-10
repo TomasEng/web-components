@@ -2,7 +2,8 @@ import { Component, h, JSX, State, Fragment } from '@stencil/core';
 import {
   THuePickerCustomEvent,
   TIntegerPickerCustomEvent,
-  TSaturationPickerCustomEvent, TSelectOption,
+  TSaturationPickerCustomEvent,
+  TSelectOption,
   TSwitchCustomEvent,
 } from '../../components';
 import { integerArray } from '../../utils/numberUtils';
@@ -12,43 +13,48 @@ import { integerArray } from '../../utils/numberUtils';
 })
 export class PageHome {
 
-  @State() darkMode = false;
   @State() baseHue = 160;
   @State() baseChroma = 0.3;
   @State() numberOfHues = 3;
 
-  handleSetDarkMode = ({detail}: TSwitchCustomEvent<boolean>) => {
-    this.darkMode = detail;
-  }
-
-  handleHueChange = ({detail}: THuePickerCustomEvent<number>) => {
+  handleHueChange = ({ detail }: THuePickerCustomEvent<number>) => {
     this.baseHue = detail;
-  }
+  };
 
-  handleSaturationChange = ({detail}: TSaturationPickerCustomEvent<number>) => {
+  handleSaturationChange = ({ detail }: TSaturationPickerCustomEvent<number>) => {
     this.baseChroma = detail;
-  }
+  };
 
-  handleNumberOfHuesChange = ({detail}: TIntegerPickerCustomEvent<number>) => {
+  handleNumberOfHuesChange = ({ detail }: TIntegerPickerCustomEvent<number>) => {
     this.numberOfHues = detail;
-  }
+  };
 
   render(): JSX.Element {
     return (
-      <t-context darkMode={this.darkMode} baseHue={this.baseHue} baseChroma={this.baseChroma}>
+      <t-context baseHue={this.baseHue} baseChroma={this.baseChroma}>
         <t-layout>
           <t-heading level={1}>Tomas sitt designsystem</t-heading>
           <t-heading level={2}>Innstillinger</t-heading>
+          <t-mode-picker />
           <t-row>
-            <t-switch onSwitch={this.handleSetDarkMode} checked={this.darkMode}>Mørk modus</t-switch>
-            <t-hue-picker label="Hovedfargetone" onHueChange={this.handleHueChange} value={this.baseHue}/>
-            <t-saturation-picker label="Metning" onSaturationChange={this.handleSaturationChange} value={this.baseChroma}/>
-            <t-integer-picker label="Antall fargetoner" onIntegerChange={this.handleNumberOfHuesChange} value={this.numberOfHues} min={1} max={10}/>
+            <t-hue-picker label="Hovedfargetone" onHueChange={this.handleHueChange} value={this.baseHue} />
+            <t-saturation-picker
+              label="Metning"
+              onSaturationChange={this.handleSaturationChange}
+              value={this.baseChroma}
+            />
+            <t-integer-picker
+              label="Antall fargetoner"
+              onIntegerChange={this.handleNumberOfHuesChange}
+              value={this.numberOfHues}
+              min={1}
+              max={10}
+            />
           </t-row>
           <t-heading level={2}>Komponenter</t-heading>
           {this.renderPreview(
             hue => <t-button hue={hue}>Klikk meg</t-button>,
-            'Knapp'
+            'Knapp',
           )}
           {this.renderPreview(
             hue => <t-column>
@@ -58,23 +64,37 @@ export class PageHome {
             'Bryter',
           )}
           {this.renderPreview(
-            hue => <t-integer-picker hue={hue} label="Antall" value={5} min={0} max={10}/>,
+            hue => <t-integer-picker hue={hue} label="Antall" value={5} min={0} max={10} />,
             'Tallvelger',
           )}
           {this.renderPreview(
-            hue => <t-textfield hue={hue} label="Test"/>,
+            hue => <t-textfield hue={hue} label="Test" />,
             'Tekstfelt',
           )}
           {this.renderPreview(
-          hue => {
-            const options: TSelectOption[] = [
-              {value: '1', label: 'Alternativ 1'},
-              {value: '2', label: 'Alternativ 2'},
-              {value: '3', label: 'Alternativ 3'},
-            ];
-            return <t-select hue={hue} label="Alternativer" options={options} value="1"/>;
-          },
-            'Nedtrekksliste'
+            hue => {
+              const options: TSelectOption[] = [
+                { value: '1', label: 'Alternativ 1' },
+                { value: '2', label: 'Alternativ 2' },
+                { value: '3', label: 'Alternativ 3' },
+              ];
+              return <t-select hue={hue} label="Alternativer" options={options} value="1" />;
+            },
+            'Nedtrekksliste',
+          )}
+          {this.renderPreview(
+            hue => (
+              <t-dropdown-menu
+                hue={hue}
+                label="Velg"
+                items={[
+                  { label: 'Alternativ 1', action: () => alert('Alternativ 1') },
+                  { label: 'Alternativ 2', action: () => alert('Alternativ 2') },
+                  { label: 'Alternativ 3', action: () => alert('Alternativ 3') },
+                ]}
+              />
+            ),
+            'Nedtrekksmeny'
           )}
         </t-layout>
       </t-context>
@@ -93,9 +113,9 @@ export class PageHome {
       <>
         <t-heading level={3}>{title}</t-heading>
         <t-row>
-          {this.hueArray().map(hue => component(hue/this.numberOfHues))}
+          {this.hueArray().map(hue => component(hue / this.numberOfHues))}
         </t-row>
       </>
-    )
+    );
   }
 }

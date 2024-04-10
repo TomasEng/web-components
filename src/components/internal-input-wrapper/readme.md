@@ -7,9 +7,9 @@
 
 ## Properties
 
-| Property           | Attribute             | Description | Type     | Default |
-| ------------------ | --------------------- | ----------- | -------- | ------- |
-| `hueOffsetInTurns` | `hue-offset-in-turns` |             | `number` | `0`     |
+| Property         | Attribute         | Description | Type              | Default |
+| ---------------- | ----------------- | ----------- | ----------------- | ------- |
+| `labelPlacement` | `label-placement` |             | `"left" \| "top"` | `'top'` |
 
 
 ## Dependencies

@@ -49,7 +49,11 @@ export class InternalStyleProvider {
   }
 
   private baseColourLuminance(): number {
-    return state.darkMode ? BASE_COLOUR_LUMINANCE_DARK_MODE : BASE_COLOUR_LUMINANCE_LIGHT_MODE;
+    return this.isDarkMode() ? BASE_COLOUR_LUMINANCE_DARK_MODE : BASE_COLOUR_LUMINANCE_LIGHT_MODE;
+  }
+
+  private isDarkMode(): boolean {
+    return state.mode === 'dark';
   }
 
   private baseContrastColour(): Chromator {
@@ -57,13 +61,13 @@ export class InternalStyleProvider {
   }
 
   private baseContrastColourLuminance(): number {
-    return state.darkMode
+    return this.isDarkMode()
       ? getIncreasedLuminanceByContrast(DARK_MODE_BACKGROUND_LUMINANCE, DEFAULT_BORDER_TO_BACKGROUND_CONTRAST)
       : getDecreasedLuminanceByContrast(LIGHT_MODE_BACKGROUND_LUMINANCE, DEFAULT_BORDER_TO_BACKGROUND_CONTRAST);
   }
 
   private gradientFactor(): number {
-    return state.darkMode ? GRADIENT_FACTOR_DARK_MODE : GRADIENT_FACTOR_LIGHT_MODE;
+    return this.isDarkMode() ? GRADIENT_FACTOR_DARK_MODE : GRADIENT_FACTOR_LIGHT_MODE;
   }
 
   private setCssVariable(key: `--t-${string}`, value: string) {
