@@ -1,16 +1,22 @@
 import { createStore } from '@stencil/store';
 import { GlobalState } from './types/GlobalState';
-import { systemMode } from './utils/browserUtils';
+import { getMode, resetModeInLocalStorage, setModeInLocalStorage, systemMode } from './utils/browserUtils';
 
 const { state, onChange } = createStore<GlobalState>({
-  selectedMode: 'system',
-  mode: systemMode(),
+  selectedMode: getMode() || 'system',
+  mode: getMode(),
   baseHue: 160,
   baseChroma: 0.4,
 });
 
 onChange('selectedMode', (selectedMode) => {
-  state.mode = selectedMode === 'system' ? systemMode() : selectedMode;
+  if (selectedMode === 'system') {
+    state.mode = systemMode();
+    resetModeInLocalStorage();
+  } else {
+    state.mode = selectedMode;
+    setModeInLocalStorage(selectedMode);
+  }
 });
 
 window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {

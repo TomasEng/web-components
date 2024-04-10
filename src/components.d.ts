@@ -39,6 +39,7 @@ export namespace Components {
     interface TDropdownMenu {
         "buttonAttributes": ButtonAttributes;
         "hue": ComponentHue;
+        "icon"?: VNode;
         "items": TDropdownMenuItem[];
         "label": VNode | string;
         "value": string;
@@ -320,6 +321,7 @@ declare namespace LocalJSX {
     interface TDropdownMenu {
         "buttonAttributes"?: ButtonAttributes;
         "hue"?: ComponentHue;
+        "icon"?: VNode;
         "items"?: TDropdownMenuItem[];
         "label"?: VNode | string;
         "value"?: string;

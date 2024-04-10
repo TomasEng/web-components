@@ -1,3 +1,5 @@
+@import "~bootstrap/dist/css/bootstrap.min.css";
+
 .t-dropdown-menu .t-button::after {
   display: none;
 }
@@ -16,6 +18,10 @@
 .t-dropdown-menu .dropdown-menu .dropdown-item {
   color: var(--t-font-colour-default);
   padding: .5rem;
+  display: inline-grid;
+  gap: var(--t-spacing-inline);
+  align-items: center;
+  grid-template-columns: auto 1fr auto;
 }
 
 .t-dropdown-menu .dropdown-menu li:first-child .dropdown-item {
@@ -38,3 +44,12 @@
   );
 }
 
+.t-dropdown-menu .dropdown-menu .dropdown-item.selected {
+  background-color: oklch(
+    from var(--t-base-colour)
+    l
+    c
+    h
+    / 0.2
+  );
+}

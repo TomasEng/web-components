@@ -4,7 +4,6 @@ import {
   TIntegerPickerCustomEvent,
   TSaturationPickerCustomEvent,
   TSelectOption,
-  TSwitchCustomEvent,
 } from '../../components';
 import { integerArray } from '../../utils/numberUtils';
 
