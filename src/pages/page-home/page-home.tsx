@@ -32,69 +32,71 @@ export class PageHome {
     return (
       <t-context baseHue={this.baseHue} baseChroma={this.baseChroma}>
         <t-layout>
-          <t-heading level={1}>Tomas sitt designsystem</t-heading>
-          <t-heading level={2}>Innstillinger</t-heading>
-          <t-mode-picker />
-          <t-row>
-            <t-hue-picker label="Hovedfargetone" onHueChange={this.handleHueChange} value={this.baseHue} />
-            <t-saturation-picker
-              label="Metning"
-              onSaturationChange={this.handleSaturationChange}
-              value={this.baseChroma}
-            />
-            <t-integer-picker
-              label="Antall fargetoner"
-              onIntegerChange={this.handleNumberOfHuesChange}
-              value={this.numberOfHues}
-              min={1}
-              max={10}
-            />
-          </t-row>
-          <t-heading level={2}>Komponenter</t-heading>
-          {this.renderPreview(
-            hue => <t-button hue={hue}>Klikk meg</t-button>,
-            'Knapp',
-          )}
-          {this.renderPreview(
-            hue => <t-column>
-              <t-switch hue={hue} checked={true}>På</t-switch>
-              <t-switch hue={hue} checked={false}>Av</t-switch>
-            </t-column>,
-            'Bryter',
-          )}
-          {this.renderPreview(
-            hue => <t-integer-picker hue={hue} label="Antall" value={5} min={0} max={10} />,
-            'Tallvelger',
-          )}
-          {this.renderPreview(
-            hue => <t-textfield hue={hue} label="Test" />,
-            'Tekstfelt',
-          )}
-          {this.renderPreview(
-            hue => {
-              const options: TSelectOption[] = [
-                { value: '1', label: 'Alternativ 1' },
-                { value: '2', label: 'Alternativ 2' },
-                { value: '3', label: 'Alternativ 3' },
-              ];
-              return <t-select hue={hue} label="Alternativer" options={options} value="1" />;
-            },
-            'Nedtrekksliste',
-          )}
-          {this.renderPreview(
-            hue => (
-              <t-dropdown-menu
-                hue={hue}
-                label="Velg"
-                items={[
-                  { label: 'Alternativ 1', action: () => alert('Alternativ 1') },
-                  { label: 'Alternativ 2', action: () => alert('Alternativ 2') },
-                  { label: 'Alternativ 3', action: () => alert('Alternativ 3') },
-                ]}
+          <t-layout-header slot='header' siteTitle="Tomas sitt designsystem" />
+          <t-layout-main slot='main'>
+            <t-heading level={1}>Komponentoversikt</t-heading>
+            <t-heading level={2}>Innstillinger</t-heading>
+            <t-row>
+              <t-hue-picker label="Hovedfargetone" onHueChange={this.handleHueChange} value={this.baseHue} />
+              <t-saturation-picker
+                label="Metning"
+                onSaturationChange={this.handleSaturationChange}
+                value={this.baseChroma}
               />
-            ),
-            'Nedtrekksmeny'
-          )}
+              <t-integer-picker
+                label="Antall fargetoner"
+                onIntegerChange={this.handleNumberOfHuesChange}
+                value={this.numberOfHues}
+                min={1}
+                max={10}
+              />
+            </t-row>
+            <t-heading level={2}>Komponenter</t-heading>
+            {this.renderPreview(
+              hue => <t-button hue={hue}>Klikk meg</t-button>,
+              'Knapp',
+            )}
+            {this.renderPreview(
+              hue => <t-column>
+                <t-switch hue={hue} checked={true}>På</t-switch>
+                <t-switch hue={hue} checked={false}>Av</t-switch>
+              </t-column>,
+              'Bryter',
+            )}
+            {this.renderPreview(
+              hue => <t-integer-picker hue={hue} label="Antall" value={5} min={0} max={10} />,
+              'Tallvelger',
+            )}
+            {this.renderPreview(
+              hue => <t-textfield hue={hue} label="Test" />,
+              'Tekstfelt',
+            )}
+            {this.renderPreview(
+              hue => {
+                const options: TSelectOption[] = [
+                  { value: '1', label: 'Alternativ 1' },
+                  { value: '2', label: 'Alternativ 2' },
+                  { value: '3', label: 'Alternativ 3' },
+                ];
+                return <t-select hue={hue} label="Alternativer" options={options} value="1" />;
+              },
+              'Nedtrekksliste',
+            )}
+            {this.renderPreview(
+              hue => (
+                <t-dropdown-menu
+                  hue={hue}
+                  label="Velg"
+                  items={[
+                    { label: 'Alternativ 1', action: () => alert('Alternativ 1') },
+                    { label: 'Alternativ 2', action: () => alert('Alternativ 2') },
+                    { label: 'Alternativ 3', action: () => alert('Alternativ 3') },
+                  ]}
+                />
+              ),
+              'Nedtrekksmeny'
+            )}
+          </t-layout-main>
         </t-layout>
       </t-context>
     );

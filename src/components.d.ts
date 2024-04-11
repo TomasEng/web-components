@@ -60,6 +60,11 @@ export namespace Components {
     }
     interface TLayout {
     }
+    interface TLayoutHeader {
+        "siteTitle": string;
+    }
+    interface TLayoutMain {
+    }
     interface TModePicker {
         "hue": ComponentHue;
         "systemSelected": boolean;
@@ -203,6 +208,18 @@ declare global {
         prototype: HTMLTLayoutElement;
         new (): HTMLTLayoutElement;
     };
+    interface HTMLTLayoutHeaderElement extends Components.TLayoutHeader, HTMLStencilElement {
+    }
+    var HTMLTLayoutHeaderElement: {
+        prototype: HTMLTLayoutHeaderElement;
+        new (): HTMLTLayoutHeaderElement;
+    };
+    interface HTMLTLayoutMainElement extends Components.TLayoutMain, HTMLStencilElement {
+    }
+    var HTMLTLayoutMainElement: {
+        prototype: HTMLTLayoutMainElement;
+        new (): HTMLTLayoutMainElement;
+    };
     interface HTMLTModePickerElement extends Components.TModePicker, HTMLStencilElement {
     }
     var HTMLTModePickerElement: {
@@ -290,6 +307,8 @@ declare global {
         "t-hue-picker": HTMLTHuePickerElement;
         "t-integer-picker": HTMLTIntegerPickerElement;
         "t-layout": HTMLTLayoutElement;
+        "t-layout-header": HTMLTLayoutHeaderElement;
+        "t-layout-main": HTMLTLayoutMainElement;
         "t-mode-picker": HTMLTModePickerElement;
         "t-row": HTMLTRowElement;
         "t-saturation-picker": HTMLTSaturationPickerElement;
@@ -344,6 +363,11 @@ declare namespace LocalJSX {
     }
     interface TLayout {
     }
+    interface TLayoutHeader {
+        "siteTitle"?: string;
+    }
+    interface TLayoutMain {
+    }
     interface TModePicker {
         "hue"?: ComponentHue;
         "systemSelected"?: boolean;
@@ -392,6 +416,8 @@ declare namespace LocalJSX {
         "t-hue-picker": THuePicker;
         "t-integer-picker": TIntegerPicker;
         "t-layout": TLayout;
+        "t-layout-header": TLayoutHeader;
+        "t-layout-main": TLayoutMain;
         "t-mode-picker": TModePicker;
         "t-row": TRow;
         "t-saturation-picker": TSaturationPicker;
@@ -416,6 +442,8 @@ declare module "@stencil/core" {
             "t-hue-picker": LocalJSX.THuePicker & JSXBase.HTMLAttributes<HTMLTHuePickerElement>;
             "t-integer-picker": LocalJSX.TIntegerPicker & JSXBase.HTMLAttributes<HTMLTIntegerPickerElement>;
             "t-layout": LocalJSX.TLayout & JSXBase.HTMLAttributes<HTMLTLayoutElement>;
+            "t-layout-header": LocalJSX.TLayoutHeader & JSXBase.HTMLAttributes<HTMLTLayoutHeaderElement>;
+            "t-layout-main": LocalJSX.TLayoutMain & JSXBase.HTMLAttributes<HTMLTLayoutMainElement>;
             "t-mode-picker": LocalJSX.TModePicker & JSXBase.HTMLAttributes<HTMLTModePickerElement>;
             "t-row": LocalJSX.TRow & JSXBase.HTMLAttributes<HTMLTRowElement>;
             "t-saturation-picker": LocalJSX.TSaturationPicker & JSXBase.HTMLAttributes<HTMLTSaturationPickerElement>;

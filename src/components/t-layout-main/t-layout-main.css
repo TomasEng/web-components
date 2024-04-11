@@ -1,0 +1,11 @@
+.main {
+  --main-background: color-mix(in oklch, var(--t-page-background-colour) 90%, transparent);
+  background-color: var(--main-background);
+  box-shadow:
+    #0003 0 0 4rem,
+    inset oklch(from var(--t-page-background-colour) calc(l + 0.1) c h) 0 1px 0,
+    inset oklch(from var(--t-page-background-colour) calc(l - 0.1) c h) 0 -1px 0;
+  color: var(--t-font-colour-default);
+  padding: 1rem;
+  border-radius: 12px;
+}

@@ -1,15 +1,18 @@
 .wrapper {
   width: 100%;
-  background-color: oklch(from var(--t-page-background-colour) calc(l * 0.9) c h);
+  background-color: oklch(
+    from var(--t-base-colour)
+    calc(0.5 + var(--t-mode-colour-scaling) * 0.3)
+    calc(c * 0.1)
+    h
+  );
 }
 
 .layout {
-  background-color: var(--t-page-background-colour);
-  box-shadow: #0003 0 4rem 4rem;
   box-sizing: border-box;
   color: var(--t-font-colour-default);
   margin: 0 auto;
   max-width: 1200px;
   min-height: 100vh;
-  padding: 1rem;
+  padding-bottom: 2rem;
 }
