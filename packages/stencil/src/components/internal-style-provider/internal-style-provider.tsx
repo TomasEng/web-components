@@ -1,5 +1,5 @@
 import { Component, h, Prop, Element } from '@stencil/core';
-import { Chromator, Hsl, Oklch } from 'chromator';
+import { Chromator, Oklch } from 'chromator';
 import {
   BASE_COLOUR_LUMINANCE_DARK_MODE,
   BASE_COLOUR_LUMINANCE_LIGHT_MODE,

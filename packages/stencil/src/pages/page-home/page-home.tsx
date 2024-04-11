@@ -12,8 +12,8 @@ import { integerArray } from '../../utils/numberUtils';
 })
 export class PageHome {
 
-  @State() baseHue = 160;
-  @State() baseChroma = 0.3;
+  @State() baseHue = 263;
+  @State() baseChroma = 0.4;
   @State() numberOfHues = 3;
 
   handleHueChange = ({ detail }: THuePickerCustomEvent<number>) => {

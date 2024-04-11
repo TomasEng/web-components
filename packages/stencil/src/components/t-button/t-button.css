@@ -1,8 +1,4 @@
 .t-button {
-  --shadow-size: 1px;
-  --shadow-blur: calc(var(--shadow-size) * 2);
-  --inset-shadow-size: 0px;
-  --inset-shadow-blur: calc(var(--inset-shadow-size) * 2);
   --t-gradient-factor: unset;
   --gradient-term: calc(l * var(--t-gradient-factor));
   --button-colour: var(--t-base-colour);
@@ -17,6 +13,7 @@
   color: var(--t-font-colour-default);
   cursor: pointer;
   display: inline-flex;
+  align-items: center;
   font-size: 1rem;
   padding: .5rem;
   transition: box-shadow var(--transistion-duration);
@@ -24,12 +21,10 @@
 }
 
 .t-button:hover {
-  --inset-shadow-size: 0.5rem;
   --button-colour: oklch(from var(--t-base-colour) calc(l + var(--gradient-term) / 2) c h);
 }
 
 .t-button:active {
-  --inset-shadow-size: 0px;
   --transistion-duration: 0s;
   --gradient-factor: 0;
 }

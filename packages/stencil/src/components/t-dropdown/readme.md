@@ -1,4 +1,4 @@
-# t-button
+# t-dropdown-menu
 
 
 
@@ -11,6 +11,10 @@
 | ------------------ | --------- | ----------- | --------------------------------------------------------------------------- | ----------- |
 | `buttonAttributes` | --        |             | `ButtonHTMLAttributes<HTMLButtonElement> & DataAttributes & AriaAttributes` | `undefined` |
 | `hue`              | `hue`     |             | `number`                                                                    | `0`         |
+| `icon`             | --        |             | `VNode`                                                                     | `undefined` |
+| `items`            | --        |             | `TDropdownMenuItem[]`                                                       | `[]`        |
+| `label`            | `label`   |             | `VNode \| string`                                                           | `undefined` |
+| `value`            | `value`   |             | `string`                                                                    | `undefined` |
 
 
 ## Dependencies
@@ -27,10 +31,10 @@
 ### Graph
 ```mermaid
 graph TD;
-  t-button --> internal-style-provider
-  page-home --> t-button
-  t-mode-picker --> t-button
-  style t-button fill:#f9f,stroke:#333,stroke-width:4px
+  t-dropdown-menu --> internal-style-provider
+  page-home --> t-dropdown-menu
+  t-mode-picker --> t-dropdown-menu
+  style t-dropdown-menu fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

@@ -22,8 +22,8 @@ import state from '../../store';
 })
 export class TContext {
 
-  @Prop() baseHue: number = 160;
-  @Prop() baseChroma: number = 0.3;
+  @Prop() baseHue: number = 263;
+  @Prop() baseChroma: number = 0.4;
 
   @Element() element: HTMLElement;
 
