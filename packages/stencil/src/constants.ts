@@ -6,3 +6,6 @@ export const BASE_COLOUR_LUMINANCE_DARK_MODE = 0.12;
 export const INPUT_FIELD_TO_PAGE_CONTRAST = 1.2;
 export const GRADIENT_FACTOR_DARK_MODE = 0.2;
 export const GRADIENT_FACTOR_LIGHT_MODE = 0.05;
+export const DEFAULT_HUE = 263;
+export const DEFAULT_CHROMA = 0.4;
+export const DEFAULT_NUMBER_OF_HUES = 3;

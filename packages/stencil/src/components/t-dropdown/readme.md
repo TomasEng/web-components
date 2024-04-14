@@ -21,7 +21,7 @@
 
 ### Used by
 
- - [page-home](../../pages/page-home)
+ - [page-home](../../preview-app/page-home)
  - [t-mode-picker](../t-mode-switcher)
 
 ### Depends on

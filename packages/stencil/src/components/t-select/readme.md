@@ -20,7 +20,7 @@
 
 ### Used by
 
- - [page-home](../../pages/page-home)
+ - [page-home](../../preview-app/page-home)
 
 ### Depends on
 

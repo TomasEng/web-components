@@ -24,7 +24,12 @@ export namespace Components {
     interface InternalStyleProvider {
         "hueOffsetInTurns": number;
     }
-    interface PageHome {
+    interface PageComponents {
+        "baseChroma": number;
+        "baseHue": number;
+        "numberOfHues": number;
+    }
+    interface PreviewApp {
     }
     interface TButton {
         "buttonAttributes": ButtonAttributes;
@@ -99,6 +104,10 @@ export namespace Components {
         "value": string;
     }
 }
+export interface PageComponentsCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPageComponentsElement;
+}
 export interface THuePickerCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLTHuePickerElement;
@@ -132,11 +141,30 @@ declare global {
         prototype: HTMLInternalStyleProviderElement;
         new (): HTMLInternalStyleProviderElement;
     };
-    interface HTMLPageHomeElement extends Components.PageHome, HTMLStencilElement {
+    interface HTMLPageComponentsElementEventMap {
+        "hueChange": number;
+        "chromaChange": number;
+        "numberOfHuesChange": number;
     }
-    var HTMLPageHomeElement: {
-        prototype: HTMLPageHomeElement;
-        new (): HTMLPageHomeElement;
+    interface HTMLPageComponentsElement extends Components.PageComponents, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLPageComponentsElementEventMap>(type: K, listener: (this: HTMLPageComponentsElement, ev: PageComponentsCustomEvent<HTMLPageComponentsElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLPageComponentsElementEventMap>(type: K, listener: (this: HTMLPageComponentsElement, ev: PageComponentsCustomEvent<HTMLPageComponentsElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLPageComponentsElement: {
+        prototype: HTMLPageComponentsElement;
+        new (): HTMLPageComponentsElement;
+    };
+    interface HTMLPreviewAppElement extends Components.PreviewApp, HTMLStencilElement {
+    }
+    var HTMLPreviewAppElement: {
+        prototype: HTMLPreviewAppElement;
+        new (): HTMLPreviewAppElement;
     };
     interface HTMLTButtonElement extends Components.TButton, HTMLStencilElement {
     }
@@ -298,7 +326,8 @@ declare global {
     interface HTMLElementTagNameMap {
         "internal-input-wrapper": HTMLInternalInputWrapperElement;
         "internal-style-provider": HTMLInternalStyleProviderElement;
-        "page-home": HTMLPageHomeElement;
+        "page-components": HTMLPageComponentsElement;
+        "preview-app": HTMLPreviewAppElement;
         "t-button": HTMLTButtonElement;
         "t-column": HTMLTColumnElement;
         "t-context": HTMLTContextElement;
@@ -325,7 +354,15 @@ declare namespace LocalJSX {
     interface InternalStyleProvider {
         "hueOffsetInTurns"?: number;
     }
-    interface PageHome {
+    interface PageComponents {
+        "baseChroma"?: number;
+        "baseHue"?: number;
+        "numberOfHues"?: number;
+        "onChromaChange"?: (event: PageComponentsCustomEvent<number>) => void;
+        "onHueChange"?: (event: PageComponentsCustomEvent<number>) => void;
+        "onNumberOfHuesChange"?: (event: PageComponentsCustomEvent<number>) => void;
+    }
+    interface PreviewApp {
     }
     interface TButton {
         "buttonAttributes"?: ButtonAttributes;
@@ -407,7 +444,8 @@ declare namespace LocalJSX {
     interface IntrinsicElements {
         "internal-input-wrapper": InternalInputWrapper;
         "internal-style-provider": InternalStyleProvider;
-        "page-home": PageHome;
+        "page-components": PageComponents;
+        "preview-app": PreviewApp;
         "t-button": TButton;
         "t-column": TColumn;
         "t-context": TContext;
@@ -433,7 +471,8 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "internal-input-wrapper": LocalJSX.InternalInputWrapper & JSXBase.HTMLAttributes<HTMLInternalInputWrapperElement>;
             "internal-style-provider": LocalJSX.InternalStyleProvider & JSXBase.HTMLAttributes<HTMLInternalStyleProviderElement>;
-            "page-home": LocalJSX.PageHome & JSXBase.HTMLAttributes<HTMLPageHomeElement>;
+            "page-components": LocalJSX.PageComponents & JSXBase.HTMLAttributes<HTMLPageComponentsElement>;
+            "preview-app": LocalJSX.PreviewApp & JSXBase.HTMLAttributes<HTMLPreviewAppElement>;
             "t-button": LocalJSX.TButton & JSXBase.HTMLAttributes<HTMLTButtonElement>;
             "t-column": LocalJSX.TColumn & JSXBase.HTMLAttributes<HTMLTColumnElement>;
             "t-context": LocalJSX.TContext & JSXBase.HTMLAttributes<HTMLTContextElement>;
