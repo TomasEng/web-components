@@ -10,12 +10,14 @@ import { ComponentHue } from "./types/ComponentHue";
 import { ButtonAttributes } from "./types/HTMLAttributes";
 import { VNode } from "@stencil/core";
 import { TDropdownMenuItem } from "./components/t-dropdown/TDropdownMenuItem";
+import { TNavMenuItem } from "./components/t-layout-header/TNavMenuItem";
 import { TSelectOption } from "./components/t-select/TSelectOption";
 export { LabelPlacement } from "./types/LabelPlacement";
 export { ComponentHue } from "./types/ComponentHue";
 export { ButtonAttributes } from "./types/HTMLAttributes";
 export { VNode } from "@stencil/core";
 export { TDropdownMenuItem } from "./components/t-dropdown/TDropdownMenuItem";
+export { TNavMenuItem } from "./components/t-layout-header/TNavMenuItem";
 export { TSelectOption } from "./components/t-select/TSelectOption";
 export namespace Components {
     interface InternalInputWrapper {
@@ -23,6 +25,8 @@ export namespace Components {
     }
     interface InternalStyleProvider {
         "hueOffsetInTurns": number;
+    }
+    interface PageAbout {
     }
     interface PageComponents {
         "baseChroma": number;
@@ -66,6 +70,7 @@ export namespace Components {
     interface TLayout {
     }
     interface TLayoutHeader {
+        "navItems": TNavMenuItem[];
         "siteTitle": string;
     }
     interface TLayoutMain {
@@ -140,6 +145,12 @@ declare global {
     var HTMLInternalStyleProviderElement: {
         prototype: HTMLInternalStyleProviderElement;
         new (): HTMLInternalStyleProviderElement;
+    };
+    interface HTMLPageAboutElement extends Components.PageAbout, HTMLStencilElement {
+    }
+    var HTMLPageAboutElement: {
+        prototype: HTMLPageAboutElement;
+        new (): HTMLPageAboutElement;
     };
     interface HTMLPageComponentsElementEventMap {
         "hueChange": number;
@@ -326,6 +337,7 @@ declare global {
     interface HTMLElementTagNameMap {
         "internal-input-wrapper": HTMLInternalInputWrapperElement;
         "internal-style-provider": HTMLInternalStyleProviderElement;
+        "page-about": HTMLPageAboutElement;
         "page-components": HTMLPageComponentsElement;
         "preview-app": HTMLPreviewAppElement;
         "t-button": HTMLTButtonElement;
@@ -353,6 +365,8 @@ declare namespace LocalJSX {
     }
     interface InternalStyleProvider {
         "hueOffsetInTurns"?: number;
+    }
+    interface PageAbout {
     }
     interface PageComponents {
         "baseChroma"?: number;
@@ -401,6 +415,7 @@ declare namespace LocalJSX {
     interface TLayout {
     }
     interface TLayoutHeader {
+        "navItems"?: TNavMenuItem[];
         "siteTitle"?: string;
     }
     interface TLayoutMain {
@@ -444,6 +459,7 @@ declare namespace LocalJSX {
     interface IntrinsicElements {
         "internal-input-wrapper": InternalInputWrapper;
         "internal-style-provider": InternalStyleProvider;
+        "page-about": PageAbout;
         "page-components": PageComponents;
         "preview-app": PreviewApp;
         "t-button": TButton;
@@ -471,6 +487,7 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "internal-input-wrapper": LocalJSX.InternalInputWrapper & JSXBase.HTMLAttributes<HTMLInternalInputWrapperElement>;
             "internal-style-provider": LocalJSX.InternalStyleProvider & JSXBase.HTMLAttributes<HTMLInternalStyleProviderElement>;
+            "page-about": LocalJSX.PageAbout & JSXBase.HTMLAttributes<HTMLPageAboutElement>;
             "page-components": LocalJSX.PageComponents & JSXBase.HTMLAttributes<HTMLPageComponentsElement>;
             "preview-app": LocalJSX.PreviewApp & JSXBase.HTMLAttributes<HTMLPreviewAppElement>;
             "t-button": LocalJSX.TButton & JSXBase.HTMLAttributes<HTMLTButtonElement>;
