@@ -5,9 +5,8 @@
 }
 
 .t-dropdown-menu .dropdown-menu {
+  background-color: unset;
   backdrop-filter: var(--t-popover-backdrop-filter);
-  background-color: oklch(from var(--t-page-background-colour) l c h / var(--t-popover-alpha));
-  border-color: var(--t-base-border-colour);
   border-radius: var(--t-popover-border-radius);
   border-style: solid;
   box-shadow: var(--t-popover-shadow);
@@ -16,6 +15,9 @@
 }
 
 .t-dropdown-menu .dropdown-menu .dropdown-item {
+  --menu-item-background-colour-base: oklch(from var(--t-page-background-colour) calc(l - var(--t-mode-colour-scaling) * 0.1) c h / var(--t-popover-alpha));
+  --menu-item-background-colour: var(--menu-item-background-colour-base);
+  background-color: var(--menu-item-background-colour);
   color: var(--t-font-colour-default);
   padding: .5rem;
   display: inline-grid;
@@ -27,29 +29,31 @@
 .t-dropdown-menu .dropdown-menu li:first-child .dropdown-item {
   border-top-left-radius: var(--t-popover-border-radius);
   border-top-right-radius: var(--t-popover-border-radius);
+  box-shadow: oklch(from var(--menu-item-background-colour) calc(l + 0.1) c h / var(--t-popover-alpha)) inset 0 1px;
 }
 
 .t-dropdown-menu .dropdown-menu li:last-child .dropdown-item {
   border-bottom-left-radius: var(--t-popover-border-radius);
   border-bottom-right-radius: var(--t-popover-border-radius);
+  box-shadow: oklch(from var(--menu-item-background-colour) calc(l - 0.1) c h / var(--t-popover-alpha)) inset 0 -1px;
 }
 
 .t-dropdown-menu .dropdown-menu .dropdown-item:hover {
-  background-color: oklch(
-    from var(--t-page-background-colour)
-    calc(l - var(--t-mode-colour-scaling) * 0.5)
+  --menu-item-background-colour: oklch(
+    from var(--menu-item-background-colour-base)
+    calc(l - var(--t-mode-colour-scaling) * 0.1)
     c
     h
-    / 0.2
+    / var(--t-popover-alpha)
   );
 }
 
 .t-dropdown-menu .dropdown-menu .dropdown-item.selected {
-  background-color: oklch(
+  --menu-item-background-colour: oklch(
     from var(--t-base-colour)
     l
     c
     h
-    / 0.2
+    / var(--t-popover-alpha)
   );
 }

@@ -32,6 +32,7 @@ export class InternalStyleProvider {
     this.setCssVariable('--t-base-colour-lightness', asPercents(l));
     this.setCssVariable('--t-base-colour', 'oklch(var(--t-base-colour-lightness) var(--t-base-colour-chroma, 0.4) var(--t-base-colour-hue))');
     this.setCssVariable('--t-base-border-colour', this.baseContrastColour().getOklchCode());
+    this.setCssVariable('--t-base-contrast-colour', this.baseContrastColour().getOklchCode());
     this.setCssVariable('--t-base-fill-colour', this.baseContrastColour().getOklchCode());
     this.setCssVariable('--t-gradient-factor', this.gradientFactor().toFixed(2));
     return <slot/>;

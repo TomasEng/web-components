@@ -10,6 +10,7 @@
     calc(var(--t-base-colour-hue) + var(--t-base-colour-hue-offset, 0) * 1turn)
   );
   --t-background-background-colour: oklch(from var(--t-page-background-colour) calc(l * 0.9) c h);
+  --t-base-contrast-colour: unset;
   --t-base-fill-colour: var(--t-base-border-colour);
   --t-font-colour-default: var(--t-full-contrast-colour);
   --t-input-field-background-colour: unset;

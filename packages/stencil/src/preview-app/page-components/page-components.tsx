@@ -97,6 +97,9 @@ export class PageComponents {
           ),
           'Nedtrekksmeny',
         )}
+        <t-heading level={3}>Lenke</t-heading>
+        <t-link href="#">Intern lenke</t-link>&nbsp;
+        <t-link href="#" external={true}>Ekstern lenke</t-link>
       </>
     );
   }

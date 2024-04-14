@@ -75,6 +75,11 @@ export namespace Components {
     }
     interface TLayoutMain {
     }
+    interface TLink {
+        "external"?: boolean;
+        "href": string;
+        "target"?: string;
+    }
     interface TModeSwitcher {
         "hue": ComponentHue;
         "systemSelected": boolean;
@@ -259,6 +264,12 @@ declare global {
         prototype: HTMLTLayoutMainElement;
         new (): HTMLTLayoutMainElement;
     };
+    interface HTMLTLinkElement extends Components.TLink, HTMLStencilElement {
+    }
+    var HTMLTLinkElement: {
+        prototype: HTMLTLinkElement;
+        new (): HTMLTLinkElement;
+    };
     interface HTMLTModeSwitcherElement extends Components.TModeSwitcher, HTMLStencilElement {
     }
     var HTMLTModeSwitcherElement: {
@@ -350,6 +361,7 @@ declare global {
         "t-layout": HTMLTLayoutElement;
         "t-layout-header": HTMLTLayoutHeaderElement;
         "t-layout-main": HTMLTLayoutMainElement;
+        "t-link": HTMLTLinkElement;
         "t-mode-switcher": HTMLTModeSwitcherElement;
         "t-row": HTMLTRowElement;
         "t-saturation-picker": HTMLTSaturationPickerElement;
@@ -420,6 +432,11 @@ declare namespace LocalJSX {
     }
     interface TLayoutMain {
     }
+    interface TLink {
+        "external"?: boolean;
+        "href"?: string;
+        "target"?: string;
+    }
     interface TModeSwitcher {
         "hue"?: ComponentHue;
         "systemSelected"?: boolean;
@@ -472,6 +489,7 @@ declare namespace LocalJSX {
         "t-layout": TLayout;
         "t-layout-header": TLayoutHeader;
         "t-layout-main": TLayoutMain;
+        "t-link": TLink;
         "t-mode-switcher": TModeSwitcher;
         "t-row": TRow;
         "t-saturation-picker": TSaturationPicker;
@@ -500,6 +518,7 @@ declare module "@stencil/core" {
             "t-layout": LocalJSX.TLayout & JSXBase.HTMLAttributes<HTMLTLayoutElement>;
             "t-layout-header": LocalJSX.TLayoutHeader & JSXBase.HTMLAttributes<HTMLTLayoutHeaderElement>;
             "t-layout-main": LocalJSX.TLayoutMain & JSXBase.HTMLAttributes<HTMLTLayoutMainElement>;
+            "t-link": LocalJSX.TLink & JSXBase.HTMLAttributes<HTMLTLinkElement>;
             "t-mode-switcher": LocalJSX.TModeSwitcher & JSXBase.HTMLAttributes<HTMLTModeSwitcherElement>;
             "t-row": LocalJSX.TRow & JSXBase.HTMLAttributes<HTMLTRowElement>;
             "t-saturation-picker": LocalJSX.TSaturationPicker & JSXBase.HTMLAttributes<HTMLTSaturationPickerElement>;

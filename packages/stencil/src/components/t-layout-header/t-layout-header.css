@@ -36,7 +36,7 @@ header {
   color: var(--t-base-border-colour);
   display: flex;
   font-weight: 500;
-  height: 100%;
+  height: calc(100% + 2px);
   padding: 1rem;
   text-decoration: none;
 }
@@ -46,12 +46,13 @@ header {
 }
 
 .nav li.open a {
+  color: var(--t-font-colour-default);
   position: relative;
-  top: 2px;
   z-index: 2;
 }
 
 .nav li:not(.open) a:hover {
   background-color: oklch(from var(--t-page-background-colour) calc(l + 0.05) c h);
+  color: var(--t-font-colour-default);
 }
 

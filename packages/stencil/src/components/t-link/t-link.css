@@ -1,0 +1,11 @@
+.link:link {
+  color: var(--t-base-contrast-colour);
+}
+
+.link:visited {
+  color: oklch(from var(--t-base-contrast-colour) l c calc(h + 30));
+}
+
+.link:hover {
+  text-decoration: none;
+}
