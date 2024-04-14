@@ -19,7 +19,7 @@
  - [t-button](../t-button)
  - [t-dropdown-menu](../t-dropdown)
  - [t-integer-picker](../t-integer-picker)
- - [t-mode-picker](../t-mode-picker)
+ - [t-mode-picker](../t-mode-switcher)
  - [t-select](../t-select)
  - [t-switch](../t-switch)
  - [t-textfield](../t-textfield)

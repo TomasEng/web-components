@@ -33,6 +33,7 @@
     "chromator": "0.0.9"
   },
   "devDependencies": {
+    "@stencil/react-output-target": "^0.5.3",
     "@stencil/state-tunnel": "1.0.1",
     "@stencil/store": "^2.0.15",
     "@types/bootstrap": "^5.2.10",

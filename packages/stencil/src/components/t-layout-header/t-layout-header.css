@@ -1,11 +1,57 @@
 header {
-  padding: 1rem;
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 
 .title {
   font-size: 1.5rem;
-  flex: 1;
+}
+
+.nav {
+  align-self: stretch;
+}
+
+.nav ul {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  gap: 4px;
+}
+
+.nav li {
+  height: 100%;
+}
+
+.nav a {
+  align-items: center;
+  background-color: var(--main-background);
+  border-top-left-radius: var(--t-navbar-item-border-radius);
+  border-top-right-radius: var(--t-navbar-item-border-radius);
+  box-shadow: var(--top-shadow);
+  box-sizing: border-box;
+  color: var(--t-base-border-colour);
+  display: flex;
+  font-weight: 500;
+  height: 100%;
+  padding: 1rem;
+  text-decoration: none;
+}
+
+.nav a:hover {
+  text-decoration: underline;
+}
+
+.nav li.open a {
+  position: relative;
+  top: 2px;
+  z-index: 2;
+}
+
+.nav li:not(.open) a:hover {
+  background-color: oklch(from var(--t-page-background-colour) calc(l + 0.05) c h);
 }
 

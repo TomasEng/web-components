@@ -22,7 +22,7 @@
 ### Used by
 
  - [page-home](../../pages/page-home)
- - [t-mode-picker](../t-mode-picker)
+ - [t-mode-picker](../t-mode-switcher)
 
 ### Depends on
 

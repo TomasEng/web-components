@@ -11,7 +11,19 @@ export class TLayoutHeader {
   render() {
     return <header>
       <div class='title'>{this.siteTitle}</div>
-      <t-mode-picker/>
+      <Navbar/>
+      <t-mode-switcher/>
     </header>;
   }
+}
+
+const Navbar = () => {
+  return (
+    <nav class='nav'>
+      <ul>
+        <li class='open'><a href={"#"}>Komponentoversikt</a></li>
+        <li><a href={"#"}><span>Les mer</span></a></li>
+      </ul>
+    </nav>
+  );
 }

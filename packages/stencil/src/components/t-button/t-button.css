@@ -1,6 +1,6 @@
 .t-button {
-  --t-gradient-factor: unset;
-  --gradient-term: calc(l * var(--t-gradient-factor));
+  --gradient-factor: var(--t-gradient-factor);
+  --gradient-term: calc(l * var(--gradient-factor));
   --button-colour: var(--t-base-colour);
   background: linear-gradient(
     to top,
@@ -8,8 +8,14 @@
     oklch(from var(--button-colour) l c h),
     oklch(from var(--button-colour) calc((l + var(--gradient-term))) c h)
   );
+  box-shadow:
+    inset oklch(from var(--button-colour) calc(l + var(--gradient-term) * 2) c h) 0 1px,
+    inset oklch(from var(--button-colour) calc(l - var(--gradient-term) * 2) c h) 0 -1px,
+    oklch(from var(--t-page-background-colour) calc(l + 0.3) c h / 0.9) 0 1px 1px,
+    oklch(from var(--t-page-background-colour) calc(l - 0.5) c h / 0.5) 0 1px 2px,
+    rgb(0 0 0 / 0.2) 0 -1px 1px;
   border-radius: 100px;
-  border: 1px solid var(--t-base-border-colour);
+  border: 0 solid var(--t-base-border-colour);
   color: var(--t-font-colour-default);
   cursor: pointer;
   display: inline-flex;
@@ -21,7 +27,7 @@
 }
 
 .t-button:hover {
-  --button-colour: oklch(from var(--t-base-colour) calc(l + var(--gradient-term) / 2) c h);
+  --button-colour: oklch(from var(--t-base-colour) calc(l + var(--gradient-term)) c h);
 }
 
 .t-button:active {

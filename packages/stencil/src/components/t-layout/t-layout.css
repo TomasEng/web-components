@@ -9,10 +9,15 @@
 }
 
 .layout {
+  --main-background: color-mix(in oklch, var(--t-page-background-colour) 90%, var(--t-background-background-colour));
+  --top-shadow: inset oklch(from var(--t-page-background-colour) calc(l + 0.1) c h) 0 1px 0;
+  --bottom-shadow: inset oklch(from var(--t-page-background-colour) calc(l - 0.1) c h) 0 -1px 0;
+  --back-shadow: #0003 0 0 4rem;
   box-sizing: border-box;
   color: var(--t-font-colour-default);
   margin: 0 auto;
   max-width: 1200px;
   min-height: 100vh;
+  padding-top: 1rem;
   padding-bottom: 2rem;
 }

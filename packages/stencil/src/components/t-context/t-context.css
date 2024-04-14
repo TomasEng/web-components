@@ -9,7 +9,7 @@
     var(--t-base-colour-chroma)
     calc(var(--t-base-colour-hue) + var(--t-base-colour-hue-offset, 0) * 1turn)
   );
-  --t-background-background-colour: oklch(from var(--t-page-background-colour) calc(l * 0.9) h c);
+  --t-background-background-colour: oklch(from var(--t-page-background-colour) calc(l * 0.9) c h);
   --t-base-fill-colour: var(--t-base-border-colour);
   --t-font-colour-default: var(--t-full-contrast-colour);
   --t-input-field-background-colour: unset;
@@ -23,6 +23,7 @@
   --t-transition-duration-long: calc(--t-transition-duration-medium * 2);
   --t-transition-duration-medium: calc(--t-transition-duration-short * 2);
   --t-transition-duration-short: 0.1s;
+  --t-navbar-item-border-radius: 8px;
 }
 
 @media (prefers-reduced-motion) {

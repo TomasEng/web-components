@@ -20,7 +20,7 @@
 
 ### Depends on
 
-- [t-mode-picker](../t-mode-picker)
+- [t-mode-picker](../t-mode-switcher)
 
 ### Graph
 ```mermaid

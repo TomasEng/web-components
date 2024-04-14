@@ -7,10 +7,10 @@ import state from '../../store';
 import { CogIcon } from '../../icons/CogIcon';
 
 @Component({
-  tag: 't-mode-picker',
-  styleUrl: 't-mode-picker.css',
+  tag: 't-mode-switcher',
+  styleUrl: 't-mode-switcher.css',
 })
-export class TModePicker {
+export class TModeSwitcher {
 
   @Prop() hue: ComponentHue = 0;
   @Prop() systemSelected: boolean = true;
