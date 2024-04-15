@@ -7,6 +7,15 @@ import { Component, h } from '@stencil/core';
 export class TLayoutMain {
 
   render() {
-    return <main class='main'><slot/></main>;
+    return <internal-style-provider>
+      <main class="main">
+        <div class="leftbar">
+          <slot name="leftbar" />
+        </div>
+        <div class="content">
+          <slot />
+        </div>
+      </main>
+    </internal-style-provider>;
   }
 }

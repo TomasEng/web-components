@@ -27,11 +27,11 @@
 ### Graph
 ```mermaid
 graph TD;
-  t-mode-picker --> internal-style-provider
-  t-mode-picker --> t-dropdown-menu
+  t-mode-switcher --> internal-style-provider
+  t-mode-switcher --> t-dropdown-menu
   t-dropdown-menu --> internal-style-provider
-  t-layout-header --> t-mode-picker
-  style t-mode-picker fill:#f9f,stroke:#333,stroke-width:4px
+  t-layout-header --> t-mode-switcher
+  style t-mode-switcher fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

@@ -9,9 +9,10 @@
 }
 
 .layout {
-  --main-background: color-mix(in oklch, var(--t-page-background-colour) 90%, var(--t-background-background-colour));
-  --top-shadow: inset oklch(from var(--t-page-background-colour) calc(l + 0.1) c h) 0 1px 0;
-  --bottom-shadow: inset oklch(from var(--t-page-background-colour) calc(l - 0.1) c h) 0 -1px 0;
+  --background-base: var(--t-page-background-colour);
+  --main-background: color-mix(in oklch, var(--background-base) 90%, var(--t-background-background-colour));
+  --top-shadow: inset oklch(from var(--background-base) calc(l + 0.1) c h) 0 1px 0;
+  --bottom-shadow: inset oklch(from var(--background-base) calc(l - 0.1) c h) 0 -1px 0;
   --back-shadow: #0003 0 0 4rem;
   box-sizing: border-box;
   color: var(--t-font-colour-default);

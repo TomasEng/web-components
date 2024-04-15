@@ -18,7 +18,7 @@
 
 ### Used by
 
- - [page-home](../../preview-app/page-home)
+ - [page-components](../../preview-app/page-components)
 
 ### Depends on
 
@@ -30,7 +30,7 @@
 graph TD;
   t-textfield --> internal-style-provider
   t-textfield --> internal-input-wrapper
-  page-home --> t-textfield
+  page-components --> t-textfield
   style t-textfield fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

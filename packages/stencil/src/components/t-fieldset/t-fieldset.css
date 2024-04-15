@@ -1,0 +1,9 @@
+fieldset {
+  border: none;
+  padding: 0;
+}
+
+legend {
+  display: contents;
+  font-weight: bold;
+}

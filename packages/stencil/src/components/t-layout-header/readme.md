@@ -7,29 +7,30 @@
 
 ## Properties
 
-| Property    | Attribute    | Description | Type     | Default     |
-| ----------- | ------------ | ----------- | -------- | ----------- |
-| `siteTitle` | `site-title` |             | `string` | `undefined` |
+| Property    | Attribute    | Description | Type             | Default     |
+| ----------- | ------------ | ----------- | ---------------- | ----------- |
+| `navItems`  | --           |             | `TNavMenuItem[]` | `[]`        |
+| `siteTitle` | `site-title` |             | `string`         | `undefined` |
 
 
 ## Dependencies
 
 ### Used by
 
- - [page-home](../../preview-app/page-home)
+ - [preview-app](../../preview-app)
 
 ### Depends on
 
-- [t-mode-picker](../t-mode-switcher)
+- [t-mode-switcher](../t-mode-switcher)
 
 ### Graph
 ```mermaid
 graph TD;
-  t-layout-header --> t-mode-picker
-  t-mode-picker --> internal-style-provider
-  t-mode-picker --> t-dropdown-menu
+  t-layout-header --> t-mode-switcher
+  t-mode-switcher --> internal-style-provider
+  t-mode-switcher --> t-dropdown-menu
   t-dropdown-menu --> internal-style-provider
-  page-home --> t-layout-header
+  preview-app --> t-layout-header
   style t-layout-header fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

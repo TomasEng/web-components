@@ -1,5 +1,5 @@
 import { Component, h, JSX, State } from '@stencil/core';
-import { PageComponentsCustomEvent } from '../components';
+import { ColourSettings, PageComponentsCustomEvent } from '../components';
 import { DEFAULT_CHROMA, DEFAULT_HUE, DEFAULT_NUMBER_OF_HUES, PATH_ABOUT } from '../constants';
 
 @Component({
@@ -11,20 +11,19 @@ export class PreviewApp {
   @State() baseChroma = DEFAULT_CHROMA;
   @State() numberOfHues = DEFAULT_NUMBER_OF_HUES;
 
-  handleHueChange = ({ detail }: PageComponentsCustomEvent<number>) => {
-    this.baseHue = detail;
-  };
-
-  handleSaturationChange = ({ detail }: PageComponentsCustomEvent<number>) => {
-    this.baseChroma = detail;
-  };
-
-  handleNumberOfHuesChange = ({ detail }: PageComponentsCustomEvent<number>) => {
-    this.numberOfHues = detail;
+  handleColourSettingsChange = ({ detail }: PageComponentsCustomEvent<ColourSettings>) => {
+    this.baseHue = detail.hue;
+    this.baseChroma = detail.chroma;
+    this.numberOfHues = detail.numberOfHues;
   };
 
   render(): JSX.Element {
     const isAboutPageOpen = window.location.pathname === '/' + PATH_ABOUT;
+    const colourSettings: ColourSettings = {
+      hue: this.baseHue,
+      chroma: this.baseChroma,
+      numberOfHues: this.numberOfHues,
+    };
     return (
       <t-context baseHue={this.baseHue} baseChroma={this.baseChroma}>
         <t-layout>
@@ -36,18 +35,13 @@ export class PreviewApp {
               { label: 'Om', href: '/' + PATH_ABOUT, open: isAboutPageOpen},
             ]}
           />
-          <t-layout-main slot='main'>
-            {isAboutPageOpen ? <page-about /> : (
-              <page-components
-                baseHue={this.baseHue}
-                baseChroma={this.baseChroma}
-                numberOfHues={this.numberOfHues}
-                onHueChange={this.handleHueChange}
-                onChromaChange={this.handleSaturationChange}
-                onNumberOfHuesChange={this.handleNumberOfHuesChange}
-              />
-            )}
-          </t-layout-main>
+          {isAboutPageOpen ? <page-about slot='main' /> : (
+            <page-components
+              slot='main'
+              colourSettings={colourSettings}
+              onColourSettingsChange={this.handleColourSettingsChange}
+            />
+          )}
         </t-layout>
       </t-context>
     );

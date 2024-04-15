@@ -1,12 +1,35 @@
 .main {
-  background-color: var(--main-background);
-  box-shadow:
-    var(--back-shadow),
-    var(--top-shadow),
-    var(--bottom-shadow);
   color: var(--t-font-colour-default);
-  padding: 1rem;
-  border-radius: 12px;
   z-index: 1;
   position: relative;
+  display: flex;
+  box-shadow: var(--back-shadow);
+  --border-radius: 12px;
+  border-radius: var(--border-radius);
+}
+
+.main .leftbar:not(:empty) {
+  --background-base: oklch(from var(--t-page-background-colour) calc(l - var(--t-mode-colour-scaling) * 0.05) c h);
+  --main-background: color-mix(in oklch, var(--background-base) 90%, var(--t-background-background-colour));
+  --top-shadow: inset oklch(from var(--background-base) calc(l + 0.1) c h) 0 1px 0;
+  --bottom-shadow: inset oklch(from var(--background-base) calc(l - 0.1) c h) 0 -1px 0;
+  /* --main-background, --top-shadow and --bottom-shadow are already defined at a higher level, but the change of --background-base does not change their values unless they are redefined here for some reason */
+  background-color: var(--main-background);
+  padding: 1rem;
+  box-shadow: var(--top-shadow), var(--bottom-shadow);
+  border-top-left-radius: var(--border-radius);
+  border-bottom-left-radius: var(--border-radius);
+}
+
+.main .content {
+  box-shadow: var(--top-shadow), var(--bottom-shadow);
+  border-top-right-radius: var(--border-radius);
+  border-bottom-right-radius: var(--border-radius);
+  background-color: var(--main-background);
+  padding: 1rem;
+  flex: 1;
+}
+
+.leftbar:empty + .content {
+  border-radius: var(--border-radius);
 }

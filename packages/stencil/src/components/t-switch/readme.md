@@ -24,7 +24,7 @@
 
 ### Used by
 
- - [page-home](../../preview-app/page-home)
+ - [page-components](../../preview-app/page-components)
 
 ### Depends on
 
@@ -34,7 +34,7 @@
 ```mermaid
 graph TD;
   t-switch --> internal-style-provider
-  page-home --> t-switch
+  page-components --> t-switch
   style t-switch fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

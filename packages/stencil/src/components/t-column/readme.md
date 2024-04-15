@@ -9,12 +9,12 @@
 
 ### Used by
 
- - [page-home](../../preview-app/page-home)
+ - [page-components](../../preview-app/page-components)
 
 ### Graph
 ```mermaid
 graph TD;
-  page-home --> t-column
+  page-components --> t-column
   style t-column fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

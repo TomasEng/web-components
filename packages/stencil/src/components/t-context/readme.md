@@ -17,12 +17,12 @@
 
 ### Used by
 
- - [page-home](../../preview-app/page-home)
+ - [preview-app](../../preview-app)
 
 ### Graph
 ```mermaid
 graph TD;
-  page-home --> t-context
+  preview-app --> t-context
   style t-context fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

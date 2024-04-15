@@ -9,12 +9,12 @@
 
 ### Used by
 
- - [page-home](../../preview-app/page-home)
+ - [preview-app](../../preview-app)
 
 ### Graph
 ```mermaid
 graph TD;
-  page-home --> t-layout-main
+  preview-app --> t-layout-main
   style t-layout-main fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

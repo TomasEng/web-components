@@ -21,8 +21,8 @@
 
 ### Used by
 
- - [page-home](../../preview-app/page-home)
- - [t-mode-picker](../t-mode-switcher)
+ - [page-components](../../preview-app/page-components)
+ - [t-mode-switcher](../t-mode-switcher)
 
 ### Depends on
 
@@ -32,8 +32,8 @@
 ```mermaid
 graph TD;
   t-dropdown-menu --> internal-style-provider
-  page-home --> t-dropdown-menu
-  t-mode-picker --> t-dropdown-menu
+  page-components --> t-dropdown-menu
+  t-mode-switcher --> t-dropdown-menu
   style t-dropdown-menu fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

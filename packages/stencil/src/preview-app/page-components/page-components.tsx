@@ -1,8 +1,7 @@
 import { Component, h, JSX, Fragment, EventEmitter, Event, Prop } from '@stencil/core';
 import {
-  THuePickerCustomEvent,
-  TIntegerPickerCustomEvent,
-  TSaturationPickerCustomEvent,
+  ColourSettings,
+  ComponentColourSettingsCustomEvent,
   TSelectOption,
 } from '../../components';
 import { integerArray } from '../../utils/numberUtils';
@@ -12,47 +11,23 @@ import { integerArray } from '../../utils/numberUtils';
 })
 export class PageComponents {
 
-  @Prop() baseHue = 263;
-  @Prop() baseChroma = 0.4;
-  @Prop() numberOfHues = 3;
+  @Prop() colourSettings: ColourSettings;
 
-  @Event() hueChange: EventEmitter<number>;
-  @Event() chromaChange: EventEmitter<number>;
-  @Event() numberOfHuesChange: EventEmitter<number>;
+  @Event() colourSettingsChange: EventEmitter<ColourSettings>;
 
-  handleHueChange = ({ detail }: THuePickerCustomEvent<number>) => {
-    this.hueChange.emit(detail);
-  };
-
-  handleSaturationChange = ({ detail }: TSaturationPickerCustomEvent<number>) => {
-    this.chromaChange.emit(detail);
-  };
-
-  handleNumberOfHuesChange = ({ detail }: TIntegerPickerCustomEvent<number>) => {
-    this.numberOfHuesChange.emit(detail);
-  };
+  handleColourSettingsChange = ({ detail }: ComponentColourSettingsCustomEvent<ColourSettings>) => {
+    this.colourSettingsChange.emit(detail);
+  }
 
   render(): JSX.Element {
     return (
-      <>
+      <t-layout-main>
+        <component-colour-settings
+          slot="leftbar"
+          settings={this.colourSettings}
+          onChangeSettings={this.handleColourSettingsChange}
+        />
         <t-heading level={1}>Komponentoversikt</t-heading>
-        <t-heading level={2}>Innstillinger</t-heading>
-        <t-row>
-          <t-hue-picker label="Hovedfargetone" onHueChange={this.handleHueChange} value={this.baseHue} />
-          <t-saturation-picker
-            label="Metning"
-            onSaturationChange={this.handleSaturationChange}
-            value={this.baseChroma}
-          />
-          <t-integer-picker
-            label="Antall fargetoner"
-            onIntegerChange={this.handleNumberOfHuesChange}
-            value={this.numberOfHues}
-            min={1}
-            max={10}
-          />
-        </t-row>
-        <t-heading level={2}>Komponenter</t-heading>
         {this.renderPreview(
           hue => <t-button hue={hue}>Klikk meg</t-button>,
           'Knapp',
@@ -97,15 +72,16 @@ export class PageComponents {
           ),
           'Nedtrekksmeny',
         )}
-        <t-heading level={3}>Lenke</t-heading>
-        <t-link href="#">Intern lenke</t-link>&nbsp;
+        <t-heading level={2}>Lenke</t-heading>
+        <t-link href="#">Intern lenke</t-link>
+        &nbsp;
         <t-link href="#" external={true}>Ekstern lenke</t-link>
-      </>
+      </t-layout-main>
     );
   }
 
   private hueArray(): number[] {
-    return integerArray(this.numberOfHues);
+    return integerArray(this.colourSettings.numberOfHues);
   }
 
   private renderPreview(
@@ -114,9 +90,9 @@ export class PageComponents {
   ): JSX.Element {
     return (
       <>
-        <t-heading level={3}>{title}</t-heading>
+        <t-heading level={2}>{title}</t-heading>
         <t-row>
-          {this.hueArray().map(hue => component(hue / this.numberOfHues))}
+          {this.hueArray().map(hue => component(hue / this.colourSettings.numberOfHues))}
         </t-row>
       </>
     );

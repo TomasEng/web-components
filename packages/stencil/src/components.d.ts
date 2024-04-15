@@ -5,14 +5,18 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { ColourSettings } from "./types/ColourSettings";
 import { LabelPlacement } from "./types/LabelPlacement";
+import { ColourSettings as ColourSettings1 } from "./components";
 import { ComponentHue } from "./types/ComponentHue";
 import { ButtonAttributes } from "./types/HTMLAttributes";
 import { VNode } from "@stencil/core";
 import { TDropdownMenuItem } from "./components/t-dropdown/TDropdownMenuItem";
 import { TNavMenuItem } from "./components/t-layout-header/TNavMenuItem";
 import { TSelectOption } from "./components/t-select/TSelectOption";
+export { ColourSettings } from "./types/ColourSettings";
 export { LabelPlacement } from "./types/LabelPlacement";
+export { ColourSettings as ColourSettings1 } from "./components";
 export { ComponentHue } from "./types/ComponentHue";
 export { ButtonAttributes } from "./types/HTMLAttributes";
 export { VNode } from "@stencil/core";
@@ -20,6 +24,9 @@ export { TDropdownMenuItem } from "./components/t-dropdown/TDropdownMenuItem";
 export { TNavMenuItem } from "./components/t-layout-header/TNavMenuItem";
 export { TSelectOption } from "./components/t-select/TSelectOption";
 export namespace Components {
+    interface ComponentColourSettings {
+        "settings": ColourSettings;
+    }
     interface InternalInputWrapper {
         "labelPlacement": LabelPlacement;
     }
@@ -29,9 +36,7 @@ export namespace Components {
     interface PageAbout {
     }
     interface PageComponents {
-        "baseChroma": number;
-        "baseHue": number;
-        "numberOfHues": number;
+        "colourSettings": ColourSettings1;
     }
     interface PreviewApp {
     }
@@ -52,6 +57,9 @@ export namespace Components {
         "items": TDropdownMenuItem[];
         "label": VNode | string;
         "value": string;
+    }
+    interface TFieldset {
+        "legend": string;
     }
     interface THeading {
         "level": 1 | 2 | 3 | 4 | 5 | 6;
@@ -114,6 +122,10 @@ export namespace Components {
         "value": string;
     }
 }
+export interface ComponentColourSettingsCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLComponentColourSettingsElement;
+}
 export interface PageComponentsCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPageComponentsElement;
@@ -139,6 +151,23 @@ export interface TSwitchCustomEvent<T> extends CustomEvent<T> {
     target: HTMLTSwitchElement;
 }
 declare global {
+    interface HTMLComponentColourSettingsElementEventMap {
+        "changeSettings": ColourSettings;
+    }
+    interface HTMLComponentColourSettingsElement extends Components.ComponentColourSettings, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLComponentColourSettingsElementEventMap>(type: K, listener: (this: HTMLComponentColourSettingsElement, ev: ComponentColourSettingsCustomEvent<HTMLComponentColourSettingsElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLComponentColourSettingsElementEventMap>(type: K, listener: (this: HTMLComponentColourSettingsElement, ev: ComponentColourSettingsCustomEvent<HTMLComponentColourSettingsElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLComponentColourSettingsElement: {
+        prototype: HTMLComponentColourSettingsElement;
+        new (): HTMLComponentColourSettingsElement;
+    };
     interface HTMLInternalInputWrapperElement extends Components.InternalInputWrapper, HTMLStencilElement {
     }
     var HTMLInternalInputWrapperElement: {
@@ -158,9 +187,7 @@ declare global {
         new (): HTMLPageAboutElement;
     };
     interface HTMLPageComponentsElementEventMap {
-        "hueChange": number;
-        "chromaChange": number;
-        "numberOfHuesChange": number;
+        "colourSettingsChange": ColourSettings1;
     }
     interface HTMLPageComponentsElement extends Components.PageComponents, HTMLStencilElement {
         addEventListener<K extends keyof HTMLPageComponentsElementEventMap>(type: K, listener: (this: HTMLPageComponentsElement, ev: PageComponentsCustomEvent<HTMLPageComponentsElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -205,6 +232,12 @@ declare global {
     var HTMLTDropdownMenuElement: {
         prototype: HTMLTDropdownMenuElement;
         new (): HTMLTDropdownMenuElement;
+    };
+    interface HTMLTFieldsetElement extends Components.TFieldset, HTMLStencilElement {
+    }
+    var HTMLTFieldsetElement: {
+        prototype: HTMLTFieldsetElement;
+        new (): HTMLTFieldsetElement;
     };
     interface HTMLTHeadingElement extends Components.THeading, HTMLStencilElement {
     }
@@ -346,6 +379,7 @@ declare global {
         new (): HTMLTTextfieldElement;
     };
     interface HTMLElementTagNameMap {
+        "component-colour-settings": HTMLComponentColourSettingsElement;
         "internal-input-wrapper": HTMLInternalInputWrapperElement;
         "internal-style-provider": HTMLInternalStyleProviderElement;
         "page-about": HTMLPageAboutElement;
@@ -355,6 +389,7 @@ declare global {
         "t-column": HTMLTColumnElement;
         "t-context": HTMLTContextElement;
         "t-dropdown-menu": HTMLTDropdownMenuElement;
+        "t-fieldset": HTMLTFieldsetElement;
         "t-heading": HTMLTHeadingElement;
         "t-hue-picker": HTMLTHuePickerElement;
         "t-integer-picker": HTMLTIntegerPickerElement;
@@ -372,6 +407,10 @@ declare global {
     }
 }
 declare namespace LocalJSX {
+    interface ComponentColourSettings {
+        "onChangeSettings"?: (event: ComponentColourSettingsCustomEvent<ColourSettings>) => void;
+        "settings"?: ColourSettings;
+    }
     interface InternalInputWrapper {
         "labelPlacement"?: LabelPlacement;
     }
@@ -381,12 +420,8 @@ declare namespace LocalJSX {
     interface PageAbout {
     }
     interface PageComponents {
-        "baseChroma"?: number;
-        "baseHue"?: number;
-        "numberOfHues"?: number;
-        "onChromaChange"?: (event: PageComponentsCustomEvent<number>) => void;
-        "onHueChange"?: (event: PageComponentsCustomEvent<number>) => void;
-        "onNumberOfHuesChange"?: (event: PageComponentsCustomEvent<number>) => void;
+        "colourSettings"?: ColourSettings1;
+        "onColourSettingsChange"?: (event: PageComponentsCustomEvent<ColourSettings1>) => void;
     }
     interface PreviewApp {
     }
@@ -407,6 +442,9 @@ declare namespace LocalJSX {
         "items"?: TDropdownMenuItem[];
         "label"?: VNode | string;
         "value"?: string;
+    }
+    interface TFieldset {
+        "legend"?: string;
     }
     interface THeading {
         "level"?: 1 | 2 | 3 | 4 | 5 | 6;
@@ -474,6 +512,7 @@ declare namespace LocalJSX {
         "value"?: string;
     }
     interface IntrinsicElements {
+        "component-colour-settings": ComponentColourSettings;
         "internal-input-wrapper": InternalInputWrapper;
         "internal-style-provider": InternalStyleProvider;
         "page-about": PageAbout;
@@ -483,6 +522,7 @@ declare namespace LocalJSX {
         "t-column": TColumn;
         "t-context": TContext;
         "t-dropdown-menu": TDropdownMenu;
+        "t-fieldset": TFieldset;
         "t-heading": THeading;
         "t-hue-picker": THuePicker;
         "t-integer-picker": TIntegerPicker;
@@ -503,6 +543,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "component-colour-settings": LocalJSX.ComponentColourSettings & JSXBase.HTMLAttributes<HTMLComponentColourSettingsElement>;
             "internal-input-wrapper": LocalJSX.InternalInputWrapper & JSXBase.HTMLAttributes<HTMLInternalInputWrapperElement>;
             "internal-style-provider": LocalJSX.InternalStyleProvider & JSXBase.HTMLAttributes<HTMLInternalStyleProviderElement>;
             "page-about": LocalJSX.PageAbout & JSXBase.HTMLAttributes<HTMLPageAboutElement>;
@@ -512,6 +553,7 @@ declare module "@stencil/core" {
             "t-column": LocalJSX.TColumn & JSXBase.HTMLAttributes<HTMLTColumnElement>;
             "t-context": LocalJSX.TContext & JSXBase.HTMLAttributes<HTMLTContextElement>;
             "t-dropdown-menu": LocalJSX.TDropdownMenu & JSXBase.HTMLAttributes<HTMLTDropdownMenuElement>;
+            "t-fieldset": LocalJSX.TFieldset & JSXBase.HTMLAttributes<HTMLTFieldsetElement>;
             "t-heading": LocalJSX.THeading & JSXBase.HTMLAttributes<HTMLTHeadingElement>;
             "t-hue-picker": LocalJSX.THuePicker & JSXBase.HTMLAttributes<HTMLTHuePickerElement>;
             "t-integer-picker": LocalJSX.TIntegerPicker & JSXBase.HTMLAttributes<HTMLTIntegerPickerElement>;

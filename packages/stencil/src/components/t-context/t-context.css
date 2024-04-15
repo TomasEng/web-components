@@ -13,7 +13,7 @@
   --t-base-contrast-colour: unset;
   --t-base-fill-colour: var(--t-base-border-colour);
   --t-font-colour-default: var(--t-full-contrast-colour);
-  --t-input-field-background-colour: unset;
+  --t-input-field-background-colour: oklch(from var(--t-full-contrast-colour) calc(l - var(--t-mode-colour-scaling) * 0.1) c h / 0.05);
   --t-page-background-colour: unset;
   --t-popover-alpha: 0.75;
   --t-popover-backdrop-filter: blur(8px);

@@ -24,7 +24,7 @@
 
 ### Used by
 
- - [page-home](../../preview-app/page-home)
+ - [page-components](../../preview-app/page-components)
 
 ### Depends on
 
@@ -34,7 +34,7 @@
 ```mermaid
 graph TD;
   t-saturation-picker --> t-slider
-  page-home --> t-saturation-picker
+  page-components --> t-saturation-picker
   style t-saturation-picker fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

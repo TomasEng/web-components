@@ -21,18 +21,19 @@ export class TSlider {
   };
 
   render() {
-    return <div class='wrapper'>
-      <label htmlFor={inputId}>{this.label}</label>
+    return <internal-input-wrapper>
+      <label htmlFor={inputId} slot='label'>{this.label}</label>
       <input
         id={inputId}
         max={this.max}
         min={this.min}
         onInput={this.handleInput}
+        slot='input'
         step={this.step}
         type="range"
         value={this.value}
       />
-    </div>;
+    </internal-input-wrapper>;
   }
 }
 

@@ -1,10 +1,3 @@
-.wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: var(--t-spacing-in-group);
-  width: min-content;
-}
-
 input {
   --height: 1rem;
   -webkit-appearance: none;

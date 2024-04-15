@@ -17,7 +17,7 @@
 
 ### Used by
 
- - [page-home](../../preview-app/page-home)
+ - [page-components](../../preview-app/page-components)
 
 ### Depends on
 
@@ -27,7 +27,7 @@
 ```mermaid
 graph TD;
   t-button --> internal-style-provider
-  page-home --> t-button
+  page-components --> t-button
   style t-button fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

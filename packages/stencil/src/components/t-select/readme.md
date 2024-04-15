@@ -20,7 +20,7 @@
 
 ### Used by
 
- - [page-home](../../preview-app/page-home)
+ - [page-components](../../preview-app/page-components)
 
 ### Depends on
 
@@ -32,7 +32,7 @@
 graph TD;
   t-select --> internal-style-provider
   t-select --> internal-input-wrapper
-  page-home --> t-select
+  page-components --> t-select
   style t-select fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

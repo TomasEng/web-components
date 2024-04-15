@@ -16,12 +16,14 @@
 
 ### Used by
 
- - [page-home](../../preview-app/page-home)
+ - [page-about](../../preview-app/page-about)
+ - [page-components](../../preview-app/page-components)
 
 ### Graph
 ```mermaid
 graph TD;
-  page-home --> t-heading
+  page-about --> t-heading
+  page-components --> t-heading
   style t-heading fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
