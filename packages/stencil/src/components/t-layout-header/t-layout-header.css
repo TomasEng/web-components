@@ -1,58 +1,170 @@
 header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.title {
-  font-size: 1.5rem;
-}
-
-.nav {
-  align-self: stretch;
-}
-
-.nav ul {
-  display: flex;
-  flex-direction: row;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  gap: 4px;
-}
-
-.nav li {
-  height: 100%;
-}
-
-.nav a {
-  align-items: center;
-  background-color: var(--main-background);
-  border-top-left-radius: var(--t-navbar-item-border-radius);
-  border-top-right-radius: var(--t-navbar-item-border-radius);
-  box-shadow: var(--top-shadow);
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-areas: "title hcontent";
+  align-items: stretch;
   box-sizing: border-box;
-  color: var(--t-base-border-colour);
-  display: flex;
-  font-weight: 500;
-  height: calc(100% + 2px);
-  padding: 1rem;
-  text-decoration: none;
+  gap: 0 1rem;
+
+  .title {
+    grid-area: title;
+    font-size: 1.5rem;
+    padding: 1rem 0;
+  }
+
+  .collapsible-content {
+    grid-area: hcontent;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    box-sizing: border-box;
+
+    .nav {
+      align-self: stretch;
+
+      ul {
+        display: flex;
+        flex-direction: row;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        gap: 4px;
+
+        li {
+          height: 100%;
+
+          a {
+            align-items: center;
+            background-color: var(--main-background);
+            border-top-left-radius: var(--t-navbar-item-border-radius);
+            border-top-right-radius: var(--t-navbar-item-border-radius);
+            box-shadow: var(--top-shadow);
+            box-sizing: border-box;
+            color: var(--t-base-border-colour);
+            display: flex;
+            font-weight: 500;
+            height: calc(100% + 2px);
+            padding: 1rem;
+            text-decoration: none;
+
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+
+          &.open a {
+            color: var(--t-font-colour-default);
+            position: relative;
+            z-index: 2;
+          }
+
+          &:not(.open) a:hover {
+            background-color: oklch(from var(--t-page-background-colour) calc(l + 0.05) c h);
+            color: var(--t-font-colour-default);
+          }
+        }
+      }
+    }
+
+    .toolbar {
+      flex: 1;
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
+
+  .nav-toggle {
+    grid-area: toggle;
+    display: none;
+    align-self: center;
+  }
 }
 
-.nav a:hover {
-  text-decoration: underline;
+@media (max-width: 1200px) {
+  header {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
 }
 
-.nav li.open a {
-  color: var(--t-font-colour-default);
-  position: relative;
-  z-index: 2;
-}
+@media (max-width: 900px) {
 
-.nav li:not(.open) a:hover {
-  background-color: oklch(from var(--t-page-background-colour) calc(l + 0.05) c h);
-  color: var(--t-font-colour-default);
-}
+  header {
+    display: grid;
+    grid-template-areas: "title toggle" "hcontent hcontent";
 
+    .title {
+      grid-area: title;
+    }
+
+    .collapsible-content {
+      grid-area: hcontent;
+    }
+
+    .nav-toggle {
+      display: flex;
+      justify-content: flex-end;
+      grid-area: toggle;
+    }
+
+    &.nav-closed {
+      .collapsible-content {
+        display: none;
+      }
+    }
+
+    &.nav-open {
+      width: 100%;
+      z-index: 100;
+      position: relative;
+      background-color: var(--t-page-background-colour);
+      box-shadow: var(--t-page-background-colour) 0 -100px, var(--bottom-shadow);
+
+      .collapsible-content {
+        flex-direction: column-reverse;
+      }
+
+      .toolbar {
+        align-self: flex-start;
+      }
+
+      .nav {
+        margin: 0 -1rem;
+
+        ul {
+          flex-direction: column;
+          gap: 0;
+
+          li {
+
+            a {
+              box-sizing: border-box;
+              width: 100vw;
+              border-radius: 0;
+              box-shadow: none;
+              height: auto;
+              padding: 0.5rem 1rem;
+              background-color: transparent;
+
+              &:hover {
+                box-shadow: var(--top-shadow), var(--bottom-shadow);
+              }
+            }
+
+            &:not(.open) a:hover {
+              background-color: oklch(from var(--t-page-background-colour) calc(l - 0.05 * var(--t-mode-colour-scaling)) c h);
+            }
+
+            &.open a {
+              background-color: color-mix(in oklch, var(--t-base-colour) 75%, transparent);
+              --top-shadow: inset oklch(from var(--t-base-colour) calc(l + 0.1) c h) 0 1px 0;
+              --bottom-shadow: inset oklch(from var(--t-base-colour) calc(l - 0.1) c h) 0 -1px 0;
+            }
+          }
+        }
+      }
+    }
+  }
+}

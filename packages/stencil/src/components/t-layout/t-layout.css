@@ -17,8 +17,14 @@
   box-sizing: border-box;
   color: var(--t-font-colour-default);
   margin: 0 auto;
-  max-width: 1200px;
+  max-width: var(--t-page-max-width);
   min-height: 100vh;
   padding-top: 1rem;
   padding-bottom: 2rem;
+}
+
+@media (max-width: 900px) {
+  .layout {
+    padding-top: 0;
+  }
 }

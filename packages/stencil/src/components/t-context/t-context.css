@@ -25,6 +25,7 @@
   --t-transition-duration-medium: calc(--t-transition-duration-short * 2);
   --t-transition-duration-short: 0.1s;
   --t-navbar-item-border-radius: 8px;
+  --t-page-max-width: 1200px;
 }
 
 @media (prefers-reduced-motion) {

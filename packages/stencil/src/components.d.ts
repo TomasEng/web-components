@@ -90,6 +90,7 @@ export namespace Components {
     }
     interface TModeSwitcher {
         "hue": ComponentHue;
+        "label": string;
         "systemSelected": boolean;
     }
     interface TRow {
@@ -477,6 +478,7 @@ declare namespace LocalJSX {
     }
     interface TModeSwitcher {
         "hue"?: ComponentHue;
+        "label"?: string;
         "systemSelected"?: boolean;
     }
     interface TRow {

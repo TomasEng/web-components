@@ -1,4 +1,4 @@
-import { Component, h, Prop } from '@stencil/core';
+import { Component, h, Prop, Fragment } from '@stencil/core';
 import { ComponentHue } from '../../types/ComponentHue';
 import { SelectedMode } from '../../types/Mode';
 import { SunIcon } from '../../icons/SunIcon';
@@ -14,14 +14,14 @@ export class TModeSwitcher {
 
   @Prop() hue: ComponentHue = 0;
   @Prop() systemSelected: boolean = true;
+  @Prop() label: string;
 
   render() {
-    console.log(state.mode, state.selectedMode);
-    const label = state.mode === 'light' ? <SunIcon fill class='icon'/> : <MoonIcon fill class='icon'/>;
+    const icon = state.mode === 'light' ? <SunIcon class='icon'/> : <MoonIcon fill class='icon'/>;
 
     return <internal-style-provider hueOffsetInTurns={this.hue}>
       <t-dropdown-menu
-        label={label}
+        label={<>{icon}{this.label && <span class='label'>{this.label}</span>}</>}
         buttonAttributes={{title: 'Velg modus'}}
         items={[
           {

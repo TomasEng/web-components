@@ -33,3 +33,9 @@
 .leftbar:empty + .content {
   border-radius: var(--border-radius);
 }
+
+@media (max-width: 1200px) {
+  .main {
+    --border-radius: 0;
+  }
+}

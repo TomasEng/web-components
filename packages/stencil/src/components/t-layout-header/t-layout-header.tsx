@@ -1,5 +1,7 @@
-import { Component, h, Prop } from '@stencil/core';
+import { Component, h, Prop, State } from '@stencil/core';
 import { TNavMenuItem } from './TNavMenuItem';
+import { MenuToggleIcon } from '../../icons/MenuToggleIcon';
+import { CrossIcon } from '../../icons/CrossIcon';
 
 @Component({
   tag: 't-layout-header',
@@ -10,11 +12,22 @@ export class TLayoutHeader {
   @Prop() siteTitle: string;
   @Prop() navItems: TNavMenuItem[] = [];
 
+  @State() navOpen: boolean = false;
+
   render() {
-    return <header>
+    return <header class={this.navOpen ? 'nav-open' : 'nav-closed'}>
       <div class="title">{this.siteTitle}</div>
-      <Navbar items={this.navItems} />
-      <t-mode-switcher />
+      <div class="collapsible-content">
+        <Navbar items={this.navItems} />
+        <div class="toolbar">
+          <t-mode-switcher label={this.navOpen ? 'Fargemodus' : undefined} />
+        </div>
+      </div>
+      <div class="nav-toggle" onClick={() => this.navOpen = !this.navOpen}>
+        <t-button buttonAttributes={{ title: this.navOpen ? 'Lukk' : 'Meny' }}>
+          {this.navOpen ? <CrossIcon /> : <MenuToggleIcon />}
+        </t-button>
+      </div>
     </header>;
   }
 }
