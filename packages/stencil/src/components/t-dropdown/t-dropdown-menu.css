@@ -1,5 +1,9 @@
 @import "~bootstrap/dist/css/bootstrap.min.css";
 
+.t-dropdown-menu {
+  position: static;
+}
+
 .t-dropdown-menu .t-button::after {
   display: none;
 }
