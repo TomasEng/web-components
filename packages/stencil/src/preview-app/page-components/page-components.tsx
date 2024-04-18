@@ -21,7 +21,7 @@ export class PageComponents {
 
   render(): JSX.Element {
     return (
-      <t-layout-main>
+      <t-layout-main stickyLeftbar={true}>
         <component-colour-settings
           slot="leftbar"
           settings={this.colourSettings}

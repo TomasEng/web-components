@@ -28,6 +28,13 @@
   .leftbar-toggle {
     display: none;
   }
+
+  &.sticky .leftbar-content {
+    max-height: 100vh;
+    overflow-y: auto;
+    position: sticky;
+    top: 0;
+  }
 }
 
 .main .content {
@@ -63,6 +70,8 @@
       display: flex;
       flex-direction: row;
       position: absolute;
+      top: 0;
+      left: 0;
       height: 100%;
       z-index: 100;
       background-color: transparent;

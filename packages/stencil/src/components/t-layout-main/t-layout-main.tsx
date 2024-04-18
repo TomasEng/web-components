@@ -1,4 +1,4 @@
-import { Component, h, State } from '@stencil/core';
+import { Component, h, Prop, State } from '@stencil/core';
 import { ChevronRightIcon } from '../../icons/ChevronRightIcon';
 
 @Component({
@@ -9,6 +9,8 @@ export class TLayoutMain {
 
   @State() leftbarOpen = false;
 
+  @Prop() stickyLeftbar: boolean = false;
+
   toggleLeftbar() {
     this.leftbarOpen = !this.leftbarOpen;
   }
@@ -18,7 +20,7 @@ export class TLayoutMain {
 
     return <internal-style-provider>
       <main class={`main ${stateClass}`}>
-        <div class="leftbar">
+        <div class={`leftbar${this.stickyLeftbar ? ' sticky' : ''}`}>
           <div class="leftbar-content">
             <slot name="leftbar" />
           </div>

@@ -82,6 +82,7 @@ export namespace Components {
         "siteTitle": string;
     }
     interface TLayoutMain {
+        "stickyLeftbar": boolean;
     }
     interface TLink {
         "external"?: boolean;
@@ -470,6 +471,7 @@ declare namespace LocalJSX {
         "siteTitle"?: string;
     }
     interface TLayoutMain {
+        "stickyLeftbar"?: boolean;
     }
     interface TLink {
         "external"?: boolean;
