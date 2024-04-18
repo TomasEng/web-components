@@ -19,7 +19,7 @@
 }
 
 .t-dropdown-menu .dropdown-menu .dropdown-item {
-  --menu-item-background-colour-base: oklch(from var(--t-page-background-colour) calc(l - var(--t-mode-colour-scaling) * 0.1) c h / var(--t-popover-alpha));
+  --menu-item-background-colour-base: var(--t-popover-background-colour-base);
   --menu-item-background-colour: var(--menu-item-background-colour-base);
   background-color: var(--menu-item-background-colour);
   color: var(--t-font-colour-default);

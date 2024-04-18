@@ -1,4 +1,5 @@
-import { Component, h } from '@stencil/core';
+import { Component, h, State } from '@stencil/core';
+import { ChevronRightIcon } from '../../icons/ChevronRightIcon';
 
 @Component({
   tag: 't-layout-main',
@@ -6,11 +7,28 @@ import { Component, h } from '@stencil/core';
 })
 export class TLayoutMain {
 
+  @State() leftbarOpen = false;
+
+  toggleLeftbar() {
+    this.leftbarOpen = !this.leftbarOpen;
+  }
+
   render() {
+    const stateClass = this.leftbarOpen ? 'leftbar-open' : 'leftbar-closed';
+
     return <internal-style-provider>
-      <main class="main">
+      <main class={`main ${stateClass}`}>
         <div class="leftbar">
-          <slot name="leftbar" />
+          <div class="leftbar-content">
+            <slot name="leftbar" />
+          </div>
+          <button
+            class="leftbar-toggle"
+            onClick={() => this.toggleLeftbar()}
+            title={this.leftbarOpen ? 'Lukk sidepanel' : 'Åpne sidepanel'}
+          >
+            <ChevronRightIcon class='chevron'/>
+          </button>
         </div>
         <div class="content">
           <slot />

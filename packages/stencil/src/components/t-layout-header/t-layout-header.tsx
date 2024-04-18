@@ -24,10 +24,6 @@ export class TLayoutHeader {
     this.navOpen = false;
   }
 
-  getCollapsibleContent() {
-    return this.el.querySelector('.collapsible-content');
-  }
-
   render() {
     return <header class={this.navOpen ? 'nav-open' : 'nav-closed'}>
       <div class="title">{this.siteTitle}</div>

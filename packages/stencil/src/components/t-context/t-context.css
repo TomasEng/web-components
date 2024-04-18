@@ -19,6 +19,7 @@
   --t-popover-backdrop-filter: blur(8px);
   --t-popover-border-radius: 6px;
   --t-popover-shadow: #000c 0 4px 12px;
+  --t-popover-background-colour-base: oklch(from var(--t-page-background-colour) calc(l - var(--t-mode-colour-scaling) * 0.1) c h / var(--t-popover-alpha));
   --t-selection-background-colour: var(--t-base-fill-colour);
   --t-selection-font-colour: var(--t-font-colour-default);
   --t-transition-duration-long: 0.4s;
@@ -26,6 +27,7 @@
   --t-transition-duration-short: 0.1s;
   --t-navbar-item-border-radius: 8px;
   --t-page-max-width: 1200px;
+  --t-clickable-area-size: 44px;
 }
 
 @media (prefers-reduced-motion) {
