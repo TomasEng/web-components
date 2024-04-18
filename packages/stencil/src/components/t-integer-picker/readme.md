@@ -27,6 +27,7 @@
 
 ### Used by
 
+ - [component-colour-settings](../../preview-app/component-colour-settings)
  - [page-components](../../preview-app/page-components)
 
 ### Depends on
@@ -39,6 +40,7 @@
 graph TD;
   t-integer-picker --> internal-style-provider
   t-integer-picker --> internal-input-wrapper
+  component-colour-settings --> t-integer-picker
   page-components --> t-integer-picker
   style t-integer-picker fill:#f9f,stroke:#333,stroke-width:4px
 ```

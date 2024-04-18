@@ -7,20 +7,16 @@
 
 ## Properties
 
-| Property       | Attribute        | Description | Type     | Default |
-| -------------- | ---------------- | ----------- | -------- | ------- |
-| `baseChroma`   | `base-chroma`    |             | `number` | `0.4`   |
-| `baseHue`      | `base-hue`       |             | `number` | `263`   |
-| `numberOfHues` | `number-of-hues` |             | `number` | `3`     |
+| Property         | Attribute | Description | Type                                                     | Default     |
+| ---------------- | --------- | ----------- | -------------------------------------------------------- | ----------- |
+| `colourSettings` | --        |             | `{ hue: number; chroma: number; numberOfHues: number; }` | `undefined` |
 
 
 ## Events
 
-| Event                | Description | Type                  |
-| -------------------- | ----------- | --------------------- |
-| `chromaChange`       |             | `CustomEvent<number>` |
-| `hueChange`          |             | `CustomEvent<number>` |
-| `numberOfHuesChange` |             | `CustomEvent<number>` |
+| Event                  | Description | Type                                                                  |
+| ---------------------- | ----------- | --------------------------------------------------------------------- |
+| `colourSettingsChange` |             | `CustomEvent<{ hue: number; chroma: number; numberOfHues: number; }>` |
 
 
 ## Dependencies
@@ -31,35 +27,42 @@
 
 ### Depends on
 
+- [t-layout-main](../../components/t-layout-main)
+- [component-colour-settings](../component-colour-settings)
 - [t-heading](../../components/t-heading)
-- [t-row](../../components/t-row)
-- [t-hue-picker](../../components/t-hue-picker)
-- [t-saturation-picker](../../components/t-saturation-picker)
-- [t-integer-picker](../../components/t-integer-picker)
 - [t-button](../../components/t-button)
 - [t-column](../../components/t-column)
 - [t-switch](../../components/t-switch)
+- [t-integer-picker](../../components/t-integer-picker)
 - [t-textfield](../../components/t-textfield)
 - [t-select](../../components/t-select)
 - [t-dropdown-menu](../../components/t-dropdown)
 - [t-link](../../components/t-link)
+- [t-row](../../components/t-row)
 
 ### Graph
 ```mermaid
 graph TD;
+  page-components --> t-layout-main
+  page-components --> component-colour-settings
   page-components --> t-heading
-  page-components --> t-row
-  page-components --> t-hue-picker
-  page-components --> t-saturation-picker
-  page-components --> t-integer-picker
   page-components --> t-button
   page-components --> t-column
   page-components --> t-switch
+  page-components --> t-integer-picker
   page-components --> t-textfield
   page-components --> t-select
   page-components --> t-dropdown-menu
   page-components --> t-link
+  page-components --> t-row
+  t-layout-main --> internal-style-provider
+  component-colour-settings --> t-fieldset
+  component-colour-settings --> t-column
+  component-colour-settings --> t-hue-picker
+  component-colour-settings --> t-saturation-picker
+  component-colour-settings --> t-integer-picker
   t-hue-picker --> t-slider
+  t-slider --> internal-input-wrapper
   t-saturation-picker --> t-slider
   t-integer-picker --> internal-style-provider
   t-integer-picker --> internal-input-wrapper

@@ -1,4 +1,4 @@
-import { Component, h, Prop, State } from '@stencil/core';
+import { Component, h, Prop, State, Element } from '@stencil/core';
 import { TNavMenuItem } from './TNavMenuItem';
 import { MenuToggleIcon } from '../../icons/MenuToggleIcon';
 import { CrossIcon } from '../../icons/CrossIcon';
@@ -9,21 +9,37 @@ import { CrossIcon } from '../../icons/CrossIcon';
 })
 export class TLayoutHeader {
 
+  @Element() el: HTMLElement;
+
   @Prop() siteTitle: string;
   @Prop() navItems: TNavMenuItem[] = [];
 
   @State() navOpen: boolean = false;
 
+  expandNav() {
+    this.navOpen = true;
+  }
+
+  collapseNav() {
+    this.navOpen = false;
+  }
+
+  getCollapsibleContent() {
+    return this.el.querySelector('.collapsible-content');
+  }
+
   render() {
     return <header class={this.navOpen ? 'nav-open' : 'nav-closed'}>
       <div class="title">{this.siteTitle}</div>
       <div class="collapsible-content">
-        <Navbar items={this.navItems} />
-        <div class="toolbar">
-          <t-mode-switcher label={this.navOpen ? 'Fargemodus' : undefined} />
+        <div class="collapsible-content-inner">
+          <Navbar items={this.navItems} />
+          <div class="toolbar">
+            <t-mode-switcher label="Fargemodus"/>
+          </div>
         </div>
       </div>
-      <div class="nav-toggle" onClick={() => this.navOpen = !this.navOpen}>
+      <div class="nav-toggle" onClick={() => this.navOpen ? this.collapseNav() : this.expandNav()}>
         <t-button buttonAttributes={{ title: this.navOpen ? 'Lukk' : 'Meny' }}>
           {this.navOpen ? <CrossIcon /> : <MenuToggleIcon />}
         </t-button>

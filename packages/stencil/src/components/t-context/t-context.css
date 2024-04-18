@@ -21,8 +21,8 @@
   --t-popover-shadow: #000c 0 4px 12px;
   --t-selection-background-colour: var(--t-base-fill-colour);
   --t-selection-font-colour: var(--t-font-colour-default);
-  --t-transition-duration-long: calc(--t-transition-duration-medium * 2);
-  --t-transition-duration-medium: calc(--t-transition-duration-short * 2);
+  --t-transition-duration-long: 0.4s;
+  --t-transition-duration-medium: 0.2s;
   --t-transition-duration-short: 0.1s;
   --t-navbar-item-border-radius: 8px;
   --t-page-max-width: 1200px;

@@ -30,9 +30,14 @@
  - [t-hue-picker](../t-hue-picker)
  - [t-saturation-picker](../t-saturation-picker)
 
+### Depends on
+
+- [internal-input-wrapper](../internal-input-wrapper)
+
 ### Graph
 ```mermaid
 graph TD;
+  t-slider --> internal-input-wrapper
   t-hue-picker --> t-slider
   t-saturation-picker --> t-slider
   style t-slider fill:#f9f,stroke:#333,stroke-width:4px

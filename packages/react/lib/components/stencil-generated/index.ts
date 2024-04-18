@@ -7,6 +7,7 @@ import type { JSX } from 'stencil';
 
 
 
+export const ComponentColourSettings = /*@__PURE__*/createReactComponent<JSX.ComponentColourSettings, HTMLComponentColourSettingsElement>('component-colour-settings');
 export const InternalInputWrapper = /*@__PURE__*/createReactComponent<JSX.InternalInputWrapper, HTMLInternalInputWrapperElement>('internal-input-wrapper');
 export const InternalStyleProvider = /*@__PURE__*/createReactComponent<JSX.InternalStyleProvider, HTMLInternalStyleProviderElement>('internal-style-provider');
 export const PageAbout = /*@__PURE__*/createReactComponent<JSX.PageAbout, HTMLPageAboutElement>('page-about');
@@ -16,6 +17,7 @@ export const TButton = /*@__PURE__*/createReactComponent<JSX.TButton, HTMLTButto
 export const TColumn = /*@__PURE__*/createReactComponent<JSX.TColumn, HTMLTColumnElement>('t-column');
 export const TContext = /*@__PURE__*/createReactComponent<JSX.TContext, HTMLTContextElement>('t-context');
 export const TDropdownMenu = /*@__PURE__*/createReactComponent<JSX.TDropdownMenu, HTMLTDropdownMenuElement>('t-dropdown-menu');
+export const TFieldset = /*@__PURE__*/createReactComponent<JSX.TFieldset, HTMLTFieldsetElement>('t-fieldset');
 export const THeading = /*@__PURE__*/createReactComponent<JSX.THeading, HTMLTHeadingElement>('t-heading');
 export const THuePicker = /*@__PURE__*/createReactComponent<JSX.THuePicker, HTMLTHuePickerElement>('t-hue-picker');
 export const TIntegerPicker = /*@__PURE__*/createReactComponent<JSX.TIntegerPicker, HTMLTIntegerPickerElement>('t-integer-picker');

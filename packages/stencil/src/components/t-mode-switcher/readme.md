@@ -7,10 +7,11 @@
 
 ## Properties
 
-| Property         | Attribute         | Description | Type      | Default |
-| ---------------- | ----------------- | ----------- | --------- | ------- |
-| `hue`            | `hue`             |             | `number`  | `0`     |
-| `systemSelected` | `system-selected` |             | `boolean` | `true`  |
+| Property         | Attribute         | Description | Type      | Default     |
+| ---------------- | ----------------- | ----------- | --------- | ----------- |
+| `hue`            | `hue`             |             | `number`  | `0`         |
+| `label`          | `label`           |             | `string`  | `undefined` |
+| `systemSelected` | `system-selected` |             | `boolean` | `true`      |
 
 
 ## Dependencies

@@ -15,6 +15,10 @@ header {
   .collapsible-content {
     grid-area: hcontent;
     flex: 1;
+  }
+
+  .collapsible-content-inner {
+    height: 100%;
     display: flex;
     align-items: center;
     gap: 1rem;
@@ -94,24 +98,77 @@ header {
   header {
     display: grid;
     grid-template-areas: "title toggle" "hcontent hcontent";
+    transition: background-color var(--t-transition-duration-medium);
+    padding: 0;
 
     .title {
       grid-area: title;
+      margin-left: 1rem;
     }
 
     .collapsible-content {
       grid-area: hcontent;
+      display: grid;
+      grid-template-rows: 1fr; /* To make height transition work */
+      transition: grid-template-rows var(--t-transition-duration-medium);
+
+      .collapsible-content-inner {
+        display: flex;
+        flex-direction: column-reverse;
+        overflow: hidden;
+
+        .toolbar {
+          align-self: flex-start;
+          padding: 0 1rem;
+        }
+
+        .nav {
+
+          ul {
+            flex-direction: column;
+            gap: 0;
+
+            li {
+
+              a {
+                box-sizing: border-box;
+                width: 100vw;
+                border-radius: 0;
+                box-shadow: none;
+                height: auto;
+                padding: 0.5rem 1rem;
+                background-color: transparent;
+
+                &:hover {
+                  box-shadow: var(--top-shadow), var(--bottom-shadow);
+                }
+              }
+
+              &:not(.open) a:hover {
+                background-color: oklch(from var(--t-page-background-colour) calc(l - 0.05 * var(--t-mode-colour-scaling)) c h);
+              }
+
+              &.open a {
+                background-color: color-mix(in oklch, var(--t-base-colour) 75%, transparent);
+                --top-shadow: inset oklch(from var(--t-base-colour) calc(l + 0.1) c h) 0 1px 0;
+                --bottom-shadow: inset oklch(from var(--t-base-colour) calc(l - 0.1) c h) 0 -1px 0;
+              }
+            }
+          }
+        }
+      }
     }
 
     .nav-toggle {
       display: flex;
       justify-content: flex-end;
       grid-area: toggle;
+      margin-right: 1rem;
     }
 
     &.nav-closed {
       .collapsible-content {
-        display: none;
+        grid-template-rows: 0fr;
       }
     }
 
@@ -121,50 +178,6 @@ header {
       position: relative;
       background-color: var(--t-page-background-colour);
       box-shadow: var(--t-page-background-colour) 0 -100px, var(--bottom-shadow);
-
-      .collapsible-content {
-        flex-direction: column-reverse;
-      }
-
-      .toolbar {
-        align-self: flex-start;
-      }
-
-      .nav {
-        margin: 0 -1rem;
-
-        ul {
-          flex-direction: column;
-          gap: 0;
-
-          li {
-
-            a {
-              box-sizing: border-box;
-              width: 100vw;
-              border-radius: 0;
-              box-shadow: none;
-              height: auto;
-              padding: 0.5rem 1rem;
-              background-color: transparent;
-
-              &:hover {
-                box-shadow: var(--top-shadow), var(--bottom-shadow);
-              }
-            }
-
-            &:not(.open) a:hover {
-              background-color: oklch(from var(--t-page-background-colour) calc(l - 0.05 * var(--t-mode-colour-scaling)) c h);
-            }
-
-            &.open a {
-              background-color: color-mix(in oklch, var(--t-base-colour) 75%, transparent);
-              --top-shadow: inset oklch(from var(--t-base-colour) calc(l + 0.1) c h) 0 1px 0;
-              --bottom-shadow: inset oklch(from var(--t-base-colour) calc(l - 0.1) c h) 0 -1px 0;
-            }
-          }
-        }
-      }
     }
   }
 }

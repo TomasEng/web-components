@@ -24,7 +24,7 @@
 
 ### Used by
 
- - [page-components](../../preview-app/page-components)
+ - [component-colour-settings](../../preview-app/component-colour-settings)
 
 ### Depends on
 
@@ -34,7 +34,8 @@
 ```mermaid
 graph TD;
   t-hue-picker --> t-slider
-  page-components --> t-hue-picker
+  t-slider --> internal-input-wrapper
+  component-colour-settings --> t-hue-picker
   style t-hue-picker fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

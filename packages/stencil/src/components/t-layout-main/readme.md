@@ -9,12 +9,19 @@
 
 ### Used by
 
- - [preview-app](../../preview-app)
+ - [page-about](../../preview-app/page-about)
+ - [page-components](../../preview-app/page-components)
+
+### Depends on
+
+- [internal-style-provider](../internal-style-provider)
 
 ### Graph
 ```mermaid
 graph TD;
-  preview-app --> t-layout-main
+  t-layout-main --> internal-style-provider
+  page-about --> t-layout-main
+  page-components --> t-layout-main
   style t-layout-main fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
