@@ -31,7 +31,7 @@
     "access": "public"
   },
   "dependencies": {
-    "t-web-components": "^0.0.5"
+    "t-web-components": "0.0.5"
   },
   "devDependencies": {
     "@types/react": "^18.2.76",
