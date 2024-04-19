@@ -5,6 +5,13 @@
 <!-- Auto Generated Below -->
 
 
+## Properties
+
+| Property        | Attribute        | Description | Type      | Default |
+| --------------- | ---------------- | ----------- | --------- | ------- |
+| `stickyLeftbar` | `sticky-leftbar` |             | `boolean` | `false` |
+
+
 ## Dependencies
 
 ### Used by
