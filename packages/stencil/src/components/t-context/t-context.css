@@ -12,12 +12,14 @@
   --t-background-background-colour: oklch(from var(--t-page-background-colour) calc(l * 0.9) c h);
   --t-base-contrast-colour: unset;
   --t-base-fill-colour: var(--t-base-border-colour);
+  --t-border-radius-default: 6px;
   --t-font-colour-default: var(--t-full-contrast-colour);
+  --t-small-contrast-colour: oklch(from var(--t-page-background-colour) calc(l - var(--t-mode-colour-scaling) * 0.05) c h);
   --t-input-field-background-colour: oklch(from var(--t-full-contrast-colour) calc(l - var(--t-mode-colour-scaling) * 0.1) c h / 0.05);
   --t-page-background-colour: unset;
   --t-popover-alpha: 0.75;
   --t-popover-backdrop-filter: blur(8px);
-  --t-popover-border-radius: 6px;
+  --t-popover-border-radius: var(--t-border-radius-default);
   --t-popover-shadow: #000c 0 4px 12px;
   --t-popover-background-colour-base: oklch(from var(--t-page-background-colour) calc(l - var(--t-mode-colour-scaling) * 0.1) c h / var(--t-popover-alpha));
   --t-selection-background-colour: var(--t-base-fill-colour);

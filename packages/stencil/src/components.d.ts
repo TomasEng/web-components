@@ -9,6 +9,7 @@ import { ColourSettings } from "./types/ColourSettings";
 import { LabelPlacement } from "./types/LabelPlacement";
 import { ColourSettings as ColourSettings1 } from "./components";
 import { ComponentHue } from "./types/ComponentHue";
+import { TArticleListItem } from "./components/t-article-list/TArticleListItem";
 import { ButtonAttributes } from "./types/HTMLAttributes";
 import { VNode } from "@stencil/core";
 import { TDropdownMenuItem } from "./components/t-dropdown/TDropdownMenuItem";
@@ -18,6 +19,7 @@ export { ColourSettings } from "./types/ColourSettings";
 export { LabelPlacement } from "./types/LabelPlacement";
 export { ColourSettings as ColourSettings1 } from "./components";
 export { ComponentHue } from "./types/ComponentHue";
+export { TArticleListItem } from "./components/t-article-list/TArticleListItem";
 export { ButtonAttributes } from "./types/HTMLAttributes";
 export { VNode } from "@stencil/core";
 export { TDropdownMenuItem } from "./components/t-dropdown/TDropdownMenuItem";
@@ -39,6 +41,10 @@ export namespace Components {
         "colourSettings": ColourSettings1;
     }
     interface PreviewApp {
+    }
+    interface TArticleList {
+        "hue": ComponentHue;
+        "items": TArticleListItem[];
     }
     interface TButton {
         "buttonAttributes": ButtonAttributes;
@@ -210,6 +216,12 @@ declare global {
     var HTMLPreviewAppElement: {
         prototype: HTMLPreviewAppElement;
         new (): HTMLPreviewAppElement;
+    };
+    interface HTMLTArticleListElement extends Components.TArticleList, HTMLStencilElement {
+    }
+    var HTMLTArticleListElement: {
+        prototype: HTMLTArticleListElement;
+        new (): HTMLTArticleListElement;
     };
     interface HTMLTButtonElement extends Components.TButton, HTMLStencilElement {
     }
@@ -387,6 +399,7 @@ declare global {
         "page-about": HTMLPageAboutElement;
         "page-components": HTMLPageComponentsElement;
         "preview-app": HTMLPreviewAppElement;
+        "t-article-list": HTMLTArticleListElement;
         "t-button": HTMLTButtonElement;
         "t-column": HTMLTColumnElement;
         "t-context": HTMLTContextElement;
@@ -426,6 +439,10 @@ declare namespace LocalJSX {
         "onColourSettingsChange"?: (event: PageComponentsCustomEvent<ColourSettings1>) => void;
     }
     interface PreviewApp {
+    }
+    interface TArticleList {
+        "hue"?: ComponentHue;
+        "items"?: TArticleListItem[];
     }
     interface TButton {
         "buttonAttributes"?: ButtonAttributes;
@@ -522,6 +539,7 @@ declare namespace LocalJSX {
         "page-about": PageAbout;
         "page-components": PageComponents;
         "preview-app": PreviewApp;
+        "t-article-list": TArticleList;
         "t-button": TButton;
         "t-column": TColumn;
         "t-context": TContext;
@@ -553,6 +571,7 @@ declare module "@stencil/core" {
             "page-about": LocalJSX.PageAbout & JSXBase.HTMLAttributes<HTMLPageAboutElement>;
             "page-components": LocalJSX.PageComponents & JSXBase.HTMLAttributes<HTMLPageComponentsElement>;
             "preview-app": LocalJSX.PreviewApp & JSXBase.HTMLAttributes<HTMLPreviewAppElement>;
+            "t-article-list": LocalJSX.TArticleList & JSXBase.HTMLAttributes<HTMLTArticleListElement>;
             "t-button": LocalJSX.TButton & JSXBase.HTMLAttributes<HTMLTButtonElement>;
             "t-column": LocalJSX.TColumn & JSXBase.HTMLAttributes<HTMLTColumnElement>;
             "t-context": LocalJSX.TContext & JSXBase.HTMLAttributes<HTMLTContextElement>;

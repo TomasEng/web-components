@@ -38,6 +38,7 @@
 - [t-select](../../components/t-select)
 - [t-dropdown-menu](../../components/t-dropdown)
 - [t-link](../../components/t-link)
+- [t-article-list](../../components/t-article-list)
 - [t-row](../../components/t-row)
 
 ### Graph
@@ -54,6 +55,7 @@ graph TD;
   page-components --> t-select
   page-components --> t-dropdown-menu
   page-components --> t-link
+  page-components --> t-article-list
   page-components --> t-row
   t-layout-main --> internal-style-provider
   component-colour-settings --> t-fieldset
@@ -74,6 +76,7 @@ graph TD;
   t-select --> internal-input-wrapper
   t-dropdown-menu --> internal-style-provider
   t-link --> internal-style-provider
+  t-article-list --> internal-style-provider
   preview-app --> page-components
   style page-components fill:#f9f,stroke:#333,stroke-width:4px
 ```

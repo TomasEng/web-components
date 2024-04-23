@@ -1,9 +1,9 @@
 .link:link {
-  color: var(--t-base-contrast-colour);
+  color: var(--t-link-colour);
 }
 
 .link:visited {
-  color: oklch(from var(--t-base-contrast-colour) l c calc(h + 30));
+  color: var(--t-link-visited-colour);
 }
 
 .link:hover {

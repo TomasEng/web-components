@@ -13,6 +13,7 @@ export const InternalStyleProvider = /*@__PURE__*/createReactComponent<JSX.Inter
 export const PageAbout = /*@__PURE__*/createReactComponent<JSX.PageAbout, HTMLPageAboutElement>('page-about');
 export const PageComponents = /*@__PURE__*/createReactComponent<JSX.PageComponents, HTMLPageComponentsElement>('page-components');
 export const PreviewApp = /*@__PURE__*/createReactComponent<JSX.PreviewApp, HTMLPreviewAppElement>('preview-app');
+export const TArticleList = /*@__PURE__*/createReactComponent<JSX.TArticleList, HTMLTArticleListElement>('t-article-list');
 export const TButton = /*@__PURE__*/createReactComponent<JSX.TButton, HTMLTButtonElement>('t-button');
 export const TColumn = /*@__PURE__*/createReactComponent<JSX.TColumn, HTMLTColumnElement>('t-column');
 export const TContext = /*@__PURE__*/createReactComponent<JSX.TContext, HTMLTContextElement>('t-context');

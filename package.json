@@ -8,5 +8,12 @@
     "@types/node": "^20.12.7",
     "lerna": "^8.1.2",
     "typescript": "^5.4.5"
+  },
+  "scripts": {
+    "build": "lerna run build",
+    "test": "lerna run test",
+    "clean": "lerna clean",
+    "prepare": "lerna run prepare",
+    "patch": "lerna version patch"
   }
 }

@@ -45,6 +45,7 @@ graph TD;
   page-components --> t-select
   page-components --> t-dropdown-menu
   page-components --> t-link
+  page-components --> t-article-list
   page-components --> t-row
   component-colour-settings --> t-fieldset
   component-colour-settings --> t-column
@@ -61,6 +62,7 @@ graph TD;
   t-textfield --> internal-input-wrapper
   t-select --> internal-style-provider
   t-select --> internal-input-wrapper
+  t-article-list --> internal-style-provider
   style preview-app fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

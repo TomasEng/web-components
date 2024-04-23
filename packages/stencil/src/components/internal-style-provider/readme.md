@@ -16,6 +16,7 @@
 
 ### Used by
 
+ - [t-article-list](../t-article-list)
  - [t-button](../t-button)
  - [t-dropdown-menu](../t-dropdown)
  - [t-integer-picker](../t-integer-picker)
@@ -29,6 +30,7 @@
 ### Graph
 ```mermaid
 graph TD;
+  t-article-list --> internal-style-provider
   t-button --> internal-style-provider
   t-dropdown-menu --> internal-style-provider
   t-integer-picker --> internal-style-provider
