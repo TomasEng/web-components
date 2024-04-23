@@ -31,6 +31,10 @@
   --t-navbar-item-border-radius: 8px;
   --t-page-max-width: 1200px;
   --t-clickable-area-size: 44px;
+  --t-spacing-inline: 0.25rem;
+  --t-spacing-in-group: 0.5rem;
+  --t-spacing-default: 1rem;
+  --t-spacing-large: 2rem;
 }
 
 @media (prefers-reduced-motion) {

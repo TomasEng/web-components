@@ -33,7 +33,7 @@ export class TLayoutMain {
           </button>
         </div>
         <div class="content">
-          <slot />
+          <slot name='content' />
         </div>
       </main>
     </internal-style-provider>;
