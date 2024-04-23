@@ -31,5 +31,6 @@ export const TRow = /*@__PURE__*/createReactComponent<JSX.TRow, HTMLTRowElement>
 export const TSaturationPicker = /*@__PURE__*/createReactComponent<JSX.TSaturationPicker, HTMLTSaturationPickerElement>('t-saturation-picker');
 export const TSelect = /*@__PURE__*/createReactComponent<JSX.TSelect, HTMLTSelectElement>('t-select');
 export const TSlider = /*@__PURE__*/createReactComponent<JSX.TSlider, HTMLTSliderElement>('t-slider');
+export const TSpinner = /*@__PURE__*/createReactComponent<JSX.TSpinner, HTMLTSpinnerElement>('t-spinner');
 export const TSwitch = /*@__PURE__*/createReactComponent<JSX.TSwitch, HTMLTSwitchElement>('t-switch');
 export const TTextfield = /*@__PURE__*/createReactComponent<JSX.TTextfield, HTMLTTextfieldElement>('t-textfield');

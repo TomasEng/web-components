@@ -39,6 +39,7 @@
 - [t-dropdown-menu](../../components/t-dropdown)
 - [t-link](../../components/t-link)
 - [t-article-list](../../components/t-article-list)
+- [t-spinner](../../components/t-spinner)
 - [t-row](../../components/t-row)
 
 ### Graph
@@ -56,6 +57,7 @@ graph TD;
   page-components --> t-dropdown-menu
   page-components --> t-link
   page-components --> t-article-list
+  page-components --> t-spinner
   page-components --> t-row
   t-layout-main --> internal-style-provider
   component-colour-settings --> t-fieldset

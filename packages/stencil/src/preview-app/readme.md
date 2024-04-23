@@ -46,6 +46,7 @@ graph TD;
   page-components --> t-dropdown-menu
   page-components --> t-link
   page-components --> t-article-list
+  page-components --> t-spinner
   page-components --> t-row
   component-colour-settings --> t-fieldset
   component-colour-settings --> t-column
