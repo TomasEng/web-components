@@ -120,6 +120,9 @@ export namespace Components {
         "step": number;
         "value": number;
     }
+    interface TSpinner {
+        "title": string;
+    }
     interface TSwitch {
         "checked": boolean;
         "hue": number;
@@ -369,6 +372,12 @@ declare global {
         prototype: HTMLTSliderElement;
         new (): HTMLTSliderElement;
     };
+    interface HTMLTSpinnerElement extends Components.TSpinner, HTMLStencilElement {
+    }
+    var HTMLTSpinnerElement: {
+        prototype: HTMLTSpinnerElement;
+        new (): HTMLTSpinnerElement;
+    };
     interface HTMLTSwitchElementEventMap {
         "switch": boolean;
     }
@@ -417,6 +426,7 @@ declare global {
         "t-saturation-picker": HTMLTSaturationPickerElement;
         "t-select": HTMLTSelectElement;
         "t-slider": HTMLTSliderElement;
+        "t-spinner": HTMLTSpinnerElement;
         "t-switch": HTMLTSwitchElement;
         "t-textfield": HTMLTTextfieldElement;
     }
@@ -522,6 +532,9 @@ declare namespace LocalJSX {
         "step"?: number;
         "value"?: number;
     }
+    interface TSpinner {
+        "title"?: string;
+    }
     interface TSwitch {
         "checked"?: boolean;
         "hue"?: number;
@@ -557,6 +570,7 @@ declare namespace LocalJSX {
         "t-saturation-picker": TSaturationPicker;
         "t-select": TSelect;
         "t-slider": TSlider;
+        "t-spinner": TSpinner;
         "t-switch": TSwitch;
         "t-textfield": TTextfield;
     }
@@ -589,6 +603,7 @@ declare module "@stencil/core" {
             "t-saturation-picker": LocalJSX.TSaturationPicker & JSXBase.HTMLAttributes<HTMLTSaturationPickerElement>;
             "t-select": LocalJSX.TSelect & JSXBase.HTMLAttributes<HTMLTSelectElement>;
             "t-slider": LocalJSX.TSlider & JSXBase.HTMLAttributes<HTMLTSliderElement>;
+            "t-spinner": LocalJSX.TSpinner & JSXBase.HTMLAttributes<HTMLTSpinnerElement>;
             "t-switch": LocalJSX.TSwitch & JSXBase.HTMLAttributes<HTMLTSwitchElement>;
             "t-textfield": LocalJSX.TTextfield & JSXBase.HTMLAttributes<HTMLTTextfieldElement>;
         }

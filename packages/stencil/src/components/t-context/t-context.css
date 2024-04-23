@@ -15,6 +15,7 @@
   --t-border-radius-default: 6px;
   --t-font-colour-default: var(--t-full-contrast-colour);
   --t-small-contrast-colour: oklch(from var(--t-page-background-colour) calc(l - var(--t-mode-colour-scaling) * 0.05) c h);
+  --t-strong-contrast-colour: oklch(from var(--t-full-contrast-colour) calc(l + var(--t-mode-colour-scaling) * 0.4) c h);
   --t-input-field-background-colour: oklch(from var(--t-full-contrast-colour) calc(l - var(--t-mode-colour-scaling) * 0.1) c h / 0.05);
   --t-page-background-colour: unset;
   --t-popover-alpha: 0.75;

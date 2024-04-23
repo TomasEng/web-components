@@ -1,0 +1,21 @@
+.t-spinner {
+  --size: 2rem;
+  animation: spin 1s linear infinite;
+  background-color: transparent;
+  border-color: var(--t-small-contrast-colour);
+  border-radius: 50%;
+  border-style: solid;
+  border-top-color: var(--t-base-fill-colour);
+  border-width: 4px;
+  box-sizing: border-box;
+  display: inline-block;
+  height: var(--size);
+  position: relative;
+  width: var(--size);
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(1turn);
+  }
+}
