@@ -2,7 +2,7 @@ import { Config } from '@stencil/core';
 import { reactOutputTarget } from '@stencil/react-output-target';
 
 export const config: Config = {
-  namespace: 'web-components',
+  namespace: 't-web-components',
   outputTargets: [
     {
       type: 'dist',
@@ -19,8 +19,8 @@ export const config: Config = {
       serviceWorker: null, // disable service workers
     },
     reactOutputTarget({
-      componentCorePackage: 'stencil',
-      proxiesFile: '../react/lib/components/stencil-generated/index.ts',
+      componentCorePackage: 't-web-components',
+      proxiesFile: '../t-web-components-react/lib/components/stencil-generated/index.ts',
     }),
   ],
   testing: {

@@ -5,6 +5,7 @@
   "author": "Tomas <tomas.engebretsen@gmail.com>",
   "homepage": "https://github.com/TomasEng/web-components#readme",
   "license": "MIT",
+  "type": "module",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "types": "dist/types/index.d.ts",
