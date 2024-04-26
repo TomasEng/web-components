@@ -11,6 +11,21 @@
   <script nomodule src="build/t-web-components.js"></script>
 </head>
 <body>
-<preview-app></preview-app>
+<script>
+  const url = new URL(document.location);
+  const { searchParams } = url;
+  const html = searchParams.get('html');
+  if (html) {
+    const previewComponent = document.createElement('preview-component');
+    previewComponent.setAttribute('html', html);
+    const script = searchParams.get('script');
+    if (script) {
+      previewComponent.setAttribute('script', script);
+    }
+    document.body.appendChild(previewComponent);
+  } else {
+    document.body.appendChild(document.createElement('preview-app'));
+  }
+</script>
 </body>
 </html>

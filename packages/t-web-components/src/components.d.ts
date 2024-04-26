@@ -42,6 +42,10 @@ export namespace Components {
     }
     interface PreviewApp {
     }
+    interface PreviewComponent {
+        "html": string;
+        "script"?: string;
+    }
     interface TArticleList {
         "hue": ComponentHue;
         "items": TArticleListItem[];
@@ -219,6 +223,12 @@ declare global {
     var HTMLPreviewAppElement: {
         prototype: HTMLPreviewAppElement;
         new (): HTMLPreviewAppElement;
+    };
+    interface HTMLPreviewComponentElement extends Components.PreviewComponent, HTMLStencilElement {
+    }
+    var HTMLPreviewComponentElement: {
+        prototype: HTMLPreviewComponentElement;
+        new (): HTMLPreviewComponentElement;
     };
     interface HTMLTArticleListElement extends Components.TArticleList, HTMLStencilElement {
     }
@@ -408,6 +418,7 @@ declare global {
         "page-about": HTMLPageAboutElement;
         "page-components": HTMLPageComponentsElement;
         "preview-app": HTMLPreviewAppElement;
+        "preview-component": HTMLPreviewComponentElement;
         "t-article-list": HTMLTArticleListElement;
         "t-button": HTMLTButtonElement;
         "t-column": HTMLTColumnElement;
@@ -449,6 +460,10 @@ declare namespace LocalJSX {
         "onColourSettingsChange"?: (event: PageComponentsCustomEvent<ColourSettings1>) => void;
     }
     interface PreviewApp {
+    }
+    interface PreviewComponent {
+        "html"?: string;
+        "script"?: string;
     }
     interface TArticleList {
         "hue"?: ComponentHue;
@@ -552,6 +567,7 @@ declare namespace LocalJSX {
         "page-about": PageAbout;
         "page-components": PageComponents;
         "preview-app": PreviewApp;
+        "preview-component": PreviewComponent;
         "t-article-list": TArticleList;
         "t-button": TButton;
         "t-column": TColumn;
@@ -585,6 +601,7 @@ declare module "@stencil/core" {
             "page-about": LocalJSX.PageAbout & JSXBase.HTMLAttributes<HTMLPageAboutElement>;
             "page-components": LocalJSX.PageComponents & JSXBase.HTMLAttributes<HTMLPageComponentsElement>;
             "preview-app": LocalJSX.PreviewApp & JSXBase.HTMLAttributes<HTMLPreviewAppElement>;
+            "preview-component": LocalJSX.PreviewComponent & JSXBase.HTMLAttributes<HTMLPreviewComponentElement>;
             "t-article-list": LocalJSX.TArticleList & JSXBase.HTMLAttributes<HTMLTArticleListElement>;
             "t-button": LocalJSX.TButton & JSXBase.HTMLAttributes<HTMLTButtonElement>;
             "t-column": LocalJSX.TColumn & JSXBase.HTMLAttributes<HTMLTColumnElement>;
