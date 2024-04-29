@@ -1,1 +1,16 @@
-<!doctype html><html dir="ltr" lang="nb"><head> <meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0"> <title>Tomas sitt designsystem</title> <link href="build/web-components.css" rel="stylesheet"> <script type="module" src="build/web-components.esm.js"></script> <script nomodule="" src="build/web-components.js"></script> </head> <body> <preview-app></preview-app> </body></html>
+<!doctype html><html dir="ltr" lang="nb"><head> <meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0"> <title>Tomas sitt designsystem</title> <link href="build/t-web-components.css" rel="stylesheet"> <script type="module" src="build/t-web-components.esm.js"></script> <script nomodule="" src="build/t-web-components.js"></script> </head> <body> <script>
+  const url = new URL(document.location);
+  const { searchParams } = url;
+  const html = searchParams.get('html');
+  if (html) {
+    const previewComponent = document.createElement('preview-component');
+    previewComponent.setAttribute('html', html);
+    const script = searchParams.get('script');
+    if (script) {
+      previewComponent.setAttribute('script', script);
+    }
+    document.body.appendChild(previewComponent);
+  } else {
+    document.body.appendChild(document.createElement('preview-app'));
+  }
+</script> </body></html>
