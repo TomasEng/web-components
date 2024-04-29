@@ -10,6 +10,7 @@
     "typescript": "^5.4.5"
   },
   "scripts": {
+    "start": "cd packages/t-web-components && npm start",
     "build": "lerna run build",
     "test": "lerna run test",
     "clean": "lerna clean",

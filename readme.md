@@ -2,4 +2,75 @@
 
 # Tomas' designsystem
 
-Designsystem med webkomponenter.
+Designsystem med webkomponenter bygget ved hjelp av Stencil. Systemet består av to pakker:
+- [t-web-components](https://www.npmjs.com/package/t-web-components): Webkomponenter som kan brukes direkte i HTML-kode
+- [t-web-components-react](https://www.npmjs.com/package/t-web-components-react): De samme komponentene eksportert som React-komponenter, for bruk i React-applikasjoner
+
+## Demo
+Se https://tomaseng.github.io/web-components/.
+
+## Installasjon
+
+### Ren HTML/Javascript
+```bash
+npm install t-web-components
+```
+
+### React
+```bash
+npm install t-web-components-react
+```
+
+## Bruk
+Komponentene blir tilgjengliggjort ved hjelp av funksjonen `defineCustomElements`.
+Denne må kjøres før komponentene kan tas i bruk.
+
+I ren Javascript:
+```javascript
+import {defineCustomElements} from "t-web-components";
+defineCustomElements();
+```
+
+I React:
+```javascript
+import {defineCustomElements} from "t-web-components-react";
+defineCustomElements();
+```
+
+For at komponentene skal se riktige ut, må alt brukes inne i komponenten `t-context` (eller `TContext` i React).
+Eksempel:
+
+```html
+<t-context>
+  <t-button>Knapp</t-button>
+</t-context>
+```
+
+## Lokal utvikling
+For å kjøre opp prosjektet lokalt, kjør `npm start` enten i rotmappen eller i `packages/t-web-components`.
+Det vil starte demoapplikasjonen på `http://localhost:3333`.
+Den skal oppdatere seg av seg selv når man lagrer, men det kan være man må gi det noen forsøk for at det skal fungere.
+
+### Testing
+Det er satt opp automatiserte tester for Jest og Playwright.
+Playwright brukes til ende-til-ende-testing av komponentene, mens Jest brukes til enhetstesing av interne funksjoner.
+Testene kan kjøres ved hjelp av følgende kommandoer i `t-web-components`-mappen:
+
+#### Enhetstester med Jest
+```bash
+npm run test:jest
+```
+
+#### Ende-til-ende-tester med Playwright
+```bash
+npm run test:playwright
+```
+
+#### Alle tester
+```bash
+npm run test
+```
+
+### Bygging og generering av React-komponenter
+Pakkene blir bygget ved å kjøre `npm run build` i mappen til pakken det gjelder.
+Når man bygger `t-web-components`, blir også React-komponentene automatisk generert og lagret i `t-web-components-react`.
