@@ -22,8 +22,10 @@
     "build": "stencil build",
     "build.watch": "stencil build --watch",
     "start": "stencil build --dev --watch --serve",
-    "test": "npx playwright test",
-    "test:ui": "npx playwright test --ui",
+    "test": "npm run test:jest && npm run test:playwright",
+    "test:playwright": "npx playwright test",
+    "test:playwright:ui": "npx playwright test --ui",
+    "test:jest": "jest --config=jestconfig.json",
     "generate": "stencil generate",
     "deploy": "gh-pages -d www"
   },

@@ -10,8 +10,7 @@
   "module": "dist/index.js",
   "types": "dist/types/index.d.ts",
   "directories": {
-    "lib": "lib",
-    "test": "__tests__"
+    "lib": "lib"
   },
   "files": [
     "dist"
@@ -21,7 +20,6 @@
     "url": "git+https://github.com/TomasEng/web-components.git"
   },
   "scripts": {
-    "test": "node ./__tests__/react.test.js",
     "build": "npm run tsc",
     "tsc": "tsc -p . --outDir ./dist",
     "publish": "npm publish"
