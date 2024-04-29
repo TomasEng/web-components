@@ -1,18 +1,17 @@
 .wrapper {
   width: 100%;
   background-color: oklch(
-    from var(--t-base-colour)
     calc(0.5 + var(--t-mode-colour-scaling) * 0.3)
-    calc(c * 0.1)
-    h
+    calc(var(--t-base-colour-chroma) * 0.1)
+    var(--t-base-colour-hue)
   );
 }
 
 .layout {
   --background-base: var(--t-page-background-colour);
   --main-background: color-mix(in oklch, var(--background-base) 90%, var(--t-background-background-colour));
-  --top-shadow: inset oklch(from var(--background-base) calc(l + 0.1) c h) 0 1px 0;
-  --bottom-shadow: inset oklch(from var(--background-base) calc(l - 0.1) c h) 0 -1px 0;
+  --top-shadow: inset color-mix(in oklch, var(--background-base) 90%, white) 0 1px 0;
+  --bottom-shadow: inset color-mix(in oklch, var(--background-base) 90%, black) 0 -1px 0;
   --back-shadow: #0003 0 0 4rem;
   box-sizing: border-box;
   color: var(--t-font-colour-default);

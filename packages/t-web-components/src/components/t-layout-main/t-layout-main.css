@@ -9,10 +9,10 @@
 }
 
 .main .leftbar {
-  --background-base: oklch(from var(--t-page-background-colour) calc(l - var(--t-mode-colour-scaling) * 0.05) c h);
+  --background-base: color-mix(in oklch, var(--t-page-background-colour) 95%, var(--t-full-contrast-colour));
   --main-background: color-mix(in oklch, var(--background-base) 90%, var(--t-background-background-colour));
-  --top-shadow: inset oklch(from var(--background-base) calc(l + 0.1) c h) 0 1px 0;
-  --bottom-shadow: inset oklch(from var(--background-base) calc(l - 0.1) c h) 0 -1px 0;
+  --top-shadow: inset color-mix(in oklab, var(--background-base) 90%, white) 0 1px 0;
+  --bottom-shadow: inset color-mix(in oklab, var(--background-base) 90%, black) 0 -1px 0;
   /* --main-background, --top-shadow and --bottom-shadow are already defined at a higher level, but the change of --background-base does not change their values unless they are redefined here for some reason */
   background-color: var(--main-background);
   border-bottom-left-radius: var(--border-radius);
@@ -78,7 +78,7 @@
 
       .leftbar-toggle {
         backdrop-filter: var(--t-popover-backdrop-filter);
-        background-color: oklch(from var(--t-base-colour) l c h / var(--t-popover-alpha));
+        background-color: color-mix(in oklch, var(--t-base-colour) calc(var(--t-popover-alpha) * 100%), transparent);
         border: 0;
         color: var(--t-font-colour-default);
         display: block;

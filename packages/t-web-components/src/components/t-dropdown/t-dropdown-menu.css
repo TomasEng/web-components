@@ -33,31 +33,24 @@
 .t-dropdown-menu .dropdown-menu li:first-child .dropdown-item {
   border-top-left-radius: var(--t-popover-border-radius);
   border-top-right-radius: var(--t-popover-border-radius);
-  box-shadow: oklch(from var(--menu-item-background-colour) calc(l + 0.1) c h / var(--t-popover-alpha)) inset 0 1px;
+  box-shadow: color-mix(in oklab, var(--menu-item-background-colour) 85%, white) inset 0 1px;
 }
 
 .t-dropdown-menu .dropdown-menu li:last-child .dropdown-item {
   border-bottom-left-radius: var(--t-popover-border-radius);
   border-bottom-right-radius: var(--t-popover-border-radius);
-  box-shadow: oklch(from var(--menu-item-background-colour) calc(l - 0.1) c h / var(--t-popover-alpha)) inset 0 -1px;
+  box-shadow: color-mix(in oklab, var(--menu-item-background-colour) 85%, black) inset 0 -1px;
 }
 
 .t-dropdown-menu .dropdown-menu .dropdown-item:hover {
-  --menu-item-background-colour: oklch(
-    from var(--menu-item-background-colour-base)
-    calc(l - var(--t-mode-colour-scaling) * 0.1)
-    c
-    h
-    / var(--t-popover-alpha)
+  --menu-item-background-colour: color-mix(
+    in oklab,
+    var(--menu-item-background-colour-base) 90%,
+    var(--t-full-contrast-colour)
   );
 }
 
 .t-dropdown-menu .dropdown-menu .dropdown-item.selected {
-  --menu-item-background-colour: oklch(
-    from var(--t-base-colour)
-    l
-    c
-    h
-    / var(--t-popover-alpha)
+  --menu-item-background-colour: color-mix(in oklab, var(--t-base-colour) calc(var(--t-popover-alpha) * 100%), transparent);
   );
 }

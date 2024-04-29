@@ -65,7 +65,7 @@ header {
           }
 
           &:not(.open) a:hover {
-            background-color: oklch(from var(--t-page-background-colour) calc(l + 0.05) c h);
+            background-color: color-mix(in oklab, var(--t-page-background-colour) 90%, white);
             color: var(--t-font-colour-default);
           }
         }
@@ -145,13 +145,13 @@ header {
               }
 
               &:not(.open) a:hover {
-                background-color: oklch(from var(--t-page-background-colour) calc(l - 0.05 * var(--t-mode-colour-scaling)) c h);
+                background-color: color-mix(in oklab, var(--t-page-background-colour) 95%, var(--t-full-contrast-colour));
               }
 
               &.open a {
                 background-color: color-mix(in oklch, var(--t-base-colour) 75%, transparent);
-                --top-shadow: inset oklch(from var(--t-base-colour) calc(l + 0.1) c h) 0 1px 0;
-                --bottom-shadow: inset oklch(from var(--t-base-colour) calc(l - 0.1) c h) 0 -1px 0;
+                --top-shadow: inset color-mix(in oklab, var(--t-base-colour) 85%, white) 0 1px 0;
+                --bottom-shadow: inset color-mix(in oklab, var(--t-base-colour) 85%, black) 0 -1px 0;
               }
             }
           }

@@ -9,8 +9,8 @@ ul.t-article-list {
 
   li a {
     --background-colour: var(--t-small-contrast-colour);
-    --top-shadow-colour: oklch(from var(--background-colour) calc(l + 0.1) c h);
-    --bottom-shadow-colour: oklch(from var(--background-colour) calc(l - 0.1) c h);
+    --top-shadow-colour: color-mix(in oklab, var(--background-colour) 85%, white);
+    --bottom-shadow-colour: color-mix(in oklab, var(--background-colour) 85%, black);
     --top-shadow: inset var(--top-shadow-colour) 0 1px 0;
     --bottom-shadow: inset var(--bottom-shadow-colour) 0 -1px 0;
 

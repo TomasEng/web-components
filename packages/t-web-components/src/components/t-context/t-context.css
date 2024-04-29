@@ -9,20 +9,19 @@
     var(--t-base-colour-chroma)
     calc(var(--t-base-colour-hue) + var(--t-base-colour-hue-offset, 0) * 1turn)
   );
-  --t-background-background-colour: oklch(from var(--t-page-background-colour) calc(l * 0.9) c h);
+  --t-background-background-colour: color-mix(in oklab, var(--t-page-background-colour) 90%, black);
   --t-base-contrast-colour: unset;
   --t-base-fill-colour: var(--t-base-border-colour);
   --t-border-radius-default: 6px;
   --t-font-colour-default: var(--t-full-contrast-colour);
-  --t-small-contrast-colour: oklch(from var(--t-page-background-colour) calc(l - var(--t-mode-colour-scaling) * 0.05) c h);
-  --t-strong-contrast-colour: oklch(from var(--t-full-contrast-colour) calc(l + var(--t-mode-colour-scaling) * 0.4) c h);
-  --t-input-field-background-colour: oklch(from var(--t-full-contrast-colour) calc(l - var(--t-mode-colour-scaling) * 0.1) c h / 0.05);
+  --t-small-contrast-colour: color-mix(in oklab, var(--t-page-background-colour) 90%, var(--t-full-contrast-colour));
+  --t-input-field-background-colour: color-mix(in oklab, var(--t-full-contrast-colour) 5%, transparent);
   --t-page-background-colour: unset;
   --t-popover-alpha: 0.75;
   --t-popover-backdrop-filter: blur(8px);
   --t-popover-border-radius: var(--t-border-radius-default);
   --t-popover-shadow: #000c 0 4px 12px;
-  --t-popover-background-colour-base: oklch(from var(--t-page-background-colour) calc(l - var(--t-mode-colour-scaling) * 0.1) c h / var(--t-popover-alpha));
+  --t-popover-background-colour-base: color-mix(in oklab, var(--t-small-contrast-colour) calc(var(--t-popover-alpha) * 100%), transparent);
   --t-selection-background-colour: var(--t-base-fill-colour);
   --t-selection-font-colour: var(--t-font-colour-default);
   --t-transition-duration-long: 0.4s;

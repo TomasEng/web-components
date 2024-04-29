@@ -17,7 +17,7 @@
 .text-input:focus {
   transform: scale(1.05);
   background-color: var(--t-page-background-colour);
-  box-shadow: rgb(from var(--t-base-border-colour) r g b / 0.2) 0 0 24px;
+  box-shadow: color-mix(in oklab, var(--t-base-border-colour) 20%, transparent) 0 0 24px;
 }
 
 .text-input::selection {
