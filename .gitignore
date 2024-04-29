@@ -27,3 +27,5 @@ UserInterfaceState.xcuserstate
 .env
 
 *storybook.log
+
+.npmrc
