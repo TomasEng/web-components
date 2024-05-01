@@ -1,2 +1,0 @@
-import{r as t,g as e}from"./p-28e1c7ae.js";import{D as s,a as n}from"./p-c8eb6d2c.js";const c=class{constructor(e){t(this,e);this.html=undefined;this.script=undefined}connectedCallback(){this.element.innerHTML=`\n      <t-context baseHue="${s}" baseChroma="${n}" id="context">\n        ${this.html}\n      </t-context>\n    `;if(this.script){const t=document.createElement("script");document.body.appendChild(t);t.innerHTML=this.script}}get element(){return e(this)}};export{c as preview_component};
-//# sourceMappingURL=p-3f5008a3.entry.js.map
