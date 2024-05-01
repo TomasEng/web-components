@@ -16,6 +16,7 @@
     "clean": "lerna clean",
     "prepare": "lerna run prepare",
     "patch": "lerna version patch",
-    "publish": "lerna publish"
+    "publish": "lerna publish",
+    "deploy-demo": "cd packages/t-web-components && npm run deploy"
   }
 }

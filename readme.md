@@ -38,6 +38,7 @@ defineCustomElements();
 ```
 
 For at komponentene skal se riktige ut, må alt brukes inne i komponenten `t-context` (eller `TContext` i React).
+Dette vil blant annet tilgjengeliggjøre globale CSS-variabler.
 Eksempel:
 
 ```html
@@ -83,4 +84,9 @@ Alle kommandoer kjøres i rotmappen.
 2. Hvis noen filer har blitt endret, commit endringene.
 3. Kjør `npm run patch` for å øke versjonsnummeret til pakkene.
 4. Kjør `npm run build` igjen for å bygge pakkene med nytt versjonsnummer.
-5. Kjør `npm run publish` for å publisere pakkene til Npm-registret. (`npm publish` vil ikke fungere, da Lerna håndterer publiseringen.)
+5. Kjør `npm run publish` for å publisere pakkene til Npm-registret. (Siden Lerna håndterer publiseringsprosessen, vil ikke `npm publish` fungere.)
+
+## Utrulling av demoapplikasjon
+Når `t-web-components` bygges, blir det generert en mappe som heter `www` i pakkemappen.
+Det er denne som innholder demoapplikasjonen som kjører på Github Pages.
+Denne kan rulles ut ved å kjøre `npm run deploy-demo` i rotmappen.
