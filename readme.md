@@ -74,3 +74,13 @@ npm run test
 ### Bygging og generering av React-komponenter
 Pakkene blir bygget ved å kjøre `npm run build` i mappen til pakken det gjelder.
 Når man bygger `t-web-components`, blir også React-komponentene automatisk generert og lagret i `t-web-components-react`.
+
+## Publisering
+Prosjektet bruker verktøyet Lerna til å håndtere publisering av pakkene.
+Ved å følge følgende instruksjoner, blir begge pakkene oppdatert med ny patchversjon og publisert til Npm-registret.
+Alle kommandoer kjøres i rotmappen.
+1. Kjør `npm run build` for å bygge pakkene. Dette må gjøres først for å kjøre genereringsskriptene til Stencil.
+2. Hvis noen filer har blitt endret, commit endringene.
+3. Kjør `npm run patch` for å øke versjonsnummeret til pakkene.
+4. Kjør `npm run build` igjen for å bygge pakkene med nytt versjonsnummer.
+5. Kjør `npm run publish` for å publisere pakkene til Npm-registret. (`npm publish` vil ikke fungere, da Lerna håndterer publiseringen.)
