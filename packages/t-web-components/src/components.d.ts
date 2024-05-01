@@ -59,6 +59,7 @@ export namespace Components {
     interface TContext {
         "baseChroma": number;
         "baseHue": number;
+        "contrast": number;
     }
     interface TDropdownMenu {
         "buttonAttributes": ButtonAttributes;
@@ -493,6 +494,7 @@ declare namespace LocalJSX {
     interface TContext {
         "baseChroma"?: number;
         "baseHue"?: number;
+        "contrast"?: number;
     }
     interface TDropdownMenu {
         "buttonAttributes"?: ButtonAttributes;

@@ -22,7 +22,7 @@ ul.t-article-list {
     text-decoration: none;
 
     &:hover {
-      --background-colour: var(--t-base-colour);
+      --background-colour: var(--t-base-low-contrast-colour);
     }
 
     .item-title {

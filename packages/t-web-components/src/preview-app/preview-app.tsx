@@ -10,12 +10,14 @@ export class PreviewApp {
   @State() baseHue = DEFAULT_HUE;
   @State() baseChroma = DEFAULT_CHROMA;
   @State() numberOfHues = DEFAULT_NUMBER_OF_HUES;
+  @State() contrast = 1;
   @State() urlHash = window.location.hash;
 
   handleColourSettingsChange = ({ detail }: PageComponentsCustomEvent<ColourSettings>) => {
     this.baseHue = detail.hue;
     this.baseChroma = detail.chroma;
     this.numberOfHues = detail.numberOfHues;
+    this.contrast = detail.contrast;
   };
 
   connectedCallback() {
@@ -35,9 +37,10 @@ export class PreviewApp {
       hue: this.baseHue,
       chroma: this.baseChroma,
       numberOfHues: this.numberOfHues,
+      contrast: this.contrast,
     };
     return (
-      <t-context baseHue={this.baseHue} baseChroma={this.baseChroma}>
+      <t-context baseHue={this.baseHue} baseChroma={this.baseChroma} contrast={this.contrast}>
         <t-layout>
           <t-layout-header
             slot='header'

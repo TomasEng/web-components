@@ -18,22 +18,14 @@ npm install t-web-components
 
 ### React
 ```bash
-npm install t-web-components-react
+npm install t-web-components t-web-components-react
 ```
 
 ## Bruk
 Komponentene blir tilgjengliggjort ved hjelp av funksjonen `defineCustomElements`.
 Denne må kjøres før komponentene kan tas i bruk.
-
-I ren Javascript:
 ```javascript
-import {defineCustomElements} from "t-web-components";
-defineCustomElements();
-```
-
-I React:
-```javascript
-import {defineCustomElements} from "t-web-components-react";
+import {defineCustomElements} from "t-web-components/loader";
 defineCustomElements();
 ```
 

@@ -5,4 +5,5 @@ export type GlobalState = {
   mode: Mode;
   baseHue: number;
   baseChroma: number;
+  contrast: number;
 }

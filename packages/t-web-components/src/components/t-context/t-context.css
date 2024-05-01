@@ -11,6 +11,7 @@
   );
   --t-background-background-colour: color-mix(in oklab, var(--t-page-background-colour) 90%, black);
   --t-base-contrast-colour: unset;
+  --t-base-low-contrast-colour: unset;
   --t-base-fill-colour: var(--t-base-border-colour);
   --t-border-radius-default: 6px;
   --t-clickable-area-size: 44px;

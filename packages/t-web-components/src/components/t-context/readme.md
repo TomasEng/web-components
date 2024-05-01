@@ -11,6 +11,7 @@
 | ------------ | ------------- | ----------- | -------- | ------- |
 | `baseChroma` | `base-chroma` |             | `number` | `0.4`   |
 | `baseHue`    | `base-hue`    |             | `number` | `263`   |
+| `contrast`   | `contrast`    |             | `number` | `1`     |
 
 
 ## Dependencies

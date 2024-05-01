@@ -53,6 +53,7 @@ graph TD;
   component-colour-settings --> t-hue-picker
   component-colour-settings --> t-saturation-picker
   component-colour-settings --> t-integer-picker
+  component-colour-settings --> t-slider
   t-hue-picker --> t-slider
   t-slider --> internal-input-wrapper
   t-saturation-picker --> t-slider

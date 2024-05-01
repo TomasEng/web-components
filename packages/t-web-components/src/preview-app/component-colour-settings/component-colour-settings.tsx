@@ -1,6 +1,11 @@
 import { Component, EventEmitter, h, Prop, Event } from '@stencil/core';
 import { ColourSettings } from '../../types/ColourSettings';
-import { THuePickerCustomEvent, TIntegerPickerCustomEvent, TSaturationPickerCustomEvent } from '../../components';
+import {
+  THuePickerCustomEvent,
+  TIntegerPickerCustomEvent,
+  TSaturationPickerCustomEvent,
+  TSliderCustomEvent,
+} from '../../components';
 
 @Component({
   tag: 'component-colour-settings',
@@ -26,6 +31,11 @@ export class ComponentColourSettings {
     this.changeSettings.emit(newSettings);
   };
 
+  handleContrastChange = ({ detail: contrast }: TSliderCustomEvent<number>) => {
+    const newSettings: ColourSettings = { ...this.settings, contrast };
+    this.changeSettings.emit(newSettings);
+  };
+
   render() {
     return (
       <t-fieldset legend='Innstillinger'>
@@ -42,6 +52,14 @@ export class ComponentColourSettings {
             value={this.settings.numberOfHues}
             min={1}
             max={10}
+          />
+          <t-slider
+            label="Kontrast"
+            max={2}
+            min={0}
+            onSliderChange={this.handleContrastChange}
+            step={0.01}
+            value={this.settings.contrast}
           />
         </t-column>
       </t-fieldset>

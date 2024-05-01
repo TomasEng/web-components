@@ -26,7 +26,7 @@ const Item = ({ item }: { item: TArticleListItem }) => {
     <a href={item.href} title={item.title}>
       <span class='item-title'>{item.title}</span>
       <span class='item-intro'>{item.intro}</span>
-      <span class='item-date'>{item.date.toLocaleDateString()}</span>
+      <span class='item-date'>{item.date?.toLocaleDateString()}</span>
     </a>
   </li>;
 }

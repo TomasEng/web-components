@@ -1,6 +1,6 @@
 export type TArticleListItem = {
   title: string;
   intro: string;
-  date: Date;
+  date?: Date;
   href: string;
 }

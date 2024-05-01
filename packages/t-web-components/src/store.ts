@@ -7,6 +7,7 @@ const { state, onChange } = createStore<GlobalState>({
   mode: getMode(),
   baseHue: 160,
   baseChroma: 0.4,
+  contrast: 1,
 });
 
 onChange('selectedMode', (selectedMode) => {

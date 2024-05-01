@@ -27,6 +27,7 @@
 
 ### Used by
 
+ - [component-colour-settings](../../preview-app/component-colour-settings)
  - [t-hue-picker](../t-hue-picker)
  - [t-saturation-picker](../t-saturation-picker)
 
@@ -38,6 +39,7 @@
 ```mermaid
 graph TD;
   t-slider --> internal-input-wrapper
+  component-colour-settings --> t-slider
   t-hue-picker --> t-slider
   t-saturation-picker --> t-slider
   style t-slider fill:#f9f,stroke:#333,stroke-width:4px

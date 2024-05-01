@@ -4,10 +4,11 @@ import {
   BASE_COLOUR_LUMINANCE_DARK_MODE,
   BASE_COLOUR_LUMINANCE_LIGHT_MODE,
   DARK_MODE_BACKGROUND_LUMINANCE,
-  DEFAULT_BORDER_TO_BACKGROUND_CONTRAST,
+  HIGH_CONTRAST,
   GRADIENT_FACTOR_DARK_MODE,
   GRADIENT_FACTOR_LIGHT_MODE,
   LIGHT_MODE_BACKGROUND_LUMINANCE,
+  LOW_CONTRAST,
 } from '../../constants';
 import { asPercents } from '../../utils/utils';
 import state from '../../store';
@@ -35,6 +36,7 @@ export class InternalStyleProvider {
     this.setCssVariable('--t-base-contrast-colour', this.baseContrastColour().getOklchCode());
     this.setCssVariable('--t-base-fill-colour', this.baseContrastColour().getOklchCode());
     this.setCssVariable('--t-gradient-factor', this.gradientFactor().toFixed(2));
+    this.setCssVariable('--t-base-low-contrast-colour', this.baseLowContrastColour().getOklchCode());
     return <slot/>;
   }
 
@@ -63,8 +65,18 @@ export class InternalStyleProvider {
 
   private baseContrastColourLuminance(): number {
     return this.isDarkMode()
-      ? getIncreasedLuminanceByContrast(DARK_MODE_BACKGROUND_LUMINANCE, DEFAULT_BORDER_TO_BACKGROUND_CONTRAST)
-      : getDecreasedLuminanceByContrast(LIGHT_MODE_BACKGROUND_LUMINANCE, DEFAULT_BORDER_TO_BACKGROUND_CONTRAST);
+      ? getIncreasedLuminanceByContrast(DARK_MODE_BACKGROUND_LUMINANCE, HIGH_CONTRAST)
+      : getDecreasedLuminanceByContrast(LIGHT_MODE_BACKGROUND_LUMINANCE, HIGH_CONTRAST);
+  }
+
+  private baseLowContrastColour(): Chromator {
+    return this.baseColour().copy().setRelativeLuminance(this.baseLowContrastColourLuminance(), 'oklch');
+  }
+
+  private baseLowContrastColourLuminance(): number {
+    return this.isDarkMode()
+      ? getIncreasedLuminanceByContrast(DARK_MODE_BACKGROUND_LUMINANCE, LOW_CONTRAST)
+      : getDecreasedLuminanceByContrast(LIGHT_MODE_BACKGROUND_LUMINANCE, LOW_CONTRAST);
   }
 
   private gradientFactor(): number {
