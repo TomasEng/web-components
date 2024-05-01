@@ -1,4 +1,4 @@
-import { Component, h, Prop } from '@stencil/core';
+import { Component, EventEmitter, h, Prop, Event } from '@stencil/core';
 import { ComponentHue } from '../../types/ComponentHue';
 
 @Component({
@@ -12,6 +12,8 @@ export class TTextfield {
   @Prop() label: string;
   @Prop() value: string;
 
+  @Event() valueChange: EventEmitter<string>;
+
   render() {
     return <internal-style-provider hueOffsetInTurns={this.hue}>
       <internal-input-wrapper>
@@ -22,6 +24,9 @@ export class TTextfield {
           class="text-input"
           type="text"
           value={this.value}
+          onInput={(e) => {
+            this.valueChange.emit((e.target as HTMLInputElement).value);
+          }}
         />
       </internal-input-wrapper>
     </internal-style-provider>;

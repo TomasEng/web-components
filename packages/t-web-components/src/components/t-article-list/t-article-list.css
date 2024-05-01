@@ -6,16 +6,12 @@ ul.t-article-list {
   margin: 0;
   display: flex;
   flex-direction: column;
+  gap: 2px;
 
   li a {
     --background-colour: var(--t-small-contrast-colour);
-    --top-shadow-colour: color-mix(in oklab, var(--background-colour) 85%, white);
-    --bottom-shadow-colour: color-mix(in oklab, var(--background-colour) 85%, black);
-    --top-shadow: inset var(--top-shadow-colour) 0 1px 0;
-    --bottom-shadow: inset var(--bottom-shadow-colour) 0 -1px 0;
 
     background-color: var(--background-colour);
-    box-shadow: var(--top-shadow), var(--bottom-shadow);
     color: var(--t-font-colour-default);
     column-gap: var(--t-spacing-in-group);
     display: grid;

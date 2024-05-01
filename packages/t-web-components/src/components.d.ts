@@ -165,6 +165,10 @@ export interface TSwitchCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLTSwitchElement;
 }
+export interface TTextfieldCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLTTextfieldElement;
+}
 declare global {
     interface HTMLComponentColourSettingsElementEventMap {
         "changeSettings": ColourSettings;
@@ -405,7 +409,18 @@ declare global {
         prototype: HTMLTSwitchElement;
         new (): HTMLTSwitchElement;
     };
+    interface HTMLTTextfieldElementEventMap {
+        "valueChange": string;
+    }
     interface HTMLTTextfieldElement extends Components.TTextfield, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLTTextfieldElementEventMap>(type: K, listener: (this: HTMLTTextfieldElement, ev: TTextfieldCustomEvent<HTMLTTextfieldElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLTTextfieldElementEventMap>(type: K, listener: (this: HTMLTTextfieldElement, ev: TTextfieldCustomEvent<HTMLTTextfieldElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLTTextfieldElement: {
         prototype: HTMLTTextfieldElement;
@@ -558,6 +573,7 @@ declare namespace LocalJSX {
     interface TTextfield {
         "hue"?: ComponentHue;
         "label"?: string;
+        "onValueChange"?: (event: TTextfieldCustomEvent<string>) => void;
         "value"?: string;
     }
     interface IntrinsicElements {
