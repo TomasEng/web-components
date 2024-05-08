@@ -9,6 +9,7 @@ import {
 
 @Component({
   tag: 'component-colour-settings',
+  styleUrl: 'component-colour-settings.css',
 })
 export class ComponentColourSettings {
 
@@ -54,6 +55,7 @@ export class ComponentColourSettings {
             max={10}
           />
           <t-slider
+            class="contrast-slider"
             label="Kontrast"
             max={2}
             min={0}

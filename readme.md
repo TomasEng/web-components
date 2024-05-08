@@ -47,6 +47,7 @@ Den skal oppdatere seg av seg selv når man lagrer, men det kan være man må gi
 ### Testing
 Det er satt opp automatiserte tester for Jest og Playwright.
 Playwright brukes til ende-til-ende-testing av komponentene, mens Jest brukes til enhetstesing av interne funksjoner.
+Jeg har valgt å bruke Playwight fremfor Stencils innebygde testverktøy siden Playwright støtter rollebaserte selektorer (`getByRole` osv.) og tester med flere nettlesere.
 Testene kan kjøres ved hjelp av følgende kommandoer i `t-web-components`-mappen:
 
 #### Enhetstester med Jest

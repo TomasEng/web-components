@@ -100,6 +100,8 @@ export class PageComponents {
           ]} />
           <t-heading level={2}>Spinner</t-heading>
           <t-spinner />
+          <t-heading level={2}>Verktøyhjelp</t-heading>
+          Lorem ipsum dolor sit amet. <t-tooltip><span slot="trigger">[1]</span><span slot="content">Bla bla</span></t-tooltip>
         </div>
       </t-layout-main>
     );

@@ -1,0 +1,7 @@
+.contrast-slider {
+  --slider-background: linear-gradient(
+    to right,
+    transparent,
+    var(--t-full-contrast-colour)
+  );
+}

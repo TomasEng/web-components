@@ -137,6 +137,8 @@ export namespace Components {
         "label": string;
         "value": string;
     }
+    interface TTooltip {
+    }
 }
 export interface ComponentColourSettingsCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -427,6 +429,12 @@ declare global {
         prototype: HTMLTTextfieldElement;
         new (): HTMLTTextfieldElement;
     };
+    interface HTMLTTooltipElement extends Components.TTooltip, HTMLStencilElement {
+    }
+    var HTMLTTooltipElement: {
+        prototype: HTMLTTooltipElement;
+        new (): HTMLTTooltipElement;
+    };
     interface HTMLElementTagNameMap {
         "component-colour-settings": HTMLComponentColourSettingsElement;
         "internal-input-wrapper": HTMLInternalInputWrapperElement;
@@ -456,6 +464,7 @@ declare global {
         "t-spinner": HTMLTSpinnerElement;
         "t-switch": HTMLTSwitchElement;
         "t-textfield": HTMLTTextfieldElement;
+        "t-tooltip": HTMLTTooltipElement;
     }
 }
 declare namespace LocalJSX {
@@ -578,6 +587,8 @@ declare namespace LocalJSX {
         "onValueChange"?: (event: TTextfieldCustomEvent<string>) => void;
         "value"?: string;
     }
+    interface TTooltip {
+    }
     interface IntrinsicElements {
         "component-colour-settings": ComponentColourSettings;
         "internal-input-wrapper": InternalInputWrapper;
@@ -607,6 +618,7 @@ declare namespace LocalJSX {
         "t-spinner": TSpinner;
         "t-switch": TSwitch;
         "t-textfield": TTextfield;
+        "t-tooltip": TTooltip;
     }
 }
 export { LocalJSX as JSX };
@@ -641,6 +653,7 @@ declare module "@stencil/core" {
             "t-spinner": LocalJSX.TSpinner & JSXBase.HTMLAttributes<HTMLTSpinnerElement>;
             "t-switch": LocalJSX.TSwitch & JSXBase.HTMLAttributes<HTMLTSwitchElement>;
             "t-textfield": LocalJSX.TTextfield & JSXBase.HTMLAttributes<HTMLTTextfieldElement>;
+            "t-tooltip": LocalJSX.TTooltip & JSXBase.HTMLAttributes<HTMLTTooltipElement>;
         }
     }
 }

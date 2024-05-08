@@ -30,6 +30,7 @@
     "deploy": "gh-pages -d www"
   },
   "dependencies": {
+    "@floating-ui/dom": "1.6.5",
     "@popperjs/core": "^2.11.8",
     "@stencil/core": "4.13.0",
     "bootstrap": "5.3.3",

@@ -1,0 +1,30 @@
+#tooltip {
+  backdrop-filter: var(--t-popover-backdrop-filter);
+  background: var(--t-popover-background-colour-base);
+  border-radius: var(--t-popover-border-radius);
+  box-shadow:
+    color-mix(in oklab, var(--t-popover-background-colour-base) 85%, white) inset 0 1px,
+    color-mix(in oklab, var(--t-popover-background-colour-base) 85%, black) inset 0 -1px,
+    var(--t-popover-shadow);
+  color: var(--t-full-contrast-colour);
+  left: 0;
+  padding: var(--t-spacing-in-group);
+  position: absolute;
+  top: 0;
+  width: max-content;
+}
+
+#tooltip.closed {
+  display: none;
+}
+
+#button {
+  background: none;
+  border: none;
+  color: var(--t-link-colour);
+  cursor: pointer;
+  font-family: var(--t-default-font-family);
+  font-size: var(--t-default-font-size);
+  margin: 0;
+  padding: 0;
+}
