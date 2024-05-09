@@ -7,15 +7,8 @@
     color-mix(in oklab, var(--t-popover-background-colour-base) 85%, black) inset 0 -1px,
     var(--t-popover-shadow);
   color: var(--t-full-contrast-colour);
-  left: 0;
   padding: var(--t-spacing-in-group);
-  position: absolute;
-  top: 0;
   width: max-content;
-}
-
-#tooltip.closed {
-  display: none;
 }
 
 #button {

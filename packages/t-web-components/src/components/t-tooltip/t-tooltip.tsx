@@ -1,5 +1,5 @@
-import { Component, Host, h, Element, State } from '@stencil/core';
-import { computePosition, flip, shift } from '@floating-ui/dom';
+import { Component, h, Element, State } from '@stencil/core';
+import { TOOLTIP_HIDE_DELAY_MILLISECONDS } from '../../constants';
 
 @Component({
   tag: 't-tooltip',
@@ -12,41 +12,51 @@ export class TTooltip {
 
   @State() open: boolean = false;
 
+  private closeTimeoutId: ReturnType<typeof setTimeout>;
+
+  openTooltip() {
+    this.open = true;
+    this.clearCloseTimeout();
+  }
+
+  startCloseTimeout() {
+    this.clearCloseTimeout();
+    this.closeTimeoutId = setTimeout(() => {
+      this.closeTooltip();
+    }, TOOLTIP_HIDE_DELAY_MILLISECONDS);
+  }
+
+  clearCloseTimeout() {
+    clearTimeout(this.closeTimeoutId);
+  }
+
+  closeTooltip() {
+    this.open = false;
+  }
+
   render() {
     return (
-      <Host>
+      <t-floating-element visible={this.open}>
         <button
           id="button"
           aria-describedby="tooltip"
-          onMouseEnter={() => this.open = true}
-          onMouseLeave={() => this.open = false}
-          onFocus={() => this.open = true}
-          onBlur={() => this.open = false}
+          onMouseEnter={() => this.openTooltip()}
+          onMouseLeave={() => this.startCloseTimeout()}
+          onFocus={() => this.openTooltip()}
+          onBlur={() => this.closeTooltip()}
+          slot="anchor"
         >
-          <slot name="trigger"></slot>
+          <slot name="trigger" />
         </button>
-        <div id="tooltip" role="tooltip" class={this.open ? 'open' : 'closed'}>
-          <slot name="content"></slot>
+        <div
+          id="tooltip"
+          slot="content"
+          onMouseEnter={() => this.clearCloseTimeout()}
+          onMouseLeave={() => this.startCloseTimeout()}
+        >
+          <slot name="content"/>
         </div>
-      </Host>
+      </t-floating-element>
     );
-  }
-
-  componentDidUpdate() {
-    this.updatePosition();
-  }
-
-  private updatePosition() {
-    const button = this.element.shadowRoot.querySelector('#button') as HTMLButtonElement;
-    const tooltip = this.element.shadowRoot.querySelector('#tooltip') as HTMLDivElement;
-    computePosition(button, tooltip,{
-      placement: 'top',
-      middleware: [flip(), shift()],
-    }).then(({x, y}) => {
-      Object.assign(tooltip.style, {
-        left: `${x}px`,
-        top: `${y}px`,
-      });
-    });
   }
 }

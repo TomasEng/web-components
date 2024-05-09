@@ -72,6 +72,10 @@ export namespace Components {
     interface TFieldset {
         "legend": string;
     }
+    interface TFloatingElement {
+        "placement": 'top' | 'right' | 'bottom' | 'left';
+        "visible": boolean;
+    }
     interface THeading {
         "level": 1 | 2 | 3 | 4 | 5 | 6;
     }
@@ -147,6 +151,10 @@ export interface ComponentColourSettingsCustomEvent<T> extends CustomEvent<T> {
 export interface PageComponentsCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPageComponentsElement;
+}
+export interface TFloatingElementCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLTFloatingElementElement;
 }
 export interface THuePickerCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -272,6 +280,23 @@ declare global {
     var HTMLTFieldsetElement: {
         prototype: HTMLTFieldsetElement;
         new (): HTMLTFieldsetElement;
+    };
+    interface HTMLTFloatingElementElementEventMap {
+        "clickOutside": void;
+    }
+    interface HTMLTFloatingElementElement extends Components.TFloatingElement, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLTFloatingElementElementEventMap>(type: K, listener: (this: HTMLTFloatingElementElement, ev: TFloatingElementCustomEvent<HTMLTFloatingElementElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLTFloatingElementElementEventMap>(type: K, listener: (this: HTMLTFloatingElementElement, ev: TFloatingElementCustomEvent<HTMLTFloatingElementElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLTFloatingElementElement: {
+        prototype: HTMLTFloatingElementElement;
+        new (): HTMLTFloatingElementElement;
     };
     interface HTMLTHeadingElement extends Components.THeading, HTMLStencilElement {
     }
@@ -449,6 +474,7 @@ declare global {
         "t-context": HTMLTContextElement;
         "t-dropdown-menu": HTMLTDropdownMenuElement;
         "t-fieldset": HTMLTFieldsetElement;
+        "t-floating-element": HTMLTFloatingElementElement;
         "t-heading": HTMLTHeadingElement;
         "t-hue-picker": HTMLTHuePickerElement;
         "t-integer-picker": HTMLTIntegerPickerElement;
@@ -515,6 +541,11 @@ declare namespace LocalJSX {
     }
     interface TFieldset {
         "legend"?: string;
+    }
+    interface TFloatingElement {
+        "onClickOutside"?: (event: TFloatingElementCustomEvent<void>) => void;
+        "placement"?: 'top' | 'right' | 'bottom' | 'left';
+        "visible"?: boolean;
     }
     interface THeading {
         "level"?: 1 | 2 | 3 | 4 | 5 | 6;
@@ -603,6 +634,7 @@ declare namespace LocalJSX {
         "t-context": TContext;
         "t-dropdown-menu": TDropdownMenu;
         "t-fieldset": TFieldset;
+        "t-floating-element": TFloatingElement;
         "t-heading": THeading;
         "t-hue-picker": THuePicker;
         "t-integer-picker": TIntegerPicker;
@@ -638,6 +670,7 @@ declare module "@stencil/core" {
             "t-context": LocalJSX.TContext & JSXBase.HTMLAttributes<HTMLTContextElement>;
             "t-dropdown-menu": LocalJSX.TDropdownMenu & JSXBase.HTMLAttributes<HTMLTDropdownMenuElement>;
             "t-fieldset": LocalJSX.TFieldset & JSXBase.HTMLAttributes<HTMLTFieldsetElement>;
+            "t-floating-element": LocalJSX.TFloatingElement & JSXBase.HTMLAttributes<HTMLTFloatingElementElement>;
             "t-heading": LocalJSX.THeading & JSXBase.HTMLAttributes<HTMLTHeadingElement>;
             "t-hue-picker": LocalJSX.THuePicker & JSXBase.HTMLAttributes<HTMLTHuePickerElement>;
             "t-integer-picker": LocalJSX.TIntegerPicker & JSXBase.HTMLAttributes<HTMLTIntegerPickerElement>;
