@@ -1,4 +1,4 @@
-import { Component, h, Prop } from '@stencil/core';
+import { Component, h, Prop, VNode } from '@stencil/core';
 import { ComponentHue } from '../../types/ComponentHue';
 import { ButtonAttributes } from '../../types/HTMLAttributes';
 
@@ -11,11 +11,13 @@ export class TButton {
 
   @Prop() hue: ComponentHue = 0;
   @Prop() buttonAttributes: ButtonAttributes;
+  @Prop() icon?: VNode = undefined;
 
   render() {
     return <internal-style-provider hueOffsetInTurns={this.hue}>
       <button class='t-button' type='button' {...this.buttonAttributes}>
-        <slot />
+        {this.icon && <span class='icon' aria-hidden={true}>{this.icon}</span>}
+        <slot/>
       </button>
     </internal-style-provider>;
   }

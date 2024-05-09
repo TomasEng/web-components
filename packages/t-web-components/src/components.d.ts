@@ -53,6 +53,7 @@ export namespace Components {
     interface TButton {
         "buttonAttributes": ButtonAttributes;
         "hue": ComponentHue;
+        "icon"?: VNode;
     }
     interface TColumn {
     }
@@ -523,6 +524,7 @@ declare namespace LocalJSX {
     interface TButton {
         "buttonAttributes"?: ButtonAttributes;
         "hue"?: ComponentHue;
+        "icon"?: VNode;
     }
     interface TColumn {
     }

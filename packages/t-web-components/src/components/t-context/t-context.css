@@ -36,6 +36,8 @@
   --t-transition-duration-long: 0.4s;
   --t-transition-duration-medium: 0.2s;
   --t-transition-duration-short: 0.1s;
+  --t-z-index-tooltip: 100;
+  --t-z-index-dropdown-menu: 200;
 
   font-family: Calibri, Arial, sans-serif;
   font-size: var(--t-default-font-size);

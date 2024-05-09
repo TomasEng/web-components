@@ -9,6 +9,7 @@ import { CogIcon } from '../../icons/CogIcon';
 @Component({
   tag: 't-mode-switcher',
   styleUrl: 't-mode-switcher.css',
+  shadow: true,
 })
 export class TModeSwitcher {
 
@@ -21,7 +22,8 @@ export class TModeSwitcher {
 
     return <internal-style-provider hueOffsetInTurns={this.hue}>
       <t-dropdown-menu
-        label={<>{icon}{this.label && <span class='label'>{this.label}</span>}</>}
+        icon={icon}
+        label={this.label}
         buttonAttributes={{title: 'Velg modus'}}
         items={[
           {

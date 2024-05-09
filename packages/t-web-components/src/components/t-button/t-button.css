@@ -12,16 +12,21 @@
     color-mix(in oklab, white 30%, transparent) 0 1px 1px,
     color-mix(in oklab, black 10%, transparent) 0 -1px 1px,
     rgb(0 0 0 / 0.2) 0 -1px 1px;
+  align-items: center;
   border-radius: 100px;
   border: 0 solid var(--t-base-border-colour);
   color: var(--t-font-colour-default);
   cursor: pointer;
   display: inline-flex;
-  align-items: center;
   font-size: 1rem;
+  gap: var(--t-spacing-inline);
+  line-height: 1;
   padding: .5rem;
   transition: box-shadow var(--transistion-duration);
-  line-height: 1;
+
+  .icon {
+    align-self: center;
+  }
 }
 
 .t-button:hover {

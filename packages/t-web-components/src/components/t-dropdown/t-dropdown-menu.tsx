@@ -1,4 +1,4 @@
-import { Component, h, Prop, VNode } from '@stencil/core';
+import { Component, h, Prop, State, VNode, Element } from '@stencil/core';
 import { ComponentHue } from '../../types/ComponentHue';
 import 'bootstrap/js/dist/dropdown';
 import { ButtonAttributes } from '../../types/HTMLAttributes';
@@ -7,7 +7,8 @@ import { CheckmarkIcon } from '../../icons/CheckmarkIcon';
 
 @Component({
   tag: 't-dropdown-menu',
-  styleUrls: ['t-dropdown-menu.css', '../t-button/t-button.css'],
+  styleUrl: 't-dropdown-menu.css',
+  shadow: true,
 })
 export class TDropdownMenu {
 
@@ -18,30 +19,113 @@ export class TDropdownMenu {
   @Prop() items: TDropdownMenuItem[] = [];
   @Prop() icon?: VNode = undefined;
 
+  @State() expanded = false;
+  @State() focusedIndex = -1;
+
+  @Element() host: HTMLElement;
+
+  get menu(): HTMLUListElement {
+    return this.host.shadowRoot.querySelector('#menu');
+  }
+
+  get menuItems(): NodeListOf<HTMLButtonElement> {
+    return this.menu.querySelectorAll('button');
+  }
+
+  collapse() {
+    this.expanded = false;
+    this.focusedIndex = -1;
+  }
+
+  expand() {
+    this.expanded = true;
+  }
+
+  focusOnIndex(index: number) {
+    this.focusedIndex = index;
+  }
+
+  handleKeyDown(event: KeyboardEvent) {
+    const { key } = event;
+    switch (key) {
+      case 'ArrowDown':
+        event.preventDefault();
+        this.expand();
+        this.focusOnIndex(0);
+        break;
+      case 'ArrowUp':
+        event.preventDefault();
+        this.expand();
+        this.focusOnIndex(this.items.length - 1);
+        break;
+      case 'Escape':
+        this.collapse();
+        break;
+    }
+  }
+
+  componentDidRender() {
+    if (this.focusedIndex > -1) {
+      setTimeout(() => this.menuItems[this.focusedIndex].focus()); // setTimeout is a workaround for the following Stencil bug: https://github.com/ionic-team/stencil/issues/3772
+    }
+  }
+
   render() {
     return <internal-style-provider hueOffsetInTurns={this.hue}>
-      <div class="t-dropdown-menu dropdown">
-        <button
-          aria-expanded="false"
-          class="t-button dropdown-toggle"
-          data-bs-toggle="dropdown"
-          type="button"
-          {...this.buttonAttributes}
+      <t-floating-element
+        class="t-dropdown-menu"
+        onClickOutside={() => this.collapse()}
+        placement="bottom"
+        visible={this.expanded}
+      >
+        <t-button
+          buttonAttributes={{
+            'aria-expanded': this.expanded ? 'true' : 'false',
+            onClick: () => this.expanded = !this.expanded,
+            onKeyDown: (event: KeyboardEvent) => this.handleKeyDown(event),
+            ...this.buttonAttributes,
+          }}
+          hue={this.hue}
+          icon={this.icon}
+          slot="anchor"
         >
           {this.label}
-        </button>
-        <ul class="dropdown-menu">
-          {this.items.map(item => this.renderOption(item))}
+        </t-button>
+        <ul class="dropdown-menu" slot="content" id="menu">
+          {this.items.map((item, index) => this.renderOption(item, index))}
         </ul>
-      </div>
+      </t-floating-element>
     </internal-style-provider>;
   }
 
-  private renderOption({label, action, selected, icon, buttonAttributes}: TDropdownMenuItem) {
+  private renderOption({label, action, selected, icon, buttonAttributes}: TDropdownMenuItem, index: number) {
+    const handleClick = (event: MouseEvent) => {
+      this.collapse();
+      action(event);
+    }
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      switch (event.key) {
+        case 'ArrowDown':
+          event.preventDefault();
+          this.focusOnIndex(Math.min(index + 1, this.items.length - 1));
+          break;
+        case 'ArrowUp':
+          event.preventDefault();
+          this.focusOnIndex(Math.max(0, index - 1));
+          break;
+        case 'Escape':
+          this.collapse();
+          break;
+      }
+    }
+
     return <li>
       <button
         class={{'dropdown-item': true, selected}}
-        onClick={action}
+        onClick={handleClick}
+        onKeyDown={handleKeyDown}
+        tabIndex={this.focusedIndex === index ? 0 : -1}
         {...buttonAttributes}
       >
         {icon}

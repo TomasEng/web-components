@@ -9,6 +9,7 @@
   color: var(--t-full-contrast-colour);
   padding: var(--t-spacing-in-group);
   width: max-content;
+  z-index: var(--t-z-index-tooltip);
 }
 
 #button {
