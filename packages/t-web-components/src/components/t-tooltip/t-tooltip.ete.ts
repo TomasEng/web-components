@@ -39,4 +39,24 @@ test.describe('t-tooltip', () => {
     await button.blur();
     await expect(page.getByRole('tooltip')).not.toBeVisible();
   });
+
+  test('Skjuler verktøyhjelp når det blir klikket utenfor', async ({ page }) => {
+    await renderTooltip(page);
+    const button = page.getByRole('button', { name: tekst });
+    await button.focus();
+    const tooltip = page.getByRole('tooltip');
+    await expect(tooltip).toBeVisible();
+    const tooltipBox = await tooltip.boundingBox();
+    await page.mouse.click(tooltipBox.width * 2, tooltipBox.height * 2);
+    await expect(page.getByRole('tooltip')).not.toBeVisible();
+  });
+
+  test('Skjuler verktøyhjelp når Escape-tasten trykkes', async ({ page }) => {
+    await renderTooltip(page);
+    const button = page.getByRole('button', { name: tekst });
+    await button.focus();
+    await expect(page.getByRole('tooltip')).toBeVisible();
+    await page.keyboard.press('Escape');
+    await expect(page.getByRole('tooltip')).not.toBeVisible();
+  });
 });

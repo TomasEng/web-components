@@ -34,16 +34,30 @@ export class TTooltip {
     this.open = false;
   }
 
+  closeOnEscape(event: KeyboardEvent) {
+    if (event.key === 'Escape') {
+      this.closeTooltip();
+    }
+  }
+
+  componentDidLoad() {
+    document.addEventListener('keydown', (event) => this.closeOnEscape(event));
+  }
+
+  disconnectedCallback() {
+    document.removeEventListener('keydown', (event) => this.closeOnEscape(event));
+  }
+
   render() {
     return (
       <t-floating-element visible={this.open} onClickOutside={() => this.closeTooltip()}>
         <button
-          id="button"
           aria-describedby="tooltip"
+          id="button"
+          onBlur={() => this.closeTooltip()}
+          onFocus={() => this.openTooltip()}
           onMouseEnter={() => this.openTooltip()}
           onMouseLeave={() => this.startCloseTimeout()}
-          onFocus={() => this.openTooltip()}
-          onBlur={() => this.closeTooltip()}
           slot="anchor"
         >
           <slot name="trigger" />

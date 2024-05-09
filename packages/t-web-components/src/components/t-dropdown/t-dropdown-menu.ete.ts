@@ -93,4 +93,47 @@ test.describe('t-dropdown-menu', () => {
     const lastItem = page.getByRole('button', { name: 'Grønn' });
     await expect(lastItem).toBeFocused();
   });
+
+  test('Fokuserer på neste element ved klikk på ned-knapp', async ({ page }) => {
+    await renderDropdown(page);
+    const dropdown = page.getByRole('button', { name: buttonLabel });
+    await dropdown.press('ArrowDown');
+    const firstItem = page.getByRole('button', { name: 'Rød' });
+    await expect(firstItem).toBeFocused();
+    await page.keyboard.press('ArrowDown');
+    const secondItem = page.getByRole('button', { name: 'Blå' });
+    await expect(secondItem).toBeFocused();
+  });
+
+  test('Fokuserer på forrige element ved klikk på opp-knapp', async ({ page }) => {
+    await renderDropdown(page);
+    const dropdown = page.getByRole('button', { name: buttonLabel });
+    await dropdown.press('ArrowUp');
+    const lastItem = page.getByRole('button', { name: 'Grønn' });
+    await expect(lastItem).toBeFocused();
+    await page.keyboard.press('ArrowUp');
+    const secondLastItem = page.getByRole('button', { name: 'Blå' });
+    await expect(secondLastItem).toBeFocused();
+  });
+
+  test('Lukker meny ved klikk på element', async ({ page }) => {
+    await renderDropdown(page);
+    const dropdown = page.getByRole('button', { name: buttonLabel });
+    await dropdown.press('Enter');
+    const menu = page.getByRole('list');
+    await expect(menu).toBeVisible();
+    const firstItem = page.getByRole('button', { name: 'Rød' });
+    await firstItem.click();
+    await expect(menu).not.toBeVisible();
+  });
+
+  test('Lukker meny ved trykk på Escape-knappen', async ({ page }) => {
+    await renderDropdown(page);
+    const dropdown = page.getByRole('button', { name: buttonLabel });
+    await dropdown.press('Enter');
+    const menu = page.getByRole('list');
+    await expect(menu).toBeVisible();
+    await page.keyboard.press('Escape');
+    await expect(menu).not.toBeVisible();
+  });
 });

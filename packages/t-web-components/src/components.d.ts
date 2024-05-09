@@ -282,7 +282,7 @@ declare global {
         new (): HTMLTFieldsetElement;
     };
     interface HTMLTFloatingElementElementEventMap {
-        "clickOutside": void;
+        "clickOutside": MouseEvent;
     }
     interface HTMLTFloatingElementElement extends Components.TFloatingElement, HTMLStencilElement {
         addEventListener<K extends keyof HTMLTFloatingElementElementEventMap>(type: K, listener: (this: HTMLTFloatingElementElement, ev: TFloatingElementCustomEvent<HTMLTFloatingElementElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -543,7 +543,7 @@ declare namespace LocalJSX {
         "legend"?: string;
     }
     interface TFloatingElement {
-        "onClickOutside"?: (event: TFloatingElementCustomEvent<void>) => void;
+        "onClickOutside"?: (event: TFloatingElementCustomEvent<MouseEvent>) => void;
         "placement"?: 'top' | 'right' | 'bottom' | 'left';
         "visible"?: boolean;
     }

@@ -11,7 +11,7 @@ export class TFloatingElement {
   @Prop() placement: 'top' | 'right' | 'bottom' | 'left' = 'top';
   @Prop() visible: boolean = false;
   @Element() element: HTMLElement;
-  @Event() clickOutside: EventEmitter<void>;
+  @Event() clickOutside: EventEmitter<MouseEvent>;
 
   render() {
     return (
@@ -31,13 +31,13 @@ export class TFloatingElement {
   }
 
   handleClickEverywhere = (event: MouseEvent) => {
-    if (!this.getContent().contains(event.target as Node) && this.visible) {
+    if (!event.composedPath().includes(this.getContent()) && this.visible) {
       this.handleClickOutside(event);
     }
   }
 
   handleClickOutside = (event: MouseEvent) => {
-    this.clickOutside.emit();
+    this.clickOutside.emit(event);
   }
 
   getAnchor(): HTMLElement {
