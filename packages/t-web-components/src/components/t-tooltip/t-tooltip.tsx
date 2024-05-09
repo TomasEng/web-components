@@ -36,7 +36,7 @@ export class TTooltip {
 
   render() {
     return (
-      <t-floating-element visible={this.open}>
+      <t-floating-element visible={this.open} onClickOutside={() => this.closeTooltip()}>
         <button
           id="button"
           aria-describedby="tooltip"
@@ -50,6 +50,7 @@ export class TTooltip {
         </button>
         <div
           id="tooltip"
+          role="tooltip"
           slot="content"
           onMouseEnter={() => this.clearCloseTimeout()}
           onMouseLeave={() => this.startCloseTimeout()}
