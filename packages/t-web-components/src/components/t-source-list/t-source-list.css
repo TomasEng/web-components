@@ -1,0 +1,7 @@
+:host {
+  display: block;
+}
+
+li:target {
+  background-color: var(--t-base-colour);
+}

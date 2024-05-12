@@ -11,4 +11,5 @@ export const DEFAULT_HUE = 263;
 export const DEFAULT_CHROMA = 0.4;
 export const DEFAULT_NUMBER_OF_HUES = 3;
 export const PATH_ABOUT = 'om';
-export const TOOLTIP_HIDE_DELAY_MILLISECONDS = 500;
+export const TOOLTIP_HIDE_DELAY_MILLISECONDS = 250;
+export const SOURCE_ID_PREFIX = 'src_';

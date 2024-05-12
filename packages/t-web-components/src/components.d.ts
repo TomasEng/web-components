@@ -8,6 +8,7 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { ColourSettings } from "./types/ColourSettings";
 import { LabelPlacement } from "./types/LabelPlacement";
 import { ColourSettings as ColourSettings1 } from "./components";
+import { TSourceItemList } from "./types/TSourceItemList";
 import { ComponentHue } from "./types/ComponentHue";
 import { TArticleListItem } from "./components/t-article-list/TArticleListItem";
 import { ButtonAttributes } from "./types/HTMLAttributes";
@@ -15,9 +16,11 @@ import { VNode } from "@stencil/core";
 import { TDropdownMenuItem } from "./components/t-dropdown/TDropdownMenuItem";
 import { TNavMenuItem } from "./components/t-layout-header/TNavMenuItem";
 import { TSelectOption } from "./components/t-select/TSelectOption";
+import { TSourceItem } from "./types/TSourceItem";
 export { ColourSettings } from "./types/ColourSettings";
 export { LabelPlacement } from "./types/LabelPlacement";
 export { ColourSettings as ColourSettings1 } from "./components";
+export { TSourceItemList } from "./types/TSourceItemList";
 export { ComponentHue } from "./types/ComponentHue";
 export { TArticleListItem } from "./components/t-article-list/TArticleListItem";
 export { ButtonAttributes } from "./types/HTMLAttributes";
@@ -25,6 +28,7 @@ export { VNode } from "@stencil/core";
 export { TDropdownMenuItem } from "./components/t-dropdown/TDropdownMenuItem";
 export { TNavMenuItem } from "./components/t-layout-header/TNavMenuItem";
 export { TSelectOption } from "./components/t-select/TSelectOption";
+export { TSourceItem } from "./types/TSourceItem";
 export namespace Components {
     interface ComponentColourSettings {
         "settings": ColourSettings;
@@ -45,6 +49,9 @@ export namespace Components {
     interface PreviewComponent {
         "html": string;
         "script"?: string;
+    }
+    interface TArticle {
+        "sources": TSourceItemList;
     }
     interface TArticleList {
         "hue": ComponentHue;
@@ -130,8 +137,17 @@ export namespace Components {
         "step": number;
         "value": number;
     }
+    interface TSource {
+        "source": TSourceItem;
+    }
+    interface TSourceList {
+        "sources": TSourceItemList;
+    }
+    interface TSourceRef {
+        "sourceId": string;
+    }
     interface TSpinner {
-        "title": string;
+        "spinnerTitle": string;
     }
     interface TSwitch {
         "checked": boolean;
@@ -245,6 +261,12 @@ declare global {
     var HTMLPreviewComponentElement: {
         prototype: HTMLPreviewComponentElement;
         new (): HTMLPreviewComponentElement;
+    };
+    interface HTMLTArticleElement extends Components.TArticle, HTMLStencilElement {
+    }
+    var HTMLTArticleElement: {
+        prototype: HTMLTArticleElement;
+        new (): HTMLTArticleElement;
     };
     interface HTMLTArticleListElement extends Components.TArticleList, HTMLStencilElement {
     }
@@ -415,6 +437,24 @@ declare global {
         prototype: HTMLTSliderElement;
         new (): HTMLTSliderElement;
     };
+    interface HTMLTSourceElement extends Components.TSource, HTMLStencilElement {
+    }
+    var HTMLTSourceElement: {
+        prototype: HTMLTSourceElement;
+        new (): HTMLTSourceElement;
+    };
+    interface HTMLTSourceListElement extends Components.TSourceList, HTMLStencilElement {
+    }
+    var HTMLTSourceListElement: {
+        prototype: HTMLTSourceListElement;
+        new (): HTMLTSourceListElement;
+    };
+    interface HTMLTSourceRefElement extends Components.TSourceRef, HTMLStencilElement {
+    }
+    var HTMLTSourceRefElement: {
+        prototype: HTMLTSourceRefElement;
+        new (): HTMLTSourceRefElement;
+    };
     interface HTMLTSpinnerElement extends Components.TSpinner, HTMLStencilElement {
     }
     var HTMLTSpinnerElement: {
@@ -469,6 +509,7 @@ declare global {
         "page-components": HTMLPageComponentsElement;
         "preview-app": HTMLPreviewAppElement;
         "preview-component": HTMLPreviewComponentElement;
+        "t-article": HTMLTArticleElement;
         "t-article-list": HTMLTArticleListElement;
         "t-button": HTMLTButtonElement;
         "t-column": HTMLTColumnElement;
@@ -488,6 +529,9 @@ declare global {
         "t-saturation-picker": HTMLTSaturationPickerElement;
         "t-select": HTMLTSelectElement;
         "t-slider": HTMLTSliderElement;
+        "t-source": HTMLTSourceElement;
+        "t-source-list": HTMLTSourceListElement;
+        "t-source-ref": HTMLTSourceRefElement;
         "t-spinner": HTMLTSpinnerElement;
         "t-switch": HTMLTSwitchElement;
         "t-textfield": HTMLTTextfieldElement;
@@ -516,6 +560,9 @@ declare namespace LocalJSX {
     interface PreviewComponent {
         "html"?: string;
         "script"?: string;
+    }
+    interface TArticle {
+        "sources"?: TSourceItemList;
     }
     interface TArticleList {
         "hue"?: ComponentHue;
@@ -606,8 +653,17 @@ declare namespace LocalJSX {
         "step"?: number;
         "value"?: number;
     }
+    interface TSource {
+        "source"?: TSourceItem;
+    }
+    interface TSourceList {
+        "sources"?: TSourceItemList;
+    }
+    interface TSourceRef {
+        "sourceId"?: string;
+    }
     interface TSpinner {
-        "title"?: string;
+        "spinnerTitle"?: string;
     }
     interface TSwitch {
         "checked"?: boolean;
@@ -630,6 +686,7 @@ declare namespace LocalJSX {
         "page-components": PageComponents;
         "preview-app": PreviewApp;
         "preview-component": PreviewComponent;
+        "t-article": TArticle;
         "t-article-list": TArticleList;
         "t-button": TButton;
         "t-column": TColumn;
@@ -649,6 +706,9 @@ declare namespace LocalJSX {
         "t-saturation-picker": TSaturationPicker;
         "t-select": TSelect;
         "t-slider": TSlider;
+        "t-source": TSource;
+        "t-source-list": TSourceList;
+        "t-source-ref": TSourceRef;
         "t-spinner": TSpinner;
         "t-switch": TSwitch;
         "t-textfield": TTextfield;
@@ -666,6 +726,7 @@ declare module "@stencil/core" {
             "page-components": LocalJSX.PageComponents & JSXBase.HTMLAttributes<HTMLPageComponentsElement>;
             "preview-app": LocalJSX.PreviewApp & JSXBase.HTMLAttributes<HTMLPreviewAppElement>;
             "preview-component": LocalJSX.PreviewComponent & JSXBase.HTMLAttributes<HTMLPreviewComponentElement>;
+            "t-article": LocalJSX.TArticle & JSXBase.HTMLAttributes<HTMLTArticleElement>;
             "t-article-list": LocalJSX.TArticleList & JSXBase.HTMLAttributes<HTMLTArticleListElement>;
             "t-button": LocalJSX.TButton & JSXBase.HTMLAttributes<HTMLTButtonElement>;
             "t-column": LocalJSX.TColumn & JSXBase.HTMLAttributes<HTMLTColumnElement>;
@@ -685,6 +746,9 @@ declare module "@stencil/core" {
             "t-saturation-picker": LocalJSX.TSaturationPicker & JSXBase.HTMLAttributes<HTMLTSaturationPickerElement>;
             "t-select": LocalJSX.TSelect & JSXBase.HTMLAttributes<HTMLTSelectElement>;
             "t-slider": LocalJSX.TSlider & JSXBase.HTMLAttributes<HTMLTSliderElement>;
+            "t-source": LocalJSX.TSource & JSXBase.HTMLAttributes<HTMLTSourceElement>;
+            "t-source-list": LocalJSX.TSourceList & JSXBase.HTMLAttributes<HTMLTSourceListElement>;
+            "t-source-ref": LocalJSX.TSourceRef & JSXBase.HTMLAttributes<HTMLTSourceRefElement>;
             "t-spinner": LocalJSX.TSpinner & JSXBase.HTMLAttributes<HTMLTSpinnerElement>;
             "t-switch": LocalJSX.TSwitch & JSXBase.HTMLAttributes<HTMLTSwitchElement>;
             "t-textfield": LocalJSX.TTextfield & JSXBase.HTMLAttributes<HTMLTTextfieldElement>;

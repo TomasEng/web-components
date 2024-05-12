@@ -1,6 +1,4 @@
 import { Component, h, Prop } from '@stencil/core';
-import { ComponentHue } from '../../types/ComponentHue';
-import { ButtonAttributes } from '../../types/HTMLAttributes';
 
 @Component({
   tag: 't-spinner',
@@ -9,9 +7,9 @@ import { ButtonAttributes } from '../../types/HTMLAttributes';
 })
 export class TSpinner {
 
-  @Prop() title: string = 'Laster';
+  @Prop() spinnerTitle: string = 'Laster';
 
   render() {
-    return <span class='t-spinner' title={this.title}/>;
+    return <span class='t-spinner' title={this.spinnerTitle}/>;
   }
 }

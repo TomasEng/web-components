@@ -51,7 +51,7 @@ export class TTooltip {
   render() {
     return (
       <t-floating-element visible={this.open} onClickOutside={() => this.closeTooltip()}>
-        <button
+        <span
           aria-describedby="tooltip"
           id="button"
           onBlur={() => this.closeTooltip()}
@@ -61,7 +61,7 @@ export class TTooltip {
           slot="anchor"
         >
           <slot name="trigger" />
-        </button>
+        </span>
         <div
           id="tooltip"
           role="tooltip"
