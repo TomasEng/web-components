@@ -41,6 +41,7 @@
 
   font-family: Calibri, Arial, sans-serif;
   font-size: var(--t-default-font-size);
+  min-height: 100vh;
 }
 
 @media (prefers-reduced-motion) {
