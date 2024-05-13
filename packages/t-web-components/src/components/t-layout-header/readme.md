@@ -32,6 +32,8 @@ graph TD;
   t-mode-switcher --> internal-style-provider
   t-mode-switcher --> t-dropdown-menu
   t-dropdown-menu --> internal-style-provider
+  t-dropdown-menu --> t-floating-element
+  t-dropdown-menu --> t-button
   t-button --> internal-style-provider
   preview-app --> t-layout-header
   style t-layout-header fill:#f9f,stroke:#333,stroke-width:4px

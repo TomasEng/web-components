@@ -28,6 +28,8 @@ graph TD;
   t-mode-switcher --> internal-style-provider
   t-mode-switcher --> t-dropdown-menu
   t-dropdown-menu --> internal-style-provider
+  t-dropdown-menu --> t-floating-element
+  t-dropdown-menu --> t-button
   t-button --> internal-style-provider
   page-about --> t-layout-main
   page-about --> t-heading
@@ -45,8 +47,12 @@ graph TD;
   page-components --> t-select
   page-components --> t-dropdown-menu
   page-components --> t-link
+  page-components --> t-source-list
+  page-components --> t-article
+  page-components --> t-source-ref
   page-components --> t-article-list
   page-components --> t-spinner
+  page-components --> t-tooltip
   page-components --> t-row
   component-colour-settings --> t-fieldset
   component-colour-settings --> t-column
@@ -64,6 +70,13 @@ graph TD;
   t-textfield --> internal-input-wrapper
   t-select --> internal-style-provider
   t-select --> internal-input-wrapper
+  t-source-list --> t-source
+  t-source --> t-link
+  t-article --> t-source-list
+  t-source-ref --> t-tooltip
+  t-source-ref --> t-link
+  t-source-ref --> t-source
+  t-tooltip --> t-floating-element
   t-article-list --> internal-style-provider
   style preview-app fill:#f9f,stroke:#333,stroke-width:4px
 ```

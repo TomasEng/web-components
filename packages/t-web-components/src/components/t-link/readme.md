@@ -20,6 +20,8 @@
 
  - [page-about](../../preview-app/page-about)
  - [page-components](../../preview-app/page-components)
+ - [t-source](../t-source)
+ - [t-source-ref](../t-source-ref)
 
 ### Depends on
 
@@ -31,6 +33,8 @@ graph TD;
   t-link --> internal-style-provider
   page-about --> t-link
   page-components --> t-link
+  t-source --> t-link
+  t-source-ref --> t-link
   style t-link fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

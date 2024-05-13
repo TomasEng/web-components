@@ -38,8 +38,12 @@
 - [t-select](../../components/t-select)
 - [t-dropdown-menu](../../components/t-dropdown)
 - [t-link](../../components/t-link)
+- [t-source-list](../../components/t-source-list)
+- [t-article](../../components/t-article)
+- [t-source-ref](../../components/t-source-ref)
 - [t-article-list](../../components/t-article-list)
 - [t-spinner](../../components/t-spinner)
+- [t-tooltip](../../components/t-tooltip)
 - [t-row](../../components/t-row)
 
 ### Graph
@@ -56,8 +60,12 @@ graph TD;
   page-components --> t-select
   page-components --> t-dropdown-menu
   page-components --> t-link
+  page-components --> t-source-list
+  page-components --> t-article
+  page-components --> t-source-ref
   page-components --> t-article-list
   page-components --> t-spinner
+  page-components --> t-tooltip
   page-components --> t-row
   t-layout-main --> internal-style-provider
   component-colour-settings --> t-fieldset
@@ -78,7 +86,16 @@ graph TD;
   t-select --> internal-style-provider
   t-select --> internal-input-wrapper
   t-dropdown-menu --> internal-style-provider
+  t-dropdown-menu --> t-floating-element
+  t-dropdown-menu --> t-button
   t-link --> internal-style-provider
+  t-source-list --> t-source
+  t-source --> t-link
+  t-article --> t-source-list
+  t-source-ref --> t-tooltip
+  t-source-ref --> t-link
+  t-source-ref --> t-source
+  t-tooltip --> t-floating-element
   t-article-list --> internal-style-provider
   preview-app --> page-components
   style page-components fill:#f9f,stroke:#333,stroke-width:4px
