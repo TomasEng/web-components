@@ -1,5 +1,7 @@
 import { Component, Element, h, Prop } from '@stencil/core';
 import { TSourceItemList } from '../../types/TSourceItemList';
+import { orderObject } from '../../utils/objectUtils';
+import { uniqueItems } from '../../utils/arrayUtils';
 
 @Component({
   tag: 't-article',
@@ -13,18 +15,9 @@ export class TArticle {
 
   render() {
     const sourceRefElements: NodeListOf<HTMLTSourceRefElement> = this.element.querySelectorAll('t-source-ref');
-    const sourceOrder: string[] = [];
-    for (let i = 0; i < sourceRefElements.length; i++) {
-      const sourceId = sourceRefElements[i].sourceId;
-      if (!sourceOrder.includes(sourceId)) {
-        sourceOrder.push(sourceId);
-      }
-    }
-
-    const orderedSources: TSourceItemList = {};
-    sourceOrder.forEach((sourceId) => {
-      orderedSources[sourceId] = this.sources[sourceId];
-    });
+    const sourceIds = Array.from(sourceRefElements).map(sourceRefElement => sourceRefElement.sourceId);
+    const sourceOrder = uniqueItems(sourceIds);
+    const orderedSources = orderObject(this.sources, sourceOrder);
 
     return (
       <article>

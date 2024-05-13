@@ -1,5 +1,6 @@
 import { Component, Host, h, Prop, Element } from '@stencil/core';
 import { SOURCE_ID_PREFIX } from '../../constants';
+import { findUniqueIndex, uniqueItems } from '../../utils/arrayUtils';
 
 @Component({
   tag: 't-source-ref',
@@ -15,18 +16,8 @@ export class TSourceRef {
   render() {
     const article: HTMLTArticleElement = this.element.closest('t-article');
     const sourceRefElements: NodeListOf<HTMLTSourceRefElement> = article.querySelectorAll('t-source-ref');
-
-    const sourceIds = [];
-    for (let i = 0; i < sourceRefElements.length; i++) {
-      const sourceId = sourceRefElements[i].sourceId;
-      if (!sourceIds.includes(sourceId)) {
-        sourceIds.push(sourceId);
-      }
-      if (sourceId === this.sourceId) {
-        break;
-      }
-    }
-    const sourceNumber = sourceIds.length;
+    const sourceIds = Array.from(sourceRefElements).map(sourceRefElement => sourceRefElement.sourceId);
+    const sourceNumber = findUniqueIndex(sourceIds, this.sourceId) + 1;
 
     return (
       <Host>
