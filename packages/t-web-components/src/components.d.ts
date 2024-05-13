@@ -138,6 +138,7 @@ export namespace Components {
         "value": number;
     }
     interface TSource {
+        "pagesText": (pages: string) => string;
         "source": TSourceItem;
     }
     interface TSourceList {
@@ -654,6 +655,7 @@ declare namespace LocalJSX {
         "value"?: number;
     }
     interface TSource {
+        "pagesText"?: (pages: string) => string;
         "source"?: TSourceItem;
     }
     interface TSourceList {

@@ -22,9 +22,11 @@ export class TSourceRef {
     return (
       <Host>
         <t-tooltip>
-          <t-link slot='trigger' href={`#${SOURCE_ID_PREFIX}${this.sourceId}`}>[{sourceNumber}]</t-link>
+          <sup slot="trigger">
+            <t-link href={`#${SOURCE_ID_PREFIX}${this.sourceId}`}>[{sourceNumber}]</t-link>
+          </sup>
           <t-source
-            slot='content'
+            slot="content"
             source={article.sources[this.sourceId]}
           />
         </t-tooltip>

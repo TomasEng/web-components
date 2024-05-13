@@ -13,3 +13,10 @@ export const formatAuthors = (authors: Author[]): string => {
   if (authors.length === 2) return authors.map(formatAuthor).join(' & ');
   return authors.slice(0, -1).map(formatAuthor).join(', ') + ' & ' + formatAuthor(authors[authors.length - 1]);
 }
+
+export const formatPages = (pageStart?: number, pageEnd?: number): string => {
+  if (pageStart !== undefined && pageEnd !== undefined) return pageStart === pageEnd ? pageStart.toString() : `${pageStart}-${pageEnd}`;
+  if (pageStart) return pageStart.toString();
+  if (pageEnd) return pageEnd.toString();
+  return '';
+}

@@ -1,5 +1,5 @@
 import { Author } from '../../types/TSourceItem';
-import { formatAuthor, formatAuthors } from './t-source-utils';
+import { formatAuthor, formatAuthors, formatPages } from './t-source-utils';
 import { describe } from 'node:test';
 
 describe('t-source-utils', () => {
@@ -50,6 +50,28 @@ describe('t-source-utils', () => {
         { forename: 'Jack', surname: 'Doe' },
       ];
       expect(formatAuthors(authors)).toBe('J. Doe, Test, J. Doe & J. Doe');
+    });
+  });
+
+  describe('formatPages', () => {
+    it('Returns an empty string if both pageStart and pageEnd are undefined', () => {
+      expect(formatPages()).toBe('');
+    });
+
+    it('Returns the page number if pageStart and pageEnd are the same', () => {
+      expect(formatPages(5, 5)).toBe('5');
+    });
+
+    it('Returns the page range if pageStart and pageEnd are different', () => {
+      expect(formatPages(5, 10)).toBe('5-10');
+    });
+
+    it('Returns the pageStart if pageEnd is undefined', () => {
+      expect(formatPages(5)).toBe('5');
+    });
+
+    it('Returns the pageEnd if pageStart is undefined', () => {
+      expect(formatPages(undefined, 10)).toBe('10');
     });
   });
 });

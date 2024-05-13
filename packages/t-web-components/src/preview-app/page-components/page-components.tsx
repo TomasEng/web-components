@@ -81,7 +81,7 @@ export class PageComponents {
           <t-source-list sources={{
             'snl-sola': {
               authors: [{ forename: 'Oddbjørn', surname: 'Engvold' }],
-              title: 'Sola',
+              articleTitle: 'Sola',
               retrievedDate: { year: 2024, month: 5, day: 12 },
               url: 'https://snl.no/Sola',
               journal: 'Store norske leksikon',
@@ -93,7 +93,7 @@ export class PageComponents {
                 { forename: 'A. Lewis', surname: 'Farr' },
                 { forename: 'Rose J.', surname: 'Randall' },
               ],
-              title: 'Protein measurement with the Folin phenol reagent',
+              articleTitle: 'Protein measurement with the Folin phenol reagent',
               journal: 'The Journal of Biological Chemistry',
               volume: 193,
               pageStart: 265,
@@ -104,7 +104,7 @@ export class PageComponents {
             },
             'clean-code': {
               authors: [{ forename: 'Robert C.', surname: 'Martin' }],
-              title: 'Clean Code - A Handbook of Agile Software Craftsmanship',
+              bookTitle: 'Clean Code - A Handbook of Agile Software Craftsmanship',
               publisher: 'Prentice Hall',
               date: { year: 2008, month: 8 },
               isbn: '9780136083252, 0136083250',

@@ -5,3 +5,11 @@
 .journal {
   font-style: italic;
 }
+
+.articleTitle {
+  font-style: normal;
+}
+
+.bookTitle, .title {
+  font-style: italic;
+}

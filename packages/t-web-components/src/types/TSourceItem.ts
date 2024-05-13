@@ -1,5 +1,7 @@
 export type TSourceItem = {
+  articleTitle?: string;
   authors: Author[];
+  bookTitle?: string;
   city?: string;
   date?: SourceDate;
   doi?: string;
@@ -24,6 +26,6 @@ type Person = {
 
 type Organisation = string;
 
-type SourceDate = { year: number; } | { year: number; month: number; day?: number; };
+type SourceDate = { year: number; month?: number; day?: number; };
 
 
