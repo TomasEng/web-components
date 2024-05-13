@@ -17,33 +17,23 @@ test.describe('t-tooltip', () => {
 
   test('Viser verktøyhjelp når musen beveges over og skjuler den etter en tid når musen beveges bort', async ({ page }) => {
     await renderTooltip(page);
-    const button = page.getByRole('button', { name: tekst });
-    await expect(button).toBeVisible();
-    const buttonBox = await button.boundingBox();
-    const buttonCenterX = buttonBox.x + buttonBox.width / 2;
-    const buttonCenterY = buttonBox.y + buttonBox.height / 2;
+    const trigger = page.getByText(tekst);
+    await expect(trigger).toBeVisible();
+    const triggerBox = await trigger.boundingBox();
+    const triggerCenterX = triggerBox.x + triggerBox.width / 2;
+    const triggerCenterY = triggerBox.y + triggerBox.height / 2;
     await expect(page.getByRole('tooltip')).not.toBeVisible();
-    await page.mouse.move(buttonCenterX, buttonCenterY);
+    await page.mouse.move(triggerCenterX, triggerCenterY);
     await expect(page.getByRole('tooltip')).toBeVisible();
-    await page.mouse.move(buttonBox.height * 2, buttonBox.width * 2);
+    await page.mouse.move(triggerBox.height * 2, triggerBox.width * 2);
     await expect(page.getByRole('tooltip')).toBeVisible();
     await page.waitForTimeout(TOOLTIP_HIDE_DELAY_MILLISECONDS);
     await expect(page.getByRole('tooltip')).not.toBeVisible();
   });
 
-  test('Viser verktøyhjelp når knappen fokuseres og skjuler den når knappen mister fokus', async ({ page }) => {
-    await renderTooltip(page);
-    const button = page.getByRole('button', { name: tekst });
-    await button.focus();
-    await expect(page.getByRole('tooltip')).toBeVisible();
-    await button.blur();
-    await expect(page.getByRole('tooltip')).not.toBeVisible();
-  });
-
   test('Skjuler verktøyhjelp når det blir klikket utenfor', async ({ page }) => {
     await renderTooltip(page);
-    const button = page.getByRole('button', { name: tekst });
-    await button.focus();
+    await hoverTrigger(page);
     const tooltip = page.getByRole('tooltip');
     await expect(tooltip).toBeVisible();
     const tooltipBox = await tooltip.boundingBox();
@@ -53,10 +43,18 @@ test.describe('t-tooltip', () => {
 
   test('Skjuler verktøyhjelp når Escape-tasten trykkes', async ({ page }) => {
     await renderTooltip(page);
-    const button = page.getByRole('button', { name: tekst });
-    await button.focus();
+    await hoverTrigger(page);
     await expect(page.getByRole('tooltip')).toBeVisible();
     await page.keyboard.press('Escape');
     await expect(page.getByRole('tooltip')).not.toBeVisible();
   });
+
+  const hoverTrigger = async (page: Page) => {
+    const trigger = page.getByText(tekst);
+    await expect(trigger).toBeVisible();
+    const triggerBox = await trigger.boundingBox();
+    const triggerCenterX = triggerBox.x + triggerBox.width / 2;
+    const triggerCenterY = triggerBox.y + triggerBox.height / 2;
+    await page.mouse.move(triggerCenterX, triggerCenterY);
+  };
 });

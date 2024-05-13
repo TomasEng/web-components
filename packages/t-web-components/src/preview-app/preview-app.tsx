@@ -12,6 +12,7 @@ export class PreviewApp {
   @State() numberOfHues = DEFAULT_NUMBER_OF_HUES;
   @State() contrast = 1;
   @State() urlHash = window.location.hash;
+  @State() url = new URL(window.location.href);
 
   handleColourSettingsChange = ({ detail }: PageComponentsCustomEvent<ColourSettings>) => {
     this.baseHue = detail.hue;
@@ -22,8 +23,12 @@ export class PreviewApp {
 
   connectedCallback() {
     this.setUrlHash();
+    this.setUrl();
     window.addEventListener('hashchange', () => {
       this.setUrlHash();
+    });
+    window.addEventListener('popstate', () => {
+      this.setUrl();
     });
   }
 
@@ -31,8 +36,12 @@ export class PreviewApp {
     this.urlHash = window.location.hash;
   }
 
+  setUrl() {
+    this.url = new URL(window.location.href);
+  }
+
   render(): JSX.Element {
-    const isAboutPageOpen = this.urlHash === '#' + PATH_ABOUT;
+    const isAboutPageOpen = this.url.searchParams.get('s') === PATH_ABOUT;
     const colourSettings: ColourSettings = {
       hue: this.baseHue,
       chroma: this.baseChroma,
@@ -46,8 +55,8 @@ export class PreviewApp {
             slot='header'
             siteTitle="Tomas sitt designsystem"
             navItems={[
-              { label: 'Oversikt', href: '#', open: !isAboutPageOpen },
-              { label: 'Om', href: '#' + PATH_ABOUT, open: isAboutPageOpen},
+              { label: 'Oversikt', href: '?', open: !isAboutPageOpen },
+              { label: 'Om', href: '?s=' + PATH_ABOUT, open: isAboutPageOpen},
             ]}
           />
           {isAboutPageOpen ? <page-about slot='main' /> : (
