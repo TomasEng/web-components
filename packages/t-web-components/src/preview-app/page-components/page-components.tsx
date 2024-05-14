@@ -77,6 +77,12 @@ export class PageComponents {
           <t-link href="#">Intern lenke</t-link>
           &nbsp;
           <t-link href="#" external={true}>Ekstern lenke</t-link>
+          <t-heading level={2}>Faner</t-heading>
+          <t-tabs>
+            <t-tab heading="Fane 1">Innhold 1</t-tab>
+            <t-tab heading="Fane 2">Innhold 2</t-tab>
+            <t-tab heading="Fane 3">Innhold 3</t-tab>
+          </t-tabs>
           <t-heading level={2}>Kildeliste</t-heading>
           <t-source-list sources={{
             'snl-sola': {
@@ -127,8 +133,27 @@ export class PageComponents {
               journal: 'Test Journal',
             },
           }}>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.<t-source-ref sourceId='test'/> Mauris ac nisl pellentesque, tempus metus non, pretium felis. Suspendisse potenti. Nullam laoreet, neque eu pharetra lobortis, diam ligula posuere augue, in imperdiet quam felis nec sem.<t-source-ref sourceId='cc'/> Suspendisse suscipit, dui nec volutpat porttitor, sapien turpis pharetra elit, et cursus ante nisi eu nunc. Phasellus facilisis nunc arcu, eget laoreet purus vehicula sit amet. Curabitur convallis, metus finibus tristique viverra, nunc sem suscipit orci, nec gravida leo risus nec orci. Aenean pretium, eros eget blandit tristique, quam tellus porttitor felis, non molestie neque ipsum et leo. Etiam tincidunt, massa vitae bibendum posuere, arcu orci aliquam dolor, a viverra ligula lectus at ante.</p>
-            <p>Cras iaculis sapien nec nisl luctus viverra. Integer eget dui ipsum.<t-source-ref sourceId='test'/> Pellentesque vel efficitur risus. Phasellus libero ante, porttitor non consequat id, euismod quis sem. Maecenas egestas mi quis est mattis, a ultricies nulla fermentum. Sed venenatis ultricies pellentesque. Integer varius ipsum dolor, placerat consectetur magna blandit nec. Donec et tortor metus. Nullam libero lacus, vulputate nec massa non, hendrerit sodales sapien. Aenean pellentesque sapien sed diam dapibus dignissim. Morbi sodales massa ut suscipit mollis. Aliquam id velit non dui congue convallis eget eget augue. Duis dignissim lectus eros, eu molestie nibh scelerisque vel. Nullam scelerisque ultrices felis id euismod. Etiam enim nisi, dignissim et odio eu, tristique tempor magna.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              <t-source-ref sourceId="test" />
+              Mauris ac nisl pellentesque, tempus metus non, pretium felis. Suspendisse potenti. Nullam laoreet, neque
+              eu pharetra lobortis, diam ligula posuere augue, in imperdiet quam felis nec sem.
+              <t-source-ref sourceId="cc" />
+              Suspendisse suscipit, dui nec volutpat porttitor, sapien turpis pharetra elit, et cursus ante nisi eu
+              nunc. Phasellus facilisis nunc arcu, eget laoreet purus vehicula sit amet. Curabitur convallis, metus
+              finibus tristique viverra, nunc sem suscipit orci, nec gravida leo risus nec orci. Aenean pretium, eros
+              eget blandit tristique, quam tellus porttitor felis, non molestie neque ipsum et leo. Etiam tincidunt,
+              massa vitae bibendum posuere, arcu orci aliquam dolor, a viverra ligula lectus at ante.
+            </p>
+            <p>Cras iaculis sapien nec nisl luctus viverra. Integer eget dui ipsum.
+              <t-source-ref sourceId="test" />
+              Pellentesque vel efficitur risus. Phasellus libero ante, porttitor non consequat id, euismod quis sem.
+              Maecenas egestas mi quis est mattis, a ultricies nulla fermentum. Sed venenatis ultricies pellentesque.
+              Integer varius ipsum dolor, placerat consectetur magna blandit nec. Donec et tortor metus. Nullam libero
+              lacus, vulputate nec massa non, hendrerit sodales sapien. Aenean pellentesque sapien sed diam dapibus
+              dignissim. Morbi sodales massa ut suscipit mollis. Aliquam id velit non dui congue convallis eget eget
+              augue. Duis dignissim lectus eros, eu molestie nibh scelerisque vel. Nullam scelerisque ultrices felis id
+              euismod. Etiam enim nisi, dignissim et odio eu, tristique tempor magna.
+            </p>
           </t-article>
           <t-heading level={2}>Artikkelliste</t-heading>
           <t-article-list hue={0} items={[
@@ -152,7 +177,7 @@ export class PageComponents {
             },
           ]} />
           <t-heading level={2}>Kode</t-heading>
-          <t-code language="typescript" code='const test: string = "test";'/>
+          <t-code language="typescript" code='const test: string = "test";' />
           <t-heading level={2}>Spinner</t-heading>
           <t-spinner />
           <t-heading level={2}>Verktøyhjelp</t-heading>

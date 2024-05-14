@@ -158,6 +158,12 @@ export namespace Components {
         "checked": boolean;
         "hue": number;
     }
+    interface TTab {
+        "heading": string;
+        "name": string;
+    }
+    interface TTabs {
+    }
     interface TTextfield {
         "hue": ComponentHue;
         "label": string;
@@ -489,6 +495,18 @@ declare global {
         prototype: HTMLTSwitchElement;
         new (): HTMLTSwitchElement;
     };
+    interface HTMLTTabElement extends Components.TTab, HTMLStencilElement {
+    }
+    var HTMLTTabElement: {
+        prototype: HTMLTTabElement;
+        new (): HTMLTTabElement;
+    };
+    interface HTMLTTabsElement extends Components.TTabs, HTMLStencilElement {
+    }
+    var HTMLTTabsElement: {
+        prototype: HTMLTTabsElement;
+        new (): HTMLTTabsElement;
+    };
     interface HTMLTTextfieldElementEventMap {
         "valueChange": string;
     }
@@ -546,6 +564,8 @@ declare global {
         "t-source-ref": HTMLTSourceRefElement;
         "t-spinner": HTMLTSpinnerElement;
         "t-switch": HTMLTSwitchElement;
+        "t-tab": HTMLTTabElement;
+        "t-tabs": HTMLTTabsElement;
         "t-textfield": HTMLTTextfieldElement;
         "t-tooltip": HTMLTTooltipElement;
     }
@@ -687,6 +707,12 @@ declare namespace LocalJSX {
         "hue"?: number;
         "onSwitch"?: (event: TSwitchCustomEvent<boolean>) => void;
     }
+    interface TTab {
+        "heading"?: string;
+        "name"?: string;
+    }
+    interface TTabs {
+    }
     interface TTextfield {
         "hue"?: ComponentHue;
         "label"?: string;
@@ -729,6 +755,8 @@ declare namespace LocalJSX {
         "t-source-ref": TSourceRef;
         "t-spinner": TSpinner;
         "t-switch": TSwitch;
+        "t-tab": TTab;
+        "t-tabs": TTabs;
         "t-textfield": TTextfield;
         "t-tooltip": TTooltip;
     }
@@ -770,6 +798,8 @@ declare module "@stencil/core" {
             "t-source-ref": LocalJSX.TSourceRef & JSXBase.HTMLAttributes<HTMLTSourceRefElement>;
             "t-spinner": LocalJSX.TSpinner & JSXBase.HTMLAttributes<HTMLTSpinnerElement>;
             "t-switch": LocalJSX.TSwitch & JSXBase.HTMLAttributes<HTMLTSwitchElement>;
+            "t-tab": LocalJSX.TTab & JSXBase.HTMLAttributes<HTMLTTabElement>;
+            "t-tabs": LocalJSX.TTabs & JSXBase.HTMLAttributes<HTMLTTabsElement>;
             "t-textfield": LocalJSX.TTextfield & JSXBase.HTMLAttributes<HTMLTTextfieldElement>;
             "t-tooltip": LocalJSX.TTooltip & JSXBase.HTMLAttributes<HTMLTTooltipElement>;
         }

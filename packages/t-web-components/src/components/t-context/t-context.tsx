@@ -32,7 +32,6 @@ export class TContext {
     state.baseHue = this.baseHue;
     state.baseChroma = this.baseChroma;
     state.contrast = this.contrast;
-    console.log('state', state);
 
     const modeClass = state.mode;
     const baseColour = this.baseColour();
