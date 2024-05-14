@@ -11,16 +11,20 @@ export class TCode {
 
   @Prop() language: string;
   @Prop() code: string;
+  @Prop() panel: boolean = false;
+
   @Element() element: HTMLElement;
 
   render() {
-    return (
+    const pre = (
       <pre class={state.mode}>
         <code class={this.language}>
           {this.code}
         </code>
       </pre>
     );
+
+    return this.panel ? <t-panel>{pre}</t-panel> : pre;
   }
 
   componentDidLoad() {

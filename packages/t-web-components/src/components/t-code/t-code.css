@@ -1,7 +1,10 @@
+pre {
+  margin: 0;
+}
+
 pre code.hljs {
   display: block;
   overflow-x: auto;
-  padding: 1em;
 }
 
 code.hljs {
@@ -12,7 +15,6 @@ code.hljs {
 pre.light {
 
   .hljs {
-    background: #f3f3f3;
     color: #444
   }
 
@@ -61,7 +63,6 @@ pre.dark {
 
   .hljs {
     color: #ddd;
-    background: #303030
   }
 
   .hljs-keyword, .hljs-link, .hljs-literal, .hljs-section, .hljs-selector-tag {

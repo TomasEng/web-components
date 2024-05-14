@@ -80,14 +80,14 @@ export class TTabs {
           ))}
         </div>
         {tabsArray.map((tab, index) => (
-          <div
+          <t-panel
             class={this.selectedIndex === index ? 'active' : 'inactive'}
             id={index.toString()}
             key={'panel_'+tab.heading}
             role='tabpanel'
           >
             {tab.innerHTML}
-          </div>
+          </t-panel>
         ))}
       </div>
     );

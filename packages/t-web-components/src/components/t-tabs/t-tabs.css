@@ -39,9 +39,6 @@
   }
 
   [role='tabpanel'] {
-    background-color: var(--t-small-contrast-colour);
-    border-radius: var(--t-border-radius-default);
-    box-shadow: var(--top-shadow), var(--bottom-shadow);
     position: relative;
     z-index: 1;
 

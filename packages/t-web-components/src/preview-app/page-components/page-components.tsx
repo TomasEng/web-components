@@ -177,7 +177,10 @@ export class PageComponents {
             },
           ]} />
           <t-heading level={2}>Kode</t-heading>
-          <t-code language="typescript" code='const test: string = "test";' />
+          <t-heading level={3}>Standard</t-heading>
+          <t-code language="typescript" code='const test: string = "test";'/>
+          <t-heading level={3}>Panel</t-heading>
+          <t-code language="typescript" code='const test: string = "test";' panel={true}/>
           <t-heading level={2}>Spinner</t-heading>
           <t-spinner />
           <t-heading level={2}>Verktøyhjelp</t-heading>

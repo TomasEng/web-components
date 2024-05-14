@@ -1,0 +1,16 @@
+:host {
+  --top-shadow-inset: color-mix(in oklab, var(--t-small-contrast-colour) 80%, white) inset 0 1px;
+  --top-shadow-outset: color-mix(in oklab, black 10%, transparent) 0 -1px 2px;
+  --bottom-shadow-inset: color-mix(in oklab, var(--t-small-contrast-colour) 80%, black) inset 0 -1px;
+  --bottom-shadow-outset: color-mix(in oklab, white 30%, transparent) 0 1px 2px;
+  --top-shadow: var(--top-shadow-inset), var(--top-shadow-outset);
+  --bottom-shadow: var(--bottom-shadow-inset), var(--bottom-shadow-outset);
+
+  background-color: var(--t-small-contrast-colour);
+  border-radius: var(--t-border-radius-default);
+  box-shadow: var(--top-shadow), var(--bottom-shadow);
+  color: var(--t-font-colour-default);
+  display: block;
+  font-size: var(--t-default-font-size);
+  padding: 1rem;
+}
