@@ -32,7 +32,8 @@
   "dependencies": {
     "@floating-ui/dom": "1.6.5",
     "@stencil/core": "4.13.0",
-    "chromator": "0.0.9"
+    "chromator": "0.0.9",
+    "highlight.js": "^11.9.0"
   },
   "devDependencies": {
     "@playwright/test": "^1.43.1",

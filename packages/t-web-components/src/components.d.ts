@@ -62,6 +62,10 @@ export namespace Components {
         "hue": ComponentHue;
         "icon"?: VNode;
     }
+    interface TCode {
+        "code": string;
+        "language": string;
+    }
     interface TColumn {
     }
     interface TContext {
@@ -280,6 +284,12 @@ declare global {
     var HTMLTButtonElement: {
         prototype: HTMLTButtonElement;
         new (): HTMLTButtonElement;
+    };
+    interface HTMLTCodeElement extends Components.TCode, HTMLStencilElement {
+    }
+    var HTMLTCodeElement: {
+        prototype: HTMLTCodeElement;
+        new (): HTMLTCodeElement;
     };
     interface HTMLTColumnElement extends Components.TColumn, HTMLStencilElement {
     }
@@ -513,6 +523,7 @@ declare global {
         "t-article": HTMLTArticleElement;
         "t-article-list": HTMLTArticleListElement;
         "t-button": HTMLTButtonElement;
+        "t-code": HTMLTCodeElement;
         "t-column": HTMLTColumnElement;
         "t-context": HTMLTContextElement;
         "t-dropdown-menu": HTMLTDropdownMenuElement;
@@ -573,6 +584,10 @@ declare namespace LocalJSX {
         "buttonAttributes"?: ButtonAttributes;
         "hue"?: ComponentHue;
         "icon"?: VNode;
+    }
+    interface TCode {
+        "code"?: string;
+        "language"?: string;
     }
     interface TColumn {
     }
@@ -691,6 +706,7 @@ declare namespace LocalJSX {
         "t-article": TArticle;
         "t-article-list": TArticleList;
         "t-button": TButton;
+        "t-code": TCode;
         "t-column": TColumn;
         "t-context": TContext;
         "t-dropdown-menu": TDropdownMenu;
@@ -731,6 +747,7 @@ declare module "@stencil/core" {
             "t-article": LocalJSX.TArticle & JSXBase.HTMLAttributes<HTMLTArticleElement>;
             "t-article-list": LocalJSX.TArticleList & JSXBase.HTMLAttributes<HTMLTArticleListElement>;
             "t-button": LocalJSX.TButton & JSXBase.HTMLAttributes<HTMLTButtonElement>;
+            "t-code": LocalJSX.TCode & JSXBase.HTMLAttributes<HTMLTCodeElement>;
             "t-column": LocalJSX.TColumn & JSXBase.HTMLAttributes<HTMLTColumnElement>;
             "t-context": LocalJSX.TContext & JSXBase.HTMLAttributes<HTMLTContextElement>;
             "t-dropdown-menu": LocalJSX.TDropdownMenu & JSXBase.HTMLAttributes<HTMLTDropdownMenuElement>;

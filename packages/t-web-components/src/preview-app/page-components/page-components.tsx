@@ -151,6 +151,8 @@ export class PageComponents {
               intro: 'Sed sit amet nunc et nunc lacinia tincidunt. Integer auctor, lorem nec ultricies ultricies, orci dui convallis purus, eget fermentum velit neque nec dui.',
             },
           ]} />
+          <t-heading level={2}>Kode</t-heading>
+          <t-code language="typescript" code='const test: string = "test";'/>
           <t-heading level={2}>Spinner</t-heading>
           <t-spinner />
           <t-heading level={2}>Verktøyhjelp</t-heading>
