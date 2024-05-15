@@ -1,4 +1,5 @@
-import { kebabToCamel } from '../utils/stringUtils';
+import { camelToPascal, kebabToCamel } from '../utils/stringUtils';
+import { stringifyObjectLines } from '../utils/objectUtils';
 
 export type ComponentTestCodeConfig = {
   componentName: string;
@@ -7,7 +8,7 @@ export type ComponentTestCodeConfig = {
   };
   children?: (ComponentTestCodeConfig | string)[];
   events?: {
-    [eventName: string]: string;
+    [eventName: string]: Function;
   };
 };
 
@@ -21,11 +22,27 @@ export class ComponentTestCode {
     this.config = config;
   }
 
+  generateCode(): string {
+    return this.generateCodeLines().join('\n');
+  }
+
+  generateCodeLines(): string[] {
+    const lines: string[] = this.generateHtmlLines();
+    const scriptLines = this.generateScriptLines();
+    if (scriptLines.length) {
+      lines.push('');
+      lines.push('<script type="text/javascript">');
+      lines.push(...indentLines(scriptLines));
+      lines.push('</script>');
+    }
+    return lines;
+  }
+
   generateHtml(): string {
     return this.generateHtmlLines().join('\n');
   }
 
-  generateHtmlLines(): string[] {
+  private generateHtmlLines(): string[] {
     const lines: string[] = [];
     const propLines = this.generateHtmlPropLines();
     const childLines = indentLines(this.childrenHtmlLines());
@@ -53,13 +70,6 @@ export class ComponentTestCode {
       }
       lines.push(...childLines);
       lines.push(`</${this.config.componentName}>`);
-    }
-    const scriptLines = this.generateScriptLines();
-    if (scriptLines.length) {
-      lines.push('');
-      lines.push('<script type="text/javascript">');
-      lines.push(...indentLines(scriptLines));
-      lines.push('</script>');
     }
     return lines;
   }
@@ -90,14 +100,20 @@ export class ComponentTestCode {
     return lines;
   }
 
+  generateScript(): string {
+    return this.generateScriptLines().join('\n');
+  }
+
   private generateScriptLines(): string[] {
     const lines: string[] = [];
     const objectPropLines = this.generateHtmlObjectPropLines();
-    if (objectPropLines.length) {
+    const eventLines = this.generateHtmlEventLines();
+    if (objectPropLines.length + eventLines.length) {
       const { componentName } = this.config;
       const varName = this.componentVarName();
       lines.push(`const ${varName} = document.querySelector("${componentName}");`);
       lines.push(...objectPropLines);
+      lines.push(...eventLines);
     }
     return lines;
   }
@@ -112,12 +128,25 @@ export class ComponentTestCode {
     for (const propName in this.config.props) {
       const value = this.config.props[propName];
       if (typeof value === 'object') {
-        const json = JSON.stringify(value, null, 2);
-        const jsonLines = json.split('\n');
-        lines.push(`${varName}.${propName} = ${jsonLines[0]}`);
-        lines.push(...jsonLines.slice(1, jsonLines.length - 1));
-        lines.push(`${jsonLines[jsonLines.length - 1]};`);
+        const objLines = stringifyObjectLines(value);
+        lines.push(`${varName}.${propName} = ${objLines[0]}`);
+        lines.push(...objLines.slice(1, objLines.length - 1));
+        lines.push(`${objLines[objLines.length - 1]};`);
+      } else if (typeof value === 'function') {
+        lines.push(`${varName}.${propName} = ${value.toString()};`);
       }
+    }
+    return lines;
+  }
+
+  private generateHtmlEventLines(): string[] {
+    const lines: string[] = [];
+    const varName = this.componentVarName();
+    for (const eventName in this.config.events) {
+      const handlerName = 'handle' + camelToPascal(eventName);
+      const script = this.config.events[eventName];
+      lines.push(`const ${handlerName} = ${script};`);
+      lines.push(`${varName}.addEventListener("${eventName}", ${handlerName});`);
     }
     return lines;
   }

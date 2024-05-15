@@ -1,5 +1,5 @@
 import { describe } from 'node:test';
-import { kebabToCamel, kebabToPascal } from './stringUtils';
+import { camelToPascal, kebabToCamel, kebabToPascal } from './stringUtils';
 
 describe('stringUtils', () => {
   describe('kebabToCamel', () => {
@@ -19,6 +19,16 @@ describe('stringUtils', () => {
 
     it('Converts kebab case with multiple dashes to pascal case', () => {
       expect(kebabToPascal('kebab-case-example')).toBe('KebabCaseExample');
+    });
+  });
+
+  describe('camelToPascal', () => {
+    it('Converts camel case to pascal case', () => {
+      expect(camelToPascal('camelCase')).toBe('CamelCase');
+    });
+
+    it('Converts camel case with multiple words to pascal case', () => {
+      expect(camelToPascal('camelCaseExample')).toBe('CamelCaseExample');
     });
   });
 });

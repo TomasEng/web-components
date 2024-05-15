@@ -1,28 +1,31 @@
 import { test, expect, Page } from '@playwright/test';
 import { renderComponent } from '../../test-utils/renderComponent';
+import { ComponentTestCodeConfig } from '../../test-utils/ComponentTestCode';
 
 
 const buttonLabel = 'Velg';
-const html = `<t-dropdown-menu label="${buttonLabel}"></t-dropdown-menu>`;
 
 const logValues: { [key: string]: string } = {
   rod: 'Rød',
   bla: 'Blå',
-  gronn: 'Grønn valgt',
+  gronn: 'Grønn',
 };
 
-const script = `
-      const dropdown = document.querySelector('t-dropdown-menu');
-      dropdown.items = [
-        {label: 'Rød', action: () => console.log('${logValues.rod}')},
-        {label: 'Blå', action: () => console.log('${logValues.bla}')},
-        {label: 'Grønn', action: () => console.log('${logValues.gronn}')},
-      ];
-    `.replace(/\n/g, '');
+const componentConfig: ComponentTestCodeConfig = {
+  componentName: 't-dropdown-menu',
+  props: {
+    label: buttonLabel,
+    items: [
+      { label: 'Rød', action: () => console.log('Rød') },
+      { label: 'Blå', action: () => console.log('Blå') },
+      { label: 'Grønn', action: () => console.log('Grønn') },
+    ],
+  },
+};
 
 const filterLog = (log: string[]) => log.filter((msg) => Object.values(logValues).includes(msg));
 
-const renderDropdown = (page: Page) => renderComponent(page, html, script);
+const renderDropdown = (page: Page) => renderComponent(page, componentConfig);
 
 test.describe('t-dropdown-menu', () => {
   test('Laster nedtrekksmeny', async ({ page }) => {

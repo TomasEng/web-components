@@ -1,19 +1,29 @@
 import { test, expect, Page } from '@playwright/test';
 import { renderComponent } from '../../test-utils/renderComponent';
 import { TOOLTIP_HIDE_DELAY_MILLISECONDS } from '../../constants';
+import { ComponentTestCodeConfig } from '../../test-utils/ComponentTestCode';
 
 test.describe('t-tooltip', () => {
 
   const tekst = 'Klikk meg';
   const innhold = 'Lorem ipsum';
-  const html = `
-      <t-tooltip>
-        <span slot="trigger">${tekst}</span>
-        <span slot="content">${innhold}</span>
-      </t-tooltip>
-    `;
+  const config: ComponentTestCodeConfig = {
+    componentName: 't-tooltip',
+    children: [
+      {
+        componentName: 'span',
+        props: { slot: 'trigger' },
+        children: [tekst]
+      },
+      {
+        componentName: 'span',
+        props: { slot: 'content' },
+        children: [innhold]
+      }
+    ]
+  };
 
-  const renderTooltip = (page: Page) => renderComponent(page, html);
+  const renderTooltip = (page: Page) => renderComponent(page, config);
 
   test('Viser verktøyhjelp når musen beveges over og skjuler den etter en tid når musen beveges bort', async ({ page }) => {
     await renderTooltip(page);

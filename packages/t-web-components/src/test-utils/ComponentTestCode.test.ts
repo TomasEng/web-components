@@ -2,13 +2,13 @@ import { describe } from 'node:test';
 import { ComponentTestCode, ComponentTestCodeConfig } from './ComponentTestCode';
 
 describe('ComponentTestCode', () => {
-  describe('generateHtmlLines', () => {
+  describe('generateCodeLines', () => {
     it('Generates the HTML code correctly when there is no input', () => {
       const config: ComponentTestCodeConfig = {
         componentName: 't-test'
       };
       const testCode = new ComponentTestCode(config);
-      const htmlLines = testCode.generateHtmlLines();
+      const htmlLines = testCode.generateCodeLines();
       expect(htmlLines).toEqual(['<t-test></t-test>']);
     });
 
@@ -20,7 +20,7 @@ describe('ComponentTestCode', () => {
         ]
       };
       const testCode = new ComponentTestCode(config);
-      const htmlLines = testCode.generateHtmlLines();
+      const htmlLines = testCode.generateCodeLines();
       expect(htmlLines).toEqual([
         '<t-test>',
         '  Lorem ipsum',
@@ -38,7 +38,7 @@ describe('ComponentTestCode', () => {
         ]
       };
       const testCode = new ComponentTestCode(config);
-      const htmlLines = testCode.generateHtmlLines();
+      const htmlLines = testCode.generateCodeLines();
       expect(htmlLines).toEqual([
         '<t-test>',
         '  <t-child></t-child>',
@@ -57,7 +57,7 @@ describe('ComponentTestCode', () => {
         ]
       };
       const testCode = new ComponentTestCode(config);
-      const htmlLines = testCode.generateHtmlLines();
+      const htmlLines = testCode.generateCodeLines();
       expect(htmlLines).toEqual([
         '<t-test>',
         '  Lorem ipsum',
@@ -74,7 +74,7 @@ describe('ComponentTestCode', () => {
         }
       };
       const testCode = new ComponentTestCode(config);
-      const htmlLines = testCode.generateHtmlLines();
+      const htmlLines = testCode.generateCodeLines();
       expect(htmlLines).toEqual([
         '<t-test prop1="value1"></t-test>'
       ]);
@@ -89,7 +89,7 @@ describe('ComponentTestCode', () => {
         }
       };
       const testCode = new ComponentTestCode(config);
-      const htmlLines = testCode.generateHtmlLines();
+      const htmlLines = testCode.generateCodeLines();
       expect(htmlLines).toEqual([
         '<t-test',
         '  prop1="value1"',
@@ -109,7 +109,7 @@ describe('ComponentTestCode', () => {
         ]
       };
       const testCode = new ComponentTestCode(config);
-      const htmlLines = testCode.generateHtmlLines();
+      const htmlLines = testCode.generateCodeLines();
       expect(htmlLines).toEqual([
         '<t-test prop1="value1">',
         '  Lorem ipsum',
@@ -129,7 +129,7 @@ describe('ComponentTestCode', () => {
         ]
       };
       const testCode = new ComponentTestCode(config);
-      const htmlLines = testCode.generateHtmlLines();
+      const htmlLines = testCode.generateCodeLines();
       expect(htmlLines).toEqual([
         '<t-test',
         '  prop1="value1"',
@@ -148,15 +148,15 @@ describe('ComponentTestCode', () => {
         },
       };
       const testCode = new ComponentTestCode(config);
-      const htmlLines = testCode.generateHtmlLines();
+      const htmlLines = testCode.generateCodeLines();
       expect(htmlLines).toEqual([
         '<t-test></t-test>',
         '',
         '<script type="text/javascript">',
         '  const tTest = document.querySelector("t-test");',
         '  tTest.obj = {',
-        '    "prop1": "value1",',
-        '    "prop2": "value2"',
+        '    prop1: "value1",',
+        '    prop2: "value2"',
         '  };',
         '</script>'
       ]);
@@ -170,7 +170,7 @@ describe('ComponentTestCode', () => {
         },
       };
       const testCode = new ComponentTestCode(config);
-      const htmlLines = testCode.generateHtmlLines();
+      const htmlLines = testCode.generateCodeLines();
       expect(htmlLines).toEqual([
         '<t-test></t-test>',
         '',
@@ -180,6 +180,66 @@ describe('ComponentTestCode', () => {
         '    "value1",',
         '    "value2"',
         '  ];',
+        '</script>'
+      ]);
+    });
+
+    it('Generates the HTML code correctly when there are event listeners', () => {
+      const config: ComponentTestCodeConfig = {
+        componentName: 't-test',
+        events: {
+          click: () => console.log("click")
+        }
+      };
+      const testCode = new ComponentTestCode(config);
+      const htmlLines = testCode.generateCodeLines();
+      expect(htmlLines).toEqual([
+        '<t-test></t-test>',
+        '',
+        '<script type="text/javascript">',
+        '  const tTest = document.querySelector("t-test");',
+        '  const handleClick = () => console.log("click");',
+        '  tTest.addEventListener("click", handleClick);',
+        '</script>'
+      ]);
+    });
+
+    it('Generates the HTML code correctly when a prop is a function', () => {
+      const config: ComponentTestCodeConfig = {
+        componentName: 't-test',
+        props: {
+          prop1: () => console.log('prop1')
+        }
+      };
+      const testCode = new ComponentTestCode(config);
+      const htmlLines = testCode.generateCodeLines();
+      expect(htmlLines).toEqual([
+        '<t-test></t-test>',
+        '',
+        '<script type="text/javascript">',
+        '  const tTest = document.querySelector("t-test");',
+        '  tTest.prop1 = () => console.log(\'prop1\');',
+        '</script>'
+      ]);
+    });
+
+    it('Generates the HTML code correctly when there is an object prop with a function', () => {
+      const config: ComponentTestCodeConfig = {
+        componentName: 't-test',
+        props: {
+          obj: { prop1: () => console.log('prop1') }
+        }
+      };
+      const testCode = new ComponentTestCode(config);
+      const htmlLines = testCode.generateCodeLines();
+      expect(htmlLines).toEqual([
+        '<t-test></t-test>',
+        '',
+        '<script type="text/javascript">',
+        '  const tTest = document.querySelector("t-test");',
+        '  tTest.obj = {',
+        '    prop1: () => console.log(\'prop1\')',
+        '  };',
         '</script>'
       ]);
     });
