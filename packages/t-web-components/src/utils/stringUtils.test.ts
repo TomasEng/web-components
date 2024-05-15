@@ -1,5 +1,5 @@
 import { describe } from 'node:test';
-import { camelToPascal, kebabToCamel, kebabToPascal } from './stringUtils';
+import { camelToPascal, collapseWhitespace, kebabToCamel, kebabToPascal } from './stringUtils';
 
 describe('stringUtils', () => {
   describe('kebabToCamel', () => {
@@ -29,6 +29,12 @@ describe('stringUtils', () => {
 
     it('Converts camel case with multiple words to pascal case', () => {
       expect(camelToPascal('camelCaseExample')).toBe('CamelCaseExample');
+    });
+  });
+
+  describe('collapseWhitespace', () => {
+    it('Collapses multiple whitespaces to a single space character', () => {
+      expect(collapseWhitespace('  test\n  test  ')).toBe(' test test ');
     });
   });
 });

@@ -2,8 +2,9 @@ import { Page } from '@playwright/test';
 import { ComponentTestCode, ComponentTestCodeConfig } from './ComponentTestCode';
 
 export const renderComponent = (page: Page, config: ComponentTestCodeConfig) => {
-  const html = new ComponentTestCode(config).generateHtml();
-  const script = new ComponentTestCode(config).generateScript();
+  const componentTestCode = new ComponentTestCode(config);
+  const html = componentTestCode.generateHtml();
+  const script = componentTestCode.generateScript();
   return renderComponentCode(page, html, script);
 }
 

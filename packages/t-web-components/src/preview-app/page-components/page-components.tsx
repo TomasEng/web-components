@@ -4,7 +4,9 @@ import {
   ComponentColourSettingsCustomEvent,
   TSelectOption,
 } from '../../components';
+import { ComponentTestCode } from '../../test-utils/ComponentTestCode';
 import { integerArray } from '../../utils/numberUtils';
+import { tButtonDemo } from '../../components/t-button/t-button.demo';
 
 @Component({
   tag: 'page-components',
@@ -18,6 +20,18 @@ export class PageComponents {
   handleColourSettingsChange = ({ detail }: ComponentColourSettingsCustomEvent<ColourSettings>) => {
     this.colourSettingsChange.emit(detail);
   };
+
+  get previewIframes(): NodeListOf<HTMLIFrameElement> {
+    return document.querySelectorAll('preview-iframe iframe');
+  }
+
+  componentDidRender() {
+    this.previewIframes.forEach(iframe => {
+      const contextElement = iframe.contentWindow.document.querySelector('t-context');
+      contextElement.baseHue = this.colourSettings.hue;
+      contextElement.baseChroma = this.colourSettings.chroma;
+    });
+  }
 
   render(): JSX.Element {
     return (
@@ -33,6 +47,8 @@ export class PageComponents {
             hue => <t-button hue={hue}>Klikk meg</t-button>,
             'Knapp',
           )}
+          <t-code language="typescript" code={new ComponentTestCode(tButtonDemo.simple).generateCode()}/>
+          <preview-iframe componentTestCode={new ComponentTestCode(tButtonDemo.simple)} hue={this.colourSettings.hue} />
           {this.renderPreview(
             hue => <t-column>
               <t-switch hue={hue} checked={true}>På</t-switch>

@@ -15,6 +15,7 @@ import {
   getIncreasedLuminanceByContrast,
 } from '../../utils/colourUtils';
 import state from '../../store';
+import { Mode } from '../../types/Mode';
 
 @Component({
   tag: 't-context',
@@ -28,11 +29,13 @@ export class TContext {
 
   @Element() element: HTMLElement;
 
-  render() {
+  componentWillRender() {
     state.baseHue = this.baseHue;
     state.baseChroma = this.baseChroma;
     state.contrast = this.contrast;
+  }
 
+  render() {
     const modeClass = state.mode;
     const baseColour = this.baseColour();
     const { hue, chroma, l } = baseColour.getOklch();
@@ -51,8 +54,8 @@ export class TContext {
   }
 
   private baseColour(): Chromator {
-    const hue = this.baseHue;
-    const chroma = this.baseChroma;
+    const hue = state.baseHue;
+    const chroma = state.baseChroma;
     const oklch: Oklch = { hue, chroma, l: 0.5 };
     return new Chromator(oklch).setRelativeLuminance(this.baseColourLuminance(), 'oklch');
   }

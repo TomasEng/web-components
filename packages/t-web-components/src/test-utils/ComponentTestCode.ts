@@ -1,4 +1,4 @@
-import { camelToPascal, kebabToCamel } from '../utils/stringUtils';
+import { camelToPascal, collapseWhitespace, kebabToCamel } from '../utils/stringUtils';
 import { stringifyObjectLines } from '../utils/objectUtils';
 
 export type ComponentTestCodeConfig = {
@@ -36,6 +36,10 @@ export class ComponentTestCode {
       lines.push('</script>');
     }
     return lines;
+  }
+
+  generateMinifiedHtml(): string {
+    return collapseWhitespace(this.generateHtml());
   }
 
   generateHtml(): string {
@@ -98,6 +102,10 @@ export class ComponentTestCode {
       }
     }
     return lines;
+  }
+
+  generateMinifiedScript(): string {
+    return collapseWhitespace(this.generateScript());
   }
 
   generateScript(): string {

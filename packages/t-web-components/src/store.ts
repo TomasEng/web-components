@@ -26,4 +26,10 @@ window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', eve
   }
 });
 
+window.addEventListener('storage', event => {
+  if (event.key === 't-mode') {
+    state.selectedMode = getMode() || 'system';
+  }
+});
+
 export default state;

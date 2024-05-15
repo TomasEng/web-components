@@ -8,6 +8,7 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { ColourSettings } from "./types/ColourSettings";
 import { LabelPlacement } from "./types/LabelPlacement";
 import { ColourSettings as ColourSettings1 } from "./components";
+import { ComponentTestCode } from "./test-utils/ComponentTestCode";
 import { TSourceItemList } from "./types/TSourceItemList";
 import { ComponentHue } from "./types/ComponentHue";
 import { TArticleListItem } from "./components/t-article-list/TArticleListItem";
@@ -20,6 +21,7 @@ import { TSourceItem } from "./types/TSourceItem";
 export { ColourSettings } from "./types/ColourSettings";
 export { LabelPlacement } from "./types/LabelPlacement";
 export { ColourSettings as ColourSettings1 } from "./components";
+export { ComponentTestCode } from "./test-utils/ComponentTestCode";
 export { TSourceItemList } from "./types/TSourceItemList";
 export { ComponentHue } from "./types/ComponentHue";
 export { TArticleListItem } from "./components/t-article-list/TArticleListItem";
@@ -47,8 +49,15 @@ export namespace Components {
     interface PreviewApp {
     }
     interface PreviewComponent {
+        "chroma": number;
         "html": string;
+        "hue": number;
         "script"?: string;
+    }
+    interface PreviewIframe {
+        "chroma": number;
+        "componentTestCode": ComponentTestCode;
+        "hue": number;
     }
     interface TArticle {
         "sources": TSourceItemList;
@@ -275,6 +284,12 @@ declare global {
     var HTMLPreviewComponentElement: {
         prototype: HTMLPreviewComponentElement;
         new (): HTMLPreviewComponentElement;
+    };
+    interface HTMLPreviewIframeElement extends Components.PreviewIframe, HTMLStencilElement {
+    }
+    var HTMLPreviewIframeElement: {
+        prototype: HTMLPreviewIframeElement;
+        new (): HTMLPreviewIframeElement;
     };
     interface HTMLTArticleElement extends Components.TArticle, HTMLStencilElement {
     }
@@ -547,6 +562,7 @@ declare global {
         "page-components": HTMLPageComponentsElement;
         "preview-app": HTMLPreviewAppElement;
         "preview-component": HTMLPreviewComponentElement;
+        "preview-iframe": HTMLPreviewIframeElement;
         "t-article": HTMLTArticleElement;
         "t-article-list": HTMLTArticleListElement;
         "t-button": HTMLTButtonElement;
@@ -600,8 +616,15 @@ declare namespace LocalJSX {
     interface PreviewApp {
     }
     interface PreviewComponent {
+        "chroma"?: number;
         "html"?: string;
+        "hue"?: number;
         "script"?: string;
+    }
+    interface PreviewIframe {
+        "chroma"?: number;
+        "componentTestCode"?: ComponentTestCode;
+        "hue"?: number;
     }
     interface TArticle {
         "sources"?: TSourceItemList;
@@ -742,6 +765,7 @@ declare namespace LocalJSX {
         "page-components": PageComponents;
         "preview-app": PreviewApp;
         "preview-component": PreviewComponent;
+        "preview-iframe": PreviewIframe;
         "t-article": TArticle;
         "t-article-list": TArticleList;
         "t-button": TButton;
@@ -786,6 +810,7 @@ declare module "@stencil/core" {
             "page-components": LocalJSX.PageComponents & JSXBase.HTMLAttributes<HTMLPageComponentsElement>;
             "preview-app": LocalJSX.PreviewApp & JSXBase.HTMLAttributes<HTMLPreviewAppElement>;
             "preview-component": LocalJSX.PreviewComponent & JSXBase.HTMLAttributes<HTMLPreviewComponentElement>;
+            "preview-iframe": LocalJSX.PreviewIframe & JSXBase.HTMLAttributes<HTMLPreviewIframeElement>;
             "t-article": LocalJSX.TArticle & JSXBase.HTMLAttributes<HTMLTArticleElement>;
             "t-article-list": LocalJSX.TArticleList & JSXBase.HTMLAttributes<HTMLTArticleListElement>;
             "t-button": LocalJSX.TButton & JSXBase.HTMLAttributes<HTMLTButtonElement>;
