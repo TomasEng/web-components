@@ -6,9 +6,10 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { ColourSettings } from "./types/ColourSettings";
+import { ComponentExample } from "./preview-app/component-documentation/ComponentExample";
+import { ComponentTestCode } from "./test-utils/ComponentTestCode";
 import { LabelPlacement } from "./types/LabelPlacement";
 import { ColourSettings as ColourSettings1 } from "./components";
-import { ComponentTestCode } from "./test-utils/ComponentTestCode";
 import { TSourceItemList } from "./types/TSourceItemList";
 import { ComponentHue } from "./types/ComponentHue";
 import { TArticleListItem } from "./components/t-article-list/TArticleListItem";
@@ -19,9 +20,10 @@ import { TNavMenuItem } from "./components/t-layout-header/TNavMenuItem";
 import { TSelectOption } from "./components/t-select/TSelectOption";
 import { TSourceItem } from "./types/TSourceItem";
 export { ColourSettings } from "./types/ColourSettings";
+export { ComponentExample } from "./preview-app/component-documentation/ComponentExample";
+export { ComponentTestCode } from "./test-utils/ComponentTestCode";
 export { LabelPlacement } from "./types/LabelPlacement";
 export { ColourSettings as ColourSettings1 } from "./components";
-export { ComponentTestCode } from "./test-utils/ComponentTestCode";
 export { TSourceItemList } from "./types/TSourceItemList";
 export { ComponentHue } from "./types/ComponentHue";
 export { TArticleListItem } from "./components/t-article-list/TArticleListItem";
@@ -34,6 +36,14 @@ export { TSourceItem } from "./types/TSourceItem";
 export namespace Components {
     interface ComponentColourSettings {
         "settings": ColourSettings;
+    }
+    interface ComponentDocumentation {
+        "colourSettings": ColourSettings;
+        "examples": ComponentExample[];
+        "name": string;
+    }
+    interface ComponentPreview {
+        "componentTestCode": ComponentTestCode;
     }
     interface InternalInputWrapper {
         "labelPlacement": LabelPlacement;
@@ -237,6 +247,18 @@ declare global {
     var HTMLComponentColourSettingsElement: {
         prototype: HTMLComponentColourSettingsElement;
         new (): HTMLComponentColourSettingsElement;
+    };
+    interface HTMLComponentDocumentationElement extends Components.ComponentDocumentation, HTMLStencilElement {
+    }
+    var HTMLComponentDocumentationElement: {
+        prototype: HTMLComponentDocumentationElement;
+        new (): HTMLComponentDocumentationElement;
+    };
+    interface HTMLComponentPreviewElement extends Components.ComponentPreview, HTMLStencilElement {
+    }
+    var HTMLComponentPreviewElement: {
+        prototype: HTMLComponentPreviewElement;
+        new (): HTMLComponentPreviewElement;
     };
     interface HTMLInternalInputWrapperElement extends Components.InternalInputWrapper, HTMLStencilElement {
     }
@@ -556,6 +578,8 @@ declare global {
     };
     interface HTMLElementTagNameMap {
         "component-colour-settings": HTMLComponentColourSettingsElement;
+        "component-documentation": HTMLComponentDocumentationElement;
+        "component-preview": HTMLComponentPreviewElement;
         "internal-input-wrapper": HTMLInternalInputWrapperElement;
         "internal-style-provider": HTMLInternalStyleProviderElement;
         "page-about": HTMLPageAboutElement;
@@ -600,6 +624,14 @@ declare namespace LocalJSX {
     interface ComponentColourSettings {
         "onChangeSettings"?: (event: ComponentColourSettingsCustomEvent<ColourSettings>) => void;
         "settings"?: ColourSettings;
+    }
+    interface ComponentDocumentation {
+        "colourSettings"?: ColourSettings;
+        "examples"?: ComponentExample[];
+        "name"?: string;
+    }
+    interface ComponentPreview {
+        "componentTestCode"?: ComponentTestCode;
     }
     interface InternalInputWrapper {
         "labelPlacement"?: LabelPlacement;
@@ -759,6 +791,8 @@ declare namespace LocalJSX {
     }
     interface IntrinsicElements {
         "component-colour-settings": ComponentColourSettings;
+        "component-documentation": ComponentDocumentation;
+        "component-preview": ComponentPreview;
         "internal-input-wrapper": InternalInputWrapper;
         "internal-style-provider": InternalStyleProvider;
         "page-about": PageAbout;
@@ -804,6 +838,8 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "component-colour-settings": LocalJSX.ComponentColourSettings & JSXBase.HTMLAttributes<HTMLComponentColourSettingsElement>;
+            "component-documentation": LocalJSX.ComponentDocumentation & JSXBase.HTMLAttributes<HTMLComponentDocumentationElement>;
+            "component-preview": LocalJSX.ComponentPreview & JSXBase.HTMLAttributes<HTMLComponentPreviewElement>;
             "internal-input-wrapper": LocalJSX.InternalInputWrapper & JSXBase.HTMLAttributes<HTMLInternalInputWrapperElement>;
             "internal-style-provider": LocalJSX.InternalStyleProvider & JSXBase.HTMLAttributes<HTMLInternalStyleProviderElement>;
             "page-about": LocalJSX.PageAbout & JSXBase.HTMLAttributes<HTMLPageAboutElement>;

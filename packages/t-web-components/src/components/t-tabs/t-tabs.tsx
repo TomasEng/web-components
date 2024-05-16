@@ -1,4 +1,4 @@
-import { Component, Host, h, Element, State } from '@stencil/core';
+import { Component, h, Element, State } from '@stencil/core';
 
 @Component({
   tag: 't-tabs',
@@ -12,8 +12,14 @@ export class TTabs {
 
   @Element() element: HTMLElement;
 
+  private tabList: HTMLTTabElement[] = [];
+
+  connectedCallback() {
+    this.tabList = Array.from(this.element.querySelectorAll('t-tab'));
+  }
+
   get tabs(): NodeListOf<HTMLTTabElement> {
-    return this.element.shadowRoot.querySelectorAll('[role="tab"]');
+    return this.element.querySelectorAll('[role="tab"]');
   }
 
   selectTab(index: number) {
@@ -53,19 +59,16 @@ export class TTabs {
 
   componentDidRender() {
     const tabPanels = this.element.shadowRoot.querySelectorAll('[role="tabpanel"]');
-    this.element.querySelectorAll('t-tab').forEach((tab, index) => {
-      tabPanels[index].innerHTML = tab.innerHTML;
+    this.tabList.forEach((tab, index) => {
+      tabPanels[index].appendChild(tab);
     });
   }
 
   render() {
-    const tabs = this.element.querySelectorAll('t-tab');
-    const tabsArray = Array.from(tabs);
-
     return (
       <div class='t-tabs'>
         <div role='tablist'>
-          {tabsArray.map((tab, index) => (
+          {this.tabList.map((tab, index) => (
             <button
               aria-controls={index.toString()}
               aria-selected={this.selectedIndex === index ? 'true' : 'false'}
@@ -79,15 +82,13 @@ export class TTabs {
             </button>
           ))}
         </div>
-        {tabsArray.map((tab, index) => (
+        {this.tabList.map((tab, index) => (
           <t-panel
             class={this.selectedIndex === index ? 'active' : 'inactive'}
             id={index.toString()}
             key={'panel_'+tab.heading}
             role='tabpanel'
-          >
-            {tab.innerHTML}
-          </t-panel>
+          />
         ))}
       </div>
     );

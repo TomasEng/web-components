@@ -1,7 +1,7 @@
 export const LIGHT_MODE_BACKGROUND_LUMINANCE = 1;
 export const DARK_MODE_BACKGROUND_LUMINANCE = 0.02;
 export const HIGH_CONTRAST = 7;
-export const LOW_CONTRAST = 1.3;
+export const LOW_CONTRAST = 1.25;
 export const BASE_COLOUR_LUMINANCE_LIGHT_MODE = 0.6;
 export const BASE_COLOUR_LUMINANCE_DARK_MODE = 0.12;
 export const INPUT_FIELD_TO_PAGE_CONTRAST = 1.2;

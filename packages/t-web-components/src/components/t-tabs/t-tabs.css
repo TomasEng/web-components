@@ -3,19 +3,24 @@
 }
 
 .t-tabs {
-  --top-shadow-inset: color-mix(in oklab, var(--t-small-contrast-colour) 80%, white) inset 0 1px;
-  --top-shadow-outset: color-mix(in oklab, black 10%, transparent) 0 -1px 2px;
-  --bottom-shadow-inset: color-mix(in oklab, var(--t-small-contrast-colour) 80%, black) inset 0 -1px;
+  --top-shadow-inset: color-mix(in oklab, transparent 75%, white) inset 0 1px;
+  --top-shadow-outset: color-mix(in oklab, black 25%, transparent) 0 -1px 2px;
+  --bottom-shadow-inset: color-mix(in oklab, transparent 75%, black) inset 0 -1px;
   --bottom-shadow-outset: color-mix(in oklab, white 30%, transparent) 0 1px 2px;
   --top-shadow: var(--top-shadow-inset), var(--top-shadow-outset);
   --bottom-shadow: var(--bottom-shadow-inset), var(--bottom-shadow-outset);
+  --selected-colour: var(--t-base-colour);
 
   [role='tablist'] {
     height: var(--t-clickable-area-size);
 
     [role='tab'] {
       margin-left: var(--t-border-radius-default);
-      background-color: var(--t-small-contrast-colour);
+      background: linear-gradient(
+        to bottom,
+        color-mix(in oklab, var(--selected-colour) 80%, white),
+        var(--selected-colour)
+      );
       border: none;
       border-top-left-radius: var(--t-border-radius-default);
       border-top-right-radius: var(--t-border-radius-default);
@@ -24,21 +29,29 @@
       color: var(--t-font-colour-default);
       cursor: pointer;
       font-size: var(--t-default-font-size);
-      height: calc(100% + 1px);
       padding: .5rem;
-      position: relative;
+      height: calc(100% + 2px);
 
       &[aria-selected='true'] {
+        position: relative;
         z-index: 2;
       }
 
       &[aria-selected='false']:not(:hover) {
-        filter: contrast(0.8);
+        background: var(--t-small-contrast-colour);
+        color: color-mix(in oklab, var(--t-font-colour-default) 60%, var(--t-page-background-colour));
       }
     }
   }
 
   [role='tabpanel'] {
+    background: linear-gradient(
+      to bottom,
+      var(--selected-colour),
+      var(--selected-colour) 3px,
+      var(--t-panel-background-colour) 4px,
+      var(--t-panel-background-colour)
+    );
     position: relative;
     z-index: 1;
 
@@ -46,5 +59,4 @@
       display: none;
     }
   }
-
 }

@@ -1,4 +1,4 @@
-import { Component, Element, Prop, h } from '@stencil/core';
+import { Component, Element, h, Prop, State } from '@stencil/core';
 import highlight from 'highlight.js';
 import state from '../../store';
 
@@ -16,18 +16,12 @@ export class TCode {
   @Element() element: HTMLElement;
 
   render() {
+    const code = highlight.highlight(this.code, {language: 'html'}).value;
     const pre = (
       <pre class={state.mode}>
-        <code class={this.language}>
-          {this.code}
-        </code>
+        <code innerHTML={code}/>
       </pre>
     );
-
     return this.panel ? <t-panel>{pre}</t-panel> : pre;
-  }
-
-  componentDidLoad() {
-    highlight.highlightElement(this.element.shadowRoot.querySelector('code'));
   }
 }

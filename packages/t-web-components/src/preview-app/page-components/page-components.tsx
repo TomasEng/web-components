@@ -26,10 +26,12 @@ export class PageComponents {
   }
 
   componentDidRender() {
-    this.previewIframes.forEach(iframe => {
+    this.previewIframes?.forEach(iframe => {
       const contextElement = iframe.contentWindow.document.querySelector('t-context');
-      contextElement.baseHue = this.colourSettings.hue;
-      contextElement.baseChroma = this.colourSettings.chroma;
+      if (contextElement) {
+        contextElement.baseHue = this.colourSettings.hue;
+        contextElement.baseChroma = this.colourSettings.chroma;
+      }
     });
   }
 
@@ -42,13 +44,12 @@ export class PageComponents {
           onChangeSettings={this.handleColourSettingsChange}
         />
         <div slot="content">
-          <t-heading level={1}>Komponentoversikt</t-heading>
-          {this.renderPreview(
-            hue => <t-button hue={hue}>Klikk meg</t-button>,
-            'Knapp',
-          )}
-          <t-code language="typescript" code={new ComponentTestCode(tButtonDemo.simple).generateCode()}/>
-          <preview-iframe componentTestCode={new ComponentTestCode(tButtonDemo.simple)} hue={this.colourSettings.hue} />
+          <t-heading level={1}>Eksempler</t-heading>
+          <component-documentation
+            name='Knapp'
+            examples={[{ code: tButtonDemo.simple, previewMode: 'hue' }]}
+            colourSettings={this.colourSettings}
+          />
           {this.renderPreview(
             hue => <t-column>
               <t-switch hue={hue} checked={true}>På</t-switch>

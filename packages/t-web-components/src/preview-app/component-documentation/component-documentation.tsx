@@ -1,0 +1,85 @@
+import { Component, Host, h, Prop, Fragment } from '@stencil/core';
+import { ComponentExample } from './ComponentExample';
+import { ComponentTestCode } from '../../test-utils/ComponentTestCode';
+import { PreviewMode } from './PreviewMode';
+import { ColourSettings } from '../../types/ColourSettings';
+import { integerArray } from '../../utils/numberUtils';
+
+@Component({
+  tag: 'component-documentation',
+})
+export class ComponentDocumentation {
+
+  @Prop() name: string;
+  @Prop() examples: ComponentExample[];
+  @Prop() colourSettings: ColourSettings;
+
+  render() {
+    return (
+      <Host>
+        <t-heading level={2}>{this.name}</t-heading>
+        {this.examples.map(example => (
+          <Example example={example} colourSettings={this.colourSettings}/>
+        ))}
+      </Host>
+    );
+  }
+}
+
+const Example = ({ example, colourSettings }: { example: ComponentExample, colourSettings: ColourSettings }) => {
+  const componentTestCode = new ComponentTestCode(example.code);
+  return (
+    <>
+      {example.title && <t-heading level={3}>{example.title}</t-heading>}
+      {example.description && <t-paragraph>{example.description}</t-paragraph>}
+      <t-column>
+        <Preview componentTestCode={componentTestCode} mode={example.previewMode} colourSettings={colourSettings} />
+        <t-tabs>
+          <t-tab heading="HTML">
+            <t-code language="html" code={componentTestCode.generateCode()}/>
+          </t-tab>
+          <t-tab heading="React">
+            <t-code language="React" code={componentTestCode.generateReactCode()}/>
+          </t-tab>
+        </t-tabs>
+      </t-column>
+    </>
+  );
+};
+
+type PreviewProps = {
+  componentTestCode: ComponentTestCode;
+  mode: PreviewMode;
+  colourSettings: ColourSettings;
+}
+
+const Preview = ({ componentTestCode, mode, colourSettings }: PreviewProps) => {
+  switch (mode) {
+    case 'iframe':
+      return <preview-iframe componentTestCode={componentTestCode}/>;
+    case 'inline':
+      return <InlinePreview componentTestCode={componentTestCode}/>;
+    case 'hue':
+      return <HuePreview componentTestCode={componentTestCode} colourSettings={colourSettings}/>;
+  }
+};
+
+const InlinePreview = ({ componentTestCode }: { componentTestCode: ComponentTestCode }) => {
+  return (
+    <component-preview componentTestCode={componentTestCode}/>
+  );
+}
+
+const HuePreview = ({ componentTestCode, colourSettings }: { componentTestCode: ComponentTestCode, colourSettings: ColourSettings }) => {
+  const hueArray = integerArray(colourSettings.numberOfHues);
+  return (
+    <t-row>
+      {hueArray.map(hue => {
+        const testCode = componentTestCode.withHue(hue / colourSettings.numberOfHues);
+        return (
+          <component-preview componentTestCode={testCode}/>
+        );
+      })}
+    </t-row>
+  );
+}

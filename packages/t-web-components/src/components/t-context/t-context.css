@@ -4,15 +4,16 @@
   --t-base-colour-lightness: unset;
   --t-base-colour-saturation: unset;
   --t-base-colour-chroma: unset;
+  --t-offset-base-colour-hue: calc(var(--t-base-colour-hue) + var(--t-base-colour-hue-offset, 0) * 1turn);
   --t-base-colour: oklch(
     var(--t-base-colour-lightness)
     var(--t-base-colour-chroma)
-    calc(var(--t-base-colour-hue) + var(--t-base-colour-hue-offset, 0) * 1turn)
+    var(--t-offset-base-colour-hue)
   );
   --t-background-background-colour: color-mix(in oklab, var(--t-page-background-colour) 90%, black);
   --t-base-contrast-colour: unset;
-  --t-base-low-contrast-colour: unset;
   --t-base-fill-colour: var(--t-base-border-colour);
+  --t-base-low-contrast-colour: unset;
   --t-border-radius-default: 6px;
   --t-clickable-area-size: 44px;
   --t-default-font-size: 1rem;
@@ -21,6 +22,7 @@
   --t-navbar-item-border-radius: 8px;
   --t-page-background-colour: unset;
   --t-page-max-width: 1200px;
+  --t-panel-background-colour: color-mix(in oklab, var(--t-base-colour) 12%, var(--t-small-contrast-colour));
   --t-popover-alpha: 0.75;
   --t-popover-backdrop-filter: blur(8px);
   --t-popover-background-colour-base: color-mix(in oklab, var(--t-small-contrast-colour) calc(var(--t-popover-alpha) * 100%), transparent);
@@ -36,8 +38,8 @@
   --t-transition-duration-long: 0.4s;
   --t-transition-duration-medium: 0.2s;
   --t-transition-duration-short: 0.1s;
-  --t-z-index-tooltip: 100;
   --t-z-index-dropdown-menu: 200;
+  --t-z-index-tooltip: 100;
 
   font-family: Calibri, Arial, sans-serif;
   font-size: var(--t-default-font-size);
