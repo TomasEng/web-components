@@ -93,6 +93,10 @@ export namespace Components {
         "baseHue": number;
         "contrast": number;
     }
+    interface TDetails {
+        "openSummary"?: string;
+        "summary": string;
+    }
     interface TDropdownMenu {
         "buttonAttributes": ButtonAttributes;
         "hue": ComponentHue;
@@ -349,6 +353,12 @@ declare global {
         prototype: HTMLTContextElement;
         new (): HTMLTContextElement;
     };
+    interface HTMLTDetailsElement extends Components.TDetails, HTMLStencilElement {
+    }
+    var HTMLTDetailsElement: {
+        prototype: HTMLTDetailsElement;
+        new (): HTMLTDetailsElement;
+    };
     interface HTMLTDropdownMenuElement extends Components.TDropdownMenu, HTMLStencilElement {
     }
     var HTMLTDropdownMenuElement: {
@@ -593,6 +603,7 @@ declare global {
         "t-code": HTMLTCodeElement;
         "t-column": HTMLTColumnElement;
         "t-context": HTMLTContextElement;
+        "t-details": HTMLTDetailsElement;
         "t-dropdown-menu": HTMLTDropdownMenuElement;
         "t-fieldset": HTMLTFieldsetElement;
         "t-floating-element": HTMLTFloatingElementElement;
@@ -681,6 +692,10 @@ declare namespace LocalJSX {
         "baseChroma"?: number;
         "baseHue"?: number;
         "contrast"?: number;
+    }
+    interface TDetails {
+        "openSummary"?: string;
+        "summary"?: string;
     }
     interface TDropdownMenu {
         "buttonAttributes"?: ButtonAttributes;
@@ -806,6 +821,7 @@ declare namespace LocalJSX {
         "t-code": TCode;
         "t-column": TColumn;
         "t-context": TContext;
+        "t-details": TDetails;
         "t-dropdown-menu": TDropdownMenu;
         "t-fieldset": TFieldset;
         "t-floating-element": TFloatingElement;
@@ -853,6 +869,7 @@ declare module "@stencil/core" {
             "t-code": LocalJSX.TCode & JSXBase.HTMLAttributes<HTMLTCodeElement>;
             "t-column": LocalJSX.TColumn & JSXBase.HTMLAttributes<HTMLTColumnElement>;
             "t-context": LocalJSX.TContext & JSXBase.HTMLAttributes<HTMLTContextElement>;
+            "t-details": LocalJSX.TDetails & JSXBase.HTMLAttributes<HTMLTDetailsElement>;
             "t-dropdown-menu": LocalJSX.TDropdownMenu & JSXBase.HTMLAttributes<HTMLTDropdownMenuElement>;
             "t-fieldset": LocalJSX.TFieldset & JSXBase.HTMLAttributes<HTMLTFieldsetElement>;
             "t-floating-element": LocalJSX.TFloatingElement & JSXBase.HTMLAttributes<HTMLTFloatingElementElement>;

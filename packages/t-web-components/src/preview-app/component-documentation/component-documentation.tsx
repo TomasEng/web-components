@@ -33,17 +33,29 @@ const Example = ({ example, colourSettings }: { example: ComponentExample, colou
       {example.title && <t-heading level={3}>{example.title}</t-heading>}
       {example.description && <t-paragraph>{example.description}</t-paragraph>}
       <t-column>
-        <Preview componentTestCode={componentTestCode} mode={example.previewMode} colourSettings={colourSettings} />
-        <t-tabs>
-          <t-tab heading="HTML">
-            <t-code language="html" code={componentTestCode.generateCode()}/>
-          </t-tab>
-          <t-tab heading="React">
-            <t-code language="React" code={componentTestCode.generateReactCode()}/>
-          </t-tab>
-        </t-tabs>
+        <Preview componentTestCode={componentTestCode} mode={example.previewMode} colourSettings={colourSettings}/>
+        <Code componentTestCode={componentTestCode}/>
       </t-column>
     </>
+  );
+};
+
+type CodeProps = {
+  componentTestCode: ComponentTestCode;
+}
+
+const Code = ({ componentTestCode }: CodeProps) => {
+  return (
+    <t-details summary="Vis kode" openSummary="Skjul kode">
+      <t-tabs>
+        <t-tab heading="HTML">
+          <t-code language="html" code={componentTestCode.generateCode()} />
+        </t-tab>
+        <t-tab heading="React">
+          <t-code language="React" code={componentTestCode.generateReactCode()} />
+        </t-tab>
+      </t-tabs>
+    </t-details>
   );
 };
 
@@ -51,7 +63,7 @@ type PreviewProps = {
   componentTestCode: ComponentTestCode;
   mode: PreviewMode;
   colourSettings: ColourSettings;
-}
+};
 
 const Preview = ({ componentTestCode, mode, colourSettings }: PreviewProps) => {
   switch (mode) {
@@ -68,7 +80,7 @@ const InlinePreview = ({ componentTestCode }: { componentTestCode: ComponentTest
   return (
     <component-preview componentTestCode={componentTestCode}/>
   );
-}
+};
 
 const HuePreview = ({ componentTestCode, colourSettings }: { componentTestCode: ComponentTestCode, colourSettings: ColourSettings }) => {
   const hueArray = integerArray(colourSettings.numberOfHues);
@@ -82,4 +94,4 @@ const HuePreview = ({ componentTestCode, colourSettings }: { componentTestCode: 
       })}
     </t-row>
   );
-}
+};

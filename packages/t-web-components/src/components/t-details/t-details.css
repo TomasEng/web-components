@@ -1,0 +1,13 @@
+summary {
+  cursor: pointer;
+  color: var(--t-link-colour);
+  text-decoration: underline;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+details[open] summary {
+  margin-bottom: var(--t-spacing-in-group);
+}
