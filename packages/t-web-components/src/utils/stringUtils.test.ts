@@ -1,4 +1,3 @@
-import { describe } from 'node:test';
 import { camelToPascal, collapseWhitespace, kebabToCamel, kebabToPascal } from './stringUtils';
 
 describe('stringUtils', () => {
@@ -19,6 +18,10 @@ describe('stringUtils', () => {
 
     it('Converts kebab case with multiple dashes to pascal case', () => {
       expect(kebabToPascal('kebab-case-example')).toBe('KebabCaseExample');
+    });
+
+    it('Works with numbers', () => {
+      expect(kebabToPascal('kebab-case-123')).toBe('KebabCase123');
     });
   });
 

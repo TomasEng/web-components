@@ -77,8 +77,9 @@ const Preview = ({ componentTestCode, mode, colourSettings }: PreviewProps) => {
 };
 
 const InlinePreview = ({ componentTestCode }: { componentTestCode: ComponentTestCode }) => {
+  const testCode = componentTestCode.withId(componentTestCode.config.componentName);
   return (
-    <component-preview componentTestCode={componentTestCode}/>
+    <component-preview componentTestCode={testCode}/>
   );
 };
 
@@ -87,7 +88,9 @@ const HuePreview = ({ componentTestCode, colourSettings }: { componentTestCode: 
   return (
     <t-row>
       {hueArray.map(hue => {
-        const testCode = componentTestCode.withHue(hue / colourSettings.numberOfHues);
+        const testCode = componentTestCode
+          .withHue(hue / colourSettings.numberOfHues)
+          .withId(`${componentTestCode.config.componentName}-${hue}`);
         return (
           <component-preview componentTestCode={testCode}/>
         );

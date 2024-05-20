@@ -37,10 +37,11 @@ export const stringifyObjectLines = (obj: any): string[] => {
           const subLines = stringifyObjectLines(obj[key]);
           const isLastKey = key === lastKey(obj);
           const end = isLastKey ? '' : ',';
+          const keyString = /^[a-zA-Z_$][0-9a-zA-Z_$]*$/.test(key) ? key : JSON.stringify(key);
           if (subLines.length === 1) {
-            lines.push(`  ${key}: ${subLines[0]}${end}`);
+            lines.push(`  ${keyString}: ${subLines[0]}${end}`);
           } else {
-            lines.push(`  ${key}: ${subLines[0]}`);
+            lines.push(`  ${keyString}: ${subLines[0]}`);
             lines.push(...subLines.slice(1, subLines.length - 1).map(line => `  ${line}`));
             lines.push(`  ${subLines[subLines.length - 1]}${end}`);
           }

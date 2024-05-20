@@ -13,8 +13,9 @@ export class TLink {
   @Prop() external?: boolean;
 
   render() {
+    const target = this.target || (this.external ? '_blank' : undefined);
     return <internal-style-provider>
-      <a class='link' href={this.href} target={this.target}>
+      <a class='link' href={this.href} target={target}>
         <slot/>
         {this.external && <ExternalLinkIcon/>}
       </a>

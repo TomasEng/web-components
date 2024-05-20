@@ -244,7 +244,31 @@ const testCases: TestCases = {
       '  }}',
       '/>'
     ]
-  }
+  },
+  'there is an id prop': {
+    config: {
+      componentName: 't-test',
+      props: { id: 'test', obj: { prop1: 'value1' } }
+    },
+    expectedHtml: [
+      '<t-test id="test"></t-test>',
+      '',
+      '<script type="text/javascript">',
+      '  const tTestTest = document.querySelector("#test");',
+      '  tTestTest.obj = {',
+      '    prop1: "value1"',
+      '  };',
+      '</script>'
+    ],
+    expectedReact: [
+      '<TTest',
+      '  id="test"',
+      '  obj={{',
+      '    prop1: "value1"',
+      '  }}',
+      '/>'
+    ]
+  },
 };
 
 describe('ComponentTestCode', () => {

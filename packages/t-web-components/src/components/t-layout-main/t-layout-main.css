@@ -18,8 +18,8 @@
   border-bottom-left-radius: var(--border-radius);
   border-top-left-radius: var(--border-radius);
   box-shadow: var(--top-shadow), var(--bottom-shadow);
-  flex-grow: 1;
   box-sizing: border-box;
+  width: 20%;
 
   .leftbar-content {
     padding: 1rem;
@@ -42,8 +42,8 @@
   border-bottom-right-radius: var(--border-radius);
   border-top-right-radius: var(--border-radius);
   box-shadow: var(--top-shadow), var(--bottom-shadow);
-  flex-grow: 3;
   padding: 1rem;
+  width: 80%;
 }
 
 .leftbar:has(.leftbar-content:empty) {

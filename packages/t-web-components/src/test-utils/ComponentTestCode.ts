@@ -16,20 +16,34 @@ const indent = '  ';
 const indentLines = (lines: string[]) => lines.map(line => indent + line);
 
 export class ComponentTestCode {
-  private readonly config: ComponentTestCodeConfig;
+  readonly config: ComponentTestCodeConfig;
 
   constructor(config: ComponentTestCodeConfig) {
     this.config = config;
   }
 
   withHue(hue: number, hueProp: string = 'hue'): ComponentTestCode {
-    return new ComponentTestCode({
-      ...this.config,
-      props: {
-        ...this.config.props,
-        [hueProp]: hue,
+    return new ComponentTestCode(
+      {
+        ...this.config,
+        props: {
+          ...this.config.props,
+          [hueProp]: hue,
+        },
       },
-    });
+    );
+  }
+
+  withId(id: string): ComponentTestCode {
+    return new ComponentTestCode(
+      {
+        ...this.config,
+        props: {
+          ...this.config.props,
+          id,
+        },
+      },
+    );
   }
 
   generateElement(): HTMLElement {
@@ -147,15 +161,24 @@ export class ComponentTestCode {
     if (objectPropLines.length + eventLines.length) {
       const { componentName } = this.config;
       const varName = this.componentVarName();
-      lines.push(`const ${varName} = document.querySelector("${componentName}");`);
+      lines.push(`const ${varName} = document.querySelector("${this.selector()}");`);
       lines.push(...objectPropLines);
       lines.push(...eventLines);
     }
     return lines;
   }
 
+  private selector(): string {
+    return this.config.props?.id ? `#${this.config.props.id}` : this.config.componentName;
+  }
+
   private componentVarName(): string {
-    return kebabToCamel(this.config.componentName);
+    const componentNameKebab = kebabToCamel(this.config.componentName);
+    if (this.config.props?.id) {
+      return componentNameKebab + kebabToPascal(this.config.props.id);
+    } else {
+      return componentNameKebab;
+    }
   }
 
   private generateHtmlObjectPropLines(): string[] {
@@ -179,12 +202,22 @@ export class ComponentTestCode {
     const lines: string[] = [];
     const varName = this.componentVarName();
     for (const eventName in this.config.events) {
-      const handlerName = 'handle' + camelToPascal(eventName);
+      const handlerName = this.eventHandlerName(eventName);
       const script = this.config.events[eventName];
       lines.push(`const ${handlerName} = ${script};`);
       lines.push(`${varName}.addEventListener("${eventName}", ${handlerName});`);
     }
     return lines;
+  }
+
+  private eventHandlerName(eventName: string): string {
+    const prefix = 'handle';
+    const suffix = camelToPascal(eventName);
+    if (this.config.props?.id) {
+      return prefix + kebabToPascal(this.config.props.id) + suffix;
+    } else {
+      return prefix + suffix;
+    }
   }
 
   generateReactCode(): string {

@@ -2,11 +2,18 @@ import { Component, h, JSX, Fragment, EventEmitter, Event, Prop } from '@stencil
 import {
   ColourSettings,
   ComponentColourSettingsCustomEvent,
-  TSelectOption,
 } from '../../components';
-import { ComponentTestCode } from '../../test-utils/ComponentTestCode';
 import { integerArray } from '../../utils/numberUtils';
 import { tButtonDemo } from '../../components/t-button/t-button.demo';
+import { tSwitchDemo } from '../../components/t-switch/t-switch.demo';
+import { tIntegerPickerDemo } from '../../components/t-integer-picker/t-integer-picker.demo';
+import { tTextfieldDemo } from '../../components/t-textfield/t-textfield.demo';
+import { tSelectDemo } from '../../components/t-select/t-select.demo';
+import { tDropdownMenuDemo } from '../../components/t-dropdown/t-dropdown-menu.demo';
+import { tLinkDemo } from '../../components/t-link/t-link.demo';
+import { tTabsDemo } from '../../components/t-tabs/t-tabs.demo';
+import { tSourceListDemo } from '../../components/t-source-list/t-source-list.demo';
+import { tArticleDemo } from '../../components/t-article/t-article.demo';
 
 @Component({
   tag: 'page-components',
@@ -50,89 +57,57 @@ export class PageComponents {
             examples={[{ code: tButtonDemo.simple, previewMode: 'hue' }]}
             colourSettings={this.colourSettings}
           />
-          {this.renderPreview(
-            hue => <t-column>
-              <t-switch hue={hue} checked={true}>På</t-switch>
-              <t-switch hue={hue} checked={false}>Av</t-switch>
-            </t-column>,
-            'Bryter',
-          )}
-          {this.renderPreview(
-            hue => <t-integer-picker hue={hue} label="Antall" value={5} min={0} max={10} />,
-            'Tallvelger',
-          )}
-          {this.renderPreview(
-            hue => <t-textfield hue={hue} label="Test" />,
-            'Tekstfelt',
-          )}
-          {this.renderPreview(
-            hue => {
-              const options: TSelectOption[] = [
-                { value: '1', label: 'Alternativ 1' },
-                { value: '2', label: 'Alternativ 2' },
-                { value: '3', label: 'Alternativ 3' },
-              ];
-              return <t-select hue={hue} label="Alternativer" options={options} value="1" />;
-            },
-            'Nedtrekksliste',
-          )}
-          {this.renderPreview(
-            hue => (
-              <t-dropdown-menu
-                hue={hue}
-                label="Velg"
-                items={[
-                  { label: 'Alternativ 1', action: () => alert('Alternativ 1') },
-                  { label: 'Alternativ 2', action: () => alert('Alternativ 2') },
-                  { label: 'Alternativ 3', action: () => alert('Alternativ 3') },
-                ]}
-              />
-            ),
-            'Nedtrekksmeny',
-          )}
-          <t-heading level={2}>Lenke</t-heading>
-          <t-link href="#">Intern lenke</t-link>
-          &nbsp;
-          <t-link href="#" external={true}>Ekstern lenke</t-link>
-          <t-heading level={2}>Faner</t-heading>
-          <t-tabs>
-            <t-tab heading="Fane 1">Innhold 1</t-tab>
-            <t-tab heading="Fane 2">Innhold 2</t-tab>
-            <t-tab heading="Fane 3">Innhold 3</t-tab>
-          </t-tabs>
-          <t-heading level={2}>Kildeliste</t-heading>
-          <t-source-list sources={{
-            'snl-sola': {
-              authors: [{ forename: 'Oddbjørn', surname: 'Engvold' }],
-              articleTitle: 'Sola',
-              retrievedDate: { year: 2024, month: 5, day: 12 },
-              url: 'https://snl.no/Sola',
-              journal: 'Store norske leksikon',
-            },
-            'pmwtfpr': {
-              authors: [
-                { forename: 'Oliver H.', surname: 'Lowry' },
-                { forename: 'Nina J.', surname: 'Rosebrough' },
-                { forename: 'A. Lewis', surname: 'Farr' },
-                { forename: 'Rose J.', surname: 'Randall' },
-              ],
-              articleTitle: 'Protein measurement with the Folin phenol reagent',
-              journal: 'The Journal of Biological Chemistry',
-              volume: 193,
-              pageStart: 265,
-              pageEnd: 275,
-              date: { year: 1951 },
-              issue: 1,
-              doi: '10.1016/S0021-9258(19)52451-6',
-            },
-            'clean-code': {
-              authors: [{ forename: 'Robert C.', surname: 'Martin' }],
-              bookTitle: 'Clean Code - A Handbook of Agile Software Craftsmanship',
-              publisher: 'Prentice Hall',
-              date: { year: 2008, month: 8 },
-              isbn: '9780136083252, 0136083250',
-            },
-          }} />
+          <component-documentation
+            name='Bryter'
+            examples={[
+              { title: 'På', code: tSwitchDemo.on, previewMode: 'hue' },
+              { title: 'Av', code: tSwitchDemo.off, previewMode: 'hue' },
+            ]}
+            colourSettings={this.colourSettings}
+          />
+          <component-documentation
+            name='Tallvelger'
+            examples={[{ code: tIntegerPickerDemo.simple, previewMode: 'hue' }]}
+            colourSettings={this.colourSettings}
+          />
+          <component-documentation
+            name='Tekstfelt'
+            examples={[{ code: tTextfieldDemo.valueChange, previewMode: 'hue' }]}
+            colourSettings={this.colourSettings}
+          />
+          <component-documentation
+            name='Nedtrekksliste'
+            examples={[{ code: tSelectDemo.simple, previewMode: 'hue' }]}
+            colourSettings={this.colourSettings}
+          />
+          <component-documentation
+            name='Nedtrekksmeny'
+            examples={[{ code: tDropdownMenuDemo.simple, previewMode: 'hue' }]}
+            colourSettings={this.colourSettings}
+          />
+          <component-documentation
+            name='Lenke'
+            examples={[
+              { title: 'Intern lenke', code: tLinkDemo.internal, previewMode: 'inline' },
+              { title: 'Ekstern lenke', code: tLinkDemo.external, previewMode: 'inline' },
+            ]}
+            colourSettings={this.colourSettings}
+          />
+          <component-documentation
+            name='Faner'
+            examples={[{ code: tTabsDemo.simple, previewMode: 'inline' }]}
+            colourSettings={this.colourSettings}
+          />
+          <component-documentation
+            name='Kildeliste'
+            examples={[{ code: tSourceListDemo.simple, previewMode: 'inline' }]}
+            colourSettings={this.colourSettings}
+          />
+          <component-documentation
+            name='Artikkel'
+            examples={[{ code: tArticleDemo.simple, previewMode: 'iframe' }]}
+            colourSettings={this.colourSettings}
+          />
           <t-heading level={2}>Artikkel</t-heading>
           <t-article sources={{
             'cc': {

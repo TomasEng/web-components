@@ -1,8 +1,14 @@
-pre {
-  margin: 0;
+:host {
+  display: block;
+  position: relative;
 }
 
-pre code.hljs {
+pre {
+  margin: 0;
+  overflow-x: auto;
+}
+
+code {
   display: block;
   overflow-x: auto;
   border-radius: var(--t-border-radius-default);
