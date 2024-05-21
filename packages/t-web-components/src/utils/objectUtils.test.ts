@@ -1,6 +1,4 @@
-import { describe } from 'node:test';
 import { orderObject, stringifyObjectLines } from './objectUtils';
-import { expect } from '@playwright/test';
 
 describe('objectUtils', () => {
   describe('orderObject', () => {
@@ -108,6 +106,35 @@ describe('objectUtils', () => {
       ]);
     });
 
+    it('Stringifies a Date object', () => {
+      const obj = {
+        type: 'date',
+        input: '2020-01-01T12:00:00Z'
+      };
+      expect(stringifyObjectLines(obj)).toEqual([
+        `new Date("2020-01-01T12:00:00Z")`
+      ]);
+    });
+
+    it('Stringifies a Date object without input', () => {
+      const obj = {
+        type: 'date'
+      };
+      expect(stringifyObjectLines(obj)).toEqual([
+        `new Date()`
+      ]);
+    });
+
+    it('Stringifies a console.log function', () => {
+      const obj = {
+        type: 'console-log',
+        input: 'test'
+      };
+      expect(stringifyObjectLines(obj)).toEqual([
+        `() => console.log("test")`
+      ]);
+    });
+
     it('Stringifies a complex object', () => {
       const obj = {
         prop1: 'test',
@@ -123,7 +150,9 @@ describe('objectUtils', () => {
           subProp4: [
             { value: null },
             true
-          ]
+          ],
+          subProp5: { type: 'date', input: '2020-01-01T12:00:00Z' },
+          subProp6: { type: 'console-log', input: 'test' }
         }
       };
       expect(stringifyObjectLines(obj)).toEqual([
@@ -143,7 +172,9 @@ describe('objectUtils', () => {
         '        value: null',
         '      },',
         '      true',
-        '    ]',
+        '    ],',
+        '    subProp5: new Date("2020-01-01T12:00:00Z"),',
+        '    subProp6: () => console.log("test")',
         '  }',
         '}'
       ]);

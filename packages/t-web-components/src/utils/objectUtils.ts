@@ -31,6 +31,10 @@ export const stringifyObjectLines = (obj: any): string[] => {
         lines.push(']');
       } else if (obj === null) {
         lines.push('null');
+      } else if (obj?.type === 'console-log') {
+        lines.push(`() => console.log(${JSON.stringify(obj.input)})`);
+      } else if (obj?.type === 'date') {
+        lines.push(`new Date(${typeof obj.input === 'string' ? JSON.stringify(obj.input) : ''})`);
       } else {
         lines.push('{');
         for (const key in obj) {

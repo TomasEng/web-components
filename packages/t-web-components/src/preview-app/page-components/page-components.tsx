@@ -15,6 +15,10 @@ import { tTabsDemo } from '../../components/t-tabs/t-tabs.demo';
 import { tSourceListDemo } from '../../components/t-source-list/t-source-list.demo';
 import { tArticleDemo } from '../../components/t-article/t-article.demo';
 import state from '../../store';
+import { tArticleListDemo } from '../../components/t-article-list/t-article.list.demo';
+import { tCodeDemo } from '../../components/t-code/t-code.demo';
+import { tSpinnerDemo } from '../../components/t-spinner/t-spinner.demo';
+import { tTooltipDemo } from '../../components/t-tooltip/t-tooltip.demo';
 
 @Component({
   tag: 'page-components',
@@ -110,37 +114,29 @@ export class PageComponents {
             examples={[{ code: tArticleDemo.simple, previewMode: 'iframe' }]}
             colourSettings={this.colourSettings}
           />
-          <t-heading level={2}>Artikkelliste</t-heading>
-          <t-article-list hue={0} items={[
-            { href: '#', title: 'Lorem ipsum', intro: 'Lorem ipsum dolor sit amet', date: new Date() },
-            {
-              href: '#',
-              title: 'Lorem ipsum dolor sit amet',
-              intro: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed pharetra mauris sit amet varius sodales. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sit amet quam in mauris mattis sollicitudin. Maecenas interdum, tortor non congue varius, erat nibh ornare ligula, non ultricies risus mi quis ipsum. Integer efficitur quis nisl sit amet fringilla. Duis consequat congue mi, vel vehicula mauris facilisis eu. Aliquam accumsan bibendum ante quis fermentum. Aenean ac tincidunt leo. Proin id ipsum et libero posuere volutpat semper ut dolor.',
-              date: new Date(),
-            },
-            {
-              href: '#',
-              title: 'Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Suspendisse faucibus erat ut velit aliquet mattis. Nunc vitae lectus ac urna fermentum consectetur vitae quis enim. Vivamus scelerisque, neque id fermentum ultrices, diam est fermentum quam, eu ornare diam sem vel nisl. Nullam porta tortor nisi, ut aliquam est cursus id. Aliquam turpis nisl, feugiat a massa vitae, efficitur viverra sapien. Cras sed suscipit tellus. Nunc pretium massa vitae ante euismod iaculis. Praesent pellentesque at libero eu lacinia.',
-              intro: 'In hac habitasse platea dictumst. Maecenas eget justo ut velit imperdiet viverra eget vitae lectus. Curabitur at fringilla augue, ac tristique libero. Vivamus consectetur nisl a facilisis auctor. Integer sed purus nisi. Fusce in ligula convallis, auctor sapien non, mattis turpis. Morbi vitae elementum lectus, egestas suscipit nisl. Morbi imperdiet eleifend magna ac varius.',
-              date: new Date(),
-            },
-            {
-              href: '#',
-              title: 'Morbi auctor, ligula nec malesuada ultricies, purus metus ultricies metus, nec tincidunt nunc turpis ut ligula.',
-              intro: 'Sed sit amet nunc et nunc lacinia tincidunt. Integer auctor, lorem nec ultricies ultricies, orci dui convallis purus, eget fermentum velit neque nec dui.',
-            },
-          ]} />
-          <t-heading level={2}>Kode</t-heading>
-          <t-heading level={3}>Standard</t-heading>
-          <t-code language="typescript" code='const test: string = "test";'/>
-          <t-heading level={3}>Panel</t-heading>
-          <t-code language="typescript" code='const test: string = "test";' panel={true}/>
-          <t-heading level={2}>Spinner</t-heading>
-          <t-spinner />
-          <t-heading level={2}>Verktøyhjelp</t-heading>
-          Lorem ipsum dolor sit amet. <t-tooltip><span slot="trigger">[1]</span><span slot="content">Bla bla</span>
-        </t-tooltip>
+          <component-documentation
+            name='Artikkelliste'
+            examples={[{ code: tArticleListDemo.simple, previewMode: 'inline' }]}
+            colourSettings={this.colourSettings}
+          />
+          <component-documentation
+            name='Kode'
+            examples={[
+              { title: 'Standard', code: tCodeDemo.default, previewMode: 'inline' },
+              { title: 'Panel', code: tCodeDemo.panel, previewMode: 'inline' },
+            ]}
+            colourSettings={this.colourSettings}
+          />
+          <component-documentation
+            name='Spinner'
+            examples={[{ code: tSpinnerDemo.default, previewMode: 'inline' }]}
+            colourSettings={this.colourSettings}
+          />
+          <component-documentation
+            name='Verktøyhjelp'
+            examples={[{ code: tTooltipDemo.default, previewMode: 'inline' }]}
+            colourSettings={this.colourSettings}
+          />
         </div>
       </t-layout-main>
     );

@@ -143,7 +143,9 @@ export class ComponentTestCode {
     const lines: string[] = [];
     for (const propName in this.config.props) {
       const value = this.config.props[propName];
-      if (['string', 'number', 'boolean'].includes(typeof value)) {
+      if (typeof value === 'string') {
+        lines.push(`${propName}=${JSON.stringify(value)}`);
+      } else if (['number', 'boolean'].includes(typeof value)) {
         lines.push(`${propName}="${value}"`);
       }
     }
@@ -267,7 +269,7 @@ export class ComponentTestCode {
       const value = this.config.props[propName];
       switch (typeof value) {
         case 'string':
-          lines.push(`${propName}="${value}"`);
+          lines.push(`${propName}=${JSON.stringify(value)}`);
           break;
         default: {
           const objLines = stringifyObjectLines(value);

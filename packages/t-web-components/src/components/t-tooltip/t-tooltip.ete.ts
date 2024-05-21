@@ -1,33 +1,15 @@
 import { test, expect, Page } from '@playwright/test';
 import { renderComponent } from '../../test-utils/renderComponent';
 import { TOOLTIP_HIDE_DELAY_MILLISECONDS } from '../../constants';
-import { ComponentTestCodeConfig } from '../../test-utils/ComponentTestCode';
+import { tTooltipDemo, tTooltipTestData } from './t-tooltip.demo';
 
 test.describe('t-tooltip', () => {
 
-  const tekst = 'Klikk meg';
-  const innhold = 'Lorem ipsum';
-  const config: ComponentTestCodeConfig = {
-    componentName: 't-tooltip',
-    children: [
-      {
-        componentName: 'span',
-        props: { slot: 'trigger' },
-        children: [tekst]
-      },
-      {
-        componentName: 'span',
-        props: { slot: 'content' },
-        children: [innhold]
-      }
-    ]
-  };
-
-  const renderTooltip = (page: Page) => renderComponent(page, config);
+  const renderTooltip = (page: Page) => renderComponent(page, tTooltipDemo.default);
 
   test('Viser verktøyhjelp når musen beveges over og skjuler den etter en tid når musen beveges bort', async ({ page }) => {
     await renderTooltip(page);
-    const trigger = page.getByText(tekst);
+    const trigger = page.getByText(tTooltipTestData.triggerText);
     await expect(trigger).toBeVisible();
     const triggerBox = await trigger.boundingBox();
     const triggerCenterX = triggerBox.x + triggerBox.width / 2;
@@ -60,7 +42,7 @@ test.describe('t-tooltip', () => {
   });
 
   const hoverTrigger = async (page: Page) => {
-    const trigger = page.getByText(tekst);
+    const trigger = page.getByText(tTooltipTestData.triggerText);
     await expect(trigger).toBeVisible();
     const triggerBox = await trigger.boundingBox();
     const triggerCenterX = triggerBox.x + triggerBox.width / 2;

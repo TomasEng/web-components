@@ -19,7 +19,6 @@ export class TModeSwitcher {
 
   render() {
     const icon = state.mode === 'light' ? <SunIcon class='icon'/> : <MoonIcon fill class='icon'/>;
-    console.log('selectedMode', state.selectedMode);
 
     return <internal-style-provider hueOffsetInTurns={this.hue}>
       <t-dropdown-menu
@@ -54,7 +53,6 @@ export class TModeSwitcher {
   }
 
   private selectMode(mode: SelectedMode) {
-    console.log('selectMode', mode)
     selectMode(mode);
   }
 }

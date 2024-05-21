@@ -1,7 +1,8 @@
 import { createStore } from '@stencil/store';
 import { GlobalState } from './types/GlobalState';
 import {
-  getMode, getModeFromLocalStorage,
+  getMode,
+  getModeFromLocalStorage,
   resetModeInLocalStorage,
   setModeInLocalStorage,
   systemMode,
