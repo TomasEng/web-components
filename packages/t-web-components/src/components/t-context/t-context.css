@@ -41,6 +41,7 @@
   --t-z-index-dropdown-menu: 200;
   --t-z-index-tooltip: 100;
 
+  color: var(--t-font-colour-default);
   font-family: Calibri, Arial, sans-serif;
   font-size: var(--t-default-font-size);
   min-height: 100vh;

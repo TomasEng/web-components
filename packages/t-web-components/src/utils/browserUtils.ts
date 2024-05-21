@@ -12,6 +12,7 @@ export const systemMode = (): Mode => {
 
 const modeKey = 't-mode';
 export const setModeInLocalStorage = (mode: Mode) => {
+  console.log('setModeInLocalStorage', mode)
   localStorage.setItem(modeKey, mode);
 };
 export const resetModeInLocalStorage = () => {

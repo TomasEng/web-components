@@ -1,6 +1,7 @@
-import { Component, Host, h, Prop, Element } from '@stencil/core';
+import { Component, Host, h, Prop, Element, Method } from '@stencil/core';
 import { SOURCE_ID_PREFIX } from '../../constants';
 import { findUniqueIndex, uniqueItems } from '../../utils/arrayUtils';
+import { TSourceItemList } from '../../types/TSourceItemList';
 
 @Component({
   tag: 't-source-ref',
@@ -13,25 +14,52 @@ export class TSourceRef {
 
   @Element() element: HTMLElement;
 
+  @Method() async getSourceId() {
+    await customElements.whenDefined('t-source-ref');
+    return this.sourceId ?? this.element.getAttribute('sourceid');
+  }
+
+  get tLink(): HTMLTLinkElement {
+    return this.element.shadowRoot.querySelector('t-link');
+  }
+
+  get tSource(): HTMLTSourceElement {
+    return this.element.shadowRoot.querySelector('t-source');
+  }
+
   render() {
     const article: HTMLTArticleElement = this.element.closest('t-article');
-    const sourceRefElements: NodeListOf<HTMLTSourceRefElement> = article.querySelectorAll('t-source-ref');
-    const sourceIds = Array.from(sourceRefElements).map(sourceRefElement => sourceRefElement.sourceId);
-    const sourceNumber = findUniqueIndex(sourceIds, this.sourceId) + 1;
 
     return (
       <Host>
         <t-tooltip>
           <sup slot="trigger">
-            <t-link href={`#${SOURCE_ID_PREFIX}${this.sourceId}`}>[{sourceNumber}]</t-link>
+            <t-link href={`#${SOURCE_ID_PREFIX}${this.sourceId}`}/>
           </sup>
           <t-source
             slot="content"
             source={article.sources[this.sourceId]}
           />
         </t-tooltip>
-        <slot></slot>
       </Host>
     );
+  }
+
+  componentDidRender() {
+    this.getArticle().then(async article => {
+      const sourceOrder = await article.getSourceOrder();
+      const sourceId = await this.getSourceId();
+      const sourceNumber = findUniqueIndex(sourceOrder, sourceId) + 1;
+      const tSource: HTMLTSourceElement = this.tSource;
+      tSource.source = article.sources[sourceId];
+      const sourceRefLink: HTMLTLinkElement = this.tLink;
+      sourceRefLink.innerText = `[${sourceNumber}]`;
+      sourceRefLink.href = `#${SOURCE_ID_PREFIX}${sourceId}`;
+    });
+  }
+
+  private async getArticle(): Promise<HTMLTArticleElement> {
+    await customElements.whenDefined('t-article');
+    return this.element.closest('t-article');
   }
 }

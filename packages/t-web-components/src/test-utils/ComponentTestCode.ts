@@ -22,6 +22,10 @@ export class ComponentTestCode {
     this.config = config;
   }
 
+  configString(): string {
+    return JSON.stringify(this.config, null, 2);
+  }
+
   withHue(hue: number, hueProp: string = 'hue'): ComponentTestCode {
     return new ComponentTestCode(
       {
@@ -228,7 +232,7 @@ export class ComponentTestCode {
     const lines: string[] = [];
     const propLines = this.generateJsxPropLines();
     const childLines = indentLines(this.generateReactChildrenLines());
-    const componentName = kebabToPascal(this.config.componentName);
+    const componentName = this.reactComponentName();
     if (propLines.length === 0 && childLines.length === 0) {
       lines.push(`<${componentName}/>`);
     } else if (propLines.length === 0) {
@@ -299,4 +303,125 @@ export class ComponentTestCode {
       .map(childTestCode => typeof childTestCode === 'string' ? childTestCode : childTestCode.generateReactCodeLines())
       .flat();
   }
+
+  private reactComponentName(): string {
+    if (htmlTags.includes(this.config.componentName)) {
+      return this.config.componentName;
+    } else {
+      return kebabToPascal(this.config.componentName);
+    }
+  }
 }
+
+const htmlTags = [
+  "a",
+  "abbr",
+  "address",
+  "area",
+  "article",
+  "aside",
+  "audio",
+  "b",
+  "base",
+  "bdi",
+  "bdo",
+  "blockquote",
+  "body",
+  "br",
+  "button",
+  "canvas",
+  "caption",
+  "cite",
+  "code",
+  "col",
+  "colgroup",
+  "data",
+  "datalist",
+  "dd",
+  "del",
+  "details",
+  "dfn",
+  "dialog",
+  "div",
+  "dl",
+  "dt",
+  "em",
+  "embed",
+  "fieldset",
+  "figcaption",
+  "figure",
+  "footer",
+  "form",
+  "h1",
+  "h2",
+  "h3",
+  "h4",
+  "h5",
+  "h6",
+  "head",
+  "header",
+  "hgroup",
+  "hr",
+  "html",
+  "i",
+  "iframe",
+  "img",
+  "input",
+  "ins",
+  "kbd",
+  "label",
+  "legend",
+  "li",
+  "link",
+  "main",
+  "map",
+  "mark",
+  "meta",
+  "meter",
+  "nav",
+  "noscript",
+  "object",
+  "ol",
+  "optgroup",
+  "option",
+  "output",
+  "p",
+  "param",
+  "picture",
+  "pre",
+  "progress",
+  "q",
+  "rp",
+  "rt",
+  "ruby",
+  "s",
+  "samp",
+  "script",
+  "section",
+  "select",
+  "small",
+  "source",
+  "span",
+  "strong",
+  "style",
+  "sub",
+  "summary",
+  "sup",
+  "table",
+  "tbody",
+  "td",
+  "template",
+  "textarea",
+  "tfoot",
+  "th",
+  "thead",
+  "time",
+  "title",
+  "tr",
+  "track",
+  "u",
+  "ul",
+  "var",
+  "video",
+  "wbr"
+];

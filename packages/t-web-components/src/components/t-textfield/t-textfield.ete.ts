@@ -1,6 +1,5 @@
 import { test, expect } from '@playwright/test';
 import { renderComponent } from '../../test-utils/renderComponent';
-import { ComponentTestCodeConfig } from '../../test-utils/ComponentTestCode';
 import { tTextfieldDemo } from './t-textfield.demo';
 
 test.describe('t-textfield', () => {

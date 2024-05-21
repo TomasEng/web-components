@@ -24,6 +24,7 @@ export const tArticleDemo: ComponentDemos = {
   simple: {
     componentName: 't-article',
     props: {
+      heading: 'Lorem ipsum',
       sources: {
         [tArticleTestData.source1Id]: tArticleTestData.source1,
         [tArticleTestData.source2Id]: tArticleTestData.source2,

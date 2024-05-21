@@ -1,4 +1,4 @@
-import { Component, h, Prop, Element } from '@stencil/core';
+import { Component, h, Prop, Element, Method } from '@stencil/core';
 
 import { Chromator, Oklch } from 'chromator';
 import { asPercents } from '../../utils/utils';
@@ -14,8 +14,8 @@ import {
   getDecreasedLuminanceByContrast,
   getIncreasedLuminanceByContrast,
 } from '../../utils/colourUtils';
-import state from '../../store';
-import { Mode } from '../../types/Mode';
+import state, {selectMode} from '../../store';
+import { SelectedMode } from '../../types/Mode';
 
 @Component({
   tag: 't-context',
@@ -26,6 +26,10 @@ export class TContext {
   @Prop() baseHue: number = 263;
   @Prop() baseChroma: number = 0.4;
   @Prop() contrast: number = 1;
+
+  @Method() async selectMode(mode: SelectedMode) {
+    selectMode(mode);
+  }
 
   @Element() element: HTMLElement;
 

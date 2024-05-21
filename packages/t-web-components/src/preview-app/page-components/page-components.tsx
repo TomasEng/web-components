@@ -14,6 +14,7 @@ import { tLinkDemo } from '../../components/t-link/t-link.demo';
 import { tTabsDemo } from '../../components/t-tabs/t-tabs.demo';
 import { tSourceListDemo } from '../../components/t-source-list/t-source-list.demo';
 import { tArticleDemo } from '../../components/t-article/t-article.demo';
+import state from '../../store';
 
 @Component({
   tag: 'page-components',
@@ -34,10 +35,11 @@ export class PageComponents {
 
   componentDidRender() {
     this.previewIframes?.forEach(iframe => {
-      const contextElement = iframe.contentWindow.document.querySelector('t-context');
+      const contextElement: HTMLTContextElement = iframe.contentWindow.document.querySelector('t-context');
       if (contextElement) {
         contextElement.baseHue = this.colourSettings.hue;
         contextElement.baseChroma = this.colourSettings.chroma;
+        contextElement.selectMode(state.selectedMode).then();
       }
     });
   }
@@ -108,45 +110,6 @@ export class PageComponents {
             examples={[{ code: tArticleDemo.simple, previewMode: 'iframe' }]}
             colourSettings={this.colourSettings}
           />
-          <t-heading level={2}>Artikkel</t-heading>
-          <t-article sources={{
-            'cc': {
-              authors: [{ forename: 'Robert C.', surname: 'Martin' }],
-              title: 'Clean Code - A Handbook of Agile Software Craftsmanship',
-              publisher: 'Prentice Hall',
-              date: { year: 2008, month: 8 },
-              isbn: '9780136083252, 0136083250',
-            },
-            'test': {
-              authors: [{ forename: 'John', surname: 'Doe' }],
-              title: 'Test',
-              date: { year: 2024, month: 5, day: 12 },
-              url: 'https://example.com',
-              journal: 'Test Journal',
-            },
-          }}>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              <t-source-ref sourceId="test" />
-              Mauris ac nisl pellentesque, tempus metus non, pretium felis. Suspendisse potenti. Nullam laoreet, neque
-              eu pharetra lobortis, diam ligula posuere augue, in imperdiet quam felis nec sem.
-              <t-source-ref sourceId="cc" />
-              Suspendisse suscipit, dui nec volutpat porttitor, sapien turpis pharetra elit, et cursus ante nisi eu
-              nunc. Phasellus facilisis nunc arcu, eget laoreet purus vehicula sit amet. Curabitur convallis, metus
-              finibus tristique viverra, nunc sem suscipit orci, nec gravida leo risus nec orci. Aenean pretium, eros
-              eget blandit tristique, quam tellus porttitor felis, non molestie neque ipsum et leo. Etiam tincidunt,
-              massa vitae bibendum posuere, arcu orci aliquam dolor, a viverra ligula lectus at ante.
-            </p>
-            <p>Cras iaculis sapien nec nisl luctus viverra. Integer eget dui ipsum.
-              <t-source-ref sourceId="test" />
-              Pellentesque vel efficitur risus. Phasellus libero ante, porttitor non consequat id, euismod quis sem.
-              Maecenas egestas mi quis est mattis, a ultricies nulla fermentum. Sed venenatis ultricies pellentesque.
-              Integer varius ipsum dolor, placerat consectetur magna blandit nec. Donec et tortor metus. Nullam libero
-              lacus, vulputate nec massa non, hendrerit sodales sapien. Aenean pellentesque sapien sed diam dapibus
-              dignissim. Morbi sodales massa ut suscipit mollis. Aliquam id velit non dui congue convallis eget eget
-              augue. Duis dignissim lectus eros, eu molestie nibh scelerisque vel. Nullam scelerisque ultrices felis id
-              euismod. Etiam enim nisi, dignissim et odio eu, tristique tempor magna.
-            </p>
-          </t-article>
           <t-heading level={2}>Artikkelliste</t-heading>
           <t-article-list hue={0} items={[
             { href: '#', title: 'Lorem ipsum', intro: 'Lorem ipsum dolor sit amet', date: new Date() },

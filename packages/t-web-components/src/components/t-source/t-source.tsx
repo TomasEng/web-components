@@ -30,7 +30,7 @@ export class TSource {
       title,
       url,
       volume,
-    } = this.source;
+    } = this.source || {}
 
     return (
       <Host>

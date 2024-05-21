@@ -1,9 +1,9 @@
-import { Component, h, Prop, Fragment } from '@stencil/core';
+import { Component, h, Prop } from '@stencil/core';
 import { ComponentHue } from '../../types/ComponentHue';
 import { SelectedMode } from '../../types/Mode';
 import { SunIcon } from '../../icons/SunIcon';
 import { MoonIcon } from '../../icons/MoonIcon';
-import state from '../../store';
+import state, {selectMode} from '../../store';
 import { CogIcon } from '../../icons/CogIcon';
 
 @Component({
@@ -19,6 +19,7 @@ export class TModeSwitcher {
 
   render() {
     const icon = state.mode === 'light' ? <SunIcon class='icon'/> : <MoonIcon fill class='icon'/>;
+    console.log('selectedMode', state.selectedMode);
 
     return <internal-style-provider hueOffsetInTurns={this.hue}>
       <t-dropdown-menu
@@ -53,6 +54,7 @@ export class TModeSwitcher {
   }
 
   private selectMode(mode: SelectedMode) {
-    state.selectedMode = mode;
+    console.log('selectMode', mode)
+    selectMode(mode);
   }
 }
