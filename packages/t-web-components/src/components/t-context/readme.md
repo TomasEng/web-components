@@ -14,6 +14,25 @@
 | `contrast`   | `contrast`    |             | `number` | `1`     |
 
 
+## Methods
+
+### `selectMode(mode: SelectedMode) => Promise<void>`
+
+
+
+#### Parameters
+
+| Name   | Type               | Description |
+| ------ | ------------------ | ----------- |
+| `mode` | `"system" \| Mode` |             |
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+
 ## Dependencies
 
 ### Used by

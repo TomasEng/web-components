@@ -1,4 +1,4 @@
-# t-row
+# t-panel
 
 
 
@@ -9,13 +9,15 @@
 
 ### Used by
 
- - [component-documentation](../../preview-app/component-documentation)
+ - [t-code](../t-code)
+ - [t-tabs](../t-tabs)
 
 ### Graph
 ```mermaid
 graph TD;
-  component-documentation --> t-row
-  style t-row fill:#f9f,stroke:#333,stroke-width:4px
+  t-code --> t-panel
+  t-tabs --> t-panel
+  style t-panel fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

@@ -24,6 +24,7 @@ graph TD;
   page-about --> t-heading
   page-about --> t-link
   t-layout-main --> internal-style-provider
+  t-heading --> t-link
   t-link --> internal-style-provider
   preview-app --> page-about
   style page-about fill:#f9f,stroke:#333,stroke-width:4px

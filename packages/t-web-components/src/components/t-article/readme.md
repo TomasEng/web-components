@@ -7,29 +7,42 @@
 
 ## Properties
 
-| Property  | Attribute | Description | Type                             | Default |
-| --------- | --------- | ----------- | -------------------------------- | ------- |
-| `sources` | --        |             | `{ [id: string]: TSourceItem; }` | `{}`    |
+| Property         | Attribute         | Description | Type                             | Default     |
+| ---------------- | ----------------- | ----------- | -------------------------------- | ----------- |
+| `heading`        | `heading`         |             | `string`                         | `undefined` |
+| `sources`        | --                |             | `{ [id: string]: TSourceItem; }` | `{}`        |
+| `sourcesHeading` | `sources-heading` |             | `string`                         | `'Kilder'`  |
+
+
+## Methods
+
+### `getSourceOrder() => Promise<string[]>`
+
+
+
+#### Returns
+
+Type: `Promise<string[]>`
+
+
 
 
 ## Dependencies
 
-### Used by
-
- - [page-components](../../preview-app/page-components)
-
 ### Depends on
 
+- [t-heading](../t-heading)
 - [t-source-list](../t-source-list)
 
 ### Graph
 ```mermaid
 graph TD;
+  t-article --> t-heading
   t-article --> t-source-list
+  t-heading --> t-link
+  t-link --> internal-style-provider
   t-source-list --> t-source
   t-source --> t-link
-  t-link --> internal-style-provider
-  page-components --> t-article
   style t-article fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

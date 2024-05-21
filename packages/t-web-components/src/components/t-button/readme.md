@@ -18,7 +18,6 @@
 
 ### Used by
 
- - [page-components](../../preview-app/page-components)
  - [t-dropdown-menu](../t-dropdown)
  - [t-layout-header](../t-layout-header)
 
@@ -30,7 +29,6 @@
 ```mermaid
 graph TD;
   t-button --> internal-style-provider
-  page-components --> t-button
   t-dropdown-menu --> t-button
   t-layout-header --> t-button
   style t-button fill:#f9f,stroke:#333,stroke-width:4px

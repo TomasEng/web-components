@@ -7,10 +7,12 @@
 
 ## Properties
 
-| Property | Attribute | Description | Type     | Default     |
-| -------- | --------- | ----------- | -------- | ----------- |
-| `html`   | `html`    |             | `string` | `undefined` |
-| `script` | `script`  |             | `string` | `undefined` |
+| Property | Attribute | Description | Type     | Default          |
+| -------- | --------- | ----------- | -------- | ---------------- |
+| `chroma` | `chroma`  |             | `number` | `DEFAULT_CHROMA` |
+| `html`   | `html`    |             | `string` | `undefined`      |
+| `hue`    | `hue`     |             | `number` | `DEFAULT_HUE`    |
+| `script` | `script`  |             | `string` | `undefined`      |
 
 
 ----------------------------------------------

@@ -30,21 +30,7 @@
 - [t-layout-main](../../components/t-layout-main)
 - [component-colour-settings](../component-colour-settings)
 - [t-heading](../../components/t-heading)
-- [t-button](../../components/t-button)
-- [t-column](../../components/t-column)
-- [t-switch](../../components/t-switch)
-- [t-integer-picker](../../components/t-integer-picker)
-- [t-textfield](../../components/t-textfield)
-- [t-select](../../components/t-select)
-- [t-dropdown-menu](../../components/t-dropdown)
-- [t-link](../../components/t-link)
-- [t-source-list](../../components/t-source-list)
-- [t-article](../../components/t-article)
-- [t-source-ref](../../components/t-source-ref)
-- [t-article-list](../../components/t-article-list)
-- [t-spinner](../../components/t-spinner)
-- [t-tooltip](../../components/t-tooltip)
-- [t-row](../../components/t-row)
+- [component-documentation](../component-documentation)
 
 ### Graph
 ```mermaid
@@ -52,21 +38,7 @@ graph TD;
   page-components --> t-layout-main
   page-components --> component-colour-settings
   page-components --> t-heading
-  page-components --> t-button
-  page-components --> t-column
-  page-components --> t-switch
-  page-components --> t-integer-picker
-  page-components --> t-textfield
-  page-components --> t-select
-  page-components --> t-dropdown-menu
-  page-components --> t-link
-  page-components --> t-source-list
-  page-components --> t-article
-  page-components --> t-source-ref
-  page-components --> t-article-list
-  page-components --> t-spinner
-  page-components --> t-tooltip
-  page-components --> t-row
+  page-components --> component-documentation
   t-layout-main --> internal-style-provider
   component-colour-settings --> t-fieldset
   component-colour-settings --> t-column
@@ -79,24 +51,19 @@ graph TD;
   t-saturation-picker --> t-slider
   t-integer-picker --> internal-style-provider
   t-integer-picker --> internal-input-wrapper
-  t-button --> internal-style-provider
-  t-switch --> internal-style-provider
-  t-textfield --> internal-style-provider
-  t-textfield --> internal-input-wrapper
-  t-select --> internal-style-provider
-  t-select --> internal-input-wrapper
-  t-dropdown-menu --> internal-style-provider
-  t-dropdown-menu --> t-floating-element
-  t-dropdown-menu --> t-button
+  t-heading --> t-link
   t-link --> internal-style-provider
-  t-source-list --> t-source
-  t-source --> t-link
-  t-article --> t-source-list
-  t-source-ref --> t-tooltip
-  t-source-ref --> t-link
-  t-source-ref --> t-source
-  t-tooltip --> t-floating-element
-  t-article-list --> internal-style-provider
+  component-documentation --> t-heading
+  component-documentation --> t-column
+  component-documentation --> t-details
+  component-documentation --> t-tabs
+  component-documentation --> t-tab
+  component-documentation --> t-code
+  component-documentation --> preview-iframe
+  component-documentation --> component-preview
+  component-documentation --> t-row
+  t-tabs --> t-panel
+  t-code --> t-panel
   preview-app --> page-components
   style page-components fill:#f9f,stroke:#333,stroke-width:4px
 ```

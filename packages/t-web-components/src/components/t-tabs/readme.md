@@ -1,4 +1,4 @@
-# t-column
+# t-tabs
 
 
 
@@ -9,15 +9,18 @@
 
 ### Used by
 
- - [component-colour-settings](../../preview-app/component-colour-settings)
  - [component-documentation](../../preview-app/component-documentation)
+
+### Depends on
+
+- [t-panel](../t-panel)
 
 ### Graph
 ```mermaid
 graph TD;
-  component-colour-settings --> t-column
-  component-documentation --> t-column
-  style t-column fill:#f9f,stroke:#333,stroke-width:4px
+  t-tabs --> t-panel
+  component-documentation --> t-tabs
+  style t-tabs fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

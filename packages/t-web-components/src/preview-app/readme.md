@@ -35,25 +35,12 @@ graph TD;
   page-about --> t-heading
   page-about --> t-link
   t-layout-main --> internal-style-provider
+  t-heading --> t-link
   t-link --> internal-style-provider
   page-components --> t-layout-main
   page-components --> component-colour-settings
   page-components --> t-heading
-  page-components --> t-button
-  page-components --> t-column
-  page-components --> t-switch
-  page-components --> t-integer-picker
-  page-components --> t-textfield
-  page-components --> t-select
-  page-components --> t-dropdown-menu
-  page-components --> t-link
-  page-components --> t-source-list
-  page-components --> t-article
-  page-components --> t-source-ref
-  page-components --> t-article-list
-  page-components --> t-spinner
-  page-components --> t-tooltip
-  page-components --> t-row
+  page-components --> component-documentation
   component-colour-settings --> t-fieldset
   component-colour-settings --> t-column
   component-colour-settings --> t-hue-picker
@@ -65,19 +52,17 @@ graph TD;
   t-saturation-picker --> t-slider
   t-integer-picker --> internal-style-provider
   t-integer-picker --> internal-input-wrapper
-  t-switch --> internal-style-provider
-  t-textfield --> internal-style-provider
-  t-textfield --> internal-input-wrapper
-  t-select --> internal-style-provider
-  t-select --> internal-input-wrapper
-  t-source-list --> t-source
-  t-source --> t-link
-  t-article --> t-source-list
-  t-source-ref --> t-tooltip
-  t-source-ref --> t-link
-  t-source-ref --> t-source
-  t-tooltip --> t-floating-element
-  t-article-list --> internal-style-provider
+  component-documentation --> t-heading
+  component-documentation --> t-column
+  component-documentation --> t-details
+  component-documentation --> t-tabs
+  component-documentation --> t-tab
+  component-documentation --> t-code
+  component-documentation --> preview-iframe
+  component-documentation --> component-preview
+  component-documentation --> t-row
+  t-tabs --> t-panel
+  t-code --> t-panel
   style preview-app fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

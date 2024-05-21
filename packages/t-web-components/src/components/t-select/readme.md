@@ -18,10 +18,6 @@
 
 ## Dependencies
 
-### Used by
-
- - [page-components](../../preview-app/page-components)
-
 ### Depends on
 
 - [internal-style-provider](../internal-style-provider)
@@ -32,7 +28,6 @@
 graph TD;
   t-select --> internal-style-provider
   t-select --> internal-input-wrapper
-  page-components --> t-select
   style t-select fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

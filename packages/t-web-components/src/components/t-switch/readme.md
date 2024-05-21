@@ -22,10 +22,6 @@
 
 ## Dependencies
 
-### Used by
-
- - [page-components](../../preview-app/page-components)
-
 ### Depends on
 
 - [internal-style-provider](../internal-style-provider)
@@ -34,7 +30,6 @@
 ```mermaid
 graph TD;
   t-switch --> internal-style-provider
-  page-components --> t-switch
   style t-switch fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

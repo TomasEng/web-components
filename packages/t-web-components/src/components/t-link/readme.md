@@ -19,7 +19,7 @@
 ### Used by
 
  - [page-about](../../preview-app/page-about)
- - [page-components](../../preview-app/page-components)
+ - [t-heading](../t-heading)
  - [t-source](../t-source)
  - [t-source-ref](../t-source-ref)
 
@@ -32,7 +32,7 @@
 graph TD;
   t-link --> internal-style-provider
   page-about --> t-link
-  page-components --> t-link
+  t-heading --> t-link
   t-source --> t-link
   t-source-ref --> t-link
   style t-link fill:#f9f,stroke:#333,stroke-width:4px

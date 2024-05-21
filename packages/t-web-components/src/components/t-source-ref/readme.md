@@ -12,11 +12,20 @@
 | `sourceId` | `source-id` |             | `string` | `undefined` |
 
 
+## Methods
+
+### `getSourceId() => Promise<string>`
+
+
+
+#### Returns
+
+Type: `Promise<string>`
+
+
+
+
 ## Dependencies
-
-### Used by
-
- - [page-components](../../preview-app/page-components)
 
 ### Depends on
 
@@ -33,7 +42,6 @@ graph TD;
   t-tooltip --> t-floating-element
   t-link --> internal-style-provider
   t-source --> t-link
-  page-components --> t-source-ref
   style t-source-ref fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

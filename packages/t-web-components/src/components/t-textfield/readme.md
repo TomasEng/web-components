@@ -23,10 +23,6 @@
 
 ## Dependencies
 
-### Used by
-
- - [page-components](../../preview-app/page-components)
-
 ### Depends on
 
 - [internal-style-provider](../internal-style-provider)
@@ -37,7 +33,6 @@
 graph TD;
   t-textfield --> internal-style-provider
   t-textfield --> internal-input-wrapper
-  page-components --> t-textfield
   style t-textfield fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
