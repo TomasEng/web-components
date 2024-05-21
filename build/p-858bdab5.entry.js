@@ -1,0 +1,2 @@
+import{r as o,h as s}from"./p-223dec8c.js";import{S as r}from"./p-20247f45.js";const t=":host{display:block}ol{font-size:smaller;display:flex;flex-direction:column;gap:var(--t-spacing-in-group)}li:target{background-color:var(--t-base-colour)}";const c=t;const e=class{constructor(s){o(this,s);this.sources={}}render(){return s("ol",{key:"dd38a6de48f88e69c5c2f814a8211f8942ad3857"},Object.keys(this.sources).map((o=>s("li",{id:`${r}${o}`},s("t-source",{source:this.sources[o]})))))}};e.style=c;export{e as t_source_list};
+//# sourceMappingURL=p-858bdab5.entry.js.map
