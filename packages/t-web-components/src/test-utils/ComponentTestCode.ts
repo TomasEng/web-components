@@ -165,7 +165,6 @@ export class ComponentTestCode {
     const objectPropLines = this.generateHtmlObjectPropLines();
     const eventLines = this.generateHtmlEventLines();
     if (objectPropLines.length + eventLines.length) {
-      const { componentName } = this.config;
       const varName = this.componentVarName();
       lines.push(`const ${varName} = document.querySelector("${this.selector()}");`);
       lines.push(...objectPropLines);

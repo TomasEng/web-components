@@ -145,18 +145,4 @@ export class PageComponents {
   private hueArray(): number[] {
     return integerArray(this.colourSettings.numberOfHues);
   }
-
-  private renderPreview(
-    component: (hue: number) => JSX.Element,
-    title: string,
-  ): JSX.Element {
-    return (
-      <>
-        <t-heading level={2}>{title}</t-heading>
-        <t-row>
-          {this.hueArray().map(hue => component(hue / this.colourSettings.numberOfHues))}
-        </t-row>
-      </>
-    );
-  }
 }

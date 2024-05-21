@@ -1,6 +1,5 @@
-import { Component, h, JSX, Element, Prop } from '@stencil/core';
+import { Component, Element, Prop } from '@stencil/core';
 import { DEFAULT_CHROMA, DEFAULT_HUE } from '../constants';
-import { ComponentTestCode, ComponentTestCodeConfig } from '../test-utils/ComponentTestCode';
 import state from '../store';
 
 @Component({
@@ -23,11 +22,6 @@ export class PreviewComponent {
 
   render() {
     state.mode;
-/*    return (
-      <t-context baseHue={this.hue} baseChroma={this.chroma} id="context">
-        <div id="wrapper" innerHTML={this.html}/>
-      </t-context>
-    );*/
   }
 
   connectedCallback() {

@@ -1,7 +1,6 @@
 import { Component, Host, h, Prop, Element, Method } from '@stencil/core';
 import { SOURCE_ID_PREFIX } from '../../constants';
-import { findUniqueIndex, uniqueItems } from '../../utils/arrayUtils';
-import { TSourceItemList } from '../../types/TSourceItemList';
+import { findUniqueIndex } from '../../utils/arrayUtils';
 
 @Component({
   tag: 't-source-ref',
