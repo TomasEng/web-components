@@ -17,20 +17,26 @@ export class ComponentDocumentation {
   render() {
     return (
       <Host>
-        <t-heading level={2}>{this.name}</t-heading>
+        <t-heading level={2} id={this.name}>{this.name}</t-heading>
         {this.examples.map(example => (
-          <Example example={example} colourSettings={this.colourSettings}/>
+          <Example example={example} colourSettings={this.colourSettings} parentName={this.name}/>
         ))}
       </Host>
     );
   }
 }
 
-const Example = ({ example, colourSettings }: { example: ComponentExample, colourSettings: ColourSettings }) => {
+type ExampleProps = {
+  example: ComponentExample;
+  colourSettings: ColourSettings;
+  parentName: string;
+};
+
+const Example = ({ example, colourSettings, parentName }: ExampleProps) => {
   const componentTestCode = new ComponentTestCode(example.code);
   return (
     <>
-      {example.title && <t-heading level={3}>{example.title}</t-heading>}
+      {example.title && <t-heading level={3} id={`${parentName}-${example.title}`}>{example.title}</t-heading>}
       {example.description && <t-paragraph>{example.description}</t-paragraph>}
       <t-column>
         <Preview componentTestCode={componentTestCode} mode={example.previewMode} colourSettings={colourSettings}/>

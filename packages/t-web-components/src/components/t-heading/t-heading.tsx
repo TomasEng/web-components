@@ -1,4 +1,4 @@
-import { Component, h, Prop } from '@stencil/core';
+import { Component, h, Prop, Element, Host } from '@stencil/core';
 
 @Component({
   tag: 't-heading',
@@ -8,8 +8,18 @@ import { Component, h, Prop } from '@stencil/core';
 export class THeading {
 
   @Prop() level: 1 | 2 | 3 | 4 | 5 | 6 = 1;
+  @Element() element: HTMLElement;
 
   render() {
+    return (
+      <div class='wrapper'>
+        {this.renderH()}
+        {this.element.id && <t-link class='hashlink' href={`#${this.element.id}`}>#</t-link>}
+      </div>
+    );
+  }
+
+  renderH() {
     switch (this.level) {
       case 1:
         return <h1><slot/></h1>;
