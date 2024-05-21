@@ -1,4 +1,4 @@
-import { Component, h, JSX, Element, Prop } from '@stencil/core';
+import { Component, h, JSX, Element, Prop, Host } from '@stencil/core';
 import { ComponentTestCode } from '../../test-utils/ComponentTestCode';
 
 @Component({
@@ -9,6 +9,17 @@ export class ComponentPreview {
   @Element() element: HTMLElement;
 
   @Prop() componentTestCode: ComponentTestCode;
+
+  render() {
+    return <Host innerHtml={this.componentTestCode.generateMinifiedHtml()}/>;
+  }
+
+  componentDidRender() {
+    const topLevelElement = this.element.querySelector('*');
+    if (this.componentTestCode.config.props?.hue) {
+      topLevelElement.setAttribute('hue', this.componentTestCode.config.props.hue);
+    }
+  }
 
   connectedCallback() {
     const html = this.componentTestCode.generateMinifiedHtml();

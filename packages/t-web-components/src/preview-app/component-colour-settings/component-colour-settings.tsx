@@ -52,7 +52,7 @@ export class ComponentColourSettings {
             onIntegerChange={this.handleNumberOfHuesChange}
             value={this.settings.numberOfHues}
             min={1}
-            max={10}
+            max={12}
           />
           <t-slider
             class="contrast-slider"

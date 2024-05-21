@@ -9,7 +9,7 @@ import {
 } from './utils/browserUtils';
 import { SelectedMode } from './types/Mode';
 
-const { state, onChange } = createStore<GlobalState>({
+const { state } = createStore<GlobalState>({
   selectedMode: getModeFromLocalStorage() || 'system',
   mode: getMode(),
   baseHue: 160,

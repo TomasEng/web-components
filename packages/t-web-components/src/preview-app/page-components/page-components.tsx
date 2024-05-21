@@ -1,9 +1,8 @@
-import { Component, h, JSX, Fragment, EventEmitter, Event, Prop } from '@stencil/core';
+import { Component, h, JSX, EventEmitter, Event, Prop } from '@stencil/core';
 import {
   ColourSettings,
   ComponentColourSettingsCustomEvent,
 } from '../../components';
-import { integerArray } from '../../utils/numberUtils';
 import { tButtonDemo } from '../../components/t-button/t-button.demo';
 import { tSwitchDemo } from '../../components/t-switch/t-switch.demo';
 import { tIntegerPickerDemo } from '../../components/t-integer-picker/t-integer-picker.demo';
@@ -140,9 +139,5 @@ export class PageComponents {
         </div>
       </t-layout-main>
     );
-  }
-
-  private hueArray(): number[] {
-    return integerArray(this.colourSettings.numberOfHues);
   }
 }
