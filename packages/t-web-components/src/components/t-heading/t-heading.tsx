@@ -12,7 +12,7 @@ export class THeading {
 
   render() {
     return (
-      <div class='wrapper'>
+      <div class={`wrapper level-${this.level}`}>
         {this.renderH()}
         {this.element.id && <t-link class='hashlink' href={`#${this.element.id}`}>#</t-link>}
       </div>

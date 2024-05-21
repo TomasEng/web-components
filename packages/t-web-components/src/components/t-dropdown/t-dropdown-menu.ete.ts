@@ -4,9 +4,9 @@ import { ComponentTestCodeConfig } from '../../test-utils/ComponentTestCode';
 import { tDropdownMenuDemo, tDropdownMenuTestData } from './t-dropdown-menu.demo';
 
 const logValues: { [key: string]: string } = {
-  alt1: 'Alternativ 1 valgt',
-  alt2: 'Alternativ 2 valgt',
-  alt3: 'Alternativ 3 valgt',
+  alt1: tDropdownMenuTestData.items[0].logValue,
+  alt2: tDropdownMenuTestData.items[1].logValue,
+  alt3: tDropdownMenuTestData.items[2].logValue,
 };
 
 const filterLog = (log: string[]) => log.filter((msg) => Object.values(logValues).includes(msg));

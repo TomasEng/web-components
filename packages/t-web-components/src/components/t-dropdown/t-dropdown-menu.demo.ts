@@ -6,17 +6,17 @@ export const tDropdownMenuTestData = {
   items: [
     {
       label: 'Alternativ 1',
-      action: () => console.log('Alternativ 1 valgt')
+      logValue: 'Alternativ 1 valgt'
     },
     {
       label: 'Alternativ 2',
-      action: () => console.log('Alternativ 2 valgt')
+      logValue: 'Alternativ 2 valgt'
     },
     {
       label: 'Alternativ 3',
-      action: () => console.log('Alternativ 3 valgt')
+      logValue: 'Alternativ 3 valgt'
     }
-  ] satisfies TDropdownMenuItem[],
+  ],
 };
 
 export const tDropdownMenuDemo: ComponentDemos = {
@@ -24,7 +24,13 @@ export const tDropdownMenuDemo: ComponentDemos = {
     componentName: 't-dropdown-menu',
     props: {
       label: tDropdownMenuTestData.label,
-      items: tDropdownMenuTestData.items,
+      items: tDropdownMenuTestData.items.map((item) => ({
+        label: item.label,
+        action: {
+          type: 'console-log',
+          input: item.logValue,
+        },
+      }))
     },
   },
 };

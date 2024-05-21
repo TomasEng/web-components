@@ -18,6 +18,24 @@
   --t-clickable-area-size: 44px;
   --t-default-font-size: 1rem;
   --t-font-colour-default: var(--t-full-contrast-colour);
+  --t-heading-size-1: 2em;
+  --t-heading-size-2: 1.5em;
+  --t-heading-size-3: 1.25em;
+  --t-heading-size-4: 1.125em;
+  --t-heading-size-5: 1.0625em;
+  --t-heading-size-6: 1em;
+  --t-heading-spacing-bottom-1: 1rem;
+  --t-heading-spacing-bottom-2: 0.75rem;
+  --t-heading-spacing-bottom-3: 0.5rem;
+  --t-heading-spacing-bottom-4: 0.25rem;
+  --t-heading-spacing-bottom-5: 0.125rem;
+  --t-heading-spacing-bottom-6: 0.0625rem;
+  --t-heading-spacing-top-1: 0;
+  --t-heading-spacing-top-2: 1rem;
+  --t-heading-spacing-top-3: 0.75rem;
+  --t-heading-spacing-top-4: 0.5rem;
+  --t-heading-spacing-top-5: 0.25rem;
+  --t-heading-spacing-top-6: 0.125rem;
   --t-input-field-background-colour: color-mix(in oklab, var(--t-full-contrast-colour) 5%, transparent);
   --t-navbar-item-border-radius: 8px;
   --t-page-background-colour: unset;
@@ -40,6 +58,7 @@
   --t-transition-duration-short: 0.1s;
   --t-z-index-dropdown-menu: 200;
   --t-z-index-tooltip: 100;
+
 
   color: var(--t-font-colour-default);
   font-family: Calibri, Arial, sans-serif;

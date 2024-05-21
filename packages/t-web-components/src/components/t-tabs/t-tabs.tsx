@@ -19,10 +19,11 @@ export class TTabs {
   }
 
   get tabs(): NodeListOf<HTMLTTabElement> {
-    return this.element.querySelectorAll('[role="tab"]');
+    return this.element.shadowRoot.querySelectorAll('[role="tab"]');
   }
 
   selectTab(index: number) {
+    this.focusableIndex = index;
     this.selectedIndex = index;
   }
 
