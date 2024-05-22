@@ -50,5 +50,6 @@
     "ts-jest": "^29.1.1",
     "typescript": "^5.4.3"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "gitHead": "aefa195d33681753cddf09ddbfdee749155c144a"
 }

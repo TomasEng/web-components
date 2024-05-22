@@ -40,13 +40,15 @@ Eksempel:
 ```
 
 ## Lokal utvikling
+Node og NPM må være installert.
+Ved første gangs kjøring, kjør `npm install` i rotmappen for å installere avhengigheter.
 For å kjøre opp prosjektet lokalt, kjør `npm start` enten i rotmappen eller i `packages/t-web-components`.
 Det vil starte demoapplikasjonen på `http://localhost:3333`.
 Den skal oppdatere seg av seg selv når man lagrer, men det kan være man må gi det noen forsøk for at det skal fungere.
 
 ### Testing
 Det er satt opp automatiserte tester for Jest og Playwright.
-Playwright brukes til ende-til-ende-testing av komponentene, mens Jest brukes til enhetstesing av interne funksjoner.
+Playwright brukes til ende-til-ende-testing av komponentene, mens Jest brukes til enhetstesting av interne funksjoner.
 Jeg har valgt å bruke Playwight fremfor Stencils innebygde testverktøy siden Playwright støtter rollebaserte selektorer (`getByRole` osv.), noe som gjør testene mer brukerfokuserte, og tester med flere nettlesere.
 Testene kan kjøres ved hjelp av følgende kommandoer i `t-web-components`-mappen:
 
@@ -56,6 +58,7 @@ npm run test:jest
 ```
 
 #### Ende-til-ende-tester med Playwright
+Forutsetter at løsningen kjører på `http://localhost:3333`. Se ingress.
 ```bash
 npm run test:playwright
 ```
