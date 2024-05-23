@@ -7,11 +7,12 @@
 
 ## Properties
 
-| Property   | Attribute  | Description | Type      | Default     |
-| ---------- | ---------- | ----------- | --------- | ----------- |
-| `code`     | `code`     |             | `string`  | `undefined` |
-| `language` | `language` |             | `string`  | `undefined` |
-| `panel`    | `panel`    |             | `boolean` | `false`     |
+| Property     | Attribute    | Description | Type                             | Default     |
+| ------------ | ------------ | ----------- | -------------------------------- | ----------- |
+| `code`       | `code`       |             | `string`                         | `undefined` |
+| `language`   | `language`   |             | `string`                         | `undefined` |
+| `mode`       | `mode`       |             | `"block" \| "inline" \| "panel"` | `'inline'`  |
+| `trimmargin` | `trimmargin` |             | `boolean`                        | `false`     |
 
 
 ## Dependencies

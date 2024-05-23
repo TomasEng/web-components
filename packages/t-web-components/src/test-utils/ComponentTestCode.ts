@@ -144,7 +144,7 @@ export class ComponentTestCode {
     for (const propName in this.config.props) {
       const value = this.config.props[propName];
       if (typeof value === 'string') {
-        lines.push(`${propName}=${JSON.stringify(value)}`);
+        lines.push(`${propName}="${value.replace('"', '\\"')}"`);
       } else if (['number', 'boolean'].includes(typeof value)) {
         lines.push(`${propName}="${value}"`);
       }

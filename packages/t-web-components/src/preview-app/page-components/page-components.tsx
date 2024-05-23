@@ -123,6 +123,7 @@ export class PageComponents {
             examples={[
               { title: 'Standard', code: tCodeDemo.default, previewMode: 'inline' },
               { title: 'Panel', code: tCodeDemo.panel, previewMode: 'inline' },
+              { title: 'Trimmet marg', code: tCodeDemo.trimMargin, previewMode: 'inline' },
             ]}
             colourSettings={this.colourSettings}
           />

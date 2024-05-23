@@ -1,7 +1,12 @@
 import { ComponentDemos } from '../../types/ComponentDemos';
 
 export const tCodeTestData = {
-  code: "const test: string = 'test';"
+  code: "const test: string = 'test';",
+  marginCode: `
+    |function test() {
+    |    console.log('test');
+    |}
+  `,
 };
 
 export const tCodeDemo: ComponentDemos = {
@@ -17,7 +22,16 @@ export const tCodeDemo: ComponentDemos = {
     props: {
       code: tCodeTestData.code,
       language: 'typescript',
-      panel: true
+      mode: 'panel'
     },
-  }
+  },
+  trimMargin: {
+    componentName: 't-code',
+    props: {
+      code: tCodeTestData.marginCode,
+      language: 'typescript',
+      mode: 'block',
+      trimmargin: true
+    },
+  },
 };

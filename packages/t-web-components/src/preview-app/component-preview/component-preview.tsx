@@ -11,7 +11,7 @@ export class ComponentPreview {
   @Prop() componentTestCode: ComponentTestCode;
 
   render() {
-    return <Host innerHtml={this.componentTestCode.generateMinifiedHtml()}/>;
+    return <Host innerHtml={this.componentTestCode.generateHtml()}/>;
   }
 
   componentDidRender() {
@@ -22,7 +22,7 @@ export class ComponentPreview {
   }
 
   connectedCallback() {
-    const html = this.componentTestCode.generateMinifiedHtml();
+    const html = this.componentTestCode.generateHtml();
     const script = this.componentTestCode.generateMinifiedScript();
 
     this.element.innerHTML = html;

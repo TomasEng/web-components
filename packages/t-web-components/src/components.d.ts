@@ -15,6 +15,7 @@ import { ComponentHue } from "./types/ComponentHue";
 import { TArticleListItem } from "./components/t-article-list/TArticleListItem";
 import { ButtonAttributes } from "./types/HTMLAttributes";
 import { VNode } from "@stencil/core";
+import { TCodeDisplayMode } from "./components/t-code/TCodeDisplayMode";
 import { SelectedMode } from "./types/Mode";
 import { TDropdownMenuItem } from "./components/t-dropdown/TDropdownMenuItem";
 import { TNavMenuItem } from "./components/t-layout-header/TNavMenuItem";
@@ -30,6 +31,7 @@ export { ComponentHue } from "./types/ComponentHue";
 export { TArticleListItem } from "./components/t-article-list/TArticleListItem";
 export { ButtonAttributes } from "./types/HTMLAttributes";
 export { VNode } from "@stencil/core";
+export { TCodeDisplayMode } from "./components/t-code/TCodeDisplayMode";
 export { SelectedMode } from "./types/Mode";
 export { TDropdownMenuItem } from "./components/t-dropdown/TDropdownMenuItem";
 export { TNavMenuItem } from "./components/t-layout-header/TNavMenuItem";
@@ -89,7 +91,8 @@ export namespace Components {
     interface TCode {
         "code": string;
         "language": string;
-        "panel": boolean;
+        "mode": TCodeDisplayMode;
+        "trimmargin": boolean;
     }
     interface TColumn {
     }
@@ -693,7 +696,8 @@ declare namespace LocalJSX {
     interface TCode {
         "code"?: string;
         "language"?: string;
-        "panel"?: boolean;
+        "mode"?: TCodeDisplayMode;
+        "trimmargin"?: boolean;
     }
     interface TColumn {
     }

@@ -1,4 +1,4 @@
-import { camelToPascal, collapseWhitespace, kebabToCamel, kebabToPascal } from './stringUtils';
+import { camelToPascal, collapseWhitespace, kebabToCamel, kebabToPascal, trimMargin } from './stringUtils';
 
 describe('stringUtils', () => {
   describe('kebabToCamel', () => {
@@ -38,6 +38,16 @@ describe('stringUtils', () => {
   describe('collapseWhitespace', () => {
     it('Collapses multiple whitespaces to a single space character', () => {
       expect(collapseWhitespace('  test\n  test  ')).toBe(' test test ');
+    });
+  });
+
+  describe('trimMargin', () => {
+    it('Removes everything before the first "|" character on each line, including the "|" character', () => {
+      expect(trimMargin(`
+          |test
+          |    test
+          |test|
+      `)).toBe('test\n    test\ntest|');
     });
   });
 });
