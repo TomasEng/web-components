@@ -1,4 +1,4 @@
-import { Component, Host, h } from '@stencil/core';
+import { Component, h, Host, Element } from '@stencil/core';
 
 @Component({
   tag: 't-panel',
@@ -7,10 +7,31 @@ import { Component, Host, h } from '@stencil/core';
 })
 export class TPanel {
 
+  @Element() element: HTMLElement;
+
+  get heading(): HTMLDivElement {
+    return this.element.shadowRoot.querySelector('.heading');
+  }
+
+  componentDidRender() {
+    const hasHeading = !!this.element.querySelector('[slot="heading"]');
+    const hasIcon = !!this.element.querySelector('[slot="icon"]');
+    const hasHeadingOrIcon = hasHeading || hasIcon;
+    if (!hasHeadingOrIcon) {
+      this.heading.style.display = 'none';
+    } else {
+      this.heading.style.display = 'flex';
+    }
+  }
+
   render() {
     return (
       <Host>
-        <slot></slot>
+        <div class='heading'>
+          <slot name="icon"/>
+          <slot name="heading"/>
+        </div>
+        <div class='content'><slot></slot></div>
       </Host>
     );
   }

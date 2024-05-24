@@ -1,4 +1,4 @@
-import { camelToPascal, collapseWhitespace, kebabToCamel, kebabToPascal, trimMargin } from './stringUtils';
+import { camelToPascal, capitalize, collapseWhitespace, kebabToCamel, kebabToPascal, trimMargin } from './stringUtils';
 
 describe('stringUtils', () => {
   describe('kebabToCamel', () => {
@@ -48,6 +48,24 @@ describe('stringUtils', () => {
           |    test
           |test|
       `)).toBe('test\n    test\ntest|');
+    });
+  });
+
+  describe('capitalize', () => {
+    it('Capitalizes the first character of a string', () => {
+      expect(capitalize('test')).toBe('Test');
+    });
+
+    it('Does nothing if the first character is already capitalized', () => {
+      expect(capitalize('Test')).toBe('Test');
+    });
+
+    it('Does nothing if the first character is a letter', () => {
+      expect(capitalize('123')).toBe('123');
+    });
+
+    it('Returns an empty string if the input is an empty string', () => {
+      expect(capitalize('')).toBe('');
     });
   });
 });

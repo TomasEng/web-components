@@ -18,11 +18,12 @@ export class TModeSwitcher {
   @Prop() label: string;
 
   render() {
-    const icon = state.mode === 'light' ? <SunIcon class='icon'/> : <MoonIcon fill class='icon'/>;
+    const icon = state.mode === 'light'
+      ? <SunIcon class='icon' slot='icon'/>
+      : <MoonIcon fill class='icon' slot='icon'/>;
 
     return <internal-style-provider hueOffsetInTurns={this.hue}>
       <t-dropdown-menu
-        icon={icon}
         label={this.label}
         buttonAttributes={{title: 'Velg modus'}}
         items={[
@@ -48,7 +49,9 @@ export class TModeSwitcher {
             buttonAttributes: {title: 'Velg mørk modus'}
           },
         ]}
-      />
+      >
+        {icon}
+      </t-dropdown-menu>
     </internal-style-provider>;
   }
 

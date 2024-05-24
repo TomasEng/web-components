@@ -48,6 +48,8 @@ graph TD;
   t-link --> internal-style-provider
   t-tabs --> t-panel
   t-code --> t-panel
+  t-code --> t-button
+  t-button --> internal-style-provider
   page-components --> component-documentation
   style component-documentation fill:#f9f,stroke:#333,stroke-width:4px
 ```

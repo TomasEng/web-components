@@ -14,9 +14,10 @@ import { TSourceItemList } from "./types/TSourceItemList";
 import { ComponentHue } from "./types/ComponentHue";
 import { TArticleListItem } from "./components/t-article-list/TArticleListItem";
 import { ButtonAttributes } from "./types/HTMLAttributes";
-import { VNode } from "@stencil/core";
+import { ButtonVariant } from "./components/t-button/ButtonVariant";
 import { TCodeDisplayMode } from "./components/t-code/TCodeDisplayMode";
 import { SelectedMode } from "./types/Mode";
+import { VNode } from "@stencil/core";
 import { TDropdownMenuItem } from "./components/t-dropdown/TDropdownMenuItem";
 import { TNavMenuItem } from "./components/t-layout-header/TNavMenuItem";
 import { TSelectOption } from "./components/t-select/TSelectOption";
@@ -30,9 +31,10 @@ export { TSourceItemList } from "./types/TSourceItemList";
 export { ComponentHue } from "./types/ComponentHue";
 export { TArticleListItem } from "./components/t-article-list/TArticleListItem";
 export { ButtonAttributes } from "./types/HTMLAttributes";
-export { VNode } from "@stencil/core";
+export { ButtonVariant } from "./components/t-button/ButtonVariant";
 export { TCodeDisplayMode } from "./components/t-code/TCodeDisplayMode";
 export { SelectedMode } from "./types/Mode";
+export { VNode } from "@stencil/core";
 export { TDropdownMenuItem } from "./components/t-dropdown/TDropdownMenuItem";
 export { TNavMenuItem } from "./components/t-layout-header/TNavMenuItem";
 export { TSelectOption } from "./components/t-select/TSelectOption";
@@ -86,10 +88,11 @@ export namespace Components {
     interface TButton {
         "buttonAttributes": ButtonAttributes;
         "hue": ComponentHue;
-        "icon"?: VNode;
+        "variant": ButtonVariant;
     }
     interface TCode {
         "code": string;
+        "copyButtonTitle": string;
         "language": string;
         "mode": TCodeDisplayMode;
         "trimmargin": boolean;
@@ -109,7 +112,6 @@ export namespace Components {
     interface TDropdownMenu {
         "buttonAttributes": ButtonAttributes;
         "hue": ComponentHue;
-        "icon"?: VNode;
         "items": TDropdownMenuItem[];
         "label": VNode | string;
         "value": string;
@@ -691,10 +693,11 @@ declare namespace LocalJSX {
     interface TButton {
         "buttonAttributes"?: ButtonAttributes;
         "hue"?: ComponentHue;
-        "icon"?: VNode;
+        "variant"?: ButtonVariant;
     }
     interface TCode {
         "code"?: string;
+        "copyButtonTitle"?: string;
         "language"?: string;
         "mode"?: TCodeDisplayMode;
         "trimmargin"?: boolean;
@@ -713,7 +716,6 @@ declare namespace LocalJSX {
     interface TDropdownMenu {
         "buttonAttributes"?: ButtonAttributes;
         "hue"?: ComponentHue;
-        "icon"?: VNode;
         "items"?: TDropdownMenuItem[];
         "label"?: VNode | string;
         "value"?: string;

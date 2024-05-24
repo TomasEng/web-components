@@ -11,7 +11,6 @@
 | ------------------ | --------- | ----------- | --------------------------------------------------------------------------- | ----------- |
 | `buttonAttributes` | --        |             | `ButtonHTMLAttributes<HTMLButtonElement> & DataAttributes & AriaAttributes` | `undefined` |
 | `hue`              | `hue`     |             | `number`                                                                    | `0`         |
-| `icon`             | --        |             | `VNode`                                                                     | `undefined` |
 | `items`            | --        |             | `TDropdownMenuItem[]`                                                       | `[]`        |
 | `label`            | `label`   |             | `VNode \| string`                                                           | `undefined` |
 | `value`            | `value`   |             | `string`                                                                    | `undefined` |

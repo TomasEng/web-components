@@ -17,7 +17,6 @@ export class TDropdownMenu {
   @Prop() value: string;
   @Prop() buttonAttributes: ButtonAttributes;
   @Prop() items: TDropdownMenuItem[] = [];
-  @Prop() icon?: VNode = undefined;
 
   @State() expanded = false;
   @State() focusedIndex = -1;
@@ -86,9 +85,9 @@ export class TDropdownMenu {
             ...this.buttonAttributes,
           }}
           hue={this.hue}
-          icon={this.icon}
           slot="anchor"
         >
+          <slot slot='icon' name='icon'/>
           {this.label}
         </t-button>
         <ul class="dropdown-menu" slot="content" id="menu">

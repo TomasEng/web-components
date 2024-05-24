@@ -1,5 +1,4 @@
 import { ComponentDemos } from '../../types/ComponentDemos';
-import { TDropdownMenuItem } from './TDropdownMenuItem';
 
 export const tDropdownMenuTestData = {
   label: 'Velg',

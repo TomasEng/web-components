@@ -1,5 +1,6 @@
 .t-button {
   --button-colour: var(--t-base-colour);
+  --button-padding: .5rem;
   background: linear-gradient(
     to top,
     color-mix(in oklab, var(--button-colour) 90%, black),
@@ -21,11 +22,26 @@
   font-size: 1rem;
   gap: var(--t-spacing-inline);
   line-height: 1;
-  padding: .5rem;
+  padding: var(--button-padding);
   transition: box-shadow var(--transistion-duration);
 
-  .icon {
+  slot[name="icon"] {
     align-self: center;
+  }
+
+  &.transparent {
+    background: none;
+    box-shadow: none;
+    color: var(--t-base-contrast-colour);
+    margin: calc(var(--button-padding) * -1);
+
+    &:hover {
+      background: color-mix(in oklab, var(--t-base-colour) 25%, transparent);
+    }
+
+    &:active {
+      background: var(--t-base-colour);
+    }
   }
 }
 

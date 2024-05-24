@@ -7,3 +7,5 @@ export const camelToPascal = (camel: string) => camel.replace(/^[a-z]/, (g) => g
 export const collapseWhitespace = (text: string) => text.replace(/\s+/g, ' ');
 
 export const trimMargin = (text: string) => text.trim().replace(/^((?<!\|).)*/gm, '');
+
+export const capitalize = (text: string) => text.charAt(0).toUpperCase() + text.slice(1);

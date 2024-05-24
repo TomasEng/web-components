@@ -143,10 +143,11 @@ export class ComponentTestCode {
     const lines: string[] = [];
     for (const propName in this.config.props) {
       const value = this.config.props[propName];
+      const attribute = propName.toLowerCase();
       if (typeof value === 'string') {
-        lines.push(`${propName}="${value.replace('"', '\\"')}"`);
+        lines.push(`${attribute}="${value.replace('"', '\\"')}"`);
       } else if (['number', 'boolean'].includes(typeof value)) {
-        lines.push(`${propName}="${value}"`);
+        lines.push(`${attribute}="${value}"`);
       }
     }
     return lines;
@@ -332,6 +333,7 @@ const htmlTags = [
   "button",
   "canvas",
   "caption",
+  "circle",
   "cite",
   "code",
   "col",
@@ -388,10 +390,12 @@ const htmlTags = [
   "output",
   "p",
   "param",
+  "path",
   "picture",
   "pre",
   "progress",
   "q",
+  "rect",
   "rp",
   "rt",
   "ruby",
@@ -408,6 +412,7 @@ const htmlTags = [
   "sub",
   "summary",
   "sup",
+  "svg",
   "table",
   "tbody",
   "td",
