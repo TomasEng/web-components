@@ -64,6 +64,7 @@ graph TD;
   t-tabs --> t-panel
   t-code --> t-panel
   t-code --> t-button
+  preview-iframe --> t-iframe
   style preview-app fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

@@ -36,7 +36,7 @@ export class TCode {
 
   render() {
     const trimmedCode = this.trimCode();
-    const code = highlight.highlight(trimmedCode, {language: 'html'}).value;
+    const code = highlight.highlight(trimmedCode, {language: this.language}).value;
     const pre = (
       <pre class={state.mode + ' ' + this.mode}>
         <code innerHTML={code}/>

@@ -130,6 +130,10 @@ export namespace Components {
         "label": string;
         "value": number;
     }
+    interface TIframe {
+        "src": string;
+        "srcdoc": string;
+    }
     interface TIntegerPicker {
         "hue": ComponentHue;
         "label": string;
@@ -423,6 +427,12 @@ declare global {
         prototype: HTMLTHuePickerElement;
         new (): HTMLTHuePickerElement;
     };
+    interface HTMLTIframeElement extends Components.TIframe, HTMLStencilElement {
+    }
+    var HTMLTIframeElement: {
+        prototype: HTMLTIframeElement;
+        new (): HTMLTIframeElement;
+    };
     interface HTMLTIntegerPickerElementEventMap {
         "integerChange": number;
     }
@@ -621,6 +631,7 @@ declare global {
         "t-floating-element": HTMLTFloatingElementElement;
         "t-heading": HTMLTHeadingElement;
         "t-hue-picker": HTMLTHuePickerElement;
+        "t-iframe": HTMLTIframeElement;
         "t-integer-picker": HTMLTIntegerPickerElement;
         "t-layout": HTMLTLayoutElement;
         "t-layout-header": HTMLTLayoutHeaderElement;
@@ -736,6 +747,10 @@ declare namespace LocalJSX {
         "onHueChange"?: (event: THuePickerCustomEvent<number>) => void;
         "value"?: number;
     }
+    interface TIframe {
+        "src"?: string;
+        "srcdoc"?: string;
+    }
     interface TIntegerPicker {
         "hue"?: ComponentHue;
         "label"?: string;
@@ -842,6 +857,7 @@ declare namespace LocalJSX {
         "t-floating-element": TFloatingElement;
         "t-heading": THeading;
         "t-hue-picker": THuePicker;
+        "t-iframe": TIframe;
         "t-integer-picker": TIntegerPicker;
         "t-layout": TLayout;
         "t-layout-header": TLayoutHeader;
@@ -890,6 +906,7 @@ declare module "@stencil/core" {
             "t-floating-element": LocalJSX.TFloatingElement & JSXBase.HTMLAttributes<HTMLTFloatingElementElement>;
             "t-heading": LocalJSX.THeading & JSXBase.HTMLAttributes<HTMLTHeadingElement>;
             "t-hue-picker": LocalJSX.THuePicker & JSXBase.HTMLAttributes<HTMLTHuePickerElement>;
+            "t-iframe": LocalJSX.TIframe & JSXBase.HTMLAttributes<HTMLTIframeElement>;
             "t-integer-picker": LocalJSX.TIntegerPicker & JSXBase.HTMLAttributes<HTMLTIntegerPickerElement>;
             "t-layout": LocalJSX.TLayout & JSXBase.HTMLAttributes<HTMLTLayoutElement>;
             "t-layout-header": LocalJSX.TLayoutHeader & JSXBase.HTMLAttributes<HTMLTLayoutHeaderElement>;

@@ -66,6 +66,7 @@ graph TD;
   t-code --> t-panel
   t-code --> t-button
   t-button --> internal-style-provider
+  preview-iframe --> t-iframe
   preview-app --> page-components
   style page-components fill:#f9f,stroke:#333,stroke-width:4px
 ```

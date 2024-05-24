@@ -29,6 +29,7 @@ export const TFieldset = /*@__PURE__*/createReactComponent<JSX.TFieldset, HTMLTF
 export const TFloatingElement = /*@__PURE__*/createReactComponent<JSX.TFloatingElement, HTMLTFloatingElementElement>('t-floating-element');
 export const THeading = /*@__PURE__*/createReactComponent<JSX.THeading, HTMLTHeadingElement>('t-heading');
 export const THuePicker = /*@__PURE__*/createReactComponent<JSX.THuePicker, HTMLTHuePickerElement>('t-hue-picker');
+export const TIframe = /*@__PURE__*/createReactComponent<JSX.TIframe, HTMLTIframeElement>('t-iframe');
 export const TIntegerPicker = /*@__PURE__*/createReactComponent<JSX.TIntegerPicker, HTMLTIntegerPickerElement>('t-integer-picker');
 export const TLayout = /*@__PURE__*/createReactComponent<JSX.TLayout, HTMLTLayoutElement>('t-layout');
 export const TLayoutHeader = /*@__PURE__*/createReactComponent<JSX.TLayoutHeader, HTMLTLayoutHeaderElement>('t-layout-header');

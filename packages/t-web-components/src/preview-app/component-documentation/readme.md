@@ -50,6 +50,7 @@ graph TD;
   t-code --> t-panel
   t-code --> t-button
   t-button --> internal-style-provider
+  preview-iframe --> t-iframe
   page-components --> component-documentation
   style component-documentation fill:#f9f,stroke:#333,stroke-width:4px
 ```
