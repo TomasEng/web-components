@@ -1,2 +1,0 @@
-import{r as c,h as e}from"./p-223dec8c.js";const a="div{display:flex;flex-direction:column;gap:var(--t-spacing-default)}";const d=a;const t=class{constructor(e){c(this,e)}render(){return e("div",{key:"8dfb206475ed5c83ade15e4303ad5abcd00032a8"},e("slot",{key:"f8954a347c0f541dc8c4742a9fd321e96b39298b"}))}};t.style=d;export{t as t_column};
-//# sourceMappingURL=p-4b7a36f6.entry.js.map
