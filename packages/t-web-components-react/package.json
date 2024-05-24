@@ -1,6 +1,6 @@
 {
   "name": "t-web-components-react",
-  "version": "0.0.14",
+  "version": "0.0.15",
   "description": "> TODO: description",
   "author": "Tomas <tomas.engebretsen@gmail.com>",
   "homepage": "https://github.com/TomasEng/web-components#readme",
@@ -31,7 +31,7 @@
     "access": "public"
   },
   "dependencies": {
-    "t-web-components": "^0.0.14"
+    "t-web-components": "^0.0.15"
   },
   "devDependencies": {
     "@types/react": "^18.2.76",
