@@ -1,0 +1,53 @@
+t-link::part(link) {
+  display: flex;
+  align-items: center;
+  gap: var(--t-spacing-inline);
+}
+
+li {
+  &.expanded {
+    svg {
+      rotate: 90deg;
+    }
+
+    .collapsible {
+      grid-template-rows: 1fr;
+    }
+  }
+
+  &.collapsed {
+    svg {
+      rotate: 0deg;
+    }
+
+    .collapsible {
+      grid-template-rows: 0fr;
+
+      ul {
+        visibility: hidden;
+      }
+    }
+  }
+
+  .collapsible {
+    overflow: hidden;
+    display: grid;
+    grid-template-rows: 1fr; /* To make height transition work */
+    transition: grid-template-rows var(--t-transition-duration-medium);
+
+    ul {
+      min-height: 0;
+      transition: visibility 1s;
+    }
+  }
+
+  svg {
+    transition: rotate var(--t-transition-duration-medium);
+  }
+}
+
+ul {
+  list-style-type: none;
+  padding-left: var(--t-spacing-large);
+  margin: 0;
+}

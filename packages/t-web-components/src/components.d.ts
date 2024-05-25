@@ -20,6 +20,7 @@ import { SelectedMode } from "./types/Mode";
 import { VNode } from "@stencil/core";
 import { TDropdownMenuItem } from "./components/t-dropdown/TDropdownMenuItem";
 import { TNavMenuItem } from "./components/t-layout-header/TNavMenuItem";
+import { TLayoutMainText } from "./components/t-layout-main/t-layout-main.text";
 import { TSelectOption } from "./components/t-select/TSelectOption";
 import { TSourceItem } from "./types/TSourceItem";
 export { ColourSettings } from "./types/ColourSettings";
@@ -37,6 +38,7 @@ export { SelectedMode } from "./types/Mode";
 export { VNode } from "@stencil/core";
 export { TDropdownMenuItem } from "./components/t-dropdown/TDropdownMenuItem";
 export { TNavMenuItem } from "./components/t-layout-header/TNavMenuItem";
+export { TLayoutMainText } from "./components/t-layout-main/t-layout-main.text";
 export { TSelectOption } from "./components/t-select/TSelectOption";
 export { TSourceItem } from "./types/TSourceItem";
 export namespace Components {
@@ -149,9 +151,12 @@ export namespace Components {
     }
     interface TLayoutMain {
         "stickyLeftbar": boolean;
+        "text": TLayoutMainText;
     }
     interface TLink {
         "external"?: boolean;
+        "focusable": boolean;
+        "getAnchorElement": () => Promise<HTMLAnchorElement>;
         "href": string;
         "target"?: string;
     }
@@ -212,6 +217,27 @@ export namespace Components {
         "value": string;
     }
     interface TTooltip {
+    }
+    interface TTree {
+        "getAllItems": () => Promise<NodeListOf<HTMLTTreeItemElement>>;
+        "getAllVisibleItems": () => Promise<HTMLTTreeItemElement[]>;
+        "resetTabindex": () => Promise<void>;
+    }
+    interface TTreeItem {
+        "focusOnLink": () => Promise<void>;
+        "getLastVisibleSubItem": () => Promise<HTMLTTreeItemElement | null>;
+        "getNextVisibleItem": () => Promise<HTMLTTreeItemElement | null>;
+        "getPreviousVisibleItem": () => Promise<HTMLTTreeItemElement | null>;
+        "getRoot": () => Promise<HTMLTTreeElement>;
+        "getSubItems": () => Promise<NodeListOf<HTMLTTreeItemElement>>;
+        "getVisibleSubItems": () => Promise<HTMLTTreeItemElement[]>;
+        "href": string | null;
+        "isExpanded": () => Promise<boolean>;
+        "isFocusable": () => Promise<boolean>;
+        "isTopLevel": () => Promise<boolean>;
+        "isVisible": () => Promise<boolean>;
+        "label": string;
+        "setFocusable": (focusable: boolean) => Promise<boolean>;
     }
 }
 export interface ComponentColourSettingsCustomEvent<T> extends CustomEvent<T> {
@@ -608,6 +634,18 @@ declare global {
         prototype: HTMLTTooltipElement;
         new (): HTMLTTooltipElement;
     };
+    interface HTMLTTreeElement extends Components.TTree, HTMLStencilElement {
+    }
+    var HTMLTTreeElement: {
+        prototype: HTMLTTreeElement;
+        new (): HTMLTTreeElement;
+    };
+    interface HTMLTTreeItemElement extends Components.TTreeItem, HTMLStencilElement {
+    }
+    var HTMLTTreeItemElement: {
+        prototype: HTMLTTreeItemElement;
+        new (): HTMLTTreeItemElement;
+    };
     interface HTMLElementTagNameMap {
         "component-colour-settings": HTMLComponentColourSettingsElement;
         "component-documentation": HTMLComponentDocumentationElement;
@@ -652,6 +690,8 @@ declare global {
         "t-tabs": HTMLTTabsElement;
         "t-textfield": HTMLTTextfieldElement;
         "t-tooltip": HTMLTTooltipElement;
+        "t-tree": HTMLTTreeElement;
+        "t-tree-item": HTMLTTreeItemElement;
     }
 }
 declare namespace LocalJSX {
@@ -767,9 +807,11 @@ declare namespace LocalJSX {
     }
     interface TLayoutMain {
         "stickyLeftbar"?: boolean;
+        "text"?: TLayoutMainText;
     }
     interface TLink {
         "external"?: boolean;
+        "focusable"?: boolean;
         "href"?: string;
         "target"?: string;
     }
@@ -834,6 +876,12 @@ declare namespace LocalJSX {
     }
     interface TTooltip {
     }
+    interface TTree {
+    }
+    interface TTreeItem {
+        "href"?: string | null;
+        "label"?: string;
+    }
     interface IntrinsicElements {
         "component-colour-settings": ComponentColourSettings;
         "component-documentation": ComponentDocumentation;
@@ -878,6 +926,8 @@ declare namespace LocalJSX {
         "t-tabs": TTabs;
         "t-textfield": TTextfield;
         "t-tooltip": TTooltip;
+        "t-tree": TTree;
+        "t-tree-item": TTreeItem;
     }
 }
 export { LocalJSX as JSX };
@@ -927,6 +977,8 @@ declare module "@stencil/core" {
             "t-tabs": LocalJSX.TTabs & JSXBase.HTMLAttributes<HTMLTTabsElement>;
             "t-textfield": LocalJSX.TTextfield & JSXBase.HTMLAttributes<HTMLTTextfieldElement>;
             "t-tooltip": LocalJSX.TTooltip & JSXBase.HTMLAttributes<HTMLTTooltipElement>;
+            "t-tree": LocalJSX.TTree & JSXBase.HTMLAttributes<HTMLTTreeElement>;
+            "t-tree-item": LocalJSX.TTreeItem & JSXBase.HTMLAttributes<HTMLTTreeItemElement>;
         }
     }
 }

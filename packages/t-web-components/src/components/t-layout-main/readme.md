@@ -7,9 +7,10 @@
 
 ## Properties
 
-| Property        | Attribute        | Description | Type      | Default |
-| --------------- | ---------------- | ----------- | --------- | ------- |
-| `stickyLeftbar` | `sticky-leftbar` |             | `boolean` | `false` |
+| Property        | Attribute        | Description | Type                                                  | Default       |
+| --------------- | ---------------- | ----------- | ----------------------------------------------------- | ------------- |
+| `stickyLeftbar` | `sticky-leftbar` |             | `boolean`                                             | `false`       |
+| `text`          | --               |             | `{ expandSidebar: string; collapseSidebar: string; }` | `defaultText` |
 
 
 ## Dependencies

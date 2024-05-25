@@ -1,5 +1,7 @@
 import { Component, h, Prop, State } from '@stencil/core';
 import { ChevronRightIcon } from '../../icons/ChevronRightIcon';
+import { TLayoutMainText } from './t-layout-main.text';
+import defaultText from './t-layout-main.text';
 
 @Component({
   tag: 't-layout-main',
@@ -10,6 +12,7 @@ export class TLayoutMain {
   @State() leftbarOpen = false;
 
   @Prop() stickyLeftbar: boolean = false;
+  @Prop() text: TLayoutMainText = defaultText;
 
   toggleLeftbar() {
     this.leftbarOpen = !this.leftbarOpen;
@@ -27,7 +30,7 @@ export class TLayoutMain {
           <button
             class="leftbar-toggle"
             onClick={() => this.toggleLeftbar()}
-            title={this.leftbarOpen ? 'Lukk sidepanel' : 'Åpne sidepanel'}
+            title={this.leftbarOpen ? this.text.collapseSidebar : this.text.expandSidebar}
           >
             <ChevronRightIcon class='chevron'/>
           </button>

@@ -9,7 +9,9 @@ export const renderComponent = (page: Page, config: ComponentTestCodeConfig) => 
 }
 
 const renderComponentCode = (page: Page, html: string, script?: string) => {
-  const url = 'http://localhost:3333/?html=' + html + (script ? '&script=' + script : '');
+  const htmlEncoded = encodeURIComponent(html);
+  const scriptEncoded = script ? encodeURIComponent(script) : '';
+  const url = 'http://localhost:3333/?html=' + htmlEncoded + (script ? '&script=' + scriptEncoded : '');
   console.log(`Testing ${url}`);
   return page.goto(url);
 };

@@ -19,6 +19,7 @@ import { tCodeDemo } from '../../components/t-code/t-code.demo';
 import { tSpinnerDemo } from '../../components/t-spinner/t-spinner.demo';
 import { tTooltipDemo } from '../../components/t-tooltip/t-tooltip.demo';
 import { tPanelDemo } from '../../components/t-panel/t-panel.demo';
+import { tTreeDemo } from '../../components/t-tree/t-tree.demo';
 
 @Component({
   tag: 'page-components',
@@ -64,21 +65,16 @@ export class PageComponents {
               { title: 'Med tekst', code: tButtonDemo.simple, previewMode: 'hue' },
               { title: 'Med ikon og tekst', code: tButtonDemo.withIcon, previewMode: 'hue' },
               { title: 'Med kun ikon', code: tButtonDemo.iconOnly, previewMode: 'hue' },
-              { title: 'Gjennomsiktig', code: tButtonDemo.transparent, previewMode: 'hue'}
+              { title: 'Gjennomsiktig', code: tButtonDemo.transparent, previewMode: 'hue' }
             ]}
             colourSettings={this.colourSettings}
           />
           <component-documentation
-            name='Bryter'
+            name='Lenke'
             examples={[
-              { title: 'På', code: tSwitchDemo.on, previewMode: 'hue' },
-              { title: 'Av', code: tSwitchDemo.off, previewMode: 'hue' },
+              { title: 'Intern lenke', code: tLinkDemo.internal, previewMode: 'inline' },
+              { title: 'Ekstern lenke', code: tLinkDemo.external, previewMode: 'inline' },
             ]}
-            colourSettings={this.colourSettings}
-          />
-          <component-documentation
-            name='Tallvelger'
-            examples={[{ code: tIntegerPickerDemo.simple, previewMode: 'hue' }]}
             colourSettings={this.colourSettings}
           />
           <component-documentation
@@ -92,16 +88,18 @@ export class PageComponents {
             colourSettings={this.colourSettings}
           />
           <component-documentation
+            name='Trevisning'
+            examples={[{ code: tTreeDemo.withLinks, previewMode: 'inline' }]}
+            colourSettings={this.colourSettings}
+          />
+          <component-documentation
             name='Nedtrekksmeny'
             examples={[{ code: tDropdownMenuDemo.simple, previewMode: 'hue' }]}
             colourSettings={this.colourSettings}
           />
           <component-documentation
-            name='Lenke'
-            examples={[
-              { title: 'Intern lenke', code: tLinkDemo.internal, previewMode: 'inline' },
-              { title: 'Ekstern lenke', code: tLinkDemo.external, previewMode: 'inline' },
-            ]}
+            name='Tallvelger'
+            examples={[{ code: tIntegerPickerDemo.simple, previewMode: 'hue' }]}
             colourSettings={this.colourSettings}
           />
           <component-documentation
@@ -128,7 +126,7 @@ export class PageComponents {
             name="Panel"
             examples={[
               { title: 'Standard', code: tPanelDemo.default, previewMode: 'inline' },
-              { title: 'Med overskrift', code: tPanelDemo.withHeading, previewMode: 'inline'},
+              { title: 'Med overskrift', code: tPanelDemo.withHeading, previewMode: 'inline' },
               { title: 'Med overskrift og ikon', code: tPanelDemo.withHeadingAndIcon, previewMode: 'inline' },
             ]}
             colourSettings={this.colourSettings}
@@ -152,6 +150,14 @@ export class PageComponents {
           <component-documentation
             name='Verktøyhjelp'
             examples={[{ code: tTooltipDemo.default, previewMode: 'inline' }]}
+            colourSettings={this.colourSettings}
+          />
+          <component-documentation
+            name='Bryter'
+            examples={[
+              { title: 'På', code: tSwitchDemo.on, previewMode: 'hue' },
+              { title: 'Av', code: tSwitchDemo.off, previewMode: 'hue' },
+            ]}
             colourSettings={this.colourSettings}
           />
         </div>

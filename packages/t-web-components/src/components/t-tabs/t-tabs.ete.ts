@@ -4,7 +4,7 @@ import { tTabsDemo, tTabsTestData } from './t-tabs.demo';
 
 const renderTabs = (page: Page) => renderComponent(page, tTabsDemo.simple);
 
-test.describe('t-dropdown-menu', () => {
+test.describe('t-tabs', () => {
   test('Laster faner', async ({ page }) => {
     await renderTabs(page);
     await expect(page.getByRole('tablist')).toBeVisible();
@@ -28,7 +28,7 @@ test.describe('t-dropdown-menu', () => {
     await expect(tabpanel).toHaveText(tTabsTestData.items[0].content);
   });
 
-  test('Velger fansen som det klikkes på', async ({ page }) => {
+  test('Velger fanen som det klikkes på', async ({ page }) => {
     await renderTabs(page);
     await expect(page.getByRole('tablist')).toBeVisible();
     const tabs = await page.getByRole('tab').all();

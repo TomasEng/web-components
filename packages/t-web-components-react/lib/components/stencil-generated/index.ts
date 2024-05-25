@@ -50,3 +50,5 @@ export const TTab = /*@__PURE__*/createReactComponent<JSX.TTab, HTMLTTabElement>
 export const TTabs = /*@__PURE__*/createReactComponent<JSX.TTabs, HTMLTTabsElement>('t-tabs');
 export const TTextfield = /*@__PURE__*/createReactComponent<JSX.TTextfield, HTMLTTextfieldElement>('t-textfield');
 export const TTooltip = /*@__PURE__*/createReactComponent<JSX.TTooltip, HTMLTTooltipElement>('t-tooltip');
+export const TTree = /*@__PURE__*/createReactComponent<JSX.TTree, HTMLTTreeElement>('t-tree');
+export const TTreeItem = /*@__PURE__*/createReactComponent<JSX.TTreeItem, HTMLTTreeItemElement>('t-tree-item');

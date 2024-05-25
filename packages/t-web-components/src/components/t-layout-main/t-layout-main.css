@@ -19,7 +19,7 @@
   border-top-left-radius: var(--border-radius);
   box-shadow: var(--top-shadow), var(--bottom-shadow);
   box-sizing: border-box;
-  width: 20%;
+  width: 240px;
 
   .leftbar-content {
     padding: 1rem;
@@ -68,20 +68,21 @@
     position: relative;
 
     .leftbar {
+      background-color: transparent;
       display: flex;
       flex-direction: row;
+      height: 100%;
+      left: 0;
       position: absolute;
       top: 0;
-      left: 0;
-      height: 100%;
       z-index: 100;
-      background-color: transparent;
 
       .leftbar-toggle {
         backdrop-filter: var(--t-popover-backdrop-filter);
         background-color: color-mix(in oklch, var(--t-base-colour) calc(var(--t-popover-alpha) * 100%), transparent);
         border: 0;
         color: var(--t-font-colour-default);
+        cursor: pointer;
         display: block;
         height: 100%;
         max-height: 100vh;

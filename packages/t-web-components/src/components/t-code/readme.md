@@ -9,7 +9,7 @@
 
 | Property          | Attribute           | Description | Type                             | Default         |
 | ----------------- | ------------------- | ----------- | -------------------------------- | --------------- |
-| `code`            | `code`              |             | `string`                         | `undefined`     |
+| `code`            | `code`              |             | `string`                         | `null`          |
 | `copyButtonTitle` | `copy-button-title` |             | `string`                         | `'Kopier kode'` |
 | `language`        | `language`          |             | `string`                         | `undefined`     |
 | `mode`            | `mode`              |             | `"block" \| "inline" \| "panel"` | `'inline'`      |
