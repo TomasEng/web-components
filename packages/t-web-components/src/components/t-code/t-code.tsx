@@ -2,7 +2,7 @@ import { Component, Element, h, Prop, State } from '@stencil/core';
 import highlight from 'highlight.js';
 import state from '../../store';
 import { TCodeDisplayMode } from './TCodeDisplayMode';
-import { capitalize, trimMargin } from '../../utils/stringUtils';
+import { capitalize, trimLineBreaks, trimMargin } from '../../utils/stringUtils';
 import { CodeIcon } from '../../icons/CodeIcon';
 import { FilesIcon } from '../../icons/FilesIcon';
 import { CheckmarkIcon } from '../../icons/CheckmarkIcon';
@@ -15,7 +15,7 @@ import { ACTION_CONFIRMATION_PERIOD_MILLISECONDS } from '../../constants';
 })
 export class TCode {
 
-  @Prop() code: string;
+  @Prop() code: string | null = null;
   @Prop() language: string;
   @Prop() mode: TCodeDisplayMode = 'inline';
   @Prop() trimmargin: boolean = false;
@@ -64,8 +64,11 @@ export class TCode {
     return this.copied ? <CheckmarkIcon slot='icon'/> : <FilesIcon slot='icon'/>;
   }
 
-  private trimCode() {
-    return this.trimmargin ? trimMargin(this.code) : this.code;
+  private trimCode(): string {
+    const code = this.code || this.element.innerHTML.toString();
+    return this.trimmargin
+      ? trimMargin(code)
+      : trimLineBreaks(code);
   }
 
   private copyToClipboard() {

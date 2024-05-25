@@ -136,9 +136,11 @@ export class PageComponents {
           <component-documentation
             name='Kode'
             examples={[
-              { title: 'Standard', code: tCodeDemo.default, previewMode: 'inline' },
+              { title: 'Standard (på linje)', code: tCodeDemo.inline, previewMode: 'inline' },
+              { title: 'Blokk', code: tCodeDemo.block, previewMode: 'inline' },
               { title: 'Panel', code: tCodeDemo.panel, previewMode: 'inline' },
               { title: 'Trimmet marg', code: tCodeDemo.trimMargin, previewMode: 'inline' },
+              { title: 'Direkte', code: tCodeDemo.slot, previewMode: 'inline' },
             ]}
             colourSettings={this.colourSettings}
           />

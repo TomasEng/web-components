@@ -58,7 +58,7 @@ const Code = ({ componentTestCode }: CodeProps) => {
           <t-code language="html" code={componentTestCode.generateCode()} />
         </t-tab>
         <t-tab heading="React">
-          <t-code language="React" code={componentTestCode.generateReactCode()} />
+          <t-code language="TSX" code={componentTestCode.generateReactCode()} />
         </t-tab>
       </t-tabs>
     </t-details>

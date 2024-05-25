@@ -1,4 +1,12 @@
-import { camelToPascal, capitalize, collapseWhitespace, kebabToCamel, kebabToPascal, trimMargin } from './stringUtils';
+import {
+  camelToPascal,
+  capitalize,
+  collapseWhitespace,
+  kebabToCamel,
+  kebabToPascal,
+  trimLineBreaks,
+  trimMargin,
+} from './stringUtils';
 
 describe('stringUtils', () => {
   describe('kebabToCamel', () => {
@@ -66,6 +74,40 @@ describe('stringUtils', () => {
 
     it('Returns an empty string if the input is an empty string', () => {
       expect(capitalize('')).toBe('');
+    });
+  });
+
+  describe('trimLineBreaks', () => {
+    it('Removes the first line break when it is the first character', () => {
+      expect(trimLineBreaks('\ntest')).toBe('test');
+    });
+
+    it('Removes the last line break when it is the last character', () => {
+      expect(trimLineBreaks('test\n')).toBe('test');
+    });
+
+    it('Does not remove line breaks in the middle of the string', () => {
+      expect(trimLineBreaks('te\nst')).toBe('te\nst');
+    });
+
+    it('Removes whitespace at the beginning until the first line break', () => {
+      expect(trimLineBreaks('  \ntest')).toBe('test');
+    });
+
+    it('Removes whitespace at the end after the last line break', () => {
+      expect(trimLineBreaks('test\n  ')).toBe('test');
+    });
+
+    it('Does not trim the string if there are no line breaks', () => {
+      expect(trimLineBreaks(' test ')).toBe(' test ');
+    });
+
+    it('Returns an empty string if the input is an empty string', () => {
+      expect(trimLineBreaks('')).toBe('');
+    });
+
+    it('Does not remove white space after the first and before the last line break', () => {
+      expect(trimLineBreaks(' \n test \n ')).toBe(' test ');
     });
   });
 });

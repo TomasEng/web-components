@@ -91,7 +91,7 @@ export namespace Components {
         "variant": ButtonVariant;
     }
     interface TCode {
-        "code": string;
+        "code": string | null;
         "copyButtonTitle": string;
         "language": string;
         "mode": TCodeDisplayMode;
@@ -707,7 +707,7 @@ declare namespace LocalJSX {
         "variant"?: ButtonVariant;
     }
     interface TCode {
-        "code"?: string;
+        "code"?: string | null;
         "copyButtonTitle"?: string;
         "language"?: string;
         "mode"?: TCodeDisplayMode;
