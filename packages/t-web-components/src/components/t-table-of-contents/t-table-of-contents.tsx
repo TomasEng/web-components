@@ -23,7 +23,7 @@ export class TTableOfContents {
     return this.element.shadowRoot.querySelector('t-tree');
   }
 
-  componentDidLoad() {
+  componentDidRender() {
     const headings: Heading[] = [];
     this.findHeadings().then(headingElements => {
       headingElements.forEach((headingElement, index) => {
