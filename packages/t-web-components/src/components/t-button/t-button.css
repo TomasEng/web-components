@@ -19,7 +19,8 @@
   color: var(--t-font-colour-default);
   cursor: pointer;
   display: inline-flex;
-  font-size: 1rem;
+  font-family: var(--t-default-font-family);
+  font-size: var(--t-default-font-size);
   gap: var(--t-spacing-inline);
   line-height: 1;
   padding: var(--button-padding);
@@ -41,6 +42,19 @@
 
     &:active {
       background: var(--t-base-colour);
+    }
+  }
+
+  &.link {
+    background: none;
+    box-shadow: none;
+    color: var(--t-base-contrast-colour);
+    margin: 0;
+    padding: 0;
+
+    &:hover {
+      background: none;
+      text-decoration: underline;
     }
   }
 }

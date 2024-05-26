@@ -1,4 +1,4 @@
-t-link::part(link) {
+t-link::part(link), t-button::part(button) {
   display: flex;
   align-items: center;
   gap: var(--t-spacing-inline);

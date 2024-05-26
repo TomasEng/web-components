@@ -16,6 +16,7 @@
   --t-base-low-contrast-colour: unset;
   --t-border-radius-default: 6px;
   --t-clickable-area-size: 44px;
+  --t-default-font-family: Calibri, Arial, sans-serif;
   --t-default-font-size: 1rem;
   --t-font-colour-default: var(--t-full-contrast-colour);
   --t-heading-size-1: 2em;
@@ -60,7 +61,7 @@
   --t-z-index-tooltip: 100;
 
   color: var(--t-font-colour-default);
-  font-family: Calibri, Arial, sans-serif;
+  font-family: var(--t-default-font-family);
   font-size: var(--t-default-font-size);
   min-height: 100vh;
 }

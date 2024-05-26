@@ -1,5 +1,6 @@
-import { Component, Element, h, Method, Prop, State } from '@stencil/core';
+import { Component, Element, h, Method, Prop, State, Fragment, Event, EventEmitter } from '@stencil/core';
 import { CaretRightIcon } from '../../icons/CaretRightIcon';
+import { TLinkOrButtonCustomEvent } from '../../components';
 
 @Component({
   tag: 't-tree-item',
@@ -15,6 +16,8 @@ export class TTreeItem {
 
   @State() expanded = true;
   @State() hasChildren: boolean = false;
+
+  @Event() labelClick: EventEmitter<MouseEvent>;
 
   @Method() async isExpanded(): Promise<boolean> {
     await customElements.whenDefined('t-tree-item');
@@ -35,7 +38,7 @@ export class TTreeItem {
 
   @Method() async isFocusable(): Promise<boolean> {
     await customElements.whenDefined('t-link');
-    return this.linkElement.focusable;
+    return this.linkOrButton.focusable;
   }
 
   @Method() async isTopLevel(): Promise<boolean> {
@@ -48,7 +51,7 @@ export class TTreeItem {
       customElements.whenDefined('t-link'),
       customElements.whenDefined('t-tree-item'),
     ]);
-    await this.linkElement.getAnchorElement().then((anchor) => anchor.focus());
+    await this.linkOrButton.focusOnElement();
   }
 
   @Method() async getNextVisibleItem(): Promise<HTMLTTreeItemElement | null> {
@@ -94,8 +97,8 @@ export class TTreeItem {
   }
 
   @Method() async setFocusable(focusable: boolean) {
-    await customElements.whenDefined('t-link');
-    return this.linkElement.focusable = focusable;
+    await customElements.whenDefined('t-link-or-button');
+    return this.linkOrButton.focusable = focusable;
   }
 
   @Method() async getRoot(): Promise<HTMLTTreeElement> {
@@ -103,8 +106,8 @@ export class TTreeItem {
     return this.element.closest('t-tree');
   }
 
-  get linkElement(): HTMLTLinkElement {
-    return this.element.shadowRoot.querySelector('t-link');
+  get linkOrButton(): HTMLTLinkOrButtonElement {
+    return this.element.shadowRoot.querySelector('t-link-or-button');
   }
 
   get subItems(): NodeListOf<HTMLTTreeItemElement> {
@@ -238,12 +241,13 @@ export class TTreeItem {
     await lastItem.focusOnLink();
   }
 
-  private async handleClick() {
+  private async handleClick(event: MouseEvent) {
     if (this.hasChildren) {
       const root = await this.getRoot();
       await root.resetTabindex();
       await this.setFocusable(true);
     }
+    this.labelClick.emit(event);
   }
 
   render() {
@@ -254,19 +258,7 @@ export class TTreeItem {
         role='treeitem'
         title={this.label}
       >
-        <t-link
-          href={this.href}
-          onClick={() => this.handleClick()}
-          onKeyDown={(e) => this.handleKeyDown(e)}
-        >
-          {this.hasChildren && (
-            <CaretRightIcon
-              fill
-              onClick={() => this.toggleExpanded()}
-            />
-          )}
-          <span class='label'>{this.label}</span>
-        </t-link>
+        {this.renderLink()}
         {this.hasChildren && (
           <div class='collapsible'>
             <ul role='group'>
@@ -276,5 +268,35 @@ export class TTreeItem {
         )}
       </li>
     );
+  }
+
+  private renderLink() {
+    return (
+      <t-link-or-button
+        href={this.href}
+        onElementClick={(e: TLinkOrButtonCustomEvent<MouseEvent>) => this.handleClick(e.detail)}
+        onKeyDown={(e) => this.handleKeyDown(e)}
+      >
+        {this.renderLabel()}
+      </t-link-or-button>
+    );
+  }
+
+  private renderLabel() {
+    return (<>
+      {this.hasChildren && (
+        <CaretRightIcon
+          fill
+          onClick={(e) => this.handleArrowClick(e)}
+        />
+      )}
+      <span class='label'>{this.label}</span>
+    </>);
+  }
+
+  private handleArrowClick(event: MouseEvent) {
+    event.preventDefault();
+    event.stopPropagation();
+    this.toggleExpanded();
   }
 }

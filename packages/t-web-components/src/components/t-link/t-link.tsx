@@ -1,4 +1,4 @@
-import { Component, h, Method, Prop, Element } from '@stencil/core';
+import { Component, h, Event, Method, Prop, Element, EventEmitter } from '@stencil/core';
 import { ExternalLinkIcon } from '../../icons/ExternalLinkIcon';
 
 @Component({
@@ -15,9 +15,19 @@ export class TLink {
   @Prop() external?: boolean;
   @Prop() focusable: boolean = true;
 
-  @Method() async getAnchorElement(): Promise<HTMLAnchorElement> {
+  @Event() linkClick: EventEmitter<MouseEvent>;
+
+  @Method() async focusOnAnchor() {
     await customElements.whenDefined('t-link');
+    this.anchor.focus();
+  }
+
+  get anchor(): HTMLAnchorElement {
     return this.element.shadowRoot.querySelector('a');
+  }
+
+  private handleClick = (e: MouseEvent) => {
+    this.linkClick.emit(e);
   }
 
   render() {
@@ -26,6 +36,7 @@ export class TLink {
       <a
         class='link'
         href={this.href}
+        onClick={(e) => this.handleClick(e)}
         part='link'
         tabIndex={this.focusable ? 0 : -1}
         target={target}

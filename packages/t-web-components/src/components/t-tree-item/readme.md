@@ -13,6 +13,13 @@
 | `label`  | `label`   |             | `string` | `undefined` |
 
 
+## Events
+
+| Event        | Description | Type                      |
+| ------------ | ----------- | ------------------------- |
+| `labelClick` |             | `CustomEvent<MouseEvent>` |
+
+
 ## Methods
 
 ### `focusOnLink() => Promise<void>`
@@ -144,15 +151,23 @@ Type: `Promise<boolean>`
 
 ## Dependencies
 
+### Used by
+
+ - [t-table-of-contents](../t-table-of-contents)
+
 ### Depends on
 
-- [t-link](../t-link)
+- [t-link-or-button](../t-link-or-button)
 
 ### Graph
 ```mermaid
 graph TD;
-  t-tree-item --> t-link
+  t-tree-item --> t-link-or-button
+  t-link-or-button --> t-link
+  t-link-or-button --> t-button
   t-link --> internal-style-provider
+  t-button --> internal-style-provider
+  t-table-of-contents --> t-tree-item
   style t-tree-item fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

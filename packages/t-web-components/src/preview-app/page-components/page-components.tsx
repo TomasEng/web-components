@@ -20,6 +20,7 @@ import { tSpinnerDemo } from '../../components/t-spinner/t-spinner.demo';
 import { tTooltipDemo } from '../../components/t-tooltip/t-tooltip.demo';
 import { tPanelDemo } from '../../components/t-panel/t-panel.demo';
 import { tTreeDemo } from '../../components/t-tree/t-tree.demo';
+import { tTableOfContentsDemo } from '../../components/t-table-of-contents/t-table-of-contents.demo';
 
 @Component({
   tag: 'page-components',
@@ -65,7 +66,8 @@ export class PageComponents {
               { title: 'Med tekst', code: tButtonDemo.simple, previewMode: 'hue' },
               { title: 'Med ikon og tekst', code: tButtonDemo.withIcon, previewMode: 'hue' },
               { title: 'Med kun ikon', code: tButtonDemo.iconOnly, previewMode: 'hue' },
-              { title: 'Gjennomsiktig', code: tButtonDemo.transparent, previewMode: 'hue' }
+              { title: 'Gjennomsiktig', code: tButtonDemo.transparent, previewMode: 'hue' },
+              { title: 'Lenkeformat', code: tButtonDemo.link, previewMode: 'inline' },
             ]}
             colourSettings={this.colourSettings}
           />
@@ -90,6 +92,11 @@ export class PageComponents {
           <component-documentation
             name='Trevisning'
             examples={[{ code: tTreeDemo.withLinks, previewMode: 'inline' }]}
+            colourSettings={this.colourSettings}
+          />
+          <component-documentation
+            name='Innholdsfortegnelse'
+            examples={[{ code: tTableOfContentsDemo.default, previewMode: 'inline' }]}
             colourSettings={this.colourSettings}
           />
           <component-documentation

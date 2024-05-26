@@ -15,15 +15,22 @@
 | `target`    | `target`    |             | `string`  | `undefined` |
 
 
+## Events
+
+| Event       | Description | Type                      |
+| ----------- | ----------- | ------------------------- |
+| `linkClick` |             | `CustomEvent<MouseEvent>` |
+
+
 ## Methods
 
-### `getAnchorElement() => Promise<HTMLAnchorElement>`
+### `focusOnAnchor() => Promise<void>`
 
 
 
 #### Returns
 
-Type: `Promise<HTMLAnchorElement>`
+Type: `Promise<void>`
 
 
 
@@ -41,9 +48,9 @@ Type: `Promise<HTMLAnchorElement>`
 
  - [page-about](../../preview-app/page-about)
  - [t-heading](../t-heading)
+ - [t-link-or-button](../t-link-or-button)
  - [t-source](../t-source)
  - [t-source-ref](../t-source-ref)
- - [t-tree-item](../t-tree-item)
 
 ### Depends on
 
@@ -55,9 +62,9 @@ graph TD;
   t-link --> internal-style-provider
   page-about --> t-link
   t-heading --> t-link
+  t-link-or-button --> t-link
   t-source --> t-link
   t-source-ref --> t-link
-  t-tree-item --> t-link
   style t-link fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

@@ -89,6 +89,8 @@ export namespace Components {
     }
     interface TButton {
         "buttonAttributes": ButtonAttributes;
+        "focusOnButton": () => Promise<void>;
+        "focusable": boolean;
         "hue": ComponentHue;
         "variant": ButtonVariant;
     }
@@ -155,10 +157,16 @@ export namespace Components {
     }
     interface TLink {
         "external"?: boolean;
+        "focusOnAnchor": () => Promise<void>;
         "focusable": boolean;
-        "getAnchorElement": () => Promise<HTMLAnchorElement>;
         "href": string;
         "target"?: string;
+    }
+    interface TLinkOrButton {
+        "focusOnElement": () => Promise<void>;
+        "focusable": boolean;
+        "href": string | null;
+        "target": string | null;
     }
     interface TModeSwitcher {
         "hue": ComponentHue;
@@ -209,6 +217,8 @@ export namespace Components {
         "heading": string;
         "name": string;
     }
+    interface TTableOfContents {
+    }
     interface TTabs {
     }
     interface TTextfield {
@@ -248,6 +258,10 @@ export interface PageComponentsCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPageComponentsElement;
 }
+export interface TButtonCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLTButtonElement;
+}
 export interface TFloatingElementCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLTFloatingElementElement;
@@ -259,6 +273,14 @@ export interface THuePickerCustomEvent<T> extends CustomEvent<T> {
 export interface TIntegerPickerCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLTIntegerPickerElement;
+}
+export interface TLinkCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLTLinkElement;
+}
+export interface TLinkOrButtonCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLTLinkOrButtonElement;
 }
 export interface TSaturationPickerCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -275,6 +297,10 @@ export interface TSwitchCustomEvent<T> extends CustomEvent<T> {
 export interface TTextfieldCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLTTextfieldElement;
+}
+export interface TTreeItemCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLTTreeItemElement;
 }
 declare global {
     interface HTMLComponentColourSettingsElementEventMap {
@@ -371,7 +397,18 @@ declare global {
         prototype: HTMLTArticleListElement;
         new (): HTMLTArticleListElement;
     };
+    interface HTMLTButtonElementEventMap {
+        "buttonClick": MouseEvent;
+    }
     interface HTMLTButtonElement extends Components.TButton, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLTButtonElementEventMap>(type: K, listener: (this: HTMLTButtonElement, ev: TButtonCustomEvent<HTMLTButtonElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLTButtonElementEventMap>(type: K, listener: (this: HTMLTButtonElement, ev: TButtonCustomEvent<HTMLTButtonElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLTButtonElement: {
         prototype: HTMLTButtonElement;
@@ -494,11 +531,39 @@ declare global {
         prototype: HTMLTLayoutMainElement;
         new (): HTMLTLayoutMainElement;
     };
+    interface HTMLTLinkElementEventMap {
+        "linkClick": MouseEvent;
+    }
     interface HTMLTLinkElement extends Components.TLink, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLTLinkElementEventMap>(type: K, listener: (this: HTMLTLinkElement, ev: TLinkCustomEvent<HTMLTLinkElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLTLinkElementEventMap>(type: K, listener: (this: HTMLTLinkElement, ev: TLinkCustomEvent<HTMLTLinkElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLTLinkElement: {
         prototype: HTMLTLinkElement;
         new (): HTMLTLinkElement;
+    };
+    interface HTMLTLinkOrButtonElementEventMap {
+        "elementClick": MouseEvent;
+    }
+    interface HTMLTLinkOrButtonElement extends Components.TLinkOrButton, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLTLinkOrButtonElementEventMap>(type: K, listener: (this: HTMLTLinkOrButtonElement, ev: TLinkOrButtonCustomEvent<HTMLTLinkOrButtonElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLTLinkOrButtonElementEventMap>(type: K, listener: (this: HTMLTLinkOrButtonElement, ev: TLinkOrButtonCustomEvent<HTMLTLinkOrButtonElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLTLinkOrButtonElement: {
+        prototype: HTMLTLinkOrButtonElement;
+        new (): HTMLTLinkOrButtonElement;
     };
     interface HTMLTModeSwitcherElement extends Components.TModeSwitcher, HTMLStencilElement {
     }
@@ -605,6 +670,12 @@ declare global {
         prototype: HTMLTTabElement;
         new (): HTMLTTabElement;
     };
+    interface HTMLTTableOfContentsElement extends Components.TTableOfContents, HTMLStencilElement {
+    }
+    var HTMLTTableOfContentsElement: {
+        prototype: HTMLTTableOfContentsElement;
+        new (): HTMLTTableOfContentsElement;
+    };
     interface HTMLTTabsElement extends Components.TTabs, HTMLStencilElement {
     }
     var HTMLTTabsElement: {
@@ -640,7 +711,18 @@ declare global {
         prototype: HTMLTTreeElement;
         new (): HTMLTTreeElement;
     };
+    interface HTMLTTreeItemElementEventMap {
+        "labelClick": MouseEvent;
+    }
     interface HTMLTTreeItemElement extends Components.TTreeItem, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLTTreeItemElementEventMap>(type: K, listener: (this: HTMLTTreeItemElement, ev: TTreeItemCustomEvent<HTMLTTreeItemElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLTTreeItemElementEventMap>(type: K, listener: (this: HTMLTTreeItemElement, ev: TTreeItemCustomEvent<HTMLTTreeItemElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLTTreeItemElement: {
         prototype: HTMLTTreeItemElement;
@@ -675,6 +757,7 @@ declare global {
         "t-layout-header": HTMLTLayoutHeaderElement;
         "t-layout-main": HTMLTLayoutMainElement;
         "t-link": HTMLTLinkElement;
+        "t-link-or-button": HTMLTLinkOrButtonElement;
         "t-mode-switcher": HTMLTModeSwitcherElement;
         "t-panel": HTMLTPanelElement;
         "t-row": HTMLTRowElement;
@@ -687,6 +770,7 @@ declare global {
         "t-spinner": HTMLTSpinnerElement;
         "t-switch": HTMLTSwitchElement;
         "t-tab": HTMLTTabElement;
+        "t-table-of-contents": HTMLTTableOfContentsElement;
         "t-tabs": HTMLTTabsElement;
         "t-textfield": HTMLTTextfieldElement;
         "t-tooltip": HTMLTTooltipElement;
@@ -743,7 +827,9 @@ declare namespace LocalJSX {
     }
     interface TButton {
         "buttonAttributes"?: ButtonAttributes;
+        "focusable"?: boolean;
         "hue"?: ComponentHue;
+        "onButtonClick"?: (event: TButtonCustomEvent<MouseEvent>) => void;
         "variant"?: ButtonVariant;
     }
     interface TCode {
@@ -813,7 +899,14 @@ declare namespace LocalJSX {
         "external"?: boolean;
         "focusable"?: boolean;
         "href"?: string;
+        "onLinkClick"?: (event: TLinkCustomEvent<MouseEvent>) => void;
         "target"?: string;
+    }
+    interface TLinkOrButton {
+        "focusable"?: boolean;
+        "href"?: string | null;
+        "onElementClick"?: (event: TLinkOrButtonCustomEvent<MouseEvent>) => void;
+        "target"?: string | null;
     }
     interface TModeSwitcher {
         "hue"?: ComponentHue;
@@ -866,6 +959,8 @@ declare namespace LocalJSX {
         "heading"?: string;
         "name"?: string;
     }
+    interface TTableOfContents {
+    }
     interface TTabs {
     }
     interface TTextfield {
@@ -881,6 +976,7 @@ declare namespace LocalJSX {
     interface TTreeItem {
         "href"?: string | null;
         "label"?: string;
+        "onLabelClick"?: (event: TTreeItemCustomEvent<MouseEvent>) => void;
     }
     interface IntrinsicElements {
         "component-colour-settings": ComponentColourSettings;
@@ -911,6 +1007,7 @@ declare namespace LocalJSX {
         "t-layout-header": TLayoutHeader;
         "t-layout-main": TLayoutMain;
         "t-link": TLink;
+        "t-link-or-button": TLinkOrButton;
         "t-mode-switcher": TModeSwitcher;
         "t-panel": TPanel;
         "t-row": TRow;
@@ -923,6 +1020,7 @@ declare namespace LocalJSX {
         "t-spinner": TSpinner;
         "t-switch": TSwitch;
         "t-tab": TTab;
+        "t-table-of-contents": TTableOfContents;
         "t-tabs": TTabs;
         "t-textfield": TTextfield;
         "t-tooltip": TTooltip;
@@ -962,6 +1060,7 @@ declare module "@stencil/core" {
             "t-layout-header": LocalJSX.TLayoutHeader & JSXBase.HTMLAttributes<HTMLTLayoutHeaderElement>;
             "t-layout-main": LocalJSX.TLayoutMain & JSXBase.HTMLAttributes<HTMLTLayoutMainElement>;
             "t-link": LocalJSX.TLink & JSXBase.HTMLAttributes<HTMLTLinkElement>;
+            "t-link-or-button": LocalJSX.TLinkOrButton & JSXBase.HTMLAttributes<HTMLTLinkOrButtonElement>;
             "t-mode-switcher": LocalJSX.TModeSwitcher & JSXBase.HTMLAttributes<HTMLTModeSwitcherElement>;
             "t-panel": LocalJSX.TPanel & JSXBase.HTMLAttributes<HTMLTPanelElement>;
             "t-row": LocalJSX.TRow & JSXBase.HTMLAttributes<HTMLTRowElement>;
@@ -974,6 +1073,7 @@ declare module "@stencil/core" {
             "t-spinner": LocalJSX.TSpinner & JSXBase.HTMLAttributes<HTMLTSpinnerElement>;
             "t-switch": LocalJSX.TSwitch & JSXBase.HTMLAttributes<HTMLTSwitchElement>;
             "t-tab": LocalJSX.TTab & JSXBase.HTMLAttributes<HTMLTTabElement>;
+            "t-table-of-contents": LocalJSX.TTableOfContents & JSXBase.HTMLAttributes<HTMLTTableOfContentsElement>;
             "t-tabs": LocalJSX.TTabs & JSXBase.HTMLAttributes<HTMLTTabsElement>;
             "t-textfield": LocalJSX.TTextfield & JSXBase.HTMLAttributes<HTMLTTextfieldElement>;
             "t-tooltip": LocalJSX.TTooltip & JSXBase.HTMLAttributes<HTMLTTooltipElement>;

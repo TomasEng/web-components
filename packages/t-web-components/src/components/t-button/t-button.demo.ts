@@ -73,5 +73,12 @@ export const tButtonDemo: ComponentDemos = {
       variant: 'transparent'
     },
     children: [tButtonTestData.text]
+  },
+  link: {
+    componentName: 't-button',
+    props: {
+      variant: 'link'
+    },
+    children: [tButtonTestData.text]
   }
 };
