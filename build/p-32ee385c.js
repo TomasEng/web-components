@@ -1,0 +1,2 @@
+const t=(t,s)=>{const r=n(t);return r.indexOf(s)};const n=t=>[...new Set(t)];const s=t=>t.slice().reverse();const r=(t,n)=>{const r=s(t);const o=r.findIndex(n);if(o===-1)return-1;if(o===r.length-1)return 0;return(o-r.length+1)*-1};export{r as a,t as f,n as u};
+//# sourceMappingURL=p-32ee385c.js.map
