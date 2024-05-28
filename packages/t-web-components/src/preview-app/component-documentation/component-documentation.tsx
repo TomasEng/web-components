@@ -55,10 +55,10 @@ const Code = ({ componentTestCode }: CodeProps) => {
     <t-details summary="Vis kode" openSummary="Skjul kode">
       <t-tabs>
         <t-tab heading="HTML">
-          <t-code language="html" code={componentTestCode.generateCode()} />
+          <t-code mode="block" language="html" code={componentTestCode.generateCode()} />
         </t-tab>
         <t-tab heading="React">
-          <t-code language="TSX" code={componentTestCode.generateReactCode()} />
+          <t-code mode="block" language="TSX" code={componentTestCode.generateReactCode()} />
         </t-tab>
       </t-tabs>
     </t-details>

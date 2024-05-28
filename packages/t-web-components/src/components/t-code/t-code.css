@@ -17,13 +17,13 @@ pre {
 
   &.block, &.panel {
     display: block;
-  }
-}
 
-code {
-  display: block;
-  overflow-x: auto;
-  border-radius: var(--t-border-radius-default);
+    code {
+      border-radius: var(--t-border-radius-default);
+      display: block;
+      overflow-x: auto;
+    }
+  }
 }
 
 pre.light {
