@@ -16,7 +16,7 @@
   --t-base-low-contrast-colour: unset;
   --t-border-radius-default: 6px;
   --t-clickable-area-size: 44px;
-  --t-default-font-family: Calibri, Arial, sans-serif;
+  --t-default-font-family: ui-sans-serif, Verdana, Arial, Helvetica, sans-serif;
   --t-default-font-size: 1rem;
   --t-font-colour-default: var(--t-full-contrast-colour);
   --t-heading-size-1: 2em;
@@ -25,18 +25,20 @@
   --t-heading-size-4: 1.125em;
   --t-heading-size-5: 1.0625em;
   --t-heading-size-6: 1em;
-  --t-heading-spacing-bottom-1: 1rem;
-  --t-heading-spacing-bottom-2: 0.75rem;
-  --t-heading-spacing-bottom-3: 0.5rem;
-  --t-heading-spacing-bottom-4: 0.25rem;
-  --t-heading-spacing-bottom-5: 0.125rem;
-  --t-heading-spacing-bottom-6: 0.0625rem;
+  --t-heading-spacing-bottom-factor: 0.5;
+  --t-heading-spacing-bottom-1: calc(var(--t-heading-size-1) * var(--t-heading-spacing-bottom-factor));
+  --t-heading-spacing-bottom-2: calc(var(--t-heading-size-2) * var(--t-heading-spacing-bottom-factor));
+  --t-heading-spacing-bottom-3: calc(var(--t-heading-size-3) * var(--t-heading-spacing-bottom-factor));
+  --t-heading-spacing-bottom-4: calc(var(--t-heading-size-4) * var(--t-heading-spacing-bottom-factor));
+  --t-heading-spacing-bottom-5: calc(var(--t-heading-size-5) * var(--t-heading-spacing-bottom-factor));
+  --t-heading-spacing-bottom-6: calc(var(--t-heading-size-6) * var(--t-heading-spacing-bottom-factor));
+  --t-heading-spacing-top-factor: 1;
   --t-heading-spacing-top-1: 0;
-  --t-heading-spacing-top-2: 1rem;
-  --t-heading-spacing-top-3: 0.75rem;
-  --t-heading-spacing-top-4: 0.5rem;
-  --t-heading-spacing-top-5: 0.25rem;
-  --t-heading-spacing-top-6: 0.125rem;
+  --t-heading-spacing-top-2: calc(var(--t-heading-size-2) * var(--t-heading-spacing-top-factor));
+  --t-heading-spacing-top-3: calc(var(--t-heading-size-3) * var(--t-heading-spacing-top-factor));
+  --t-heading-spacing-top-4: calc(var(--t-heading-size-4) * var(--t-heading-spacing-top-factor));
+  --t-heading-spacing-top-5: calc(var(--t-heading-size-5) * var(--t-heading-spacing-top-factor));
+  --t-heading-spacing-top-6: calc(var(--t-heading-size-6) * var(--t-heading-spacing-top-factor));
   --t-input-field-background-colour: color-mix(in oklab, var(--t-full-contrast-colour) 5%, transparent);
   --t-leftbar-width: 240px;
   --t-navbar-item-border-radius: 8px;
@@ -88,4 +90,9 @@
   --t-selection-font-colour: black;
   --t-full-contrast-colour: white;
   --t-mode-colour-scaling: -1;
+}
+
+p {
+  line-height: 1.75;
+  margin: 1em 0;
 }

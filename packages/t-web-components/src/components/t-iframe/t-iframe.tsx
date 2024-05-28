@@ -1,4 +1,6 @@
-import { Component, h, Prop } from '@stencil/core';
+import { Component, h, Prop, Element } from '@stencil/core';
+import { JSXBase } from '@stencil/core/internal';
+import HTMLAttributes = JSXBase.HTMLAttributes;
 
 @Component({
   tag: 't-iframe',
@@ -7,11 +9,69 @@ import { Component, h, Prop } from '@stencil/core';
 })
 export class TIframe {
 
+  @Element() element: HTMLTIframeElement;
+
   @Prop() src: string;
   @Prop() srcdoc: string;
+
+  get iframe(): HTMLIFrameElement {
+    return this.element.shadowRoot.querySelector('iframe');
+  }
+
+  get iframeDocument(): Document {
+    return this.iframe.contentDocument;
+  }
+
+  get iframeWindow(): Window {
+    return this.iframe.contentWindow;
+  }
 
   render() {
     if (this.srcdoc) return <iframe srcDoc={this.srcdoc}/>;
     else return <iframe src={this.src}/>;
+  }
+
+  componentDidLoad() {
+    this.iframe.onload = async () => {
+      await this.resizeIframe();
+    };
+    this.iframeWindow.addEventListener('resize', async () => {
+      await this.resizeIframe();
+    });
+  }
+
+  private async resizeIframe(): Promise<void> {
+    const retryPeriodMilliseconds = 50;
+    let currentHeight = 0;
+    const scrollingElement = await this.getScrollingElement();
+    return new Promise(resolve => {
+      let resolved = false;
+      const interval = setInterval(() => {
+        if (scrollingElement.scrollHeight !== currentHeight) {
+          currentHeight = scrollingElement.scrollHeight;
+        } else {
+          resolved = true;
+          resolve();
+        }
+        this.iframe.height = `${currentHeight}px`;
+        if (resolved) {
+          clearInterval(interval);
+        }
+      }, retryPeriodMilliseconds);
+    });
+  }
+
+  private async getScrollingElement(): Promise<Element> {
+    const retryPeriodMilliseconds = 10;
+    return new Promise(resolve => {
+      let resolved = false;
+      const interval = setInterval(() => {
+        if (this.iframeDocument.scrollingElement) {
+          resolve(this.iframeDocument.scrollingElement);
+          resolved = true;
+        }
+        if (resolved) clearInterval(interval);
+      }, retryPeriodMilliseconds);
+    });
   }
 }

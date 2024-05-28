@@ -78,9 +78,7 @@ Ved å følge følgende instruksjoner, blir begge pakkene oppdatert med ny patch
 Alle kommandoer kjøres i rotmappen.
 1. Kjør `npm run build` for å bygge pakkene. Dette må gjøres først for å kjøre genereringsskriptene til Stencil.
 2. Hvis noen filer har blitt endret, commit endringene.
-3. Kjør `npm run patch` for å øke versjonsnummeret til pakkene.
-4. Kjør `npm run build` igjen for å bygge pakkene med nytt versjonsnummer.
-5. Kjør `npm run publish` for å publisere pakkene til Npm-registret. (Siden Lerna håndterer publiseringsprosessen, vil ikke `npm publish` fungere.)
+3. Kjør `npm run publish` for å bygge nye versjoner og publisere pakkene til Npm-registret. (Siden Lerna håndterer publiseringsprosessen, vil ikke `npm publish` fungere.) Av ukjent grunn kan det hende at det kommer en feilmelding knyttet til publisering av React-pakken selv om pakken faktisk blir publisert.
 
 ## Utrulling av demoapplikasjon
 Når `t-web-components` bygges, blir det generert en mappe som heter `www` i pakkemappen.
