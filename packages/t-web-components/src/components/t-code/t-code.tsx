@@ -1,5 +1,5 @@
 import { Component, Element, h, Prop, State } from '@stencil/core';
-import highlight from 'highlight.js';
+import highlight, { HighlightOptions } from 'highlight.js';
 import state from '../../store';
 import { TCodeDisplayMode } from './TCodeDisplayMode';
 import { capitalize, trimLineBreaks, trimMargin } from '../../utils/stringUtils';
@@ -36,7 +36,9 @@ export class TCode {
 
   render() {
     const trimmedCode = this.trimCode();
-    const code = highlight.highlight(trimmedCode, {language: this.language}).value;
+    const code = this.language
+      ? highlight.highlight(trimmedCode, {language: this.language}).value
+      : trimmedCode;
     const pre = (
       <pre class={state.mode + ' ' + this.mode}>
         <code innerHTML={code}/>
