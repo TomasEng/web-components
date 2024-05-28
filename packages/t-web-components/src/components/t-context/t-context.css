@@ -38,6 +38,7 @@
   --t-heading-spacing-top-5: 0.25rem;
   --t-heading-spacing-top-6: 0.125rem;
   --t-input-field-background-colour: color-mix(in oklab, var(--t-full-contrast-colour) 5%, transparent);
+  --t-leftbar-width: 240px;
   --t-navbar-item-border-radius: 8px;
   --t-page-background-colour: unset;
   --t-page-max-width: 1200px;

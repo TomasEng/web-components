@@ -43,7 +43,7 @@ export class TArticle {
     this.getSourceOrder().then(sourceOrder => {
       const orderedSources = orderObject(this.sources, sourceOrder);
       const sourceList = this.element.querySelector('t-source-list');
-      if (sourceList) {
+      if (sourceOrder.length && sourceList) {
         sourceList.sources = orderedSources;
       }
     });

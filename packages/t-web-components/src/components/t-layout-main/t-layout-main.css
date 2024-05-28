@@ -19,7 +19,7 @@
   border-top-left-radius: var(--border-radius);
   box-shadow: var(--top-shadow), var(--bottom-shadow);
   box-sizing: border-box;
-  width: 240px;
+  width: var(--t-leftbar-width);
 
   .leftbar-content {
     padding: 1rem;

@@ -16,7 +16,7 @@ import { ACTION_CONFIRMATION_PERIOD_MILLISECONDS } from '../../constants';
 export class TCode {
 
   @Prop() code: string | null = null;
-  @Prop() language: string;
+  @Prop() language: string | null = null;
   @Prop() mode: TCodeDisplayMode = 'inline';
   @Prop() trimmargin: boolean = false;
   @Prop() copyButtonTitle: string = 'Kopier kode';

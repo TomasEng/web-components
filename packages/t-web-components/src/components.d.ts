@@ -97,7 +97,7 @@ export namespace Components {
     interface TCode {
         "code": string | null;
         "copyButtonTitle": string;
-        "language": string;
+        "language": string | null;
         "mode": TCodeDisplayMode;
         "trimmargin": boolean;
     }
@@ -835,7 +835,7 @@ declare namespace LocalJSX {
     interface TCode {
         "code"?: string | null;
         "copyButtonTitle"?: string;
-        "language"?: string;
+        "language"?: string | null;
         "mode"?: TCodeDisplayMode;
         "trimmargin"?: boolean;
     }

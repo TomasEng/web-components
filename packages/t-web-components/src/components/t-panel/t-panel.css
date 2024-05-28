@@ -16,11 +16,7 @@
 
 .heading {
   align-items: center;
-  background: linear-gradient(
-    to bottom,
-    color-mix(in oklab, var(--t-base-colour) 80%, white),
-    var(--t-base-colour)
-  );
+  background: var(--t-base-colour);
   border-top-left-radius: var(--t-border-radius-default);
   border-top-right-radius: var(--t-border-radius-default);
   box-shadow: var(--top-shadow-inset);

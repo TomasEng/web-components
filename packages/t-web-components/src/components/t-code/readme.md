@@ -11,7 +11,7 @@
 | ----------------- | ------------------- | ----------- | -------------------------------- | --------------- |
 | `code`            | `code`              |             | `string`                         | `null`          |
 | `copyButtonTitle` | `copy-button-title` |             | `string`                         | `'Kopier kode'` |
-| `language`        | `language`          |             | `string`                         | `undefined`     |
+| `language`        | `language`          |             | `string`                         | `null`          |
 | `mode`            | `mode`              |             | `"block" \| "inline" \| "panel"` | `'inline'`      |
 | `trimmargin`      | `trimmargin`        |             | `boolean`                        | `false`         |
 
