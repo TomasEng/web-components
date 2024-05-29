@@ -47,8 +47,9 @@ export class TIframe {
     return new Promise(resolve => {
       let resolved = false;
       const interval = setInterval(() => {
-        if (scrollingElement.scrollHeight !== currentHeight) {
-          currentHeight = scrollingElement.scrollHeight;
+        const {height} = scrollingElement.getBoundingClientRect();
+        if (height !== currentHeight) {
+          currentHeight = height;
         } else {
           resolved = true;
           resolve();

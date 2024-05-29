@@ -7,11 +7,11 @@
 
 ## Properties
 
-| Property         | Attribute         | Description | Type                             | Default     |
-| ---------------- | ----------------- | ----------- | -------------------------------- | ----------- |
-| `heading`        | `heading`         |             | `string`                         | `undefined` |
-| `sources`        | --                |             | `{ [id: string]: TSourceItem; }` | `{}`        |
-| `sourcesHeading` | `sources-heading` |             | `string`                         | `'Kilder'`  |
+| Property  | Attribute | Description | Type                             | Default       |
+| --------- | --------- | ----------- | -------------------------------- | ------------- |
+| `heading` | `heading` |             | `string`                         | `undefined`   |
+| `sources` | --        |             | `{ [id: string]: TSourceItem; }` | `{}`          |
+| `text`    | --        |             | `{ sourcesHeading: string; }`    | `defaultText` |
 
 
 ## Methods

@@ -121,7 +121,7 @@ export class PageComponents {
           />
           <component-documentation
             name='Artikkel'
-            examples={[{ code: tArticleDemo.simple, previewMode: 'iframe' }]}
+            examples={[{ code: tArticleDemo.withSources, previewMode: 'iframe' }]}
             colourSettings={this.colourSettings}
           />
           <component-documentation

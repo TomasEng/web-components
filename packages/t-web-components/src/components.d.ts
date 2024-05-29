@@ -11,6 +11,7 @@ import { ComponentTestCode } from "./test-utils/ComponentTestCode";
 import { LabelPlacement } from "./types/LabelPlacement";
 import { ColourSettings as ColourSettings1 } from "./components";
 import { TSourceItemList } from "./types/TSourceItemList";
+import { TArticleText } from "./components/t-article/t-article.text";
 import { ComponentHue } from "./types/ComponentHue";
 import { TArticleListItem } from "./components/t-article-list/TArticleListItem";
 import { ButtonAttributes } from "./types/HTMLAttributes";
@@ -29,6 +30,7 @@ export { ComponentTestCode } from "./test-utils/ComponentTestCode";
 export { LabelPlacement } from "./types/LabelPlacement";
 export { ColourSettings as ColourSettings1 } from "./components";
 export { TSourceItemList } from "./types/TSourceItemList";
+export { TArticleText } from "./components/t-article/t-article.text";
 export { ComponentHue } from "./types/ComponentHue";
 export { TArticleListItem } from "./components/t-article-list/TArticleListItem";
 export { ButtonAttributes } from "./types/HTMLAttributes";
@@ -81,7 +83,7 @@ export namespace Components {
         "getSourceOrder": () => Promise<string[]>;
         "heading": string;
         "sources": TSourceItemList;
-        "sourcesHeading": string;
+        "text": TArticleText;
     }
     interface TArticleList {
         "hue": ComponentHue;
@@ -819,7 +821,7 @@ declare namespace LocalJSX {
     interface TArticle {
         "heading"?: string;
         "sources"?: TSourceItemList;
-        "sourcesHeading"?: string;
+        "text"?: TArticleText;
     }
     interface TArticleList {
         "hue"?: ComponentHue;

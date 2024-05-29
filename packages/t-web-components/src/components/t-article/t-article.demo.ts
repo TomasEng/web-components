@@ -2,6 +2,7 @@ import { ComponentDemos } from '../../types/ComponentDemos';
 import { TSourceItem } from '../../types/TSourceItem';
 
 export const tArticleTestData = {
+  heading: 'Lorem ipsum',
   source1: {
     authors: [{ forename: 'Robert C.', surname: 'Martin' }],
     title: 'Clean Code - A Handbook of Agile Software Craftsmanship',
@@ -24,7 +25,22 @@ export const tArticleDemo: ComponentDemos = {
   simple: {
     componentName: 't-article',
     props: {
-      heading: 'Lorem ipsum',
+      heading: tArticleTestData.heading,
+    },
+    children: [
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse non dictum felis. Phasellus sit amet ' +
+      'dolor magna. Etiam feugiat sodales mi molestie fringilla. Curabitur ut libero sed arcu pellentesque ornare. ' +
+      'Nulla convallis metus vitae nisl semper consectetur. Aliquam viverra scelerisque lobortis. Ut eget turpis in ' +
+      'tellus suscipit lobortis. Curabitur elementum blandit vestibulum. Vestibulum ante ipsum primis in faucibus ' +
+      'orci luctus et ultrices posuere cubilia curae; Quisque elit nisl, congue ut lectus eu, efficitur malesuada ' +
+      'felis. Integer maximus mauris vitae dolor accumsan, sollicitudin aliquet nibh consequat. Integer ullamcorper ' +
+      'nibh at purus gravida lacinia.'
+    ]
+  },
+  withSources: {
+    componentName: 't-article',
+    props: {
+      heading: tArticleTestData.heading,
       sources: {
         [tArticleTestData.source1Id]: tArticleTestData.source1,
         [tArticleTestData.source2Id]: tArticleTestData.source2,

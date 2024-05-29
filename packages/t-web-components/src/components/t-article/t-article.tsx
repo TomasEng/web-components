@@ -2,6 +2,7 @@ import { Component, Element, h, Method, Prop } from '@stencil/core';
 import { TSourceItemList } from '../../types/TSourceItemList';
 import { orderObject } from '../../utils/objectUtils';
 import { uniqueItems } from '../../utils/arrayUtils';
+import defaultText, { TArticleText } from './t-article.text';
 
 @Component({
   tag: 't-article',
@@ -10,8 +11,8 @@ import { uniqueItems } from '../../utils/arrayUtils';
 export class TArticle {
 
   @Prop() sources: TSourceItemList = {};
-  @Prop() sourcesHeading: string = 'Kilder';
   @Prop() heading: string;
+  @Prop() text: TArticleText = defaultText;
 
   @Element() element: HTMLElement;
 
@@ -29,9 +30,9 @@ export class TArticle {
       <article>
         <t-heading level={1}>{this.heading}</t-heading>
         <slot></slot>
-        {this.sources && (
+        {this.sources && !!Object.keys(this.sources).length && (
           <footer>
-            <t-heading level={2}>{this.sourcesHeading}</t-heading>
+            <t-heading level={2}>{this.text.sourcesHeading}</t-heading>
             <t-source-list sources={{}} />
           </footer>
         )}
