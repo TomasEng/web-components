@@ -25,13 +25,11 @@
 
 ### Depends on
 
-- [internal-style-provider](../internal-style-provider)
 - [internal-input-wrapper](../internal-input-wrapper)
 
 ### Graph
 ```mermaid
 graph TD;
-  t-textfield --> internal-style-provider
   t-textfield --> internal-input-wrapper
   style t-textfield fill:#f9f,stroke:#333,stroke-width:4px
 ```

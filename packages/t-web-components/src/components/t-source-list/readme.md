@@ -27,7 +27,6 @@
 graph TD;
   t-source-list --> t-source
   t-source --> t-link
-  t-link --> internal-style-provider
   t-article --> t-source-list
   style t-source-list fill:#f9f,stroke:#333,stroke-width:4px
 ```

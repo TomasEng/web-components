@@ -11,7 +11,6 @@ export const ComponentColourSettings = /*@__PURE__*/createReactComponent<JSX.Com
 export const ComponentDocumentation = /*@__PURE__*/createReactComponent<JSX.ComponentDocumentation, HTMLComponentDocumentationElement>('component-documentation');
 export const ComponentPreview = /*@__PURE__*/createReactComponent<JSX.ComponentPreview, HTMLComponentPreviewElement>('component-preview');
 export const InternalInputWrapper = /*@__PURE__*/createReactComponent<JSX.InternalInputWrapper, HTMLInternalInputWrapperElement>('internal-input-wrapper');
-export const InternalStyleProvider = /*@__PURE__*/createReactComponent<JSX.InternalStyleProvider, HTMLInternalStyleProviderElement>('internal-style-provider');
 export const PageAbout = /*@__PURE__*/createReactComponent<JSX.PageAbout, HTMLPageAboutElement>('page-about');
 export const PageComponents = /*@__PURE__*/createReactComponent<JSX.PageComponents, HTMLPageComponentsElement>('page-components');
 export const PreviewApp = /*@__PURE__*/createReactComponent<JSX.PreviewApp, HTMLPreviewAppElement>('preview-app');

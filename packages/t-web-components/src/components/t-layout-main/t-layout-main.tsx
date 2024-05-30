@@ -21,7 +21,7 @@ export class TLayoutMain {
   render() {
     const stateClass = this.leftbarOpen ? 'leftbar-open' : 'leftbar-closed';
 
-    return <internal-style-provider>
+    return (
       <main class={`main ${stateClass}`}>
         <div class={`leftbar${this.stickyLeftbar ? ' sticky' : ''}`}>
           <div class="leftbar-content">
@@ -39,6 +39,6 @@ export class TLayoutMain {
           <slot name='content' />
         </div>
       </main>
-    </internal-style-provider>;
+    );
   }
 }

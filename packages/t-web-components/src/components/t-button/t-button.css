@@ -1,5 +1,5 @@
 .t-button {
-  --button-colour: var(--t-base-colour);
+  --button-colour: var(--t-colour-base-component);
   --button-padding: .5rem;
   background: linear-gradient(
     to top,
@@ -15,7 +15,7 @@
     rgb(0 0 0 / 0.2) 0 -1px 1px;
   align-items: center;
   border-radius: 100px;
-  border: 0 solid var(--t-base-border-colour);
+  border: 0 solid var(--t-colour-base-component-high-contrast);
   color: var(--t-font-colour-default);
   cursor: pointer;
   display: inline-flex;
@@ -33,22 +33,22 @@
   &.transparent {
     background: none;
     box-shadow: none;
-    color: var(--t-base-contrast-colour);
+    color: var(--t-colour-base-component-high-contrast);
     margin: calc(var(--button-padding) * -1);
 
     &:hover {
-      background: color-mix(in oklab, var(--t-base-colour) 25%, transparent);
+      background: color-mix(in oklab, var(--t-colour-base-component) 25%, transparent);
     }
 
     &:active {
-      background: var(--t-base-colour);
+      background: var(--t-colour-base-component);
     }
   }
 
   &.link {
     background: none;
     box-shadow: none;
-    color: var(--t-base-contrast-colour);
+    color: var(--t-colour-base-component-high-contrast);
     margin: 0;
     padding: 0;
 
@@ -60,7 +60,7 @@
 }
 
 .t-button:hover {
-  --button-colour: color-mix(in oklab, var(--t-base-colour) 75%, white);
+  --button-colour: color-mix(in oklab, var(--t-colour-base-component) 75%, white);
 }
 
 .t-button:active {

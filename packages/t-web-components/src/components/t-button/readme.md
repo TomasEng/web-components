@@ -44,14 +44,9 @@ Type: `Promise<void>`
  - [t-layout-header](../t-layout-header)
  - [t-link-or-button](../t-link-or-button)
 
-### Depends on
-
-- [internal-style-provider](../internal-style-provider)
-
 ### Graph
 ```mermaid
 graph TD;
-  t-button --> internal-style-provider
   t-code --> t-button
   t-dropdown-menu --> t-button
   t-layout-header --> t-button

@@ -1,4 +1,5 @@
-import { Component, Event, EventEmitter, h, Prop } from '@stencil/core';
+import { Component, Event, EventEmitter, h, Prop, Element, Fragment } from '@stencil/core';
+import { setBaseColour } from '../../utils/componentUtils';
 
 @Component({
   tag: 't-switch',
@@ -7,10 +8,16 @@ import { Component, Event, EventEmitter, h, Prop } from '@stencil/core';
 })
 export class TSwitch {
 
+  @Element() element: HTMLTSwitchElement;
+
   @Event() switch: EventEmitter<boolean>;
 
   @Prop() checked: boolean = false;
   @Prop() hue: number = 0;
+
+  connectedCallback() {
+    setBaseColour(this.element, this.hue * 360);
+  }
 
   handleChange = (event: InputEvent) => {
     const target = event.target as HTMLInputElement;
@@ -18,7 +25,7 @@ export class TSwitch {
   };
 
   render() {
-    return <internal-style-provider hueOffsetInTurns={this.hue}>
+    return <>
       <label htmlFor="input" class="wrapper">
       <span class="switch">
         <input id="input" type="checkbox" onChange={this.handleChange} checked={this.checked} />
@@ -26,6 +33,6 @@ export class TSwitch {
       </span>
         <span class="label"><slot /></span>
       </label>
-    </internal-style-provider>;
+    </>;
   }
 }

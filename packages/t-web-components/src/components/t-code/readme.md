@@ -32,7 +32,6 @@
 graph TD;
   t-code --> t-panel
   t-code --> t-button
-  t-button --> internal-style-provider
   component-documentation --> t-code
   style t-code fill:#f9f,stroke:#333,stroke-width:4px
 ```

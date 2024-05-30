@@ -20,19 +20,6 @@
 | `switch` |             | `CustomEvent<boolean>` |
 
 
-## Dependencies
-
-### Depends on
-
-- [internal-style-provider](../internal-style-provider)
-
-### Graph
-```mermaid
-graph TD;
-  t-switch --> internal-style-provider
-  style t-switch fill:#f9f,stroke:#333,stroke-width:4px
-```
-
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

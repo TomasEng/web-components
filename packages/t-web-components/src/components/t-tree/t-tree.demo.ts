@@ -14,12 +14,51 @@ export const tTreeTestData = {
   subitem21Href: '#21',
   subitem22Href: '#22',
   subsubitem211Href: '#211',
-  subsubitem212Href: '#212'
+  subsubitem212Href: '#212',
+  mainLabel: 'Overskrift'
 }
 
 export const tTreeDemo: ComponentDemos = {
   withLinks: {
     componentName: 't-tree',
+    children: [
+      {
+        componentName: 't-tree-item',
+        props: { label: tTreeTestData.item1Label, href: tTreeTestData.item1Href }
+      },
+      {
+        componentName: 't-tree-item',
+        props: { label: tTreeTestData.item2Label, href: tTreeTestData.item2Href },
+        children: [
+          {
+            componentName: 't-tree-item',
+            props: { label: tTreeTestData.subitem21Label, href: tTreeTestData.subitem21Href },
+            children: [
+              {
+                componentName: 't-tree-item',
+                props: { label: tTreeTestData.subsubitem211Label, href: tTreeTestData.subsubitem211Href }
+              },
+              {
+                componentName: 't-tree-item',
+                props: { label: tTreeTestData.subsubitem212Label, href: tTreeTestData.subsubitem212Href }
+              }
+            ]
+          },
+          {
+            componentName: 't-tree-item',
+            props: { label: tTreeTestData.subitem22Label, href: tTreeTestData.subitem22Href }
+          }
+        ]
+      },
+      {
+        componentName: 't-tree-item',
+        props: { label: tTreeTestData.item3Label, href: tTreeTestData.item3Href }
+      }
+    ]
+  },
+  withLabel: {
+    componentName: 't-tree',
+    props: { label: tTreeTestData.mainLabel },
     children: [
       {
         componentName: 't-tree-item',

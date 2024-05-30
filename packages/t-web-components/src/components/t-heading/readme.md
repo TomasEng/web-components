@@ -29,7 +29,6 @@
 ```mermaid
 graph TD;
   t-heading --> t-link
-  t-link --> internal-style-provider
   component-documentation --> t-heading
   page-about --> t-heading
   page-components --> t-heading

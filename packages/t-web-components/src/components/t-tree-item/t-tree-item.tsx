@@ -1,6 +1,7 @@
 import { Component, Element, h, Method, Prop, State, Fragment, Event, EventEmitter } from '@stencil/core';
 import { CaretRightIcon } from '../../icons/CaretRightIcon';
 import { TLinkOrButtonCustomEvent } from '../../components';
+import { ChevronRightIcon } from '../../icons/ChevronRightIcon';
 
 @Component({
   tag: 't-tree-item',
@@ -14,7 +15,7 @@ export class TTreeItem {
   @Prop() label: string;
   @Prop() href: string | null = null;
 
-  @State() expanded = true;
+  @State() expanded = false;
   @State() hasChildren: boolean = false;
 
   @Event() labelClick: EventEmitter<MouseEvent>;
@@ -37,7 +38,7 @@ export class TTreeItem {
   }
 
   @Method() async isFocusable(): Promise<boolean> {
-    await customElements.whenDefined('t-link');
+    await customElements.whenDefined('t-link-or-button');
     return this.linkOrButton.focusable;
   }
 
@@ -46,9 +47,17 @@ export class TTreeItem {
     return this.element.parentElement.tagName === 'T-TREE';
   }
 
+  @Method() async getLevel(): Promise<number> {
+    const isTopLevel = await this.isTopLevel();
+    if (isTopLevel) return 1;
+    const parent = this.element.parentElement as HTMLTTreeItemElement;
+    const parentLevel = await parent.getLevel();
+    return parentLevel + 1;
+  }
+
   @Method() async focusOnLink() {
     await Promise.all([
-      customElements.whenDefined('t-link'),
+      customElements.whenDefined('t-link-or-button'),
       customElements.whenDefined('t-tree-item'),
     ]);
     await this.linkOrButton.focusOnElement();
@@ -129,6 +138,9 @@ export class TTreeItem {
   componentDidRender() {
     customElements.whenDefined('t-tree-item').then(() => {
       this.hasChildren = this.element.querySelector('t-tree-item') !== null;
+      this.getLevel().then(level => {
+        this.element.style.setProperty('--level', level.toString());
+      });
     });
   }
 
@@ -251,10 +263,12 @@ export class TTreeItem {
   }
 
   render() {
+    const expandedClass = this.expanded ? 'expanded' : 'collapsed';
+    const hasChildrenClass = this.hasChildren ? 'withChildren' : 'withoutChildren';
     return (
       <li
         aria-expanded={this.expanded ? 'true' : 'false'}
-        class={this.expanded ? 'expanded' : 'collapsed'}
+        class={expandedClass + ' ' + hasChildrenClass}
         role='treeitem'
         title={this.label}
       >
@@ -285,7 +299,8 @@ export class TTreeItem {
   private renderLabel() {
     return (<>
       {this.hasChildren && (
-        <CaretRightIcon
+        <ChevronRightIcon
+          class='arrow'
           fill
           onClick={(e) => this.handleArrowClick(e)}
         />

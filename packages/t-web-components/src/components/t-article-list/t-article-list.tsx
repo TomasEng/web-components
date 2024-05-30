@@ -1,6 +1,7 @@
-import { Component, h, Prop } from '@stencil/core';
+import { Component, h, Prop, Element } from '@stencil/core';
 import { ComponentHue } from '../../types/ComponentHue';
 import { TArticleListItem } from './TArticleListItem';
+import { setBaseColour } from '../../utils/componentUtils';
 
 @Component({
   tag: 't-article-list',
@@ -9,15 +10,21 @@ import { TArticleListItem } from './TArticleListItem';
 })
 export class TArticleList {
 
+  @Element() element: HTMLTArticleListElement;
+
   @Prop() hue: ComponentHue = 0;
   @Prop() items: TArticleListItem[] = [];
 
+  connectedCallback() {
+    setBaseColour(this.element, this.hue * 360);
+  }
+
   render() {
-    return <internal-style-provider hueOffsetInTurns={this.hue}>
+    return (
       <ul class='t-article-list'>
         {this.items.map(item => <Item item={item} />)}
       </ul>
-    </internal-style-provider>;
+    );
   }
 }
 

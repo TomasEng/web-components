@@ -46,7 +46,6 @@ graph TD;
   t-hue-picker --> t-slider
   t-slider --> internal-input-wrapper
   t-saturation-picker --> t-slider
-  t-integer-picker --> internal-style-provider
   t-integer-picker --> internal-input-wrapper
   page-components --> component-colour-settings
   style component-colour-settings fill:#f9f,stroke:#333,stroke-width:4px

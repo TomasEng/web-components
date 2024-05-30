@@ -1,10 +1,9 @@
 :host {
-  --top-shadow-inset: color-mix(in oklab, transparent 80%, white) inset 0 1px;
-  --top-shadow-outset: color-mix(in oklab, black 30%, transparent) 0 -1px 2px;
-  --bottom-shadow-inset: color-mix(in oklab, transparent 80%, black) inset 0 -1px;
-  --bottom-shadow-outset: color-mix(in oklab, white 30%, transparent) 0 1px 2px;
-  --top-shadow: var(--top-shadow-inset), var(--top-shadow-outset);
-  --bottom-shadow: var(--bottom-shadow-inset), var(--bottom-shadow-outset);
+  --top-shadow-inset: color-mix(in oklab, transparent 65%, white) inset 0 1px;
+  --bottom-shadow-inset: color-mix(in oklab, transparent 75%, black) inset 0 -1px;
+  --top-shadow: var(--top-shadow-inset);
+  --bottom-shadow: var(--bottom-shadow-inset);
+  --heading-colour: var(--t-panel-heading-colour);
 
   background-color: var(--t-panel-background-colour);
   border-radius: var(--t-border-radius-default);
@@ -12,14 +11,16 @@
   color: var(--t-font-colour-default);
   display: block;
   font-size: var(--t-default-font-size);
+  border: 1px solid var(--heading-colour);
 }
 
 .heading {
   align-items: center;
-  background: var(--t-base-colour);
+  background: var(--heading-colour);
   border-top-left-radius: var(--t-border-radius-default);
   border-top-right-radius: var(--t-border-radius-default);
   box-shadow: var(--top-shadow-inset);
+  color: var(--t-base-contrast-colour);
   display: flex;
   padding: .5rem;
 }

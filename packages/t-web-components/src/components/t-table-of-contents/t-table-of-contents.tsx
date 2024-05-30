@@ -1,4 +1,4 @@
-import { Component, Element, h } from '@stencil/core';
+import { Component, Element, h, Prop } from '@stencil/core';
 import { findLastIndex } from '../../utils/arrayUtils';
 
 type Heading = {
@@ -19,11 +19,13 @@ export class TTableOfContents {
 
   @Element() element: HTMLTTableOfContentsElement;
 
-  get tree() {
+  @Prop() label?: string;
+
+  get tree(): HTMLTTreeElement {
     return this.element.shadowRoot.querySelector('t-tree');
   }
 
-  componentDidRender() {
+  componentDidLoad() {
     const headings: Heading[] = [];
     this.findHeadings().then(headingElements => {
       headingElements.forEach((headingElement, index) => {
@@ -51,11 +53,14 @@ export class TTableOfContents {
           parentElement.appendChild(item);
         }
       });
+    }).then(async () => {
+      await customElements.whenDefined('t-tree');
+      await this.tree.makeFirstItemFocusable();
     });
   }
 
   render() {
-    return <t-tree/>;
+    return <t-tree label={this.label}/>;
   }
 
   private async findHeadings() {

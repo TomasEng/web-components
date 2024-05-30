@@ -1,4 +1,4 @@
-import { Component, h, Method, Element } from '@stencil/core';
+import { Component, h, Method, Element, Fragment, Prop } from '@stencil/core';
 
 @Component({
   tag: 't-tree',
@@ -8,6 +8,8 @@ import { Component, h, Method, Element } from '@stencil/core';
 export class TTree {
 
   @Element() element: HTMLElement;
+
+  @Prop() label?: string;
 
   @Method() async getAllItems(): Promise<NodeListOf<HTMLTTreeItemElement>> {
     await customElements.whenDefined('t-tree-item');
@@ -27,9 +29,9 @@ export class TTree {
   }
 
   @Method() async resetTabindex() {
-    const focusableItems = await this.getFocusableItems();
+    const allItems = await this.getAllItems();
     await Promise.all(
-      focusableItems.map(async item => {
+      Array.from(allItems).map(async item => {
         await item.setFocusable(false);
       })
     );
@@ -49,6 +51,10 @@ export class TTree {
   }
 
   componentDidLoad() {
+    return this.makeFirstItemFocusable();
+  }
+
+  @Method() async makeFirstItemFocusable() {
     this.getAllVisibleItems().then(async items => {
       if (items.length > 0) {
         await this.resetTabindex();
@@ -58,10 +64,16 @@ export class TTree {
   }
 
   render() {
+    const additionalAttributes = this.label ? { 'aria-labelledby': labelId } : {};
     return (
-      <ul role='tree'>
-        <slot></slot>
-      </ul>
+      <>
+        {this.label && <span id={labelId}>{this.label}</span>}
+        <ul role='tree' {...additionalAttributes}>
+          <slot></slot>
+        </ul>
+      </>
     );
   }
 }
+
+const labelId = 'tree-label';

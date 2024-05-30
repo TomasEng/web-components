@@ -42,6 +42,16 @@ Type: `Promise<HTMLTTreeItemElement>`
 
 
 
+### `getLevel() => Promise<number>`
+
+
+
+#### Returns
+
+Type: `Promise<number>`
+
+
+
 ### `getNextVisibleItem() => Promise<HTMLTTreeItemElement | null>`
 
 
@@ -165,8 +175,6 @@ graph TD;
   t-tree-item --> t-link-or-button
   t-link-or-button --> t-link
   t-link-or-button --> t-button
-  t-link --> internal-style-provider
-  t-button --> internal-style-provider
   t-table-of-contents --> t-tree-item
   style t-tree-item fill:#f9f,stroke:#333,stroke-width:4px
 ```

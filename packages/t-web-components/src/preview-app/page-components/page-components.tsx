@@ -96,7 +96,7 @@ export class PageComponents {
           />
           <component-documentation
             name='Innholdsfortegnelse'
-            examples={[{ code: tTableOfContentsDemo.default, previewMode: 'inline' }]}
+            examples={[{ code: tTableOfContentsDemo.inArticle, previewMode: 'iframe' }]}
             colourSettings={this.colourSettings}
           />
           <component-documentation

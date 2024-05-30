@@ -1,7 +1,8 @@
-import { Component, h, Prop, Event, Element, Method, EventEmitter } from '@stencil/core';
+import { Component, h, Prop, Event, Element, Method, EventEmitter, Fragment } from '@stencil/core';
 import { ComponentHue } from '../../types/ComponentHue';
 import { ButtonAttributes } from '../../types/HTMLAttributes';
 import { ButtonVariant } from './ButtonVariant';
+import { setBaseColour } from '../../utils/componentUtils';
 
 @Component({
   tag: 't-button',
@@ -32,9 +33,13 @@ export class TButton {
     this.buttonClick.emit(e);
   }
 
+  connectedCallback() {
+    setBaseColour(this.element, this.hue * 360);
+  }
+
   render() {
     const tabIndex = this.focusable ? 0 : -1;
-    return <internal-style-provider hueOffsetInTurns={this.hue}>
+    return <>
       <button
         class={`t-button ${this.variant}`}
         onClick={(e) => this.handleClick(e)}
@@ -46,6 +51,6 @@ export class TButton {
         <slot name='icon' aria-hidden={true}/>
         <slot/>
       </button>
-    </internal-style-provider>;
+    </>;
   }
 }

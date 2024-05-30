@@ -3,7 +3,7 @@ import { ComponentHue } from '../../types/ComponentHue';
 import { SelectedMode } from '../../types/Mode';
 import { SunIcon } from '../../icons/SunIcon';
 import { MoonIcon } from '../../icons/MoonIcon';
-import state, {selectMode} from '../../store';
+import state, { selectMode } from '../../store';
 import { CogIcon } from '../../icons/CogIcon';
 
 @Component({
@@ -19,40 +19,41 @@ export class TModeSwitcher {
 
   render() {
     const icon = state.mode === 'light'
-      ? <SunIcon class='icon' slot='icon'/>
-      : <MoonIcon fill class='icon' slot='icon'/>;
+      ? <SunIcon class="icon" slot="icon"/>
+      : <MoonIcon fill class="icon" slot="icon"/>;
 
-    return <internal-style-provider hueOffsetInTurns={this.hue}>
+    return (
       <t-dropdown-menu
         label={this.label}
-        buttonAttributes={{title: 'Velg modus'}}
+        buttonAttributes={{ title: 'Velg modus' }}
         items={[
           {
             label: 'Automatisk',
             action: () => this.selectMode('system'),
             selected: state.selectedMode === 'system',
-            icon: <CogIcon/>,
-            buttonAttributes: {title: 'Bruk samme innstilling som nettleseren'}
+            icon: <CogIcon />,
+            buttonAttributes: { title: 'Bruk samme innstilling som nettleseren' },
           },
           {
             label: 'Lys modus',
             action: () => this.selectMode('light'),
             selected: state.selectedMode === 'light',
-            icon: <SunIcon/>,
-            buttonAttributes: {title: 'Velg lys modus'}
+            icon: <SunIcon />,
+            buttonAttributes: { title: 'Velg lys modus' },
           },
           {
             label: 'Mørk modus',
             action: () => this.selectMode('dark'),
             selected: state.selectedMode === 'dark',
-            icon: <MoonIcon/>,
-            buttonAttributes: {title: 'Velg mørk modus'}
+            icon: <MoonIcon />,
+            buttonAttributes: { title: 'Velg mørk modus' },
           },
         ]}
+        hue={this.hue}
       >
         {icon}
       </t-dropdown-menu>
-    </internal-style-provider>;
+    );
   }
 
   private selectMode(mode: SelectedMode) {

@@ -1,6 +1,4 @@
 import { Component, h, Prop, Element } from '@stencil/core';
-import { JSXBase } from '@stencil/core/internal';
-import HTMLAttributes = JSXBase.HTMLAttributes;
 
 @Component({
   tag: 't-iframe',
@@ -44,6 +42,7 @@ export class TIframe {
     const retryPeriodMilliseconds = 50;
     let currentHeight = 0;
     const scrollingElement = await this.getScrollingElement();
+    const maxHeight = window.innerHeight * 0.5;
     return new Promise(resolve => {
       let resolved = false;
       const interval = setInterval(() => {
@@ -54,7 +53,8 @@ export class TIframe {
           resolved = true;
           resolve();
         }
-        this.iframe.height = `${currentHeight}px`;
+        const newHeight = Math.min(currentHeight, maxHeight);
+        this.iframe.height = `${newHeight}px`;
         if (resolved) {
           clearInterval(interval);
         }

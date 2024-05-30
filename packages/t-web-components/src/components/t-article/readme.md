@@ -40,7 +40,6 @@ graph TD;
   t-article --> t-heading
   t-article --> t-source-list
   t-heading --> t-link
-  t-link --> internal-style-provider
   t-source-list --> t-source
   t-source --> t-link
   style t-article fill:#f9f,stroke:#333,stroke-width:4px

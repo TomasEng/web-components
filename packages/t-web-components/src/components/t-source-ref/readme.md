@@ -40,7 +40,6 @@ graph TD;
   t-source-ref --> t-link
   t-source-ref --> t-source
   t-tooltip --> t-floating-element
-  t-link --> internal-style-provider
   t-source --> t-link
   style t-source-ref fill:#f9f,stroke:#333,stroke-width:4px
 ```

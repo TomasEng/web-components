@@ -9,6 +9,7 @@ import {
   HIGH_CONTRAST,
   INPUT_FIELD_TO_PAGE_CONTRAST,
   LIGHT_MODE_BACKGROUND_LUMINANCE,
+  LOW_CONTRAST,
 } from '../../constants';
 import {
   getDecreasedLuminanceByContrast,
@@ -46,9 +47,12 @@ export class TContext {
     this.setCssVariable('--t-base-colour-hue', hue.toFixed() + 'deg');
     this.setCssVariable('--t-base-colour-chroma', chroma.toFixed(2));
     this.setCssVariable('--t-page-background-colour', this.pageBackgroundColour().getHexCode());
-    this.setCssVariable('--t-base-colour', baseColour.getOklchCode());
+    this.setCssVariable('--t-base-colour', baseColour.getOklchCode()); // Todo: Erstatt alle instanser av "--t-base-colour" med --t-colour-base-app eller --t-colour-base-component
     this.setCssVariable('--t-base-colour-lightness', asPercents(l));
-    this.setCssVariable('--t-base-border-colour', this.baseBorderColour().getHexCode());
+    this.setCssVariable('--t-base-border-colour', this.baseColourHighContrast().getHexCode());
+    this.setCssVariable('--t-colour-base-app', baseColour.getOklchCode());
+    this.setCssVariable('--t-colour-base-app-high-contrast', this.baseColourHighContrast().getHexCode());
+    this.setCssVariable('--t-colour-base-app-low-contrast', this.baseColourLowContrast().getHexCode());
     this.setCssVariable('--t-input-field-background-colour', this.inputFieldColour().getHexCode());
     this.element.style.setProperty('filter', `contrast(${this.contrast})`);
 
@@ -82,14 +86,24 @@ export class TContext {
     return this.isDarkMode() ? DARK_MODE_BACKGROUND_LUMINANCE : LIGHT_MODE_BACKGROUND_LUMINANCE;
   }
 
-  private baseBorderColour(): Chromator {
-    return this.baseColour().copy().setRelativeLuminance(this.baseBorderColourLuminance(), 'oklch');
+  private baseColourHighContrast(): Chromator {
+    return this.baseColour().copy().setRelativeLuminance(this.baseColourHighContrastLuminance(), 'oklch');
   }
 
-  private baseBorderColourLuminance(): number {
+  private baseColourHighContrastLuminance(): number {
     return this.isDarkMode()
       ? getIncreasedLuminanceByContrast(DARK_MODE_BACKGROUND_LUMINANCE, HIGH_CONTRAST)
       : getDecreasedLuminanceByContrast(LIGHT_MODE_BACKGROUND_LUMINANCE, HIGH_CONTRAST);
+  }
+
+  private baseColourLowContrast(): Chromator {
+    return this.baseColour().copy().setRelativeLuminance(this.baseColourLowContrastLuminance(), 'oklch');
+  }
+
+  private baseColourLowContrastLuminance(): number {
+    return this.isDarkMode()
+      ? getIncreasedLuminanceByContrast(DARK_MODE_BACKGROUND_LUMINANCE, LOW_CONTRAST)
+      : getDecreasedLuminanceByContrast(LIGHT_MODE_BACKGROUND_LUMINANCE, LOW_CONTRAST);
   }
 
   private inputFieldColour(): Chromator {

@@ -58,9 +58,6 @@ export namespace Components {
     interface InternalInputWrapper {
         "labelPlacement": LabelPlacement;
     }
-    interface InternalStyleProvider {
-        "hueOffsetInTurns": number;
-    }
     interface PageAbout {
     }
     interface PageComponents {
@@ -162,6 +159,7 @@ export namespace Components {
         "focusOnAnchor": () => Promise<void>;
         "focusable": boolean;
         "href": string;
+        "hue": number;
         "target"?: string;
     }
     interface TLinkOrButton {
@@ -220,6 +218,7 @@ export namespace Components {
         "name": string;
     }
     interface TTableOfContents {
+        "label"?: string;
     }
     interface TTabs {
     }
@@ -233,11 +232,14 @@ export namespace Components {
     interface TTree {
         "getAllItems": () => Promise<NodeListOf<HTMLTTreeItemElement>>;
         "getAllVisibleItems": () => Promise<HTMLTTreeItemElement[]>;
+        "label"?: string;
+        "makeFirstItemFocusable": () => Promise<void>;
         "resetTabindex": () => Promise<void>;
     }
     interface TTreeItem {
         "focusOnLink": () => Promise<void>;
         "getLastVisibleSubItem": () => Promise<HTMLTTreeItemElement | null>;
+        "getLevel": () => Promise<number>;
         "getNextVisibleItem": () => Promise<HTMLTTreeItemElement | null>;
         "getPreviousVisibleItem": () => Promise<HTMLTTreeItemElement | null>;
         "getRoot": () => Promise<HTMLTTreeElement>;
@@ -339,12 +341,6 @@ declare global {
     var HTMLInternalInputWrapperElement: {
         prototype: HTMLInternalInputWrapperElement;
         new (): HTMLInternalInputWrapperElement;
-    };
-    interface HTMLInternalStyleProviderElement extends Components.InternalStyleProvider, HTMLStencilElement {
-    }
-    var HTMLInternalStyleProviderElement: {
-        prototype: HTMLInternalStyleProviderElement;
-        new (): HTMLInternalStyleProviderElement;
     };
     interface HTMLPageAboutElement extends Components.PageAbout, HTMLStencilElement {
     }
@@ -735,7 +731,6 @@ declare global {
         "component-documentation": HTMLComponentDocumentationElement;
         "component-preview": HTMLComponentPreviewElement;
         "internal-input-wrapper": HTMLInternalInputWrapperElement;
-        "internal-style-provider": HTMLInternalStyleProviderElement;
         "page-about": HTMLPageAboutElement;
         "page-components": HTMLPageComponentsElement;
         "preview-app": HTMLPreviewAppElement;
@@ -795,9 +790,6 @@ declare namespace LocalJSX {
     }
     interface InternalInputWrapper {
         "labelPlacement"?: LabelPlacement;
-    }
-    interface InternalStyleProvider {
-        "hueOffsetInTurns"?: number;
     }
     interface PageAbout {
     }
@@ -901,6 +893,7 @@ declare namespace LocalJSX {
         "external"?: boolean;
         "focusable"?: boolean;
         "href"?: string;
+        "hue"?: number;
         "onLinkClick"?: (event: TLinkCustomEvent<MouseEvent>) => void;
         "target"?: string;
     }
@@ -962,6 +955,7 @@ declare namespace LocalJSX {
         "name"?: string;
     }
     interface TTableOfContents {
+        "label"?: string;
     }
     interface TTabs {
     }
@@ -974,6 +968,7 @@ declare namespace LocalJSX {
     interface TTooltip {
     }
     interface TTree {
+        "label"?: string;
     }
     interface TTreeItem {
         "href"?: string | null;
@@ -985,7 +980,6 @@ declare namespace LocalJSX {
         "component-documentation": ComponentDocumentation;
         "component-preview": ComponentPreview;
         "internal-input-wrapper": InternalInputWrapper;
-        "internal-style-provider": InternalStyleProvider;
         "page-about": PageAbout;
         "page-components": PageComponents;
         "preview-app": PreviewApp;
@@ -1038,7 +1032,6 @@ declare module "@stencil/core" {
             "component-documentation": LocalJSX.ComponentDocumentation & JSXBase.HTMLAttributes<HTMLComponentDocumentationElement>;
             "component-preview": LocalJSX.ComponentPreview & JSXBase.HTMLAttributes<HTMLComponentPreviewElement>;
             "internal-input-wrapper": LocalJSX.InternalInputWrapper & JSXBase.HTMLAttributes<HTMLInternalInputWrapperElement>;
-            "internal-style-provider": LocalJSX.InternalStyleProvider & JSXBase.HTMLAttributes<HTMLInternalStyleProviderElement>;
             "page-about": LocalJSX.PageAbout & JSXBase.HTMLAttributes<HTMLPageAboutElement>;
             "page-components": LocalJSX.PageComponents & JSXBase.HTMLAttributes<HTMLPageComponentsElement>;
             "preview-app": LocalJSX.PreviewApp & JSXBase.HTMLAttributes<HTMLPreviewAppElement>;

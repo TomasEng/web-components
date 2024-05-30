@@ -39,7 +39,6 @@ graph TD;
   page-components --> component-colour-settings
   page-components --> t-heading
   page-components --> component-documentation
-  t-layout-main --> internal-style-provider
   component-colour-settings --> t-fieldset
   component-colour-settings --> t-column
   component-colour-settings --> t-hue-picker
@@ -49,10 +48,8 @@ graph TD;
   t-hue-picker --> t-slider
   t-slider --> internal-input-wrapper
   t-saturation-picker --> t-slider
-  t-integer-picker --> internal-style-provider
   t-integer-picker --> internal-input-wrapper
   t-heading --> t-link
-  t-link --> internal-style-provider
   component-documentation --> t-heading
   component-documentation --> t-column
   component-documentation --> t-details
@@ -65,7 +62,6 @@ graph TD;
   t-tabs --> t-panel
   t-code --> t-panel
   t-code --> t-button
-  t-button --> internal-style-provider
   preview-iframe --> t-iframe
   preview-app --> page-components
   style page-components fill:#f9f,stroke:#333,stroke-width:4px

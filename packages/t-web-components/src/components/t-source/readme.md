@@ -28,7 +28,6 @@
 ```mermaid
 graph TD;
   t-source --> t-link
-  t-link --> internal-style-provider
   t-source-list --> t-source
   t-source-ref --> t-source
   style t-source fill:#f9f,stroke:#333,stroke-width:4px

@@ -21,26 +21,26 @@ test.describe('t-tree', () => {
     await expect(thirdItem).toBeVisible();
   });
 
-  test('Har alt åpent som standard', async ({ page }) => {
+  test('Har alt lukket som standard', async ({ page }) => {
     await renderTree(page);
     await expect(page.getByRole('tree')).toBeVisible();
     const parentItem = page.getByRole('treeitem', { name: tTreeTestData.item2Label, exact: true });
     await expect(parentItem).toBeVisible();
-    await expect(parentItem).toHaveAttribute('aria-expanded', 'true');
+    await expect(parentItem).toHaveAttribute('aria-expanded', 'false');
     const childItem = page.getByRole('treeitem', { name: tTreeTestData.subitem21Label, exact: true });
-    await expect(childItem).toBeVisible();
+    await expect(childItem).toBeHidden();
   });
 
-  test('Lukker elementet når brukeren klikker på pilen', async ({ page }) => {
+  test('Åpner elementet når brukeren klikker på pilen', async ({ page }) => {
     await renderTree(page);
     await expect(page.getByRole('tree')).toBeVisible();
     const parentItem = page.getByRole('treeitem', { name: tTreeTestData.item2Label, exact: true });
     await expect(parentItem).toBeVisible();
     const arrow = parentItem.getByRole('img');
     await arrow.click();
-    await expect(parentItem).toHaveAttribute('aria-expanded', 'false');
+    await expect(parentItem).toHaveAttribute('aria-expanded', 'true');
     const childItem = page.getByRole('treeitem', { name: tTreeTestData.subitem21Label, exact: true });
-    await expect(childItem).toBeHidden();
+    await expect(childItem).toBeVisible();
   });
 
   test('Åpner lenken når brukeren klikker på elementet', async ({ page }) => {
@@ -62,8 +62,6 @@ test.describe('t-tree', () => {
     await page.keyboard.press('ArrowDown');
     const secondItem = page.getByRole('treeitem', { name: tTreeTestData.item2Label, exact: true });
     await expect(secondItem.getByRole('link')).toBeFocused();
-    await page.keyboard.press('ArrowLeft');
-    await expect(secondItem).toHaveAttribute('aria-expanded', 'false');
     await page.keyboard.press('ArrowDown');
     const thirdItem = page.getByRole('treeitem', { name: tTreeTestData.item3Label, exact: true });
     await expect(thirdItem.getByRole('link')).toBeFocused();
@@ -76,6 +74,8 @@ test.describe('t-tree', () => {
     await page.keyboard.press('ArrowDown');
     const childItem = page.getByRole('treeitem', { name: tTreeTestData.subitem21Label, exact: true });
     await expect(childItem.getByRole('link')).toBeFocused();
+    await expect(childItem).toHaveAttribute('aria-expanded', 'false');
+    await page.keyboard.press('ArrowRight');
     await expect(childItem).toHaveAttribute('aria-expanded', 'true');
     await page.keyboard.press('ArrowLeft');
     await expect(childItem).toHaveAttribute('aria-expanded', 'false');
@@ -91,5 +91,11 @@ test.describe('t-tree', () => {
     await expect(thirdItem.getByRole('link')).toBeFocused();
     await page.keyboard.press('Enter');
     await expect(page).toHaveURL(new RegExp(tTreeTestData.item3Href + '$'));
+  });
+
+  test('Laster treet med gitt overskrift', async ({ page }) => {
+    await renderComponent(page, tTreeDemo.withLabel);
+    const tree = page.getByRole('tree', { name: tTreeTestData.mainLabel });
+    await expect(tree).toBeVisible();
   });
 });

@@ -1,5 +1,6 @@
 import { Component, h, Event, Method, Prop, Element, EventEmitter } from '@stencil/core';
 import { ExternalLinkIcon } from '../../icons/ExternalLinkIcon';
+import { setBaseColour } from '../../utils/componentUtils';
 
 @Component({
   tag: 't-link',
@@ -10,6 +11,7 @@ export class TLink {
 
   @Element() element: HTMLTLinkElement;
 
+  @Prop() hue: number = 0;
   @Prop() href: string;
   @Prop() target?: string;
   @Prop() external?: boolean;
@@ -22,6 +24,10 @@ export class TLink {
     this.anchor.focus();
   }
 
+  connectedCallback() {
+    setBaseColour(this.element, this.hue * 360);
+  }
+
   get anchor(): HTMLAnchorElement {
     return this.element.shadowRoot.querySelector('a');
   }
@@ -32,7 +38,7 @@ export class TLink {
 
   render() {
     const target = this.target || (this.external ? '_blank' : undefined);
-    return <internal-style-provider>
+    return (
       <a
         class='link'
         href={this.href}
@@ -44,6 +50,6 @@ export class TLink {
         <slot/>
         {this.external && <ExternalLinkIcon/>}
       </a>
-    </internal-style-provider>;
+    );
   }
 }

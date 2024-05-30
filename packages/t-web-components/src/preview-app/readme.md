@@ -25,18 +25,13 @@ graph TD;
   preview-app --> page-components
   t-layout-header --> t-mode-switcher
   t-layout-header --> t-button
-  t-mode-switcher --> internal-style-provider
   t-mode-switcher --> t-dropdown-menu
-  t-dropdown-menu --> internal-style-provider
   t-dropdown-menu --> t-floating-element
   t-dropdown-menu --> t-button
-  t-button --> internal-style-provider
   page-about --> t-layout-main
   page-about --> t-heading
   page-about --> t-link
-  t-layout-main --> internal-style-provider
   t-heading --> t-link
-  t-link --> internal-style-provider
   page-components --> t-layout-main
   page-components --> component-colour-settings
   page-components --> t-heading
@@ -50,7 +45,6 @@ graph TD;
   t-hue-picker --> t-slider
   t-slider --> internal-input-wrapper
   t-saturation-picker --> t-slider
-  t-integer-picker --> internal-style-provider
   t-integer-picker --> internal-input-wrapper
   component-documentation --> t-heading
   component-documentation --> t-column

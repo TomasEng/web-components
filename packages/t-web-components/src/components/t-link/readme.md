@@ -12,6 +12,7 @@
 | `external`  | `external`  |             | `boolean` | `undefined` |
 | `focusable` | `focusable` |             | `boolean` | `true`      |
 | `href`      | `href`      |             | `string`  | `undefined` |
+| `hue`       | `hue`       |             | `number`  | `0`         |
 | `target`    | `target`    |             | `string`  | `undefined` |
 
 
@@ -52,14 +53,9 @@ Type: `Promise<void>`
  - [t-source](../t-source)
  - [t-source-ref](../t-source-ref)
 
-### Depends on
-
-- [internal-style-provider](../internal-style-provider)
-
 ### Graph
 ```mermaid
 graph TD;
-  t-link --> internal-style-provider
   page-about --> t-link
   t-heading --> t-link
   t-link-or-button --> t-link

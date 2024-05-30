@@ -4,6 +4,7 @@ import 'bootstrap/js/dist/dropdown';
 import { ButtonAttributes } from '../../types/HTMLAttributes';
 import { TDropdownMenuItem } from './TDropdownMenuItem';
 import { CheckmarkIcon } from '../../icons/CheckmarkIcon';
+import { setBaseColour } from '../../utils/componentUtils';
 
 @Component({
   tag: 't-dropdown-menu',
@@ -22,6 +23,10 @@ export class TDropdownMenu {
   @State() focusedIndex = -1;
 
   @Element() host: HTMLElement;
+
+  connectedCallback() {
+    setBaseColour(this.host, this.hue * 360);
+  }
 
   get menu(): HTMLUListElement {
     return this.host.shadowRoot.querySelector('#menu');
@@ -70,7 +75,7 @@ export class TDropdownMenu {
   }
 
   render() {
-    return <internal-style-provider hueOffsetInTurns={this.hue}>
+    return (
       <t-floating-element
         class="t-dropdown-menu"
         onClickOutside={() => this.collapse()}
@@ -94,7 +99,7 @@ export class TDropdownMenu {
           {this.items.map((item, index) => this.renderOption(item, index))}
         </ul>
       </t-floating-element>
-    </internal-style-provider>;
+    );
   }
 
   private renderOption({label, action, selected, icon, buttonAttributes}: TDropdownMenuItem, index: number) {

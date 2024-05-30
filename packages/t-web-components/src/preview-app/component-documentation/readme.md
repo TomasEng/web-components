@@ -45,11 +45,9 @@ graph TD;
   component-documentation --> component-preview
   component-documentation --> t-row
   t-heading --> t-link
-  t-link --> internal-style-provider
   t-tabs --> t-panel
   t-code --> t-panel
   t-code --> t-button
-  t-button --> internal-style-provider
   preview-iframe --> t-iframe
   page-components --> component-documentation
   style component-documentation fill:#f9f,stroke:#333,stroke-width:4px

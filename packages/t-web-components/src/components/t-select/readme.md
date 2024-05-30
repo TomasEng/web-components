@@ -20,13 +20,11 @@
 
 ### Depends on
 
-- [internal-style-provider](../internal-style-provider)
 - [internal-input-wrapper](../internal-input-wrapper)
 
 ### Graph
 ```mermaid
 graph TD;
-  t-select --> internal-style-provider
   t-select --> internal-input-wrapper
   style t-select fill:#f9f,stroke:#333,stroke-width:4px
 ```

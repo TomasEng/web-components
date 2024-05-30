@@ -50,8 +50,6 @@ Type: `Promise<void>`
 graph TD;
   t-link-or-button --> t-link
   t-link-or-button --> t-button
-  t-link --> internal-style-provider
-  t-button --> internal-style-provider
   t-tree-item --> t-link-or-button
   style t-link-or-button fill:#f9f,stroke:#333,stroke-width:4px
 ```

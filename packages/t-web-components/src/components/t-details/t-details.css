@@ -1,6 +1,6 @@
 summary {
   cursor: pointer;
-  color: var(--t-link-colour);
+  color: var(--t-colour-base-app-high-contrast);
 
   &:hover {
     text-decoration: underline;

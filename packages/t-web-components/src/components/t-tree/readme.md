@@ -5,6 +5,13 @@
 <!-- Auto Generated Below -->
 
 
+## Properties
+
+| Property | Attribute | Description | Type     | Default     |
+| -------- | --------- | ----------- | -------- | ----------- |
+| `label`  | `label`   |             | `string` | `undefined` |
+
+
 ## Methods
 
 ### `getAllItems() => Promise<NodeListOf<HTMLTTreeItemElement>>`
@@ -24,6 +31,16 @@ Type: `Promise<NodeListOf<HTMLTTreeItemElement>>`
 #### Returns
 
 Type: `Promise<HTMLTTreeItemElement[]>`
+
+
+
+### `makeFirstItemFocusable() => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
 
 
 

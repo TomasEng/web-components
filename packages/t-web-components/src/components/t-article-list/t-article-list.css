@@ -6,44 +6,54 @@ ul.t-article-list {
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 1px;
 
-  li a {
-    --background-colour: var(--t-small-contrast-colour);
+  li {
+    --background-colour: var(--t-panel-background-colour);
 
-    background-color: var(--background-colour);
-    color: var(--t-font-colour-default);
-    column-gap: var(--t-spacing-in-group);
-    display: grid;
-    grid-template: "title date" auto
+    &:nth-child(even) {
+      --background-colour: var(--t-small-contrast-colour);
+    }
+
+    a {
+
+      background-color: var(--background-colour);
+      color: var(--t-font-colour-default);
+      gap: var(--t-spacing-in-group);
+      display: grid;
+      grid-template: "title date" auto
                    "intro date" auto
                    / 1fr auto;
-    padding: var(--t-spacing-in-group);
-    text-decoration: none;
+      padding: var(--t-spacing-default);
+      text-decoration: none;
 
-    &:hover {
-      --background-colour: var(--t-base-low-contrast-colour);
-    }
+      &:hover, &:focus {
+        --background-colour: var(--t-colour-base-component-low-contrast);
+        transform: scale(1.01);
+        transition: var(--t-transition-duration-medium);
+      }
 
-    .item-title {
-      font-weight: bold;
-      grid-area: title;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
+      .item-title {
+        color: var(--t-colour-base-component-high-contrast);
+        font-weight: bolder;
+        grid-area: title;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
 
-    .item-intro {
-      grid-area: intro;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
+      .item-intro {
+        grid-area: intro;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
 
-    .item-date {
-      align-self: center;
-      grid-area: date;
-      text-align: right;
+      .item-date {
+        align-self: center;
+        grid-area: date;
+        text-align: right;
+      }
     }
   }
 
