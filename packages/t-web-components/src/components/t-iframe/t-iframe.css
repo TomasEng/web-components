@@ -5,4 +5,5 @@
 iframe {
   width: 100%;
   border: 1px solid var(--t-font-colour-default);
+  background-color: white;
 }

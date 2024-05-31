@@ -21,6 +21,7 @@ import { tTooltipDemo } from '../../components/t-tooltip/t-tooltip.demo';
 import { tPanelDemo } from '../../components/t-panel/t-panel.demo';
 import { tTreeDemo } from '../../components/t-tree/t-tree.demo';
 import { tTableOfContentsDemo } from '../../components/t-table-of-contents/t-table-of-contents.demo';
+import { tIframeDemo } from '../../components/t-iframe/t-iframe.demo';
 
 @Component({
   tag: 'page-components',
@@ -164,6 +165,13 @@ export class PageComponents {
             examples={[
               { title: 'På', code: tSwitchDemo.on, previewMode: 'hue' },
               { title: 'Av', code: tSwitchDemo.off, previewMode: 'hue' },
+            ]}
+            colourSettings={this.colourSettings}
+          />
+          <component-documentation
+            name='Ramme'
+            examples={[
+              { title: 'Standard', code: tIframeDemo.srcdoc, previewMode: 'inline' },
             ]}
             colourSettings={this.colourSettings}
           />
