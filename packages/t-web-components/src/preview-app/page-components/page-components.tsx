@@ -96,11 +96,6 @@ export class PageComponents {
             colourSettings={this.colourSettings}
           />
           <component-documentation
-            name='Innholdsfortegnelse'
-            examples={[{ code: tTableOfContentsDemo.inArticle, previewMode: 'iframe' }]}
-            colourSettings={this.colourSettings}
-          />
-          <component-documentation
             name='Nedtrekksmeny'
             examples={[{ code: tDropdownMenuDemo.simple, previewMode: 'hue' }]}
             colourSettings={this.colourSettings}
@@ -140,6 +135,11 @@ export class PageComponents {
             colourSettings={this.colourSettings}
           />
           <component-documentation
+            name='Innholdsfortegnelse'
+            examples={[{ code: tTableOfContentsDemo.inArticle, previewMode: 'iframe' }]}
+            colourSettings={this.colourSettings}
+          />
+          <component-documentation
             name='Kode'
             examples={[
               { title: 'Standard (på linje)', code: tCodeDemo.inline, previewMode: 'inline' },
@@ -172,6 +172,7 @@ export class PageComponents {
             name='Ramme'
             examples={[
               { title: 'Standard', code: tIframeDemo.srcdoc, previewMode: 'inline' },
+              { title: 'Med mulighet for endring av størrelse', code: tIframeDemo.resizable, previewMode: 'inline' },
             ]}
             colourSettings={this.colourSettings}
           />

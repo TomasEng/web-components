@@ -9,12 +9,12 @@
 }
 
 t-link::part(link), t-button::part(button) {
-  display: flex;
   align-items: center;
   border-radius: 0;
+  box-sizing: border-box;
+  display: flex;
   gap: var(--t-spacing-inline);
-  padding: var(--t-spacing-in-group) 0;
-  padding-left: var(--indent);
+  padding: var(--t-spacing-in-group) 0 var(--t-spacing-in-group) var(--line-left-padding);
   width: 100%;
 }
 
@@ -67,11 +67,17 @@ li {
   }
 
   .arrow {
+    flex-basis: content;
     transition: rotate var(--t-transition-duration-medium), scale var(--t-transition-duration-short);
 
     &:hover {
       scale: 1.5;
     }
+  }
+
+  .label {
+    flex-grow: 1;
+    text-align: left;
   }
 }
 

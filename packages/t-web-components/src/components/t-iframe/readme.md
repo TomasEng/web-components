@@ -7,10 +7,11 @@
 
 ## Properties
 
-| Property | Attribute | Description | Type     | Default     |
-| -------- | --------- | ----------- | -------- | ----------- |
-| `src`    | `src`     |             | `string` | `undefined` |
-| `srcdoc` | `srcdoc`  |             | `string` | `undefined` |
+| Property | Attribute | Description | Type                                             | Default     |
+| -------- | --------- | ----------- | ------------------------------------------------ | ----------- |
+| `resize` | `resize`  |             | `"both" \| "horizontal" \| "none" \| "vertical"` | `'none'`    |
+| `src`    | `src`     |             | `string`                                         | `undefined` |
+| `srcdoc` | `srcdoc`  |             | `string`                                         | `undefined` |
 
 
 ## Dependencies

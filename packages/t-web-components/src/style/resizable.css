@@ -1,0 +1,15 @@
+.t-resizable-both {
+  resize: both;
+}
+
+.t-resizable-horizontal {
+  resize: horizontal;
+}
+
+.t-resizable-vertical {
+  resize: vertical;
+}
+
+.t-resizable-none {
+  resize: none;
+}

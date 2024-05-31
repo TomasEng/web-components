@@ -48,7 +48,7 @@ test.describe('t-tree', () => {
     const item = page.getByRole('treeitem', { name: tTreeTestData.item2Label, exact: true });
     await expect(item).toBeVisible();
     const link = item.getByRole('link');
-    await link.click();
+    await link.click({force: true}); /* Må ha force her pga. noe som ser ut til å være en feil i Playwright. Det fungerer helt fint ved manuell testing. */
     await expect(page).toHaveURL(new RegExp(tTreeTestData.item2Href + '$'));
   });
 

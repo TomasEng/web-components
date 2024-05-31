@@ -1,8 +1,12 @@
 import { Component, h, Prop, Element } from '@stencil/core';
+import { JSXBase } from '@stencil/core/internal';
+import { ResizeMode } from '../../types/ResizeMode';
+import HTMLAttributes = JSXBase.HTMLAttributes;
+import { resizeClass } from '../../utils/componentUtils';
 
 @Component({
   tag: 't-iframe',
-  styleUrl: 't-iframe.css',
+  styleUrls: ['t-iframe.css', '../../style/resizable.css'],
   shadow: true,
 })
 export class TIframe {
@@ -11,6 +15,7 @@ export class TIframe {
 
   @Prop() src: string;
   @Prop() srcdoc: string;
+  @Prop() resize: ResizeMode = 'none';
 
   get iframe(): HTMLIFrameElement {
     return this.element.shadowRoot.querySelector('iframe');
@@ -25,8 +30,11 @@ export class TIframe {
   }
 
   render() {
-    if (this.srcdoc) return <iframe srcDoc={this.srcdoc}/>;
-    else return <iframe src={this.src}/>;
+    const commonAttributes: HTMLAttributes<HTMLIFrameElement> = {
+      class: resizeClass(this.resize),
+    };
+    if (this.srcdoc) return <iframe srcDoc={this.srcdoc} {...commonAttributes}/>;
+    else return <iframe src={this.src} {...commonAttributes}/>;
   }
 
   componentDidLoad() {

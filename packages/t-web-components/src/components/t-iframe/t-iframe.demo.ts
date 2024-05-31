@@ -6,5 +6,12 @@ export const tIframeDemo: ComponentDemos = {
     props: {
       srcdoc: '<p>Lorem ipsum dolor sit amet</p>',
     },
+  },
+  resizable: {
+    componentName: 't-iframe',
+    props: {
+      srcdoc: '<p>Lorem ipsum dolor sit amet</p>',
+      resize: 'both',
+    },
   }
 }

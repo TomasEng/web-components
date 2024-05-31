@@ -15,6 +15,6 @@ export class PreviewIframe {
   render() {
     const html = this.componentTestCode.generateMinifiedHtml();
     const script = this.componentTestCode.generateMinifiedScript();
-    return <t-iframe src={`?html=${html}&script=${script}`}/>;
+    return <t-iframe src={`?html=${html}&script=${script}`} resize='both'/>;
   }
 }

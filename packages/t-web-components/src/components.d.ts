@@ -20,6 +20,7 @@ import { TCodeDisplayMode } from "./components/t-code/TCodeDisplayMode";
 import { SelectedMode } from "./types/Mode";
 import { VNode } from "@stencil/core";
 import { TDropdownMenuItem } from "./components/t-dropdown/TDropdownMenuItem";
+import { ResizeMode } from "./types/ResizeMode";
 import { TNavMenuItem } from "./components/t-layout-header/TNavMenuItem";
 import { TLayoutMainText } from "./components/t-layout-main/t-layout-main.text";
 import { TSelectOption } from "./components/t-select/TSelectOption";
@@ -39,6 +40,7 @@ export { TCodeDisplayMode } from "./components/t-code/TCodeDisplayMode";
 export { SelectedMode } from "./types/Mode";
 export { VNode } from "@stencil/core";
 export { TDropdownMenuItem } from "./components/t-dropdown/TDropdownMenuItem";
+export { ResizeMode } from "./types/ResizeMode";
 export { TNavMenuItem } from "./components/t-layout-header/TNavMenuItem";
 export { TLayoutMainText } from "./components/t-layout-main/t-layout-main.text";
 export { TSelectOption } from "./components/t-select/TSelectOption";
@@ -134,6 +136,7 @@ export namespace Components {
         "value": number;
     }
     interface TIframe {
+        "resize": ResizeMode;
         "src": string;
         "srcdoc": string;
     }
@@ -868,6 +871,7 @@ declare namespace LocalJSX {
         "value"?: number;
     }
     interface TIframe {
+        "resize"?: ResizeMode;
         "src"?: string;
         "srcdoc"?: string;
     }
