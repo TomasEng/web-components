@@ -40,10 +40,10 @@ export class TIframe {
   componentDidLoad() {
     this.iframe.onload = async () => {
       await this.resizeIframe();
+      this.iframeWindow.addEventListener('resize', async () => {
+        await this.resizeIframe();
+      });
     };
-    this.iframeWindow.addEventListener('resize', async () => {
-      await this.resizeIframe();
-    });
   }
 
   private async resizeIframe(): Promise<void> {

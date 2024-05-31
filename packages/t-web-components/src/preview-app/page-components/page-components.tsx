@@ -157,7 +157,7 @@ export class PageComponents {
           />
           <component-documentation
             name='Verktøyhjelp'
-            examples={[{ code: tTooltipDemo.default, previewMode: 'inline' }]}
+            examples={[{ code: tTooltipDemo.withLongContent, previewMode: 'inline' }]}
             colourSettings={this.colourSettings}
           />
           <component-documentation

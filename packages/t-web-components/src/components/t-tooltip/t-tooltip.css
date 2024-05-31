@@ -8,14 +8,13 @@
     var(--t-popover-shadow);
   color: var(--t-full-contrast-colour);
   padding: var(--t-spacing-in-group);
-  width: max-content;
   z-index: var(--t-z-index-tooltip);
 }
 
 #button {
   background: none;
   border: none;
-  color: var(--t-link-colour);
+  color: var(--t-colour-base-app-high-contrast);
   cursor: pointer;
   font-family: var(--t-default-font-family);
   font-size: var(--t-default-font-size);

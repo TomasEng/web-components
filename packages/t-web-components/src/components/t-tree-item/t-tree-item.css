@@ -6,6 +6,7 @@
   --line-colour: color-mix(in oklab, var(--t-font-colour-default), transparent);
   --line-start-position: calc(var(--line-left-padding));
   --line-end-position: calc(var(--line-start-position) + var(--line-width));
+  --arrow-width: 1rem;
 }
 
 t-link::part(link), t-button::part(button) {
@@ -14,12 +15,12 @@ t-link::part(link), t-button::part(button) {
   box-sizing: border-box;
   display: flex;
   gap: var(--t-spacing-inline);
-  padding: var(--t-spacing-in-group) 0 var(--t-spacing-in-group) var(--line-left-padding);
+  padding: var(--t-spacing-in-group) var(--t-spacing-default) var(--t-spacing-in-group) var(--indent);
   width: 100%;
 }
 
-t-link:not(:has(svg))::part(link), t-button:not(:has(svg))::part(button) {
-  padding-left: calc(var(--indent) + var(--t-spacing-inline) + 1em);
+t-link:not(:has(.arrow))::part(link), t-button:not(:has(.arrow))::part(button) {
+  padding-left: calc(var(--indent) + var(--t-spacing-inline) + var(--arrow-width));
 }
 
 t-link:hover::part(link), t-button:hover::part(button) {
@@ -68,6 +69,7 @@ li {
 
   .arrow {
     flex-basis: content;
+    width: var(--arrow-width);
     transition: rotate var(--t-transition-duration-medium), scale var(--t-transition-duration-short);
 
     &:hover {
@@ -76,7 +78,7 @@ li {
   }
 
   .label {
-    flex-grow: 1;
+    flex: 1;
     text-align: left;
   }
 }
