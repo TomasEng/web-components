@@ -20,9 +20,9 @@
     "url": "git+https://github.com/TomasEng/web-components.git"
   },
   "scripts": {
-    "build": "npm run tsc",
+    "build": "yarn run tsc",
     "tsc": "tsc -p . --outDir ./dist",
-    "publish": "npm publish"
+    "publish": "yarn publish"
   },
   "bugs": {
     "url": "https://github.com/TomasEng/web-components/issues"

@@ -54,33 +54,33 @@ Testene kan kjøres ved hjelp av følgende kommandoer i `t-web-components`-mappe
 
 #### Enhetstester med Jest
 ```bash
-npm run test:jest
+yarn run test:jest
 ```
 
 #### Ende-til-ende-tester med Playwright
 Forutsetter at løsningen kjører på `http://localhost:3333`. Se ingress.
 ```bash
-npm run test:playwright
+yarn run test:playwright
 ```
 
 #### Alle tester
 ```bash
-npm run test
+yarn run test
 ```
 
 ### Bygging og generering av React-komponenter
-Pakkene blir bygget ved å kjøre `npm run build` i mappen til pakken det gjelder.
+Pakkene blir bygget ved å kjøre `yarn run build` i mappen til pakken det gjelder.
 Når man bygger `t-web-components`, blir også React-komponentene automatisk generert og lagret i `t-web-components-react`.
 
 ## Publisering
 Prosjektet bruker verktøyet Lerna til å håndtere publisering av pakkene.
 Ved å følge følgende instruksjoner, blir begge pakkene oppdatert med ny patchversjon og publisert til Npm-registret.
 Alle kommandoer kjøres i rotmappen.
-1. Kjør `npm run build` for å bygge pakkene. Dette må gjøres først for å kjøre genereringsskriptene til Stencil.
+1. Kjør `yarn run build` for å bygge pakkene. Dette må gjøres først for å kjøre genereringsskriptene til Stencil.
 2. Hvis noen filer har blitt endret, commit endringene.
-3. Kjør `npm run publish` for å bygge nye versjoner og publisere pakkene til Npm-registret. (Siden Lerna håndterer publiseringsprosessen, vil ikke `npm publish` fungere.) Av ukjent grunn kan det hende at det kommer en feilmelding knyttet til publisering av React-pakken selv om pakken faktisk blir publisert.
+3. Kjør `yarn run publish` for å bygge nye versjoner og publisere pakkene til Npm-registret. (Siden Lerna håndterer publiseringsprosessen, vil ikke `npm publish` fungere.) Av ukjent grunn kan det hende at det kommer en feilmelding knyttet til publisering av React-pakken selv om pakken faktisk blir publisert.
 
 ## Utrulling av demoapplikasjon
 Når `t-web-components` bygges, blir det generert en mappe som heter `www` i pakkemappen.
 Det er denne som innholder demoapplikasjonen som kjører på Github Pages.
-Denne kan rulles ut ved å kjøre `npm run deploy-demo` i rotmappen.
+Denne kan rulles ut ved å kjøre `yarn run deploy-demo` i rotmappen.

@@ -17,6 +17,6 @@
     "prepare": "lerna run prepare",
     "patch": "lerna version patch",
     "publish": "lerna publish",
-    "deploy-demo": "cd packages/t-web-components && npm run deploy"
+    "deploy-demo": "cd packages/t-web-components && yarn run deploy"
   }
 }
