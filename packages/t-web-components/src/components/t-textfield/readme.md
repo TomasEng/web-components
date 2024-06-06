@@ -7,11 +7,11 @@
 
 ## Properties
 
-| Property | Attribute | Description | Type     | Default     |
-| -------- | --------- | ----------- | -------- | ----------- |
-| `hue`    | `hue`     |             | `number` | `0`         |
-| `label`  | `label`   |             | `string` | `undefined` |
-| `value`  | `value`   |             | `string` | `undefined` |
+| Property    | Attribute   | Description | Type     | Default     |
+| ----------- | ----------- | ----------- | -------- | ----------- |
+| `hueoffset` | `hueoffset` |             | `number` | `0`         |
+| `label`     | `label`     |             | `string` | `undefined` |
+| `value`     | `value`     |             | `string` | `undefined` |
 
 
 ## Events

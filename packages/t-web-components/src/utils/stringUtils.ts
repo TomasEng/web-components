@@ -11,3 +11,5 @@ export const trimMargin = (text: string) => text.trim().replace(/^((?<!\|).)*/gm
 export const capitalize = (text: string) => text.charAt(0).toUpperCase() + text.slice(1);
 
 export const trimLineBreaks = (text: string) => text.replace(/^\s*\n/, '').replace(/\n\s*$/, '');
+
+export const generateUniqueID = () => Math.random().toString(36).substring(2, 9);

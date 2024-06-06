@@ -1,6 +1,5 @@
 import { Component, h, Prop, State, VNode, Element } from '@stencil/core';
 import { ComponentHue } from '../../types/ComponentHue';
-import 'bootstrap/js/dist/dropdown';
 import { ButtonAttributes } from '../../types/HTMLAttributes';
 import { TDropdownMenuItem } from './TDropdownMenuItem';
 import { CheckmarkIcon } from '../../icons/CheckmarkIcon';
@@ -13,7 +12,7 @@ import { setBaseColour } from '../../utils/componentUtils';
 })
 export class TDropdownMenu {
 
-  @Prop() hue: ComponentHue = 0;
+  @Prop() hueoffset: ComponentHue = 0;
   @Prop() label: VNode | string;
   @Prop() value: string;
   @Prop() buttonAttributes: ButtonAttributes;
@@ -25,7 +24,7 @@ export class TDropdownMenu {
   @Element() host: HTMLElement;
 
   connectedCallback() {
-    setBaseColour(this.host, this.hue * 360);
+    setBaseColour(this.host, this.hueoffset);
   }
 
   get menu(): HTMLUListElement {
@@ -89,7 +88,7 @@ export class TDropdownMenu {
             onKeyDown: (event: KeyboardEvent) => this.handleKeyDown(event),
             ...this.buttonAttributes,
           }}
-          hue={this.hue}
+          hueoffset={this.hueoffset}
           slot="anchor"
         >
           <slot slot='icon' name='icon'/>

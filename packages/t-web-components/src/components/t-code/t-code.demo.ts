@@ -45,9 +45,6 @@ export const tCodeDemo: ComponentDemos = {
   },
   slot: {
     componentName: 't-code',
-    props: {
-      mode: 'block',
-    },
     children: [
       tCodeTestData.code
     ]

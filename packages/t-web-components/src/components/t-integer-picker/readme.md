@@ -7,13 +7,13 @@
 
 ## Properties
 
-| Property | Attribute | Description | Type     | Default     |
-| -------- | --------- | ----------- | -------- | ----------- |
-| `hue`    | `hue`     |             | `number` | `0`         |
-| `label`  | `label`   |             | `string` | `undefined` |
-| `max`    | `max`     |             | `number` | `undefined` |
-| `min`    | `min`     |             | `number` | `undefined` |
-| `value`  | `value`   |             | `number` | `undefined` |
+| Property    | Attribute   | Description | Type     | Default     |
+| ----------- | ----------- | ----------- | -------- | ----------- |
+| `hueoffset` | `hueoffset` |             | `number` | `0`         |
+| `label`     | `label`     |             | `string` | `undefined` |
+| `max`       | `max`       |             | `number` | `undefined` |
+| `min`       | `min`       |             | `number` | `undefined` |
+| `value`     | `value`     |             | `number` | `undefined` |
 
 
 ## Events

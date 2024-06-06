@@ -22,17 +22,13 @@ export class ComponentTestCode {
     this.config = config;
   }
 
-  configString(): string {
-    return JSON.stringify(this.config, null, 2);
-  }
-
-  withHue(hue: number, hueProp: string = 'hue'): ComponentTestCode {
+  withHueOffset(hueoffset: number, hueProp: string = 'hueoffset'): ComponentTestCode {
     return new ComponentTestCode(
       {
         ...this.config,
         props: {
           ...this.config.props,
-          [hueProp]: hue,
+          [hueProp]: hueoffset,
         },
       },
     );

@@ -11,7 +11,7 @@ export class TLink {
 
   @Element() element: HTMLTLinkElement;
 
-  @Prop() hue: number = 0;
+  @Prop() hueoffset: number = 0;
   @Prop() href: string;
   @Prop() target?: string;
   @Prop() external?: boolean;
@@ -25,7 +25,7 @@ export class TLink {
   }
 
   connectedCallback() {
-    setBaseColour(this.element, this.hue * 360);
+    setBaseColour(this.element, this.hueoffset);
   }
 
   get anchor(): HTMLAnchorElement {

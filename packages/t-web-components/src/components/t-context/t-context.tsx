@@ -51,8 +51,11 @@ export class TContext {
     this.setCssVariable('--t-base-colour-lightness', asPercents(l));
     this.setCssVariable('--t-base-border-colour', this.baseColourHighContrast().getHexCode());
     this.setCssVariable('--t-colour-base-app', baseColour.getOklchCode());
-    this.setCssVariable('--t-colour-base-app-high-contrast', this.baseColourHighContrast().getHexCode());
-    this.setCssVariable('--t-colour-base-app-low-contrast', this.baseColourLowContrast().getHexCode());
+    this.setCssVariable('--t-colour-base-app-high-contrast', this.baseColourHighContrast().getOklchCode());
+    this.setCssVariable('--t-colour-base-app-low-contrast', this.baseColourLowContrast().getOklchCode());
+    this.setCssVariable('--t-colour-grey', this.greyColour().getOklchCode());
+    this.setCssVariable('--t-colour-grey-high-contrast', this.greyColourHighContrast().getOklchCode());
+    this.setCssVariable('--t-colour-grey-low-contrast', this.greyColourLowContrast().getOklchCode());
     this.setCssVariable('--t-input-field-background-colour', this.inputFieldColour().getHexCode());
     this.element.style.setProperty('filter', `contrast(${this.contrast})`);
 
@@ -70,6 +73,30 @@ export class TContext {
 
   private baseColourLuminance(): number {
     return this.isDarkMode() ? BASE_COLOUR_LUMINANCE_DARK_MODE : BASE_COLOUR_LUMINANCE_LIGHT_MODE;
+  }
+
+  private greyColour(): Chromator {
+    const luminance = this.baseColourLuminance();
+    const grey = new Chromator('#000');
+    grey.setRelativeLuminance(luminance, 'oklch');
+    return grey;
+  }
+
+  private greyColourHighContrast(): Chromator {
+    return this.getAdjustedColourByContrast(this.pageBackgroundColour(), HIGH_CONTRAST);
+  }
+
+  private greyColourLowContrast(): Chromator {
+    return this.getAdjustedColourByContrast(this.pageBackgroundColour(), LOW_CONTRAST);
+  }
+
+  private getAdjustedColourByContrast(colour: Chromator, contrast: number): Chromator {
+    const newColour = colour.copy();
+    if (this.isDarkMode()) {
+      return newColour.increaseLuminanceByContrast(contrast);
+    } else {
+      return newColour.decreaseLuminanceByContrast(contrast);
+    }
   }
 
   private isDarkMode(): boolean {

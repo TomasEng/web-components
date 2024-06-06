@@ -13,7 +13,7 @@ import { CogIcon } from '../../icons/CogIcon';
 })
 export class TModeSwitcher {
 
-  @Prop() hue: ComponentHue = 0;
+  @Prop() hueoffset: ComponentHue = 0;
   @Prop() systemSelected: boolean = true;
   @Prop() label: string;
 
@@ -49,7 +49,7 @@ export class TModeSwitcher {
             buttonAttributes: { title: 'Velg mørk modus' },
           },
         ]}
-        hue={this.hue}
+        hueoffset={this.hueoffset}
       >
         {icon}
       </t-dropdown-menu>

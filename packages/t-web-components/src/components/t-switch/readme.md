@@ -7,10 +7,10 @@
 
 ## Properties
 
-| Property  | Attribute | Description | Type      | Default |
-| --------- | --------- | ----------- | --------- | ------- |
-| `checked` | `checked` |             | `boolean` | `false` |
-| `hue`     | `hue`     |             | `number`  | `0`     |
+| Property    | Attribute   | Description | Type      | Default |
+| ----------- | ----------- | ----------- | --------- | ------- |
+| `checked`   | `checked`   |             | `boolean` | `false` |
+| `hueoffset` | `hueoffset` |             | `number`  | `0`     |
 
 
 ## Events

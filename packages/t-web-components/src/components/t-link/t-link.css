@@ -11,6 +11,10 @@
   color: oklch(from var(--colour) l c calc(h + 30));
 }
 
+.link[href^="#"]:visited {
+  color: var(--colour);
+}
+
 .link:hover {
   text-decoration: underline;
 }

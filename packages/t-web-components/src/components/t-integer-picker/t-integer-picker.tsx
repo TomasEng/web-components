@@ -15,12 +15,12 @@ export class TIntegerPicker {
   @Prop() value: number;
   @Prop() min: number;
   @Prop() max: number;
-  @Prop() hue: ComponentHue = 0;
+  @Prop() hueoffset: ComponentHue = 0;
 
   @Event() integerChange: EventEmitter<number>;
 
   connectedCallback() {
-    setBaseColour(this.element, this.hue * 360);
+    setBaseColour(this.element, this.hueoffset);
   }
 
   private handleChange = (event: InputEvent) => {

@@ -11,15 +11,27 @@ pre {
   margin: 0;
   overflow-x: auto;
 
+  code {
+    font-family: Courier, "Courier New", monospace;
+  }
+
   &.inline {
+    background-color: var(--t-colour-grey-low-contrast);
+    border-radius: 2px;
+    box-shadow: var(--t-colour-grey-low-contrast) 0 0 0 1px;
     display: inline;
+    text-wrap: wrap;
+    word-break: break-word;
+
+    code {
+      color: oklch(from var(--t-colour-base-app-high-contrast) l c calc(h + 180));
+    }
   }
 
   &.block, &.panel {
     display: block;
 
     code {
-      border-radius: var(--t-border-radius-default);
       display: block;
       overflow-x: auto;
     }

@@ -7,13 +7,13 @@
 
 ## Properties
 
-| Property           | Attribute | Description | Type                                                                        | Default     |
-| ------------------ | --------- | ----------- | --------------------------------------------------------------------------- | ----------- |
-| `buttonAttributes` | --        |             | `ButtonHTMLAttributes<HTMLButtonElement> & DataAttributes & AriaAttributes` | `undefined` |
-| `hue`              | `hue`     |             | `number`                                                                    | `0`         |
-| `items`            | --        |             | `TDropdownMenuItem[]`                                                       | `[]`        |
-| `label`            | `label`   |             | `VNode \| string`                                                           | `undefined` |
-| `value`            | `value`   |             | `string`                                                                    | `undefined` |
+| Property           | Attribute   | Description | Type                                                                        | Default     |
+| ------------------ | ----------- | ----------- | --------------------------------------------------------------------------- | ----------- |
+| `buttonAttributes` | --          |             | `ButtonHTMLAttributes<HTMLButtonElement> & DataAttributes & AriaAttributes` | `undefined` |
+| `hueoffset`        | `hueoffset` |             | `number`                                                                    | `0`         |
+| `items`            | --          |             | `TDropdownMenuItem[]`                                                       | `[]`        |
+| `label`            | `label`     |             | `VNode \| string`                                                           | `undefined` |
+| `value`            | `value`     |             | `string`                                                                    | `undefined` |
 
 
 ## Dependencies

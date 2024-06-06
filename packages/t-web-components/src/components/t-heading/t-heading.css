@@ -13,37 +13,80 @@
 }
 
 .level-1 {
+  border-bottom: 1px solid var(--t-colour-grey);
   font-size: var(--t-heading-size-1);
+  font-weight: bold;
   margin-bottom: var(--t-heading-spacing-bottom-1);
   margin-top: var(--t-heading-spacing-top-1);
 }
 
+.level-1 h1 {
+  font-weight: bold;
+}
+
 .level-2 {
+  border-bottom: 1px solid var(--t-colour-grey);
   font-size: var(--t-heading-size-2);
+  font-weight: bold;
   margin-bottom: var(--t-heading-spacing-bottom-2);
   margin-top: var(--t-heading-spacing-top-2);
 }
 
+.level-2 h2 {
+  font-weight: bold;
+}
+
 .level-3 {
   font-size: var(--t-heading-size-3);
+  font-weight: bold;
   margin-bottom: var(--t-heading-spacing-bottom-3);
   margin-top: var(--t-heading-spacing-top-3);
 }
 
+.level-3 h3 {
+  font-weight: bold;
+}
+
 .level-4 {
   font-size: var(--t-heading-size-4);
+  font-weight: bold;
   margin-bottom: var(--t-heading-spacing-bottom-4);
   margin-top: var(--t-heading-spacing-top-4);
 }
 
+.level-4 h4 {
+  font-weight: bold;
+}
+
 .level-5 {
   font-size: var(--t-heading-size-5);
+  font-weight: normal;
+  font-style: italic;
   margin-bottom: var(--t-heading-spacing-bottom-5);
   margin-top: var(--t-heading-spacing-top-5);
+}
+
+.level-5 h5 {
+  font-style: italic;
+  font-weight: normal;
+  text-decoration: underline dotted var(--t-colour-grey);
+}
+
+.level-6 {
+  font-size: var(--t-heading-size-6);
+  font-weight: normal;
+  margin-bottom: var(--t-heading-spacing-bottom-6);
+  margin-top: var(--t-heading-spacing-top-6);
+}
+
+.level-6 h6 {
+  font-weight: normal;
+  text-decoration: underline var(--t-colour-grey);
 }
 
 h1, h2, h3, h4, h5, h6 {
   margin: 0;
   padding: 0;
   font-size: inherit;
+  font-family: var(--t-heading-font-family);
 }

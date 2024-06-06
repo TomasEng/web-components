@@ -22,6 +22,7 @@ import { tPanelDemo } from '../../components/t-panel/t-panel.demo';
 import { tTreeDemo } from '../../components/t-tree/t-tree.demo';
 import { tTableOfContentsDemo } from '../../components/t-table-of-contents/t-table-of-contents.demo';
 import { tIframeDemo } from '../../components/t-iframe/t-iframe.demo';
+import { tHeadingDemo } from '../../components/t-heading/t-heading.demo';
 
 @Component({
   tag: 'page-components',
@@ -77,6 +78,13 @@ export class PageComponents {
             examples={[
               { title: 'Intern lenke', code: tLinkDemo.internal, previewMode: 'inline' },
               { title: 'Ekstern lenke', code: tLinkDemo.external, previewMode: 'inline' },
+            ]}
+            colourSettings={this.colourSettings}
+          />
+          <component-documentation
+            name='Overskrifter'
+            examples={[
+              { code: tHeadingDemo.allLevels, previewMode: 'iframe' }
             ]}
             colourSettings={this.colourSettings}
           />

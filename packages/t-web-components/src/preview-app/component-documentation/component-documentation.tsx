@@ -4,6 +4,7 @@ import { ComponentTestCode } from '../../test-utils/ComponentTestCode';
 import { PreviewMode } from './PreviewMode';
 import { ColourSettings } from '../../types/ColourSettings';
 import { integerArray } from '../../utils/numberUtils';
+import { generateUniqueID } from '../../utils/stringUtils';
 
 @Component({
   tag: 'component-documentation',
@@ -95,10 +96,10 @@ const HuePreview = ({ componentTestCode, colourSettings }: { componentTestCode: 
     <t-row>
       {hueArray.map(hue => {
         const testCode = componentTestCode
-          .withHue(hue / colourSettings.numberOfHues)
-          .withId(`${componentTestCode.config.componentName}-${hue}`);
+          .withHueOffset(hue * 360 / colourSettings.numberOfHues)
+          .withId(`${componentTestCode.config.componentName}-${generateUniqueID()}`);
         return (
-          <component-preview componentTestCode={testCode}/>
+          <component-preview componentTestCode={testCode} key={hue * 360 / colourSettings.numberOfHues}/>
         );
       })}
     </t-row>

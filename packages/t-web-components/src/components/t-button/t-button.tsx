@@ -13,7 +13,7 @@ export class TButton {
 
   @Element() element: HTMLTButtonElement;
 
-  @Prop() hue: ComponentHue = 0;
+  @Prop() hueoffset: ComponentHue = 0;
   @Prop() buttonAttributes: ButtonAttributes;
   @Prop() variant: ButtonVariant = 'default';
   @Prop() focusable: boolean = true;
@@ -34,7 +34,7 @@ export class TButton {
   }
 
   connectedCallback() {
-    setBaseColour(this.element, this.hue * 360);
+    setBaseColour(this.element, this.hueoffset);
   }
 
   render() {

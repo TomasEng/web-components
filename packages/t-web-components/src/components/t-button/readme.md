@@ -11,7 +11,7 @@
 | ------------------ | ----------- | ----------- | --------------------------------------------------------------------------- | ----------- |
 | `buttonAttributes` | --          |             | `ButtonHTMLAttributes<HTMLButtonElement> & DataAttributes & AriaAttributes` | `undefined` |
 | `focusable`        | `focusable` |             | `boolean`                                                                   | `true`      |
-| `hue`              | `hue`       |             | `number`                                                                    | `0`         |
+| `hueoffset`        | `hueoffset` |             | `number`                                                                    | `0`         |
 | `variant`          | `variant`   |             | `"default" \| "link" \| "transparent"`                                      | `'default'` |
 
 

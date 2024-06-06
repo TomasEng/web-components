@@ -12,11 +12,11 @@ export class TArticleList {
 
   @Element() element: HTMLTArticleListElement;
 
-  @Prop() hue: ComponentHue = 0;
+  @Prop() hueoffset: ComponentHue = 0;
   @Prop() items: TArticleListItem[] = [];
 
   connectedCallback() {
-    setBaseColour(this.element, this.hue * 360);
+    setBaseColour(this.element, this.hueoffset);
   }
 
   render() {

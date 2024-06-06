@@ -85,14 +85,14 @@ export namespace Components {
         "text": TArticleText;
     }
     interface TArticleList {
-        "hue": ComponentHue;
+        "hueoffset": ComponentHue;
         "items": TArticleListItem[];
     }
     interface TButton {
         "buttonAttributes": ButtonAttributes;
         "focusOnButton": () => Promise<void>;
         "focusable": boolean;
-        "hue": ComponentHue;
+        "hueoffset": ComponentHue;
         "variant": ButtonVariant;
     }
     interface TCode {
@@ -116,7 +116,7 @@ export namespace Components {
     }
     interface TDropdownMenu {
         "buttonAttributes": ButtonAttributes;
-        "hue": ComponentHue;
+        "hueoffset": ComponentHue;
         "items": TDropdownMenuItem[];
         "label": VNode | string;
         "value": string;
@@ -141,7 +141,7 @@ export namespace Components {
         "srcdoc": string;
     }
     interface TIntegerPicker {
-        "hue": ComponentHue;
+        "hueoffset": ComponentHue;
         "label": string;
         "max": number;
         "min": number;
@@ -162,7 +162,7 @@ export namespace Components {
         "focusOnAnchor": () => Promise<void>;
         "focusable": boolean;
         "href": string;
-        "hue": number;
+        "hueoffset": number;
         "target"?: string;
     }
     interface TLinkOrButton {
@@ -172,7 +172,7 @@ export namespace Components {
         "target": string | null;
     }
     interface TModeSwitcher {
-        "hue": ComponentHue;
+        "hueoffset": ComponentHue;
         "label": string;
         "systemSelected": boolean;
     }
@@ -185,7 +185,7 @@ export namespace Components {
         "value": number;
     }
     interface TSelect {
-        "hue": ComponentHue;
+        "hueoffset": ComponentHue;
         "label": string;
         "labelPlacement": LabelPlacement;
         "options": TSelectOption[];
@@ -214,7 +214,7 @@ export namespace Components {
     }
     interface TSwitch {
         "checked": boolean;
-        "hue": number;
+        "hueoffset": number;
     }
     interface TTab {
         "heading": string;
@@ -226,7 +226,7 @@ export namespace Components {
     interface TTabs {
     }
     interface TTextfield {
-        "hue": ComponentHue;
+        "hueoffset": ComponentHue;
         "label": string;
         "value": string;
     }
@@ -819,13 +819,13 @@ declare namespace LocalJSX {
         "text"?: TArticleText;
     }
     interface TArticleList {
-        "hue"?: ComponentHue;
+        "hueoffset"?: ComponentHue;
         "items"?: TArticleListItem[];
     }
     interface TButton {
         "buttonAttributes"?: ButtonAttributes;
         "focusable"?: boolean;
-        "hue"?: ComponentHue;
+        "hueoffset"?: ComponentHue;
         "onButtonClick"?: (event: TButtonCustomEvent<MouseEvent>) => void;
         "variant"?: ButtonVariant;
     }
@@ -849,7 +849,7 @@ declare namespace LocalJSX {
     }
     interface TDropdownMenu {
         "buttonAttributes"?: ButtonAttributes;
-        "hue"?: ComponentHue;
+        "hueoffset"?: ComponentHue;
         "items"?: TDropdownMenuItem[];
         "label"?: VNode | string;
         "value"?: string;
@@ -876,7 +876,7 @@ declare namespace LocalJSX {
         "srcdoc"?: string;
     }
     interface TIntegerPicker {
-        "hue"?: ComponentHue;
+        "hueoffset"?: ComponentHue;
         "label"?: string;
         "max"?: number;
         "min"?: number;
@@ -897,7 +897,7 @@ declare namespace LocalJSX {
         "external"?: boolean;
         "focusable"?: boolean;
         "href"?: string;
-        "hue"?: number;
+        "hueoffset"?: number;
         "onLinkClick"?: (event: TLinkCustomEvent<MouseEvent>) => void;
         "target"?: string;
     }
@@ -908,7 +908,7 @@ declare namespace LocalJSX {
         "target"?: string | null;
     }
     interface TModeSwitcher {
-        "hue"?: ComponentHue;
+        "hueoffset"?: ComponentHue;
         "label"?: string;
         "systemSelected"?: boolean;
     }
@@ -922,7 +922,7 @@ declare namespace LocalJSX {
         "value"?: number;
     }
     interface TSelect {
-        "hue"?: ComponentHue;
+        "hueoffset"?: ComponentHue;
         "label"?: string;
         "labelPlacement"?: LabelPlacement;
         "options"?: TSelectOption[];
@@ -951,7 +951,7 @@ declare namespace LocalJSX {
     }
     interface TSwitch {
         "checked"?: boolean;
-        "hue"?: number;
+        "hueoffset"?: number;
         "onSwitch"?: (event: TSwitchCustomEvent<boolean>) => void;
     }
     interface TTab {
@@ -964,7 +964,7 @@ declare namespace LocalJSX {
     interface TTabs {
     }
     interface TTextfield {
-        "hue"?: ComponentHue;
+        "hueoffset"?: ComponentHue;
         "label"?: string;
         "onValueChange"?: (event: TTextfieldCustomEvent<string>) => void;
         "value"?: string;

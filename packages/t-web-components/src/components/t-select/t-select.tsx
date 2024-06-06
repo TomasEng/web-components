@@ -13,14 +13,14 @@ export class TSelect {
 
   @Element() element: HTMLTSelectElement;
 
-  @Prop() hue: ComponentHue = 0;
+  @Prop() hueoffset: ComponentHue = 0;
   @Prop() label: string;
   @Prop() options: TSelectOption[];
   @Prop() value: string;
   @Prop() labelPlacement: LabelPlacement = 'top';
 
   connectedCallback() {
-    setBaseColour(this.element, this.hue * 360);
+    setBaseColour(this.element, this.hueoffset);
   }
 
   render() {

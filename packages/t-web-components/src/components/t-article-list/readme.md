@@ -7,10 +7,10 @@
 
 ## Properties
 
-| Property | Attribute | Description | Type                 | Default |
-| -------- | --------- | ----------- | -------------------- | ------- |
-| `hue`    | `hue`     |             | `number`             | `0`     |
-| `items`  | --        |             | `TArticleListItem[]` | `[]`    |
+| Property    | Attribute   | Description | Type                 | Default |
+| ----------- | ----------- | ----------- | -------------------- | ------- |
+| `hueoffset` | `hueoffset` |             | `number`             | `0`     |
+| `items`     | --          |             | `TArticleListItem[]` | `[]`    |
 
 
 ----------------------------------------------

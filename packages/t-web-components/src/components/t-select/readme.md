@@ -9,7 +9,7 @@
 
 | Property         | Attribute         | Description | Type              | Default     |
 | ---------------- | ----------------- | ----------- | ----------------- | ----------- |
-| `hue`            | `hue`             |             | `number`          | `0`         |
+| `hueoffset`      | `hueoffset`       |             | `number`          | `0`         |
 | `label`          | `label`           |             | `string`          | `undefined` |
 | `labelPlacement` | `label-placement` |             | `"left" \| "top"` | `'top'`     |
 | `options`        | --                |             | `TSelectOption[]` | `undefined` |

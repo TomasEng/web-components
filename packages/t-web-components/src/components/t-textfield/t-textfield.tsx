@@ -11,14 +11,14 @@ export class TTextfield {
 
   @Element() element: HTMLTTextfieldElement;
 
-  @Prop() hue: ComponentHue = 0;
+  @Prop() hueoffset: ComponentHue = 0;
   @Prop() label: string;
   @Prop() value: string;
 
   @Event() valueChange: EventEmitter<string>;
 
   connectedCallback() {
-    setBaseColour(this.element, this.hue * 360);
+    setBaseColour(this.element, this.hueoffset);
   }
 
   render() {

@@ -13,10 +13,10 @@ export class TSwitch {
   @Event() switch: EventEmitter<boolean>;
 
   @Prop() checked: boolean = false;
-  @Prop() hue: number = 0;
+  @Prop() hueoffset: number = 0;
 
   connectedCallback() {
-    setBaseColour(this.element, this.hue * 360);
+    setBaseColour(this.element, this.hueoffset);
   }
 
   handleChange = (event: InputEvent) => {

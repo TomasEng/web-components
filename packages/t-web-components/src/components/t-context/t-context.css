@@ -15,6 +15,7 @@
   --t-base-fill-colour: var(--t-base-border-colour);
   --t-base-low-contrast-colour: unset;
   --t-border-radius-default: 6px;
+  --t-border-radius-small: 3px;
   --t-box-shadow-active: color-mix(in oklab, var(--t-base-border-colour) 20%, transparent) 0 0 24px;
   --t-clickable-area-size: 44px;
   --t-colour-base-app: var(--t-base-colour);
@@ -23,11 +24,13 @@
   --t-default-font-family: ui-sans-serif, Verdana, Arial, Helvetica, sans-serif;
   --t-default-font-size: 1rem;
   --t-font-colour-default: var(--t-full-contrast-colour);
+  --t-font-family-default: ui-sans-serif, Verdana, Arial, Helvetica, sans-serif;
+  --t-heading-font-family: var(--t-font-family-default);
   --t-heading-size-1: 2em;
   --t-heading-size-2: 1.5em;
   --t-heading-size-3: 1.25em;
-  --t-heading-size-4: 1.125em;
-  --t-heading-size-5: 1.0625em;
+  --t-heading-size-4: 1em;
+  --t-heading-size-5: 1em;
   --t-heading-size-6: 1em;
   --t-heading-spacing-bottom-1: calc(var(--t-heading-size-1) * var(--t-heading-spacing-bottom-factor));
   --t-heading-spacing-bottom-2: calc(var(--t-heading-size-2) * var(--t-heading-spacing-bottom-factor));
@@ -50,14 +53,17 @@
   --t-page-max-width: 1200px;
   --t-panel-background-colour: color-mix(in oklab, var(--t-base-colour) 12%, var(--t-small-contrast-colour));
   --t-panel-heading-colour: oklch(from var(--t-base-colour) l calc(c*0.5) h);
-  --t-popover-alpha: 0.75;
-  --t-popover-backdrop-filter: blur(8px);
-  --t-popover-background-colour-base: color-mix(in oklab, var(--t-small-contrast-colour) calc(var(--t-popover-alpha) * 100%), transparent);
+  --t-popover-alpha: 0.9;
+  --t-popover-backdrop-filter: blur(12px);
+  --t-popover-background-colour-base: color-mix(in oklab, var(--t-colour-grey) calc(var(--t-popover-alpha) * 100%), transparent);
   --t-popover-border-radius: var(--t-border-radius-default);
   --t-popover-shadow: #000c 0 4px 12px;
   --t-selection-background-colour: var(--t-base-fill-colour);
   --t-selection-font-colour: var(--t-font-colour-default);
   --t-small-contrast-colour: color-mix(in oklab, var(--t-page-background-colour) 95%, var(--t-full-contrast-colour));
+  --t-colour-grey: unset; /* Set by JS */
+  --t-colour-grey-low-contrast: unset; /* Set by JS */
+  --t-colour-grey-high-contrast: unset; /* Set by JS */
   --t-spacing-default: 1rem;
   --t-spacing-in-group: 0.5rem;
   --t-spacing-inline: 0.25rem;
@@ -100,4 +106,8 @@
 p {
   line-height: 1.75;
   margin: 1em 0;
+}
+
+li {
+  line-height: 1.75;
 }

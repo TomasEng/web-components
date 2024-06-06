@@ -12,7 +12,7 @@
 | `external`  | `external`  |             | `boolean` | `undefined` |
 | `focusable` | `focusable` |             | `boolean` | `true`      |
 | `href`      | `href`      |             | `string`  | `undefined` |
-| `hue`       | `hue`       |             | `number`  | `0`         |
+| `hueoffset` | `hueoffset` |             | `number`  | `0`         |
 | `target`    | `target`    |             | `string`  | `undefined` |
 
 

@@ -25,6 +25,10 @@ export class TCode {
 
   @Element() element: HTMLElement;
 
+  get codeElement(): HTMLElement {
+    return this.element.shadowRoot.querySelector('code');
+  }
+
   componentDidUpdate() {
     if (this.copied) {
       setTimeout(
