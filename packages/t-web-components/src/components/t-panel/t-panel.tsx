@@ -1,4 +1,6 @@
-import { Component, h, Host, Element } from '@stencil/core';
+import { Component, h, Host, Element, Prop } from '@stencil/core';
+import { ComponentHue } from '../../types/ComponentHue';
+import { setBaseColour } from '../../utils/componentUtils';
 
 @Component({
   tag: 't-panel',
@@ -9,8 +11,14 @@ export class TPanel {
 
   @Element() element: HTMLElement;
 
+  @Prop() hueoffset: ComponentHue = 0;
+
   get heading(): HTMLDivElement {
     return this.element.shadowRoot.querySelector('.heading');
+  }
+
+  connectedCallback() {
+    setBaseColour(this.element, this.hueoffset);
   }
 
   componentDidRender() {

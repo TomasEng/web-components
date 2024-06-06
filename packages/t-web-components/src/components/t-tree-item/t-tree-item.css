@@ -24,7 +24,7 @@ t-link:not(:has(.arrow))::part(link), t-button:not(:has(.arrow))::part(button) {
 }
 
 t-link:hover::part(link), t-button:hover::part(button) {
-  background-color: color-mix(in oklab, transparent, var(--t-base-colour));
+  background-color: color-mix(in oklab, transparent, var(--t-colour-base-app));
 }
 
 li {

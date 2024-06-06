@@ -55,11 +55,11 @@
   --menu-item-background-colour: color-mix(
     in oklab,
     var(--menu-item-background-colour-base) 90%,
-    var(--t-full-contrast-colour)
+    var(--t-colour-full-contrast)
   );
 }
 
 .t-dropdown-menu .dropdown-menu .dropdown-item.selected {
-  --menu-item-background-colour: color-mix(in oklab, var(--t-base-colour) calc(var(--t-popover-alpha) * 100%), transparent);
+  --menu-item-background-colour: color-mix(in oklab, var(--t-colour-base-component) calc(var(--t-popover-alpha) * 100%), transparent);
   );
 }

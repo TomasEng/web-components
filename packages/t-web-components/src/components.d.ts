@@ -177,6 +177,7 @@ export namespace Components {
         "systemSelected": boolean;
     }
     interface TPanel {
+        "hueoffset": ComponentHue;
     }
     interface TRow {
     }
@@ -913,6 +914,7 @@ declare namespace LocalJSX {
         "systemSelected"?: boolean;
     }
     interface TPanel {
+        "hueoffset"?: ComponentHue;
     }
     interface TRow {
     }

@@ -2,10 +2,10 @@
   --size: 2rem;
   animation: spin 1s linear infinite;
   background-color: transparent;
-  border-color: var(--t-small-contrast-colour);
+  border-color: var(--t-colour-grey-low-contrast);
   border-radius: 50%;
   border-style: solid;
-  border-top-color: var(--t-base-fill-colour);
+  border-top-color: var(--t-colour-base-app-high-contrast);
   border-width: 4px;
   box-sizing: border-box;
   display: inline-block;

@@ -1,12 +1,4 @@
 :root {
-  --t-default-font-family: Calibri, Arial, sans-serif;
-  --t-font-family-default: var(--t-default-font-family);
-  --t-default-font-size: 1rem;
-  --t-spacing-default: 1rem;
-  --t-spacing-in-group: calc(var(--t-spacing-default) / 2);
-  --t-spacing-inline: calc(1rem / 4);
-  --t-spacing-large: calc(var(--t-spacing-default) * 2);
-
   font-family: var(--t-default-font-family);
   font-size: var(--t-default-font-size);
 }

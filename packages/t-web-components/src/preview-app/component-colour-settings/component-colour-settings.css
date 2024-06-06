@@ -2,6 +2,6 @@
   --slider-background: linear-gradient(
     to right,
     transparent,
-    var(--t-full-contrast-colour)
+    var(--t-colour-full-contrast)
   );
 }

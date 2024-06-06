@@ -20,7 +20,7 @@
   border-top-left-radius: var(--t-border-radius-default);
   border-top-right-radius: var(--t-border-radius-default);
   box-shadow: var(--top-shadow-inset);
-  color: var(--t-base-contrast-colour);
+  color: var(--t-colour-base-component-high-contrast);
   display: flex;
   padding: .5rem;
 }

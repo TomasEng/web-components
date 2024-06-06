@@ -36,8 +36,8 @@
       }
 
       &[aria-selected='false']:not(:hover) {
-        background: var(--t-small-contrast-colour);
-        color: color-mix(in oklab, var(--t-font-colour-default) 60%, var(--t-page-background-colour));
+        background: var(--t-colour-grey-low-contrast);
+        color: color-mix(in oklab, var(--t-font-colour-default) 60%, var(--t-colour-page-background));
       }
     }
   }

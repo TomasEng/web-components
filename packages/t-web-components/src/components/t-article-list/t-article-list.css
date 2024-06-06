@@ -12,7 +12,7 @@ ul.t-article-list {
     --background-colour: var(--t-panel-background-colour);
 
     &:nth-child(even) {
-      --background-colour: var(--t-small-contrast-colour);
+      --background-colour: var(--t-colour-grey-low-contrast);
     }
 
     a {

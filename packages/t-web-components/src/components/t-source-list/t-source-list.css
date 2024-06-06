@@ -10,5 +10,5 @@ ol {
 }
 
 li:target {
-  background-color: var(--t-base-colour);
+  background-color: var(--t-colour-base-app);
 }

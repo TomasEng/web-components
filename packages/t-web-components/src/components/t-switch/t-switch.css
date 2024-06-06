@@ -28,7 +28,7 @@
   --top-mix-colour: black;
   --bottom-mix-colour: white;
   --chroma: 0;
-  --fill-colour: var(--t-input-field-background-colour);
+  --fill-colour: var(--t-colour-input-field-background);
   background: linear-gradient(
     to bottom,
     color-mix(in oklab, var(--fill-colour) 90%, var(--top-mix-colour)),
@@ -76,7 +76,7 @@ input:checked + .slider {
 
 input:checked + .slider:before {
   transform: translateX(calc(var(--width) - var(--height)));
-  background-color: var(--t-page-background-colour);
+  background-color: var(--t-colour-page-background);
 }
 
 .switch:has(:focus-visible) .slider {

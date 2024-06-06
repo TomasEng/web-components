@@ -52,7 +52,7 @@ header {
             border-top-right-radius: var(--t-navbar-item-border-radius);
             box-shadow: var(--top-shadow);
             box-sizing: border-box;
-            color: var(--t-base-border-colour);
+            color: var(--t-colour-base-app-high-contrast);
             display: flex;
             font-weight: 500;
             height: calc(100% + 2px);
@@ -71,7 +71,7 @@ header {
           }
 
           &:not(.open) a:hover {
-            background-color: color-mix(in oklab, var(--t-page-background-colour) 90%, white);
+            background-color: color-mix(in oklab, var(--t-colour-page-background) 90%, white);
             color: var(--t-font-colour-default);
           }
         }
@@ -150,13 +150,13 @@ header {
               }
 
               &:not(.open) a:hover {
-                background-color: color-mix(in oklab, var(--t-page-background-colour) 95%, var(--t-full-contrast-colour));
+                background-color: color-mix(in oklab, var(--t-colour-page-background) 95%, var(--t-colour-full-contrast));
               }
 
               &.open a {
-                background-color: color-mix(in oklch, var(--t-base-colour) 75%, transparent);
-                --top-shadow: inset color-mix(in oklab, var(--t-base-colour) 85%, white) 0 1px 0;
-                --bottom-shadow: inset color-mix(in oklab, var(--t-base-colour) 85%, black) 0 -1px 0;
+                background-color: color-mix(in oklch, var(--t-colour-base-app) 75%, transparent);
+                --top-shadow: inset color-mix(in oklab, var(--t-colour-base-app) 85%, white) 0 1px 0;
+                --bottom-shadow: inset color-mix(in oklab, var(--t-colour-base-app) 85%, black) 0 -1px 0;
               }
             }
           }
@@ -181,8 +181,8 @@ header {
       width: 100%;
       z-index: 100;
       position: relative;
-      background-color: var(--t-page-background-colour);
-      box-shadow: var(--t-page-background-colour) 0 -100px, var(--bottom-shadow);
+      background-color: var(--t-colour-page-background);
+      box-shadow: var(--t-colour-page-background) 0 -100px, var(--bottom-shadow);
     }
   }
 }

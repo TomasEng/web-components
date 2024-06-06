@@ -44,19 +44,17 @@ export class TContext {
     const modeClass = state.mode;
     const baseColour = this.baseColour();
     const { hue, chroma, l } = baseColour.getOklch();
-    this.setCssVariable('--t-base-colour-hue', hue.toFixed() + 'deg');
-    this.setCssVariable('--t-base-colour-chroma', chroma.toFixed(2));
-    this.setCssVariable('--t-page-background-colour', this.pageBackgroundColour().getHexCode());
-    this.setCssVariable('--t-base-colour', baseColour.getOklchCode()); // Todo: Erstatt alle instanser av "--t-base-colour" med --t-colour-base-app eller --t-colour-base-component
-    this.setCssVariable('--t-base-colour-lightness', asPercents(l));
-    this.setCssVariable('--t-base-border-colour', this.baseColourHighContrast().getHexCode());
+    this.setCssVariable('--t-colour-base-app-hue', hue.toFixed() + 'deg');
+    this.setCssVariable('--t-colour-base-app-chroma', chroma.toFixed(2));
+    this.setCssVariable('--t-colour-page-background', this.pageBackgroundColour().getOklchCode());
+    this.setCssVariable('--t-colour-base-app-lightness', asPercents(l));
     this.setCssVariable('--t-colour-base-app', baseColour.getOklchCode());
     this.setCssVariable('--t-colour-base-app-high-contrast', this.baseColourHighContrast().getOklchCode());
     this.setCssVariable('--t-colour-base-app-low-contrast', this.baseColourLowContrast().getOklchCode());
     this.setCssVariable('--t-colour-grey', this.greyColour().getOklchCode());
     this.setCssVariable('--t-colour-grey-high-contrast', this.greyColourHighContrast().getOklchCode());
     this.setCssVariable('--t-colour-grey-low-contrast', this.greyColourLowContrast().getOklchCode());
-    this.setCssVariable('--t-input-field-background-colour', this.inputFieldColour().getHexCode());
+    this.setCssVariable('--t-colour-input-field-background', this.inputFieldColour().getHexCode());
     this.element.style.setProperty('filter', `contrast(${this.contrast})`);
 
     return <div class={'root ' + modeClass}>

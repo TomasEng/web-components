@@ -6,7 +6,7 @@
     color-mix(in oklab, var(--t-popover-background-colour-base) 85%, white) inset 0 1px,
     color-mix(in oklab, var(--t-popover-background-colour-base) 85%, black) inset 0 -1px,
     var(--t-popover-shadow);
-  color: var(--t-full-contrast-colour);
+  color: var(--t-colour-full-contrast);
   padding: var(--t-spacing-in-group);
   z-index: var(--t-z-index-tooltip);
 }

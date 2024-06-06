@@ -2,14 +2,14 @@
   width: 100%;
   background-color: oklch(
     calc(0.5 + var(--t-mode-colour-scaling) * 0.3)
-    calc(var(--t-base-colour-chroma) * 0.1)
-    var(--t-base-colour-hue)
+    calc(var(--t-colour-base-app-chroma) * 0.1)
+    var(--t-colour-base-app-hue)
   );
 }
 
 .layout {
-  --background-base: var(--t-page-background-colour);
-  --main-background: color-mix(in oklch, var(--background-base) 90%, var(--t-background-background-colour));
+  --background-base: var(--t-colour-page-background);
+  --main-background: color-mix(in oklch, var(--background-base) 90%, var(--t-colour-app-background));
   --top-shadow: inset color-mix(in oklch, var(--background-base) 90%, white) 0 1px 0;
   --bottom-shadow: inset color-mix(in oklch, var(--background-base) 90%, black) 0 -1px 0;
   --back-shadow: #0003 0 0 4rem;

@@ -9,8 +9,8 @@
 }
 
 .main .leftbar {
-  --background-base: color-mix(in oklch, var(--t-page-background-colour) 95%, var(--t-full-contrast-colour));
-  --main-background: color-mix(in oklch, var(--background-base) 90%, var(--t-background-background-colour));
+  --background-base: color-mix(in oklch, var(--t-colour-page-background) 95%, var(--t-colour-full-contrast));
+  --main-background: color-mix(in oklch, var(--background-base) 90%, var(--t-colour-app-background));
   --top-shadow: inset color-mix(in oklab, var(--background-base) 90%, white) 0 1px 0;
   --bottom-shadow: inset color-mix(in oklab, var(--background-base) 90%, black) 0 -1px 0;
   /* --main-background, --top-shadow and --bottom-shadow are already defined at a higher level, but the change of --background-base does not change their values unless they are redefined here for some reason */
@@ -79,7 +79,7 @@
 
       .leftbar-toggle {
         backdrop-filter: var(--t-popover-backdrop-filter);
-        background-color: color-mix(in oklch, var(--t-base-colour) calc(var(--t-popover-alpha) * 100%), transparent);
+        background-color: color-mix(in oklch, var(--t-colour-base-app) calc(var(--t-popover-alpha) * 100%), transparent);
         border: 0;
         color: var(--t-font-colour-default);
         cursor: pointer;
@@ -91,7 +91,7 @@
         width: var(--closed-bar-width);
 
         &:hover {
-          background-color: var(--t-base-colour);
+          background-color: var(--t-colour-base-app);
         }
 
         .chevron {
