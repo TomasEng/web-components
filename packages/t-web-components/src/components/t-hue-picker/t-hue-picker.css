@@ -1,20 +1,10 @@
 :host {
   --chroma: 0.4;
   --lightness: 0.8;
+  --hue-offset: 0; /* Set by JS */
   --slider-background: linear-gradient(
-    to right,
-    oklch(var(--lightness) var(--chroma) 0),
-    oklch(var(--lightness) var(--chroma) 30),
-    oklch(var(--lightness) var(--chroma) 60),
-    oklch(var(--lightness) var(--chroma) 90),
-    oklch(var(--lightness) var(--chroma) 120),
-    oklch(var(--lightness) var(--chroma) 150),
-    oklch(var(--lightness) var(--chroma) 180),
-    oklch(var(--lightness) var(--chroma) 210),
-    oklch(var(--lightness) var(--chroma) 240),
-    oklch(var(--lightness) var(--chroma) 270),
-    oklch(var(--lightness) var(--chroma) 300),
-    oklch(var(--lightness) var(--chroma) 330),
-    oklch(var(--lightness) var(--chroma) 360)
+    in oklch longer hue to right,
+    oklch(var(--lightness) var(--chroma) var(--hue-offset)),
+    oklch(var(--lightness) var(--chroma) calc(var(--hue-offset) + 360))
   );
 }

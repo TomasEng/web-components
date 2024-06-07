@@ -1,5 +1,6 @@
-import { Component, h, Element, State } from '@stencil/core';
+import { Component, h, Element, State, Prop } from '@stencil/core';
 import { TOOLTIP_HIDE_DELAY_MILLISECONDS } from '../../constants';
+import { TFloatingElementPlacement } from '../../types/TFloatingElementPlacement';
 
 @Component({
   tag: 't-tooltip',
@@ -9,6 +10,8 @@ import { TOOLTIP_HIDE_DELAY_MILLISECONDS } from '../../constants';
 export class TTooltip {
 
   @Element() element: HTMLElement;
+
+  @Prop() placement: TFloatingElementPlacement = 'bottom';
 
   @State() open: boolean = false;
 
@@ -50,7 +53,11 @@ export class TTooltip {
 
   render() {
     return (
-      <t-floating-element visible={this.open} onClickOutside={() => this.closeTooltip()}>
+      <t-floating-element
+        onClickOutside={() => this.closeTooltip()}
+        placement={this.placement}
+        visible={this.open}
+      >
         <span
           aria-describedby="tooltip"
           id="button"

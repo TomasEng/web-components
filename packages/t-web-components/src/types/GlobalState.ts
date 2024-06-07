@@ -1,9 +1,11 @@
 import { Mode, SelectedMode } from './Mode';
 
 export type GlobalState = {
-  selectedMode: SelectedMode;
-  mode: Mode;
-  baseHue: number;
   baseChroma: number;
+  baseHue: number;
   contrast: number;
+  hueOffsetCode: number;
+  hueOffsetVisitedLink: number;
+  mode: Mode;
+  selectedMode: SelectedMode;
 }

@@ -13,6 +13,8 @@
   --t-colour-base-component-high-contrast: unset; /* Set by JS */
   --t-colour-base-component-low-contrast: unset; /* Set by JS */
   --t-colour-base-component: unset; /* Set by JS */
+  --t-colour-base-hue-offset-code: unset; /* Set by JS */
+  --t-colour-base-hue-offset-visited-link: unset; /* Set by JS */
   --t-colour-grey-high-contrast: unset; /* Set by JS */
   --t-colour-grey-low-contrast: unset; /* Set by JS */
   --t-colour-grey: unset; /* Set by JS */
@@ -22,11 +24,12 @@
   --t-default-font-size: 1rem;
   --t-font-colour-default: var(--t-colour-full-contrast);
   --t-font-family-default: ui-sans-serif, Verdana, Arial, Helvetica, sans-serif;
+  --t-font-size-default: 1rem;
   --t-heading-font-family: var(--t-font-family-default);
   --t-heading-size-1: 2em;
   --t-heading-size-2: 1.5em;
-  --t-heading-size-3: 1.25em;
-  --t-heading-size-4: 1em;
+  --t-heading-size-3: 1.5em;
+  --t-heading-size-4: 1.3em;
   --t-heading-size-5: 1em;
   --t-heading-size-6: 1em;
   --t-heading-spacing-bottom-1: calc(var(--t-heading-size-1) * var(--t-heading-spacing-bottom-factor));
@@ -44,11 +47,12 @@
   --t-heading-spacing-top-6: calc(var(--t-heading-size-6) * var(--t-heading-spacing-top-factor));
   --t-heading-spacing-top-factor: 1;
   --t-leftbar-width: 240px;
+  --t-line-height-paragraph: 1.75;
   --t-navbar-item-border-radius: 8px;
   --t-page-max-width: 1200px;
   --t-panel-background-colour: color-mix(in oklab, var(--t-colour-base-app) 12%, var(--t-colour-grey-low-contrast));
   --t-panel-heading-colour: oklch(from var(--t-colour-base-app) l calc(c*0.5) h);
-  --t-popover-alpha: 0.9;
+  --t-popover-alpha: 0.75;
   --t-popover-backdrop-filter: blur(12px);
   --t-popover-background-colour-base: color-mix(in oklab, var(--t-colour-grey) calc(var(--t-popover-alpha) * 100%), transparent);
   --t-popover-border-radius: var(--t-border-radius-default);
@@ -62,8 +66,8 @@
   --t-transition-duration-long: 0.4s;
   --t-transition-duration-medium: 0.2s;
   --t-transition-duration-short: 0.1s;
-  --t-z-index-dropdown-menu: 200;
-  --t-z-index-tooltip: 100;
+  --t-z-index-dropdown-menu: 2000;
+  --t-z-index-tooltip: 3000;
 
   color: var(--t-font-colour-default);
   font-family: var(--t-default-font-family);
@@ -97,8 +101,9 @@
 }
 
 p {
-  line-height: 1.75;
+  line-height: var(--t-line-height-paragraph);
   margin: 1em 0;
+  font-size: var(--t-font-size-default);
 }
 
 li {

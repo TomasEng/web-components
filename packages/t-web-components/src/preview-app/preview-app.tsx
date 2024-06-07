@@ -13,12 +13,16 @@ export class PreviewApp {
   @State() contrast = 1;
   @State() urlHash = window.location.hash;
   @State() url = new URL(window.location.href);
+  @State() hueOffsetCode = 180;
+  @State() hueOffsetVisitedLink = 30;
 
   handleColourSettingsChange = ({ detail }: PageComponentsCustomEvent<ColourSettings>) => {
     this.baseHue = detail.hue;
     this.baseChroma = detail.chroma;
     this.numberOfHues = detail.numberOfHues;
     this.contrast = detail.contrast;
+    this.hueOffsetCode = detail.hueOffsetCode;
+    this.hueOffsetVisitedLink = detail.hueOffsetVisitedLink;
   };
 
   connectedCallback() {
@@ -47,9 +51,17 @@ export class PreviewApp {
       chroma: this.baseChroma,
       numberOfHues: this.numberOfHues,
       contrast: this.contrast,
+      hueOffsetVisitedLink: this.hueOffsetVisitedLink,
+      hueOffsetCode: this.hueOffsetCode,
     };
     return (
-      <t-context baseHue={this.baseHue} baseChroma={this.baseChroma} contrast={this.contrast}>
+      <t-context
+        baseHue={this.baseHue}
+        baseChroma={this.baseChroma}
+        contrast={this.contrast}
+        hueOffsetCode={this.hueOffsetCode}
+        hueOffsetVisitedLink={this.hueOffsetVisitedLink}
+      >
         <t-layout>
           <t-layout-header
             slot='header'

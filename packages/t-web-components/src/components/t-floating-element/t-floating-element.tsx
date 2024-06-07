@@ -1,5 +1,6 @@
 import { Component, Host, h, Prop, Element, Event, EventEmitter } from '@stencil/core';
 import { computePosition, flip, shift } from '@floating-ui/dom';
+import { TFloatingElementPlacement } from '../../types/TFloatingElementPlacement';
 
 @Component({
   tag: 't-floating-element',
@@ -8,7 +9,7 @@ import { computePosition, flip, shift } from '@floating-ui/dom';
 })
 export class TFloatingElement {
 
-  @Prop() placement: 'top' | 'right' | 'bottom' | 'left' = 'top';
+  @Prop() placement: TFloatingElementPlacement = 'top';
   @Prop() visible: boolean = false;
   @Element() element: HTMLElement;
   @Event() clickOutside: EventEmitter<MouseEvent>;

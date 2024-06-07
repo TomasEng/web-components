@@ -5,6 +5,13 @@
 <!-- Auto Generated Below -->
 
 
+## Properties
+
+| Property    | Attribute   | Description | Type     | Default |
+| ----------- | ----------- | ----------- | -------- | ------- |
+| `hueoffset` | `hueoffset` |             | `number` | `0`     |
+
+
 ## Dependencies
 
 ### Used by

@@ -37,51 +37,51 @@
 }
 
 .level-3 {
+  border-bottom: 1px solid var(--t-colour-grey);
   font-size: var(--t-heading-size-3);
-  font-weight: bold;
+  font-weight: normal;
   margin-bottom: var(--t-heading-spacing-bottom-3);
   margin-top: var(--t-heading-spacing-top-3);
 }
 
 .level-3 h3 {
-  font-weight: bold;
+  font-weight: normal;
 }
 
 .level-4 {
   font-size: var(--t-heading-size-4);
-  font-weight: bold;
+  font-weight: normal;
   margin-bottom: var(--t-heading-spacing-bottom-4);
   margin-top: var(--t-heading-spacing-top-4);
 }
 
 .level-4 h4 {
-  font-weight: bold;
+  font-weight: normal;
 }
 
 .level-5 {
   font-size: var(--t-heading-size-5);
-  font-weight: normal;
-  font-style: italic;
+  font-weight: bold;
   margin-bottom: var(--t-heading-spacing-bottom-5);
   margin-top: var(--t-heading-spacing-top-5);
 }
 
 .level-5 h5 {
-  font-style: italic;
-  font-weight: normal;
-  text-decoration: underline var(--t-colour-grey);
+  font-weight: bold;
 }
 
 .level-6 {
   font-size: var(--t-heading-size-6);
+  font-style: italic;
   font-weight: normal;
   margin-bottom: var(--t-heading-spacing-bottom-6);
   margin-top: var(--t-heading-spacing-top-6);
 }
 
 .level-6 h6 {
+  font-style: italic;
   font-weight: normal;
-  text-decoration: underline dotted var(--t-colour-grey);
+  text-decoration: underline var(--t-colour-grey);
 }
 
 h1, h2, h3, h4, h5, h6 {

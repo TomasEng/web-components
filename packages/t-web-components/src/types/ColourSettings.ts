@@ -3,4 +3,6 @@ export type ColourSettings = {
   chroma: number;
   numberOfHues: number;
   contrast: number;
+  hueOffsetVisitedLink: number;
+  hueOffsetCode: number;
 }

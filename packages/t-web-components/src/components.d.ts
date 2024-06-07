@@ -20,6 +20,7 @@ import { TCodeDisplayMode } from "./components/t-code/TCodeDisplayMode";
 import { SelectedMode } from "./types/Mode";
 import { VNode } from "@stencil/core";
 import { TDropdownMenuItem } from "./components/t-dropdown/TDropdownMenuItem";
+import { TFloatingElementPlacement } from "./types/TFloatingElementPlacement";
 import { ResizeMode } from "./types/ResizeMode";
 import { TNavMenuItem } from "./components/t-layout-header/TNavMenuItem";
 import { TLayoutMainText } from "./components/t-layout-main/t-layout-main.text";
@@ -40,6 +41,7 @@ export { TCodeDisplayMode } from "./components/t-code/TCodeDisplayMode";
 export { SelectedMode } from "./types/Mode";
 export { VNode } from "@stencil/core";
 export { TDropdownMenuItem } from "./components/t-dropdown/TDropdownMenuItem";
+export { TFloatingElementPlacement } from "./types/TFloatingElementPlacement";
 export { ResizeMode } from "./types/ResizeMode";
 export { TNavMenuItem } from "./components/t-layout-header/TNavMenuItem";
 export { TLayoutMainText } from "./components/t-layout-main/t-layout-main.text";
@@ -108,6 +110,8 @@ export namespace Components {
         "baseChroma": number;
         "baseHue": number;
         "contrast": number;
+        "hueOffsetCode": number;
+        "hueOffsetVisitedLink": number;
         "selectMode": (mode: SelectedMode) => Promise<void>;
     }
     interface TDetails {
@@ -125,7 +129,7 @@ export namespace Components {
         "legend": string;
     }
     interface TFloatingElement {
-        "placement": 'top' | 'right' | 'bottom' | 'left';
+        "placement": TFloatingElementPlacement;
         "visible": boolean;
     }
     interface THeading {
@@ -134,6 +138,7 @@ export namespace Components {
     interface THuePicker {
         "label": string;
         "value": number;
+        "withOffset": boolean;
     }
     interface TIframe {
         "resize": ResizeMode;
@@ -232,6 +237,7 @@ export namespace Components {
         "value": string;
     }
     interface TTooltip {
+        "placement": TFloatingElementPlacement;
     }
     interface TTree {
         "getAllItems": () => Promise<NodeListOf<HTMLTTreeItemElement>>;
@@ -843,6 +849,8 @@ declare namespace LocalJSX {
         "baseChroma"?: number;
         "baseHue"?: number;
         "contrast"?: number;
+        "hueOffsetCode"?: number;
+        "hueOffsetVisitedLink"?: number;
     }
     interface TDetails {
         "openSummary"?: string;
@@ -860,7 +868,7 @@ declare namespace LocalJSX {
     }
     interface TFloatingElement {
         "onClickOutside"?: (event: TFloatingElementCustomEvent<MouseEvent>) => void;
-        "placement"?: 'top' | 'right' | 'bottom' | 'left';
+        "placement"?: TFloatingElementPlacement;
         "visible"?: boolean;
     }
     interface THeading {
@@ -870,6 +878,7 @@ declare namespace LocalJSX {
         "label"?: string;
         "onHueChange"?: (event: THuePickerCustomEvent<number>) => void;
         "value"?: number;
+        "withOffset"?: boolean;
     }
     interface TIframe {
         "resize"?: ResizeMode;
@@ -972,6 +981,7 @@ declare namespace LocalJSX {
         "value"?: string;
     }
     interface TTooltip {
+        "placement"?: TFloatingElementPlacement;
     }
     interface TTree {
         "label"?: string;

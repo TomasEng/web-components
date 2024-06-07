@@ -1,5 +1,6 @@
-import { Component, h, Prop, Event, EventEmitter } from '@stencil/core';
+import { Component, h, Prop, Event, EventEmitter, Element } from '@stencil/core';
 import { TSliderCustomEvent } from '../../components';
+import state from '../../store';
 
 @Component({
   tag: 't-hue-picker',
@@ -8,10 +9,19 @@ import { TSliderCustomEvent } from '../../components';
 })
 export class THuePicker {
 
+  @Element() element: HTMLTHuePickerElement;
+
   @Prop() label: string;
   @Prop() value: number;
+  @Prop() withOffset: boolean = false;
 
   @Event() hueChange: EventEmitter<number>;
+
+  connectedCallback() {
+    if (this.withOffset) {
+      this.element.style.setProperty('--hue-offset', `var(--t-colour-base-app-hue)`);
+    }
+  }
 
   handleSliderChange = (event: TSliderCustomEvent<number>) =>
     this.hueChange.emit(event.detail);

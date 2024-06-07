@@ -5,7 +5,7 @@ import { asPercents } from '../../utils/utils';
 import {
   BASE_COLOUR_LUMINANCE_DARK_MODE,
   BASE_COLOUR_LUMINANCE_LIGHT_MODE,
-  DARK_MODE_BACKGROUND_LUMINANCE,
+  DARK_MODE_BACKGROUND_LUMINANCE, DEFAULT_HUE_OFFSET_CODE, DEFAULT_HUE_OFFSET_VISITED_LINK,
   HIGH_CONTRAST,
   INPUT_FIELD_TO_PAGE_CONTRAST,
   LIGHT_MODE_BACKGROUND_LUMINANCE,
@@ -27,6 +27,8 @@ export class TContext {
   @Prop() baseHue: number = 263;
   @Prop() baseChroma: number = 0.4;
   @Prop() contrast: number = 1;
+  @Prop() hueOffsetCode: number = DEFAULT_HUE_OFFSET_CODE;
+  @Prop() hueOffsetVisitedLink: number = DEFAULT_HUE_OFFSET_VISITED_LINK;
 
   @Method() async selectMode(mode: SelectedMode) {
     selectMode(mode);
@@ -38,13 +40,15 @@ export class TContext {
     state.baseHue = this.baseHue;
     state.baseChroma = this.baseChroma;
     state.contrast = this.contrast;
+    state.hueOffsetCode = this.hueOffsetCode;
+    state.hueOffsetVisitedLink = this.hueOffsetVisitedLink;
   }
 
   render() {
     const modeClass = state.mode;
     const baseColour = this.baseColour();
     const { hue, chroma, l } = baseColour.getOklch();
-    this.setCssVariable('--t-colour-base-app-hue', hue.toFixed() + 'deg');
+    this.setCssVariable('--t-colour-base-app-hue', hue.toFixed());
     this.setCssVariable('--t-colour-base-app-chroma', chroma.toFixed(2));
     this.setCssVariable('--t-colour-page-background', this.pageBackgroundColour().getOklchCode());
     this.setCssVariable('--t-colour-base-app-lightness', asPercents(l));
@@ -55,6 +59,8 @@ export class TContext {
     this.setCssVariable('--t-colour-grey-high-contrast', this.greyColourHighContrast().getOklchCode());
     this.setCssVariable('--t-colour-grey-low-contrast', this.greyColourLowContrast().getOklchCode());
     this.setCssVariable('--t-colour-input-field-background', this.inputFieldColour().getHexCode());
+    this.setCssVariable('--t-colour-base-hue-offset-code', this.hueOffsetCode.toFixed());
+    this.setCssVariable('--t-colour-base-hue-offset-visited-link', this.hueOffsetVisitedLink.toFixed());
     this.element.style.setProperty('filter', `contrast(${this.contrast})`);
 
     return <div class={'root ' + modeClass}>

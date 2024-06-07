@@ -37,6 +37,16 @@ export class ComponentColourSettings {
     this.changeSettings.emit(newSettings);
   };
 
+  handleVisitdedLinkHueChange = ({ detail: hueOffsetVisitedLink }: THuePickerCustomEvent<number>) => {
+    const newSettings: ColourSettings = { ...this.settings, hueOffsetVisitedLink };
+    this.changeSettings.emit(newSettings);
+  };
+
+  handleCodeHueChange = ({ detail: hueOffsetCode }: THuePickerCustomEvent<number>) => {
+    const newSettings: ColourSettings = { ...this.settings, hueOffsetCode };
+    this.changeSettings.emit(newSettings);
+  };
+
   render() {
     return (
       <t-fieldset legend='Innstillinger'>
@@ -62,6 +72,18 @@ export class ComponentColourSettings {
             onSliderChange={this.handleContrastChange}
             step={0.01}
             value={this.settings.contrast}
+          />
+          <t-hue-picker
+            label="Fargetone for besøkte lenker"
+            onHueChange={this.handleVisitdedLinkHueChange}
+            value={this.settings.hueOffsetVisitedLink}
+            withOffset={true}
+          />
+          <t-hue-picker
+            label="Fargetone for kode"
+            onHueChange={this.handleCodeHueChange}
+            value={this.settings.hueOffsetCode}
+            withOffset={true}
           />
         </t-column>
       </t-fieldset>

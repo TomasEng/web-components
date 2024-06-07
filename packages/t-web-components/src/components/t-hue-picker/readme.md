@@ -7,10 +7,11 @@
 
 ## Properties
 
-| Property | Attribute | Description | Type     | Default     |
-| -------- | --------- | ----------- | -------- | ----------- |
-| `label`  | `label`   |             | `string` | `undefined` |
-| `value`  | `value`   |             | `number` | `undefined` |
+| Property     | Attribute     | Description | Type      | Default     |
+| ------------ | ------------- | ----------- | --------- | ----------- |
+| `label`      | `label`       |             | `string`  | `undefined` |
+| `value`      | `value`       |             | `number`  | `undefined` |
+| `withOffset` | `with-offset` |             | `boolean` | `false`     |
 
 
 ## Events

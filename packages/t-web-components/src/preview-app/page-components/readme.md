@@ -7,16 +7,16 @@
 
 ## Properties
 
-| Property         | Attribute | Description | Type                                                                       | Default     |
-| ---------------- | --------- | ----------- | -------------------------------------------------------------------------- | ----------- |
-| `colourSettings` | --        |             | `{ hue: number; chroma: number; numberOfHues: number; contrast: number; }` | `undefined` |
+| Property         | Attribute | Description | Type                                                                                                                            | Default     |
+| ---------------- | --------- | ----------- | ------------------------------------------------------------------------------------------------------------------------------- | ----------- |
+| `colourSettings` | --        |             | `{ hue: number; chroma: number; numberOfHues: number; contrast: number; hueOffsetVisitedLink: number; hueOffsetCode: number; }` | `undefined` |
 
 
 ## Events
 
-| Event                  | Description | Type                                                                                    |
-| ---------------------- | ----------- | --------------------------------------------------------------------------------------- |
-| `colourSettingsChange` |             | `CustomEvent<{ hue: number; chroma: number; numberOfHues: number; contrast: number; }>` |
+| Event                  | Description | Type                                                                                                                                         |
+| ---------------------- | ----------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| `colourSettingsChange` |             | `CustomEvent<{ hue: number; chroma: number; numberOfHues: number; contrast: number; hueOffsetVisitedLink: number; hueOffsetCode: number; }>` |
 
 
 ## Dependencies

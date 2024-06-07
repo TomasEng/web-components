@@ -7,11 +7,13 @@
 
 ## Properties
 
-| Property     | Attribute     | Description | Type     | Default |
-| ------------ | ------------- | ----------- | -------- | ------- |
-| `baseChroma` | `base-chroma` |             | `number` | `0.4`   |
-| `baseHue`    | `base-hue`    |             | `number` | `263`   |
-| `contrast`   | `contrast`    |             | `number` | `1`     |
+| Property               | Attribute                 | Description | Type     | Default                           |
+| ---------------------- | ------------------------- | ----------- | -------- | --------------------------------- |
+| `baseChroma`           | `base-chroma`             |             | `number` | `0.4`                             |
+| `baseHue`              | `base-hue`                |             | `number` | `263`                             |
+| `contrast`             | `contrast`                |             | `number` | `1`                               |
+| `hueOffsetCode`        | `hue-offset-code`         |             | `number` | `DEFAULT_HUE_OFFSET_CODE`         |
+| `hueOffsetVisitedLink` | `hue-offset-visited-link` |             | `number` | `DEFAULT_HUE_OFFSET_VISITED_LINK` |
 
 
 ## Methods

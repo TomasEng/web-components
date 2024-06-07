@@ -8,6 +8,7 @@
     var(--t-popover-shadow);
   color: var(--t-colour-full-contrast);
   padding: var(--t-spacing-in-group);
+  position: relative;
   z-index: var(--t-z-index-tooltip);
 }
 

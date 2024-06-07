@@ -7,11 +7,11 @@
 
 ## Properties
 
-| Property         | Attribute | Description | Type                                                                       | Default     |
-| ---------------- | --------- | ----------- | -------------------------------------------------------------------------- | ----------- |
-| `colourSettings` | --        |             | `{ hue: number; chroma: number; numberOfHues: number; contrast: number; }` | `undefined` |
-| `examples`       | --        |             | `ComponentExample[]`                                                       | `undefined` |
-| `name`           | `name`    |             | `string`                                                                   | `undefined` |
+| Property         | Attribute | Description | Type                                                                                                                            | Default     |
+| ---------------- | --------- | ----------- | ------------------------------------------------------------------------------------------------------------------------------- | ----------- |
+| `colourSettings` | --        |             | `{ hue: number; chroma: number; numberOfHues: number; contrast: number; hueOffsetVisitedLink: number; hueOffsetCode: number; }` | `undefined` |
+| `examples`       | --        |             | `ComponentExample[]`                                                                                                            | `undefined` |
+| `name`           | `name`    |             | `string`                                                                                                                        | `undefined` |
 
 
 ## Dependencies

@@ -14,3 +14,5 @@ export const PATH_ABOUT = 'om';
 export const TOOLTIP_HIDE_DELAY_MILLISECONDS = 250;
 export const SOURCE_ID_PREFIX = 'src_';
 export const ACTION_CONFIRMATION_PERIOD_MILLISECONDS = 500;
+export const DEFAULT_HUE_OFFSET_CODE = 180;
+export const DEFAULT_HUE_OFFSET_VISITED_LINK = 30;

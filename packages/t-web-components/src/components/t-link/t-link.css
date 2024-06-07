@@ -8,7 +8,7 @@
 }
 
 .link:visited {
-  color: oklch(from var(--colour) l c calc(h + 30));
+  color: oklch(from var(--colour) l c calc(h + var(--t-colour-base-hue-offset-visited-link)));
 }
 
 .link[href^="#"]:visited {

@@ -15,6 +15,8 @@ const { state } = createStore<GlobalState>({
   baseHue: 160,
   baseChroma: 0.4,
   contrast: 1,
+  hueOffsetVisitedLink: 30,
+  hueOffsetCode: 180,
 });
 
 window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
