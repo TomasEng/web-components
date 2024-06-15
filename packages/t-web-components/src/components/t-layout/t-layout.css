@@ -1,17 +1,21 @@
 .wrapper {
   width: 100%;
-  background-color: oklch(
+  --background-colour: oklch(
     calc(0.5 + var(--t-mode-colour-scaling) * 0.3)
-    calc(var(--t-colour-base-app-chroma) * 0.1)
+    calc(var(--t-colour-base-app-chroma) * 0.3)
     var(--t-colour-base-app-hue)
   );
+  background-image: conic-gradient(
+    in oklch longer hue,
+    var(--background-colour) 0deg,
+    oklch(from var(--background-colour) l c calc(h + 360)) 360deg
+  );
+  background-attachment: fixed;
 }
 
 .layout {
   --background-base: var(--t-colour-page-background);
   --main-background: color-mix(in oklch, var(--background-base) 90%, var(--t-colour-app-background));
-  --top-shadow: inset color-mix(in oklch, var(--background-base) 90%, white) 0 1px 0;
-  --bottom-shadow: inset color-mix(in oklch, var(--background-base) 90%, black) 0 -1px 0;
   --back-shadow: #0003 0 0 4rem;
   box-sizing: border-box;
   color: var(--t-font-colour-default);

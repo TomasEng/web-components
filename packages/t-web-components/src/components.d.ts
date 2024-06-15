@@ -237,6 +237,7 @@ export namespace Components {
         "value": string;
     }
     interface TTooltip {
+        "neverclose": boolean;
         "placement": TFloatingElementPlacement;
     }
     interface TTree {
@@ -981,6 +982,7 @@ declare namespace LocalJSX {
         "value"?: string;
     }
     interface TTooltip {
+        "neverclose"?: boolean;
         "placement"?: TFloatingElementPlacement;
     }
     interface TTree {

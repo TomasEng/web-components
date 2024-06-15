@@ -50,7 +50,7 @@ header {
             background-color: var(--main-background);
             border-top-left-radius: var(--t-navbar-item-border-radius);
             border-top-right-radius: var(--t-navbar-item-border-radius);
-            box-shadow: var(--top-shadow);
+            box-shadow: var(--t-box-shadow-inset-3d-top);
             box-sizing: border-box;
             color: var(--t-colour-base-app-high-contrast);
             display: flex;

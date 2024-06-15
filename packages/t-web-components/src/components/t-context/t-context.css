@@ -2,6 +2,9 @@
   --t-border-radius-default: 6px;
   --t-border-radius-small: 3px;
   --t-box-shadow-active: color-mix(in oklab, var(--t-colour-base-app-high-contrast) 20%, transparent) 0 0 24px;
+  --t-box-shadow-inset-3d-bottom: color-mix(in oklab, transparent 75%, black) inset 0 -1px;
+  --t-box-shadow-inset-3d-top: color-mix(in oklab, transparent 65%, white) inset 0 1px;
+  --t-box-shadow-inset-3d: var(--t-box-shadow-inset-3d-top), var(--t-box-shadow-inset-3d-bottom);
   --t-clickable-area-size: 44px;
   --t-colour-app-background: color-mix(in oklab, var(--t-colour-page-background) 90%, black);
   --t-colour-base-app-chroma: unset; /* Set by JS */
@@ -100,7 +103,7 @@
   --t-mode-colour-scaling: -1;
 }
 
-p {
+p, dd {
   line-height: var(--t-line-height-paragraph);
   margin: 1em 0;
   font-size: var(--t-font-size-default);

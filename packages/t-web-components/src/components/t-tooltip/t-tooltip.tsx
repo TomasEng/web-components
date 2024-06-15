@@ -12,6 +12,7 @@ export class TTooltip {
   @Element() element: HTMLElement;
 
   @Prop() placement: TFloatingElementPlacement = 'bottom';
+  @Prop() neverclose: boolean = false; // Snarvei for testing og feilsøking, ikke bruk i produksjon
 
   @State() open: boolean = false;
 
@@ -34,7 +35,9 @@ export class TTooltip {
   }
 
   closeTooltip() {
-    this.open = false;
+    if (!this.neverclose) {
+      this.open = false;
+    }
   }
 
   closeOnEscape(event: KeyboardEvent) {

@@ -9,15 +9,11 @@
 }
 
 .main .leftbar {
-  --background-base: color-mix(in oklch, var(--t-colour-page-background) 95%, var(--t-colour-full-contrast));
-  --main-background: color-mix(in oklch, var(--background-base) 90%, var(--t-colour-app-background));
-  --top-shadow: inset color-mix(in oklab, var(--background-base) 90%, white) 0 1px 0;
-  --bottom-shadow: inset color-mix(in oklab, var(--background-base) 90%, black) 0 -1px 0;
-  /* --main-background, --top-shadow and --bottom-shadow are already defined at a higher level, but the change of --background-base does not change their values unless they are redefined here for some reason */
+  --main-background: color-mix(in oklab, var(--t-colour-grey-low-contrast) 80%, transparent);
   background-color: var(--main-background);
   border-bottom-left-radius: var(--border-radius);
   border-top-left-radius: var(--border-radius);
-  box-shadow: var(--top-shadow), var(--bottom-shadow);
+  box-shadow: var(--t-box-shadow-inset-3d);
   box-sizing: border-box;
   width: var(--t-leftbar-width);
 
@@ -41,7 +37,7 @@
   background-color: var(--main-background);
   border-bottom-right-radius: var(--border-radius);
   border-top-right-radius: var(--border-radius);
-  box-shadow: var(--top-shadow), var(--bottom-shadow);
+  box-shadow: var(--t-box-shadow-inset-3d);
   flex: 1;
   min-width: 0;
   padding: 1rem;

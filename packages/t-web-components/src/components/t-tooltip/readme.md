@@ -7,9 +7,10 @@
 
 ## Properties
 
-| Property    | Attribute   | Description | Type                                     | Default    |
-| ----------- | ----------- | ----------- | ---------------------------------------- | ---------- |
-| `placement` | `placement` |             | `"bottom" \| "left" \| "right" \| "top"` | `'bottom'` |
+| Property     | Attribute    | Description | Type                                     | Default    |
+| ------------ | ------------ | ----------- | ---------------------------------------- | ---------- |
+| `neverclose` | `neverclose` |             | `boolean`                                | `false`    |
+| `placement`  | `placement`  |             | `"bottom" \| "left" \| "right" \| "top"` | `'bottom'` |
 
 
 ## Dependencies
