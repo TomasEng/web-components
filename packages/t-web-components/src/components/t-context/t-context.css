@@ -109,6 +109,23 @@ p, dd {
   font-size: var(--t-font-size-default);
 }
 
-li {
-  line-height: 1.75;
+a {
+  --colour: var(--t-colour-base-app-high-contrast);
+  text-decoration: none;
+
+  &:link {
+    color: var(--colour);
+  }
+
+  &:visited {
+    color: oklch(from var(--colour) l c calc(h + var(--t-colour-base-hue-offset-visited-link)));
+  }
+
+  &[href^="#"]:visited {
+    color: var(--colour);
+  }
+
+  &:hover {
+    text-decoration: underline;
+  }
 }

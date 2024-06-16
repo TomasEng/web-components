@@ -23,6 +23,7 @@ import { tTreeDemo } from '../../components/t-tree/t-tree.demo';
 import { tTableOfContentsDemo } from '../../components/t-table-of-contents/t-table-of-contents.demo';
 import { tIframeDemo } from '../../components/t-iframe/t-iframe.demo';
 import { tHeadingDemo } from '../../components/t-heading/t-heading.demo';
+import { tBreadcrumbsDemo } from '../../components/t-breadcrumbs/t-breadcrumbs.demo';
 
 @Component({
   tag: 'page-components',
@@ -106,6 +107,13 @@ export class PageComponents {
           <component-documentation
             name='Nedtrekksmeny'
             examples={[{ code: tDropdownMenuDemo.simple, previewMode: 'hue' }]}
+            colourSettings={this.colourSettings}
+          />
+          <component-documentation
+            name='Brødsmulesti'
+            examples={[
+              { code: tBreadcrumbsDemo.default, previewMode: 'inline' },
+            ]}
             colourSettings={this.colourSettings}
           />
           <component-documentation

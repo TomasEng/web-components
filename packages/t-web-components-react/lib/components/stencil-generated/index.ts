@@ -18,6 +18,7 @@ export const PreviewComponent = /*@__PURE__*/createReactComponent<JSX.PreviewCom
 export const PreviewIframe = /*@__PURE__*/createReactComponent<JSX.PreviewIframe, HTMLPreviewIframeElement>('preview-iframe');
 export const TArticle = /*@__PURE__*/createReactComponent<JSX.TArticle, HTMLTArticleElement>('t-article');
 export const TArticleList = /*@__PURE__*/createReactComponent<JSX.TArticleList, HTMLTArticleListElement>('t-article-list');
+export const TBreadcrumbs = /*@__PURE__*/createReactComponent<JSX.TBreadcrumbs, HTMLTBreadcrumbsElement>('t-breadcrumbs');
 export const TButton = /*@__PURE__*/createReactComponent<JSX.TButton, HTMLTButtonElement>('t-button');
 export const TCode = /*@__PURE__*/createReactComponent<JSX.TCode, HTMLTCodeElement>('t-code');
 export const TColumn = /*@__PURE__*/createReactComponent<JSX.TColumn, HTMLTColumnElement>('t-column');

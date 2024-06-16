@@ -29,7 +29,7 @@ export class TLayoutHeader {
       <div class="title">{this.siteTitle}</div>
       <div class="collapsible-content">
         <div class="collapsible-content-inner">
-          <Navbar items={this.navItems} />
+          <Navbar items={this.navItems}/>
           <div class="toolbar">
             <t-mode-switcher label="Fargemodus"/>
           </div>

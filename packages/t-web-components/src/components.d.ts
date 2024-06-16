@@ -14,6 +14,7 @@ import { TSourceItemList } from "./types/TSourceItemList";
 import { TArticleText } from "./components/t-article/t-article.text";
 import { ComponentHue } from "./types/ComponentHue";
 import { TArticleListItem } from "./components/t-article-list/TArticleListItem";
+import { TBreadcrumbsText } from "./components/t-breadcrumbs/t-breadcrumbs.text";
 import { ButtonAttributes } from "./types/HTMLAttributes";
 import { ButtonVariant } from "./components/t-button/ButtonVariant";
 import { TCodeDisplayMode } from "./components/t-code/TCodeDisplayMode";
@@ -26,6 +27,9 @@ import { TNavMenuItem } from "./components/t-layout-header/TNavMenuItem";
 import { TLayoutMainText } from "./components/t-layout-main/t-layout-main.text";
 import { TSelectOption } from "./components/t-select/TSelectOption";
 import { TSourceItem } from "./types/TSourceItem";
+import { TSourceText } from "./components/t-source/t-source.text";
+import { TSourceListText } from "./components/t-source-list/t-source-list.text";
+import { TSpinnerText } from "./components/t-spinner/t-spinner.text";
 export { ColourSettings } from "./types/ColourSettings";
 export { ComponentExample } from "./preview-app/component-documentation/ComponentExample";
 export { ComponentTestCode } from "./test-utils/ComponentTestCode";
@@ -35,6 +39,7 @@ export { TSourceItemList } from "./types/TSourceItemList";
 export { TArticleText } from "./components/t-article/t-article.text";
 export { ComponentHue } from "./types/ComponentHue";
 export { TArticleListItem } from "./components/t-article-list/TArticleListItem";
+export { TBreadcrumbsText } from "./components/t-breadcrumbs/t-breadcrumbs.text";
 export { ButtonAttributes } from "./types/HTMLAttributes";
 export { ButtonVariant } from "./components/t-button/ButtonVariant";
 export { TCodeDisplayMode } from "./components/t-code/TCodeDisplayMode";
@@ -47,6 +52,9 @@ export { TNavMenuItem } from "./components/t-layout-header/TNavMenuItem";
 export { TLayoutMainText } from "./components/t-layout-main/t-layout-main.text";
 export { TSelectOption } from "./components/t-select/TSelectOption";
 export { TSourceItem } from "./types/TSourceItem";
+export { TSourceText } from "./components/t-source/t-source.text";
+export { TSourceListText } from "./components/t-source-list/t-source-list.text";
+export { TSpinnerText } from "./components/t-spinner/t-spinner.text";
 export namespace Components {
     interface ComponentColourSettings {
         "settings": ColourSettings;
@@ -89,6 +97,9 @@ export namespace Components {
     interface TArticleList {
         "hueoffset": ComponentHue;
         "items": TArticleListItem[];
+    }
+    interface TBreadcrumbs {
+        "text": TBreadcrumbsText;
     }
     interface TButton {
         "buttonAttributes": ButtonAttributes;
@@ -205,18 +216,19 @@ export namespace Components {
         "value": number;
     }
     interface TSource {
-        "pagesText": (pages: string) => string;
         "source": TSourceItem;
+        "text": TSourceText;
     }
     interface TSourceList {
         "sources": TSourceItemList;
+        "text": TSourceListText;
     }
     interface TSourceRef {
         "getSourceId": () => Promise<string>;
         "sourceId": string;
     }
     interface TSpinner {
-        "spinnerTitle": string;
+        "text": TSpinnerText;
     }
     interface TSwitch {
         "checked": boolean;
@@ -405,6 +417,12 @@ declare global {
     var HTMLTArticleListElement: {
         prototype: HTMLTArticleListElement;
         new (): HTMLTArticleListElement;
+    };
+    interface HTMLTBreadcrumbsElement extends Components.TBreadcrumbs, HTMLStencilElement {
+    }
+    var HTMLTBreadcrumbsElement: {
+        prototype: HTMLTBreadcrumbsElement;
+        new (): HTMLTBreadcrumbsElement;
     };
     interface HTMLTButtonElementEventMap {
         "buttonClick": MouseEvent;
@@ -749,6 +767,7 @@ declare global {
         "preview-iframe": HTMLPreviewIframeElement;
         "t-article": HTMLTArticleElement;
         "t-article-list": HTMLTArticleListElement;
+        "t-breadcrumbs": HTMLTBreadcrumbsElement;
         "t-button": HTMLTButtonElement;
         "t-code": HTMLTCodeElement;
         "t-column": HTMLTColumnElement;
@@ -829,6 +848,9 @@ declare namespace LocalJSX {
     interface TArticleList {
         "hueoffset"?: ComponentHue;
         "items"?: TArticleListItem[];
+    }
+    interface TBreadcrumbs {
+        "text"?: TBreadcrumbsText;
     }
     interface TButton {
         "buttonAttributes"?: ButtonAttributes;
@@ -949,17 +971,18 @@ declare namespace LocalJSX {
         "value"?: number;
     }
     interface TSource {
-        "pagesText"?: (pages: string) => string;
         "source"?: TSourceItem;
+        "text"?: TSourceText;
     }
     interface TSourceList {
         "sources"?: TSourceItemList;
+        "text"?: TSourceListText;
     }
     interface TSourceRef {
         "sourceId"?: string;
     }
     interface TSpinner {
-        "spinnerTitle"?: string;
+        "text"?: TSpinnerText;
     }
     interface TSwitch {
         "checked"?: boolean;
@@ -1005,6 +1028,7 @@ declare namespace LocalJSX {
         "preview-iframe": PreviewIframe;
         "t-article": TArticle;
         "t-article-list": TArticleList;
+        "t-breadcrumbs": TBreadcrumbs;
         "t-button": TButton;
         "t-code": TCode;
         "t-column": TColumn;
@@ -1057,6 +1081,7 @@ declare module "@stencil/core" {
             "preview-iframe": LocalJSX.PreviewIframe & JSXBase.HTMLAttributes<HTMLPreviewIframeElement>;
             "t-article": LocalJSX.TArticle & JSXBase.HTMLAttributes<HTMLTArticleElement>;
             "t-article-list": LocalJSX.TArticleList & JSXBase.HTMLAttributes<HTMLTArticleListElement>;
+            "t-breadcrumbs": LocalJSX.TBreadcrumbs & JSXBase.HTMLAttributes<HTMLTBreadcrumbsElement>;
             "t-button": LocalJSX.TButton & JSXBase.HTMLAttributes<HTMLTButtonElement>;
             "t-code": LocalJSX.TCode & JSXBase.HTMLAttributes<HTMLTCodeElement>;
             "t-column": LocalJSX.TColumn & JSXBase.HTMLAttributes<HTMLTColumnElement>;

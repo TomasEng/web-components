@@ -22,14 +22,14 @@ export class TArticleList {
   render() {
     return (
       <ul class='t-article-list'>
-        {this.items.map(item => <Item item={item} />)}
+        {this.items.map(item => <Item item={item}/>)}
       </ul>
     );
   }
 }
 
 const Item = ({ item }: { item: TArticleListItem }) => {
-  return <li>
+  return <li key={item.href}>
     <a href={item.href} title={item.title}>
       <span class='item-title'>{item.title}</span>
       <span class='item-intro'>{item.intro}</span>

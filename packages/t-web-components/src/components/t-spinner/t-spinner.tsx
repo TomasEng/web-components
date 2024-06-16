@@ -1,4 +1,6 @@
 import { Component, h, Prop } from '@stencil/core';
+import { TSpinnerText } from './t-spinner.text';
+import defaultText from './t-spinner.text';
 
 @Component({
   tag: 't-spinner',
@@ -7,9 +9,9 @@ import { Component, h, Prop } from '@stencil/core';
 })
 export class TSpinner {
 
-  @Prop() spinnerTitle: string = 'Laster';
+  @Prop() text: TSpinnerText = defaultText;
 
   render() {
-    return <span class='t-spinner' title={this.spinnerTitle}/>;
+    return <span class='t-spinner' title={this.text.title}/>;
   }
 }

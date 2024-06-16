@@ -7,9 +7,9 @@
 
 ## Properties
 
-| Property       | Attribute       | Description | Type     | Default    |
-| -------------- | --------------- | ----------- | -------- | ---------- |
-| `spinnerTitle` | `spinner-title` |             | `string` | `'Laster'` |
+| Property | Attribute | Description | Type                 | Default       |
+| -------- | --------- | ----------- | -------------------- | ------------- |
+| `text`   | --        |             | `{ title: string; }` | `defaultText` |
 
 
 ----------------------------------------------

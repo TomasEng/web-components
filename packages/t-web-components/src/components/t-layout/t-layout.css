@@ -2,7 +2,7 @@
   width: 100%;
   --background-colour: oklch(
     calc(0.5 + var(--t-mode-colour-scaling) * 0.3)
-    calc(var(--t-colour-base-app-chroma) * 0.3)
+    0.05
     var(--t-colour-base-app-hue)
   );
   background-image: conic-gradient(

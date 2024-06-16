@@ -1,6 +1,8 @@
 import { Component, Host, h, Prop, Fragment } from '@stencil/core';
 import { TSourceItem } from '../../types/TSourceItem';
 import { formatAuthors, formatPages } from './t-source-utils';
+import { TSourceText } from './t-source.text';
+import defaultText from './t-source.text';
 
 @Component({
   tag: 't-source',
@@ -10,7 +12,7 @@ import { formatAuthors, formatPages } from './t-source-utils';
 export class TSource {
 
   @Prop() source: TSourceItem;
-  @Prop() pagesText: (pages: string) => string = pages => `s. ${pages}`;
+  @Prop() text: TSourceText = defaultText;
 
   render() {
 
@@ -44,7 +46,7 @@ export class TSource {
           journal={journal}
           pageEnd={pageEnd}
           pageStart={pageStart}
-          pagesText={this.pagesText}
+          pagesText={this.text.pages}
           volume={volume}
         />
         <PlaceAndPublisherInfo city={city} publisher={publisher}/>

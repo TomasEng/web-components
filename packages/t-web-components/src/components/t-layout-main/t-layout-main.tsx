@@ -6,6 +6,7 @@ import defaultText from './t-layout-main.text';
 @Component({
   tag: 't-layout-main',
   styleUrl: 't-layout-main.css',
+  shadow: true,
 })
 export class TLayoutMain {
 
@@ -25,7 +26,7 @@ export class TLayoutMain {
       <main class={`main ${stateClass}`}>
         <div class={`leftbar${this.stickyLeftbar ? ' sticky' : ''}`}>
           <div class="leftbar-content">
-            <slot name="leftbar" />
+            <slot name="leftbar"/>
           </div>
           <button
             class="leftbar-toggle"
@@ -36,7 +37,7 @@ export class TLayoutMain {
           </button>
         </div>
         <div class="content">
-          <slot name='content' />
+          <slot name='content'/>
         </div>
       </main>
     );

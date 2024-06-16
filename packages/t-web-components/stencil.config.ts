@@ -27,4 +27,7 @@ export const config: Config = {
     browserHeadless: "new",
   },
   globalStyle: 'src/style/global.css',
+  extras: {
+    experimentalSlotFixes: true,
+  }
 };

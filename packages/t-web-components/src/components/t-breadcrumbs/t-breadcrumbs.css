@@ -1,0 +1,28 @@
+:host {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--t-spacing-in-group);
+  margin-bottom: var(--t-spacing-default);
+}
+
+#prefix {
+  line-height: 1;
+}
+
+#list {
+  align-items: baseline;
+  display: flex;
+  flex-wrap: wrap;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+
+  ::slotted(li) {
+    line-height: 1;
+  }
+
+  ::slotted(li:not(:last-child))::after {
+    content: '›';
+    margin: 0 var(--t-spacing-in-group);
+  }
+}

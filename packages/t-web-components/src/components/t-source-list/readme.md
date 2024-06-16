@@ -7,9 +7,10 @@
 
 ## Properties
 
-| Property  | Attribute | Description | Type                             | Default |
-| --------- | --------- | ----------- | -------------------------------- | ------- |
-| `sources` | --        |             | `{ [id: string]: TSourceItem; }` | `{}`    |
+| Property  | Attribute | Description | Type                                    | Default       |
+| --------- | --------- | ----------- | --------------------------------------- | ------------- |
+| `sources` | --        |             | `{ [id: string]: TSourceItem; }`        | `{}`          |
+| `text`    | --        |             | `{ pages: (pages: string) => string; }` | `defaultText` |
 
 
 ## Dependencies
