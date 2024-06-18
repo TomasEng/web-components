@@ -36,4 +36,26 @@ export const tHeadingDemo: ComponentDemos = {
       },
     ],
   },
+  withNote: {
+    componentName: 't-heading',
+    props: {
+      level: 1,
+    },
+    children: [
+      'Overskrift 1',
+      {
+        componentName: 'p',
+        props: {
+          slot: 'note'
+        },
+        children: [
+          'Publisert ',
+          {
+            componentName: 'time',
+            children: ['18. juni 2024']
+          }
+        ],
+      },
+    ],
+  }
 }

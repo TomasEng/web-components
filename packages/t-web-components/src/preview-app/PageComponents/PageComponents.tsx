@@ -66,7 +66,8 @@ export const PageComponents = ({colourSettings, onColourSettingsChange}: PageCom
         <component-documentation
           name='Overskrifter'
           examples={[
-            { code: tHeadingDemo.allLevels, previewMode: 'iframe' }
+            { title: 'Alle nivåer', code: tHeadingDemo.allLevels, previewMode: 'iframe' },
+            { title: 'Med tilleggsinformasjon', code: tHeadingDemo.withNote, previewMode: 'iframe' },
           ]}
           colourSettings={colourSettings}
         />

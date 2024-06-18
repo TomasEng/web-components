@@ -7,15 +7,19 @@ import { Component, h, Prop, Element } from '@stencil/core';
 })
 export class THeading {
 
+  @Element() element: HTMLTHeadingElement;
+
   @Prop() level: 1 | 2 | 3 | 4 | 5 | 6 = 1;
-  @Element() element: HTMLElement;
 
   render() {
     return (
-      <div class={`wrapper level-${this.level}`}>
-        {this.renderH()}
-        {this.element.id && <t-link class='hashlink' href={`#${this.element.id}`}>#</t-link>}
-      </div>
+      <header class={`wrapper level-${this.level}`}>
+        <div class='main-line'>
+          {this.renderH()}
+          {this.element.id && <t-link class='hashlink' href={`#${this.element.id}`}>#</t-link>}
+        </div>
+        <slot name='note'/>
+      </header>
     );
   }
 
