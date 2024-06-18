@@ -1,0 +1,75 @@
+li {
+  height: 100%;
+
+  ::slotted(a) {
+    align-items: center;
+    background-color: var(--main-background);
+    border-top-left-radius: var(--t-navbar-item-border-radius);
+    border-top-right-radius: var(--t-navbar-item-border-radius);
+    box-shadow: var(--t-box-shadow-inset-3d-top);
+    box-sizing: border-box;
+    color: var(--t-colour-base-app-high-contrast);
+    display: flex;
+    font-weight: 500;
+    height: calc(100% + 2px);
+    padding: 1rem;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &.open ::slotted(a) {
+    color: var(--t-font-colour-default);
+    position: relative;
+    z-index: 2;
+  }
+
+  &:not(.open) ::slotted(a:hover) {
+    background-color: color-mix(in oklab, var(--t-colour-page-background) 90%, white);
+    color: var(--t-font-colour-default);
+  }
+}
+
+@media (width > 900px) {
+  li:not(.open) {
+    ::slotted(a) {
+      --main-background-colour: color-mix(in oklab, var(--t-colour-page-background) 80%, transparent);
+      background: linear-gradient(
+        to top,
+        color-mix(in oklab, black 12.5%, var(--main-background-colour)),
+        var(--main-background-colour) 4rem
+      );
+    }
+  }
+}
+
+@media (width <= 900px) {
+  li {
+
+    ::slotted(a) {
+      box-sizing: border-box;
+      width: 100vw;
+      border-radius: 0;
+      box-shadow: none;
+      height: auto;
+      padding: 0.5rem 1rem;
+      background-color: transparent;
+
+      &:hover {
+        box-shadow: var(--top-shadow), var(--bottom-shadow);
+      }
+    }
+
+    &:not(.open) ::slotted(a:hover) {
+      background-color: color-mix(in oklab, var(--t-colour-page-background) 95%, var(--t-colour-full-contrast));
+    }
+
+    &.open ::slotted(a) {
+      background-color: color-mix(in oklch, var(--t-colour-base-app) 75%, transparent);
+      --top-shadow: inset color-mix(in oklab, var(--t-colour-base-app) 85%, white) 0 1px 0;
+      --bottom-shadow: inset color-mix(in oklab, var(--t-colour-base-app) 85%, black) 0 -1px 0;
+    }
+  }
+}

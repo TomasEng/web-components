@@ -30,54 +30,6 @@ header {
     gap: 1rem;
     box-sizing: border-box;
 
-    .nav {
-      align-self: stretch;
-
-      ul {
-        display: flex;
-        flex-direction: row;
-        list-style: none;
-        margin: 0;
-        padding: 0;
-        height: 100%;
-        gap: 4px;
-
-        li {
-          height: 100%;
-
-          a {
-            align-items: center;
-            background-color: var(--main-background);
-            border-top-left-radius: var(--t-navbar-item-border-radius);
-            border-top-right-radius: var(--t-navbar-item-border-radius);
-            box-shadow: var(--t-box-shadow-inset-3d-top);
-            box-sizing: border-box;
-            color: var(--t-colour-base-app-high-contrast);
-            display: flex;
-            font-weight: 500;
-            height: calc(100% + 2px);
-            padding: 1rem;
-            text-decoration: none;
-
-            &:hover {
-              text-decoration: underline;
-            }
-          }
-
-          &.open a {
-            color: var(--t-font-colour-default);
-            position: relative;
-            z-index: 2;
-          }
-
-          &:not(.open) a:hover {
-            background-color: color-mix(in oklab, var(--t-colour-page-background) 90%, white);
-            color: var(--t-font-colour-default);
-          }
-        }
-      }
-    }
-
     .toolbar {
       flex: 1;
       display: flex;
@@ -125,41 +77,6 @@ header {
         .toolbar {
           align-self: flex-start;
           padding: 0 1rem;
-        }
-
-        .nav {
-
-          ul {
-            flex-direction: column;
-            gap: 0;
-
-            li {
-
-              a {
-                box-sizing: border-box;
-                width: 100vw;
-                border-radius: 0;
-                box-shadow: none;
-                height: auto;
-                padding: 0.5rem 1rem;
-                background-color: transparent;
-
-                &:hover {
-                  box-shadow: var(--top-shadow), var(--bottom-shadow);
-                }
-              }
-
-              &:not(.open) a:hover {
-                background-color: color-mix(in oklab, var(--t-colour-page-background) 95%, var(--t-colour-full-contrast));
-              }
-
-              &.open a {
-                background-color: color-mix(in oklch, var(--t-colour-base-app) 75%, transparent);
-                --top-shadow: inset color-mix(in oklab, var(--t-colour-base-app) 85%, white) 0 1px 0;
-                --bottom-shadow: inset color-mix(in oklab, var(--t-colour-base-app) 85%, black) 0 -1px 0;
-              }
-            }
-          }
         }
       }
     }

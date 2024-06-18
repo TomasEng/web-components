@@ -47,7 +47,7 @@ Type: `Promise<void>`
 
 ### Used by
 
- - [page-about](../../preview-app/page-about)
+ - [preview-app](../../preview-app)
  - [t-heading](../t-heading)
  - [t-link-or-button](../t-link-or-button)
  - [t-source](../t-source)
@@ -56,7 +56,7 @@ Type: `Promise<void>`
 ### Graph
 ```mermaid
 graph TD;
-  page-about --> t-link
+  preview-app --> t-link
   t-heading --> t-link
   t-link-or-button --> t-link
   t-source --> t-link

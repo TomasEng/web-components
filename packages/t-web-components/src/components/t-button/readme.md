@@ -41,7 +41,7 @@ Type: `Promise<void>`
 
  - [t-code](../t-code)
  - [t-dropdown-menu](../t-dropdown)
- - [t-layout-header](../t-layout-header)
+ - [t-layout](../t-layout)
  - [t-link-or-button](../t-link-or-button)
 
 ### Graph
@@ -49,7 +49,7 @@ Type: `Promise<void>`
 graph TD;
   t-code --> t-button
   t-dropdown-menu --> t-button
-  t-layout-header --> t-button
+  t-layout --> t-button
   t-link-or-button --> t-button
   style t-button fill:#f9f,stroke:#333,stroke-width:4px
 ```

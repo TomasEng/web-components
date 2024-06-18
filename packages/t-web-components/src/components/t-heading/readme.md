@@ -17,8 +17,7 @@
 ### Used by
 
  - [component-documentation](../../preview-app/component-documentation)
- - [page-about](../../preview-app/page-about)
- - [page-components](../../preview-app/page-components)
+ - [preview-app](../../preview-app)
  - [t-article](../t-article)
 
 ### Depends on
@@ -30,8 +29,7 @@
 graph TD;
   t-heading --> t-link
   component-documentation --> t-heading
-  page-about --> t-heading
-  page-components --> t-heading
+  preview-app --> t-heading
   t-article --> t-heading
   style t-heading fill:#f9f,stroke:#333,stroke-width:4px
 ```

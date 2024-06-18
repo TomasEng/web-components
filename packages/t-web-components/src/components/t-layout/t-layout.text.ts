@@ -1,9 +1,9 @@
-export type TLayoutMainText = {
+export type TLayoutText = {
   expandSidebar: string;
   collapseSidebar: string;
 }
 
-const text: TLayoutMainText = {
+const text: TLayoutText = {
   expandSidebar: 'Åpne sidepanel',
   collapseSidebar: 'Lukk sidepanel',
 };

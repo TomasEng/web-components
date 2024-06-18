@@ -18,7 +18,7 @@
 
 ### Used by
 
- - [t-layout-header](../t-layout-header)
+ - [t-layout](../t-layout)
 
 ### Depends on
 
@@ -30,7 +30,7 @@ graph TD;
   t-mode-switcher --> t-dropdown-menu
   t-dropdown-menu --> t-floating-element
   t-dropdown-menu --> t-button
-  t-layout-header --> t-mode-switcher
+  t-layout --> t-mode-switcher
   style t-mode-switcher fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

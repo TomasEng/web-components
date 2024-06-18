@@ -7,10 +7,10 @@
 
 ## Properties
 
-| Property     | Attribute    | Description | Type                                     | Default    |
-| ------------ | ------------ | ----------- | ---------------------------------------- | ---------- |
-| `neverclose` | `neverclose` |             | `boolean`                                | `false`    |
-| `placement`  | `placement`  |             | `"bottom" \| "left" \| "right" \| "top"` | `'bottom'` |
+| Property     | Attribute    | Description | Type                                                                                                                                                                           | Default  |
+| ------------ | ------------ | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------- |
+| `neverclose` | `neverclose` |             | `boolean`                                                                                                                                                                      | `false`  |
+| `placement`  | `placement`  |             | `"auto" \| "bottom" \| "bottom-end" \| "bottom-start" \| "left" \| "left-end" \| "left-start" \| "right" \| "right-end" \| "right-start" \| "top" \| "top-end" \| "top-start"` | `'auto'` |
 
 
 ## Dependencies

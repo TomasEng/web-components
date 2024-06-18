@@ -18,7 +18,7 @@
 
 ### Used by
 
- - [page-components](../page-components)
+ - [preview-app](..)
 
 ### Depends on
 
@@ -49,7 +49,7 @@ graph TD;
   t-code --> t-panel
   t-code --> t-button
   preview-iframe --> t-iframe
-  page-components --> component-documentation
+  preview-app --> component-documentation
   style component-documentation fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

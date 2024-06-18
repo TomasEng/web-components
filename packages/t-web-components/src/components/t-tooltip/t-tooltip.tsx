@@ -11,7 +11,7 @@ export class TTooltip {
 
   @Element() element: HTMLElement;
 
-  @Prop() placement: TFloatingElementPlacement = 'bottom';
+  @Prop() placement: TFloatingElementPlacement = 'auto';
   @Prop() neverclose: boolean = false; // Snarvei for testing og feilsøking, ikke bruk i produksjon
 
   @State() open: boolean = false;

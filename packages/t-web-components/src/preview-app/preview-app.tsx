@@ -1,6 +1,9 @@
 import { Component, h, JSX, State } from '@stencil/core';
-import { ColourSettings, PageComponentsCustomEvent } from '../components';
+import { ColourSettings } from '../components';
 import { DEFAULT_CHROMA, DEFAULT_HUE, DEFAULT_NUMBER_OF_HUES, PATH_ABOUT } from '../constants';
+import state from '../store';
+import { PageComponents } from './PageComponents/PageComponents';
+import { PageAbout } from './PageAbout/PageAbout';
 
 @Component({
   tag: 'preview-app',
@@ -16,13 +19,13 @@ export class PreviewApp {
   @State() hueOffsetCode = 180;
   @State() hueOffsetVisitedLink = 30;
 
-  handleColourSettingsChange = ({ detail }: PageComponentsCustomEvent<ColourSettings>) => {
-    this.baseHue = detail.hue;
-    this.baseChroma = detail.chroma;
-    this.numberOfHues = detail.numberOfHues;
-    this.contrast = detail.contrast;
-    this.hueOffsetCode = detail.hueOffsetCode;
-    this.hueOffsetVisitedLink = detail.hueOffsetVisitedLink;
+  handleColourSettingsChange = (colourSettings: ColourSettings) => {
+    this.baseHue = colourSettings.hue;
+    this.baseChroma = colourSettings.chroma;
+    this.numberOfHues = colourSettings.numberOfHues;
+    this.contrast = colourSettings.contrast;
+    this.hueOffsetCode = colourSettings.hueOffsetCode;
+    this.hueOffsetVisitedLink = colourSettings.hueOffsetVisitedLink;
   };
 
   connectedCallback() {
@@ -44,6 +47,21 @@ export class PreviewApp {
     this.url = new URL(window.location.href);
   }
 
+  get previewIframes(): NodeListOf<HTMLIFrameElement> {
+    return document.querySelectorAll('preview-iframe iframe');
+  }
+
+  componentDidRender() {
+    this.previewIframes?.forEach(iframe => {
+      const contextElement: HTMLTContextElement = iframe.contentWindow.document.querySelector('t-context');
+      if (contextElement) {
+        contextElement.baseHue = this.baseHue;
+        contextElement.baseChroma = this.baseChroma;
+        contextElement.selectMode(state.selectedMode).then();
+      }
+    });
+  }
+
   render(): JSX.Element {
     const isAboutPageOpen = this.url.searchParams.get('s') === PATH_ABOUT;
     const colourSettings: ColourSettings = {
@@ -62,18 +80,13 @@ export class PreviewApp {
         hueOffsetCode={this.hueOffsetCode}
         hueOffsetVisitedLink={this.hueOffsetVisitedLink}
       >
-        <t-layout>
-          <t-layout-header
-            slot='header'
-            siteTitle="Tomas sitt designsystem"
-            navItems={[
-              { label: 'Oversikt', href: '?', open: !isAboutPageOpen },
-              { label: 'Om', href: '?s=' + PATH_ABOUT, open: isAboutPageOpen},
-            ]}
-          />
-          {isAboutPageOpen ? <page-about slot='main' /> : (
-            <page-components
-              slot='main'
+        <t-layout sitetitle="Tomas sitt designsystem" stickyleftbar>
+          <t-layout-nav slot="nav">
+            <t-layout-nav-item open={!isAboutPageOpen}><a href="?">Oversikt</a></t-layout-nav-item>
+            <t-layout-nav-item open={isAboutPageOpen}><a href={"?s=" + PATH_ABOUT}>Om</a></t-layout-nav-item>
+          </t-layout-nav>
+          {isAboutPageOpen ? <PageAbout/> : (
+            <PageComponents
               colourSettings={colourSettings}
               onColourSettingsChange={this.handleColourSettingsChange}
             />

@@ -4,8 +4,6 @@
   box-shadow: var(--back-shadow);
   color: var(--t-font-colour-default);
   display: flex;
-  position: relative;
-  z-index: 1;
 }
 
 .main .leftbar {

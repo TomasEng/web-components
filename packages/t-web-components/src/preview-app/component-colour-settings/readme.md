@@ -23,7 +23,7 @@
 
 ### Used by
 
- - [page-components](../page-components)
+ - [preview-app](..)
 
 ### Depends on
 
@@ -47,7 +47,7 @@ graph TD;
   t-slider --> internal-input-wrapper
   t-saturation-picker --> t-slider
   t-integer-picker --> internal-input-wrapper
-  page-components --> component-colour-settings
+  preview-app --> component-colour-settings
   style component-colour-settings fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

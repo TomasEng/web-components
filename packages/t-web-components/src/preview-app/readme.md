@@ -11,31 +11,29 @@
 
 - [t-context](../components/t-context)
 - [t-layout](../components/t-layout)
-- [t-layout-header](../components/t-layout-header)
-- [page-about](page-about)
-- [page-components](page-components)
+- [t-layout-nav](../components/t-layout-nav)
+- [t-layout-nav-item](../components/t-layout-nav-item)
+- [component-colour-settings](component-colour-settings)
+- [t-heading](../components/t-heading)
+- [component-documentation](component-documentation)
+- [t-link](../components/t-link)
 
 ### Graph
 ```mermaid
 graph TD;
   preview-app --> t-context
   preview-app --> t-layout
-  preview-app --> t-layout-header
-  preview-app --> page-about
-  preview-app --> page-components
-  t-layout-header --> t-mode-switcher
-  t-layout-header --> t-button
+  preview-app --> t-layout-nav
+  preview-app --> t-layout-nav-item
+  preview-app --> component-colour-settings
+  preview-app --> t-heading
+  preview-app --> component-documentation
+  preview-app --> t-link
+  t-layout --> t-mode-switcher
+  t-layout --> t-button
   t-mode-switcher --> t-dropdown-menu
   t-dropdown-menu --> t-floating-element
   t-dropdown-menu --> t-button
-  page-about --> t-layout-main
-  page-about --> t-heading
-  page-about --> t-link
-  t-heading --> t-link
-  page-components --> t-layout-main
-  page-components --> component-colour-settings
-  page-components --> t-heading
-  page-components --> component-documentation
   component-colour-settings --> t-fieldset
   component-colour-settings --> t-column
   component-colour-settings --> t-hue-picker
@@ -46,6 +44,7 @@ graph TD;
   t-slider --> internal-input-wrapper
   t-saturation-picker --> t-slider
   t-integer-picker --> internal-input-wrapper
+  t-heading --> t-link
   component-documentation --> t-heading
   component-documentation --> t-column
   component-documentation --> t-details

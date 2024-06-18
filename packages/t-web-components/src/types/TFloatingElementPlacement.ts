@@ -1,1 +1,3 @@
-export type TFloatingElementPlacement = 'top' | 'bottom' | 'left' | 'right';
+import { Placement } from '@floating-ui/dom';
+
+export type TFloatingElementPlacement = Placement | 'auto';

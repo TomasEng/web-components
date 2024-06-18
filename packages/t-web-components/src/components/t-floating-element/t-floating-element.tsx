@@ -1,5 +1,5 @@
 import { Component, Host, h, Prop, Element, Event, EventEmitter } from '@stencil/core';
-import { computePosition, flip, shift } from '@floating-ui/dom';
+import { autoPlacement, autoUpdate, computePosition, ComputePositionConfig, flip, shift } from '@floating-ui/dom';
 import { TFloatingElementPlacement } from '../../types/TFloatingElementPlacement';
 
 @Component({
@@ -9,10 +9,14 @@ import { TFloatingElementPlacement } from '../../types/TFloatingElementPlacement
 })
 export class TFloatingElement {
 
-  @Prop() placement: TFloatingElementPlacement = 'top';
-  @Prop() visible: boolean = false;
   @Element() element: HTMLElement;
+
+  @Prop() placement: TFloatingElementPlacement = 'auto';
+  @Prop() visible: boolean = false;
+
   @Event() clickOutside: EventEmitter<MouseEvent>;
+
+  private cleanup: () => void;
 
   render() {
     return (
@@ -25,10 +29,12 @@ export class TFloatingElement {
 
   componentDidLoad() {
     document.addEventListener('click', this.handleClickEverywhere);
+    this.cleanup = autoUpdate(this.getAnchor(), this.getContent(), () => this.updatePosition());
   }
 
   disconnectedCallback() {
     document.removeEventListener('click', this.handleClickEverywhere);
+    this.cleanup();
   }
 
   handleClickEverywhere = (event: MouseEvent) => {
@@ -53,15 +59,16 @@ export class TFloatingElement {
     this.updatePosition();
   }
 
-  componentDidUpdate() {
-    this.updatePosition();
-  }
-
   private updatePosition() {
-    computePosition(this.getAnchor(), this.getContent(), {
+
+    const options: Partial<ComputePositionConfig> = this.placement === 'auto' ? {
+      middleware: [autoPlacement()],
+    } : {
       placement: this.placement,
-      middleware: [flip(), shift()],
-    }).then(({ x, y }) => {
+      middleware: [flip(), shift()]
+    };
+
+    computePosition(this.getAnchor(), this.getContent(), options).then(({ x, y }) => {
       Object.assign(this.getContent().style, {
         left: `${x}px`,
         top: `${y}px`,

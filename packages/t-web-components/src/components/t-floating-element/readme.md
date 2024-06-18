@@ -7,10 +7,10 @@
 
 ## Properties
 
-| Property    | Attribute   | Description | Type                                     | Default |
-| ----------- | ----------- | ----------- | ---------------------------------------- | ------- |
-| `placement` | `placement` |             | `"bottom" \| "left" \| "right" \| "top"` | `'top'` |
-| `visible`   | `visible`   |             | `boolean`                                | `false` |
+| Property    | Attribute   | Description | Type                                                                                                                                                                           | Default  |
+| ----------- | ----------- | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------- |
+| `placement` | `placement` |             | `"auto" \| "bottom" \| "bottom-end" \| "bottom-start" \| "left" \| "left-end" \| "left-start" \| "right" \| "right-end" \| "right-start" \| "top" \| "top-end" \| "top-start"` | `'auto'` |
+| `visible`   | `visible`   |             | `boolean`                                                                                                                                                                      | `false`  |
 
 
 ## Events

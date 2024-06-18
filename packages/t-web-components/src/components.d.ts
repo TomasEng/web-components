@@ -9,7 +9,6 @@ import { ColourSettings } from "./types/ColourSettings";
 import { ComponentExample } from "./preview-app/component-documentation/ComponentExample";
 import { ComponentTestCode } from "./test-utils/ComponentTestCode";
 import { LabelPlacement } from "./types/LabelPlacement";
-import { ColourSettings as ColourSettings1 } from "./components";
 import { TSourceItemList } from "./types/TSourceItemList";
 import { TArticleText } from "./components/t-article/t-article.text";
 import { ComponentHue } from "./types/ComponentHue";
@@ -23,8 +22,7 @@ import { VNode } from "@stencil/core";
 import { TDropdownMenuItem } from "./components/t-dropdown/TDropdownMenuItem";
 import { TFloatingElementPlacement } from "./types/TFloatingElementPlacement";
 import { ResizeMode } from "./types/ResizeMode";
-import { TNavMenuItem } from "./components/t-layout-header/TNavMenuItem";
-import { TLayoutMainText } from "./components/t-layout-main/t-layout-main.text";
+import { TLayoutText } from "./components/t-layout/t-layout.text";
 import { TSelectOption } from "./components/t-select/TSelectOption";
 import { TSourceItem } from "./types/TSourceItem";
 import { TSourceText } from "./components/t-source/t-source.text";
@@ -34,7 +32,6 @@ export { ColourSettings } from "./types/ColourSettings";
 export { ComponentExample } from "./preview-app/component-documentation/ComponentExample";
 export { ComponentTestCode } from "./test-utils/ComponentTestCode";
 export { LabelPlacement } from "./types/LabelPlacement";
-export { ColourSettings as ColourSettings1 } from "./components";
 export { TSourceItemList } from "./types/TSourceItemList";
 export { TArticleText } from "./components/t-article/t-article.text";
 export { ComponentHue } from "./types/ComponentHue";
@@ -48,8 +45,7 @@ export { VNode } from "@stencil/core";
 export { TDropdownMenuItem } from "./components/t-dropdown/TDropdownMenuItem";
 export { TFloatingElementPlacement } from "./types/TFloatingElementPlacement";
 export { ResizeMode } from "./types/ResizeMode";
-export { TNavMenuItem } from "./components/t-layout-header/TNavMenuItem";
-export { TLayoutMainText } from "./components/t-layout-main/t-layout-main.text";
+export { TLayoutText } from "./components/t-layout/t-layout.text";
 export { TSelectOption } from "./components/t-select/TSelectOption";
 export { TSourceItem } from "./types/TSourceItem";
 export { TSourceText } from "./components/t-source/t-source.text";
@@ -69,11 +65,6 @@ export namespace Components {
     }
     interface InternalInputWrapper {
         "labelPlacement": LabelPlacement;
-    }
-    interface PageAbout {
-    }
-    interface PageComponents {
-        "colourSettings": ColourSettings1;
     }
     interface PreviewApp {
     }
@@ -164,14 +155,14 @@ export namespace Components {
         "value": number;
     }
     interface TLayout {
+        "sitetitle": string;
+        "stickyleftbar": boolean;
+        "text": TLayoutText;
     }
-    interface TLayoutHeader {
-        "navItems": TNavMenuItem[];
-        "siteTitle": string;
+    interface TLayoutNav {
     }
-    interface TLayoutMain {
-        "stickyLeftbar": boolean;
-        "text": TLayoutMainText;
+    interface TLayoutNavItem {
+        "open": boolean;
     }
     interface TLink {
         "external"?: boolean;
@@ -281,10 +272,6 @@ export interface ComponentColourSettingsCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLComponentColourSettingsElement;
 }
-export interface PageComponentsCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLPageComponentsElement;
-}
 export interface TButtonCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLTButtonElement;
@@ -364,29 +351,6 @@ declare global {
     var HTMLInternalInputWrapperElement: {
         prototype: HTMLInternalInputWrapperElement;
         new (): HTMLInternalInputWrapperElement;
-    };
-    interface HTMLPageAboutElement extends Components.PageAbout, HTMLStencilElement {
-    }
-    var HTMLPageAboutElement: {
-        prototype: HTMLPageAboutElement;
-        new (): HTMLPageAboutElement;
-    };
-    interface HTMLPageComponentsElementEventMap {
-        "colourSettingsChange": ColourSettings1;
-    }
-    interface HTMLPageComponentsElement extends Components.PageComponents, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLPageComponentsElementEventMap>(type: K, listener: (this: HTMLPageComponentsElement, ev: PageComponentsCustomEvent<HTMLPageComponentsElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLPageComponentsElementEventMap>(type: K, listener: (this: HTMLPageComponentsElement, ev: PageComponentsCustomEvent<HTMLPageComponentsElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-    }
-    var HTMLPageComponentsElement: {
-        prototype: HTMLPageComponentsElement;
-        new (): HTMLPageComponentsElement;
     };
     interface HTMLPreviewAppElement extends Components.PreviewApp, HTMLStencilElement {
     }
@@ -546,17 +510,17 @@ declare global {
         prototype: HTMLTLayoutElement;
         new (): HTMLTLayoutElement;
     };
-    interface HTMLTLayoutHeaderElement extends Components.TLayoutHeader, HTMLStencilElement {
+    interface HTMLTLayoutNavElement extends Components.TLayoutNav, HTMLStencilElement {
     }
-    var HTMLTLayoutHeaderElement: {
-        prototype: HTMLTLayoutHeaderElement;
-        new (): HTMLTLayoutHeaderElement;
+    var HTMLTLayoutNavElement: {
+        prototype: HTMLTLayoutNavElement;
+        new (): HTMLTLayoutNavElement;
     };
-    interface HTMLTLayoutMainElement extends Components.TLayoutMain, HTMLStencilElement {
+    interface HTMLTLayoutNavItemElement extends Components.TLayoutNavItem, HTMLStencilElement {
     }
-    var HTMLTLayoutMainElement: {
-        prototype: HTMLTLayoutMainElement;
-        new (): HTMLTLayoutMainElement;
+    var HTMLTLayoutNavItemElement: {
+        prototype: HTMLTLayoutNavItemElement;
+        new (): HTMLTLayoutNavItemElement;
     };
     interface HTMLTLinkElementEventMap {
         "linkClick": MouseEvent;
@@ -760,8 +724,6 @@ declare global {
         "component-documentation": HTMLComponentDocumentationElement;
         "component-preview": HTMLComponentPreviewElement;
         "internal-input-wrapper": HTMLInternalInputWrapperElement;
-        "page-about": HTMLPageAboutElement;
-        "page-components": HTMLPageComponentsElement;
         "preview-app": HTMLPreviewAppElement;
         "preview-component": HTMLPreviewComponentElement;
         "preview-iframe": HTMLPreviewIframeElement;
@@ -781,8 +743,8 @@ declare global {
         "t-iframe": HTMLTIframeElement;
         "t-integer-picker": HTMLTIntegerPickerElement;
         "t-layout": HTMLTLayoutElement;
-        "t-layout-header": HTMLTLayoutHeaderElement;
-        "t-layout-main": HTMLTLayoutMainElement;
+        "t-layout-nav": HTMLTLayoutNavElement;
+        "t-layout-nav-item": HTMLTLayoutNavItemElement;
         "t-link": HTMLTLinkElement;
         "t-link-or-button": HTMLTLinkOrButtonElement;
         "t-mode-switcher": HTMLTModeSwitcherElement;
@@ -820,12 +782,6 @@ declare namespace LocalJSX {
     }
     interface InternalInputWrapper {
         "labelPlacement"?: LabelPlacement;
-    }
-    interface PageAbout {
-    }
-    interface PageComponents {
-        "colourSettings"?: ColourSettings1;
-        "onColourSettingsChange"?: (event: PageComponentsCustomEvent<ColourSettings1>) => void;
     }
     interface PreviewApp {
     }
@@ -917,14 +873,14 @@ declare namespace LocalJSX {
         "value"?: number;
     }
     interface TLayout {
+        "sitetitle"?: string;
+        "stickyleftbar"?: boolean;
+        "text"?: TLayoutText;
     }
-    interface TLayoutHeader {
-        "navItems"?: TNavMenuItem[];
-        "siteTitle"?: string;
+    interface TLayoutNav {
     }
-    interface TLayoutMain {
-        "stickyLeftbar"?: boolean;
-        "text"?: TLayoutMainText;
+    interface TLayoutNavItem {
+        "open"?: boolean;
     }
     interface TLink {
         "external"?: boolean;
@@ -1021,8 +977,6 @@ declare namespace LocalJSX {
         "component-documentation": ComponentDocumentation;
         "component-preview": ComponentPreview;
         "internal-input-wrapper": InternalInputWrapper;
-        "page-about": PageAbout;
-        "page-components": PageComponents;
         "preview-app": PreviewApp;
         "preview-component": PreviewComponent;
         "preview-iframe": PreviewIframe;
@@ -1042,8 +996,8 @@ declare namespace LocalJSX {
         "t-iframe": TIframe;
         "t-integer-picker": TIntegerPicker;
         "t-layout": TLayout;
-        "t-layout-header": TLayoutHeader;
-        "t-layout-main": TLayoutMain;
+        "t-layout-nav": TLayoutNav;
+        "t-layout-nav-item": TLayoutNavItem;
         "t-link": TLink;
         "t-link-or-button": TLinkOrButton;
         "t-mode-switcher": TModeSwitcher;
@@ -1074,8 +1028,6 @@ declare module "@stencil/core" {
             "component-documentation": LocalJSX.ComponentDocumentation & JSXBase.HTMLAttributes<HTMLComponentDocumentationElement>;
             "component-preview": LocalJSX.ComponentPreview & JSXBase.HTMLAttributes<HTMLComponentPreviewElement>;
             "internal-input-wrapper": LocalJSX.InternalInputWrapper & JSXBase.HTMLAttributes<HTMLInternalInputWrapperElement>;
-            "page-about": LocalJSX.PageAbout & JSXBase.HTMLAttributes<HTMLPageAboutElement>;
-            "page-components": LocalJSX.PageComponents & JSXBase.HTMLAttributes<HTMLPageComponentsElement>;
             "preview-app": LocalJSX.PreviewApp & JSXBase.HTMLAttributes<HTMLPreviewAppElement>;
             "preview-component": LocalJSX.PreviewComponent & JSXBase.HTMLAttributes<HTMLPreviewComponentElement>;
             "preview-iframe": LocalJSX.PreviewIframe & JSXBase.HTMLAttributes<HTMLPreviewIframeElement>;
@@ -1095,8 +1047,8 @@ declare module "@stencil/core" {
             "t-iframe": LocalJSX.TIframe & JSXBase.HTMLAttributes<HTMLTIframeElement>;
             "t-integer-picker": LocalJSX.TIntegerPicker & JSXBase.HTMLAttributes<HTMLTIntegerPickerElement>;
             "t-layout": LocalJSX.TLayout & JSXBase.HTMLAttributes<HTMLTLayoutElement>;
-            "t-layout-header": LocalJSX.TLayoutHeader & JSXBase.HTMLAttributes<HTMLTLayoutHeaderElement>;
-            "t-layout-main": LocalJSX.TLayoutMain & JSXBase.HTMLAttributes<HTMLTLayoutMainElement>;
+            "t-layout-nav": LocalJSX.TLayoutNav & JSXBase.HTMLAttributes<HTMLTLayoutNavElement>;
+            "t-layout-nav-item": LocalJSX.TLayoutNavItem & JSXBase.HTMLAttributes<HTMLTLayoutNavItemElement>;
             "t-link": LocalJSX.TLink & JSXBase.HTMLAttributes<HTMLTLinkElement>;
             "t-link-or-button": LocalJSX.TLinkOrButton & JSXBase.HTMLAttributes<HTMLTLinkOrButtonElement>;
             "t-mode-switcher": LocalJSX.TModeSwitcher & JSXBase.HTMLAttributes<HTMLTModeSwitcherElement>;
