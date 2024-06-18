@@ -41,6 +41,7 @@ export const tArticleDemo: ComponentDemos = {
     componentName: 't-article',
     props: {
       heading: tArticleTestData.heading,
+      publisheddate: '2022-02-01',
       sources: {
         [tArticleTestData.source1Id]: tArticleTestData.source1,
         [tArticleTestData.source2Id]: tArticleTestData.source2,

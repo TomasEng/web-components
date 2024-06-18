@@ -82,6 +82,7 @@ export namespace Components {
     interface TArticle {
         "getSourceOrder": () => Promise<string[]>;
         "heading": string;
+        "publisheddate"?: string;
         "sources": TSourceItemList;
         "text": TArticleText;
     }
@@ -798,6 +799,7 @@ declare namespace LocalJSX {
     }
     interface TArticle {
         "heading"?: string;
+        "publisheddate"?: string;
         "sources"?: TSourceItemList;
         "text"?: TArticleText;
     }

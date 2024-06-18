@@ -3,6 +3,6 @@
   color: var(--t-font-colour-default);
 }
 
-p {
+:host > p {
   color: var(--t-font-colour-default);
 }

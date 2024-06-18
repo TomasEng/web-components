@@ -13,6 +13,7 @@ export class TArticle {
   @Prop() sources: TSourceItemList = {};
   @Prop() heading: string;
   @Prop() text: TArticleText = defaultText;
+  @Prop() publisheddate?: string;
 
   @Element() element: HTMLElement;
 
@@ -26,9 +27,13 @@ export class TArticle {
   }
 
   render() {
+    console.log(this.publisheddate)
     return (
       <article>
-        <t-heading level={1}>{this.heading}</t-heading>
+        <t-heading level={1}>
+          {this.heading}
+          {this.publisheddate && <p slot='note'>{this.text.published(new Date(Date.parse(this.publisheddate)))}</p>}
+        </t-heading>
         <slot></slot>
         {this.sources && !!Object.keys(this.sources).length && (
           <footer>
