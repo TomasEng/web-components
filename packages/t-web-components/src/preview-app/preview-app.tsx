@@ -4,6 +4,7 @@ import { DEFAULT_CHROMA, DEFAULT_HUE, DEFAULT_NUMBER_OF_HUES, PATH_ABOUT } from 
 import state from '../store';
 import { PageComponents } from './PageComponents/PageComponents';
 import { PageAbout } from './PageAbout/PageAbout';
+import { iconUrl, setIcon } from '../utils/iconUtils';
 
 @Component({
   tag: 'preview-app',
@@ -26,6 +27,7 @@ export class PreviewApp {
     this.contrast = colourSettings.contrast;
     this.hueOffsetCode = colourSettings.hueOffsetCode;
     this.hueOffsetVisitedLink = colourSettings.hueOffsetVisitedLink;
+    setIcon(colourSettings.hue);
   };
 
   connectedCallback() {
@@ -37,6 +39,7 @@ export class PreviewApp {
     window.addEventListener('popstate', () => {
       this.setUrl();
     });
+    setIcon();
   }
 
   setUrlHash() {
@@ -81,6 +84,7 @@ export class PreviewApp {
         hueoffsetvisitedlink={this.hueOffsetVisitedLink}
       >
         <t-layout sitetitle="Tomas sitt designsystem" stickyleftbar={true}>
+          <img slot="logo" src={iconUrl(this.baseHue)}  alt='Logo'/>
           <t-layout-nav slot="nav">
             <t-layout-nav-item open={!isAboutPageOpen}><a href="?">Oversikt</a></t-layout-nav-item>
             <t-layout-nav-item open={isAboutPageOpen}><a href={"?s=" + PATH_ABOUT}>Om</a></t-layout-nav-item>
