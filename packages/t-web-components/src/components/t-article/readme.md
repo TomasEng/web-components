@@ -7,11 +7,12 @@
 
 ## Properties
 
-| Property  | Attribute | Description | Type                             | Default       |
-| --------- | --------- | ----------- | -------------------------------- | ------------- |
-| `heading` | `heading` |             | `string`                         | `undefined`   |
-| `sources` | --        |             | `{ [id: string]: TSourceItem; }` | `{}`          |
-| `text`    | --        |             | `{ sourcesHeading: string; }`    | `defaultText` |
+| Property        | Attribute       | Description | Type                                                             | Default       |
+| --------------- | --------------- | ----------- | ---------------------------------------------------------------- | ------------- |
+| `heading`       | `heading`       |             | `string`                                                         | `undefined`   |
+| `publisheddate` | `publisheddate` |             | `string`                                                         | `undefined`   |
+| `sources`       | --              |             | `{ [id: string]: TSourceItem; }`                                 | `{}`          |
+| `text`          | --              |             | `{ sourcesHeading: string; published: (date: Date) => string; }` | `defaultText` |
 
 
 ## Methods

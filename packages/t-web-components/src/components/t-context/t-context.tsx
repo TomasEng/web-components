@@ -5,7 +5,11 @@ import { asPercents } from '../../utils/utils';
 import {
   BASE_COLOUR_LUMINANCE_DARK_MODE,
   BASE_COLOUR_LUMINANCE_LIGHT_MODE,
-  DARK_MODE_BACKGROUND_LUMINANCE, DEFAULT_HUE_OFFSET_CODE, DEFAULT_HUE_OFFSET_VISITED_LINK,
+  DARK_MODE_BACKGROUND_LUMINANCE,
+  DEFAULT_CHROMA,
+  DEFAULT_HUE,
+  DEFAULT_HUE_OFFSET_CODE,
+  DEFAULT_HUE_OFFSET_VISITED_LINK,
   HIGH_CONTRAST,
   INPUT_FIELD_TO_PAGE_CONTRAST,
   LIGHT_MODE_BACKGROUND_LUMINANCE,
@@ -24,11 +28,11 @@ import { SelectedMode } from '../../types/Mode';
 })
 export class TContext {
 
-  @Prop() baseHue: number = 263;
-  @Prop() baseChroma: number = 0.4;
+  @Prop() basehue: number = DEFAULT_HUE;
+  @Prop() basechroma: number = DEFAULT_CHROMA;
   @Prop() contrast: number = 1;
-  @Prop() hueOffsetCode: number = DEFAULT_HUE_OFFSET_CODE;
-  @Prop() hueOffsetVisitedLink: number = DEFAULT_HUE_OFFSET_VISITED_LINK;
+  @Prop() hueoffsetcode: number = DEFAULT_HUE_OFFSET_CODE;
+  @Prop() hueoffsetvisitedlink: number = DEFAULT_HUE_OFFSET_VISITED_LINK;
 
   @Method() async selectMode(mode: SelectedMode) {
     selectMode(mode);
@@ -36,12 +40,20 @@ export class TContext {
 
   @Element() element: HTMLElement;
 
-  componentWillRender() {
-    state.baseHue = this.baseHue;
-    state.baseChroma = this.baseChroma;
+  connectedCallback() {
+    this.updateStore();
+  }
+
+  componentDidRender() {
+    this.updateStore();
+  }
+
+  private updateStore() {
+    state.baseHue = this.basehue;
+    state.baseChroma = this.basechroma;
     state.contrast = this.contrast;
-    state.hueOffsetCode = this.hueOffsetCode;
-    state.hueOffsetVisitedLink = this.hueOffsetVisitedLink;
+    state.hueOffsetCode = this.hueoffsetcode;
+    state.hueOffsetVisitedLink = this.hueoffsetvisitedlink;
   }
 
   render() {
@@ -59,8 +71,8 @@ export class TContext {
     this.setCssVariable('--t-colour-grey-high-contrast', this.greyColourHighContrast().getOklchCode());
     this.setCssVariable('--t-colour-grey-low-contrast', this.greyColourLowContrast().getOklchCode());
     this.setCssVariable('--t-colour-input-field-background', this.inputFieldColour().getHexCode());
-    this.setCssVariable('--t-colour-base-hue-offset-code', this.hueOffsetCode.toFixed());
-    this.setCssVariable('--t-colour-base-hue-offset-visited-link', this.hueOffsetVisitedLink.toFixed());
+    this.setCssVariable('--t-colour-base-hue-offset-code', state.hueOffsetCode.toFixed());
+    this.setCssVariable('--t-colour-base-hue-offset-visited-link', state.hueOffsetVisitedLink.toFixed());
     this.element.style.setProperty('filter', `contrast(${this.contrast})`);
 
     return <div class={'root ' + modeClass}>

@@ -12,10 +12,18 @@ header {
   padding-right: var(--header-horizontal-padding);
 
   .title {
-    grid-area: title;
+    align-items: center;
+    display: flex;
+    filter: drop-shadow(0 0 1em white);
     font-size: 1.5rem;
-    padding: 1rem 0;
+    gap: var(--t-spacing-default);
+    grid-area: title;
     min-width: calc(var(--t-leftbar-width) - var(--header-horizontal-padding) - var(--header-content-gap));
+    padding: 1rem 0;
+
+    ::slotted(img) {
+      height: 1.5em;
+    }
   }
 
   .collapsible-content {

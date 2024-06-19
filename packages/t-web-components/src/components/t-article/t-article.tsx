@@ -7,6 +7,7 @@ import defaultText, { TArticleText } from './t-article.text';
 @Component({
   tag: 't-article',
   styleUrl: 't-article.css',
+  scoped: true,
 })
 export class TArticle {
 
@@ -27,12 +28,14 @@ export class TArticle {
   }
 
   render() {
-    console.log(this.publisheddate)
     return (
       <article>
         <t-heading level={1}>
           {this.heading}
-          {this.publisheddate && <p slot='note'>{this.text.published(new Date(Date.parse(this.publisheddate)))}</p>}
+          {this.publisheddate && <p
+            slot='note'
+            innerHTML={this.text.published(new Date(Date.parse(this.publisheddate)))}
+          />}
         </t-heading>
         <slot></slot>
         {this.sources && !!Object.keys(this.sources).length && (

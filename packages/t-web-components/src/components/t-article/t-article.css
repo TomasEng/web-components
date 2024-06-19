@@ -1,8 +1,3 @@
-:host {
-  display: block;
-  color: var(--t-font-colour-default);
-}
-
-:host > p {
-  color: var(--t-font-colour-default);
+::slotted(p), ::slotted(ul), ::slotted(ol) {
+  line-height: var(--t-line-height-paragraph);
 }

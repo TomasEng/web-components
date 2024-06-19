@@ -36,7 +36,10 @@ export class TLayout {
     return <div class='wrapper'>
       <div class='layout'>
         <header class={this.navOpen ? 'nav-open' : 'nav-closed'}>
-          <div class="title">{this.sitetitle}</div>
+          <div class="title">
+            <slot name='logo'/>
+            {this.sitetitle}
+          </div>
           <div class="collapsible-content">
             <div class="collapsible-content-inner">
               <slot name='nav'/>

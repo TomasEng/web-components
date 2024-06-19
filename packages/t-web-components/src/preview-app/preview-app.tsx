@@ -55,8 +55,8 @@ export class PreviewApp {
     this.previewIframes?.forEach(iframe => {
       const contextElement: HTMLTContextElement = iframe.contentWindow.document.querySelector('t-context');
       if (contextElement) {
-        contextElement.baseHue = this.baseHue;
-        contextElement.baseChroma = this.baseChroma;
+        contextElement.basehue = this.baseHue;
+        contextElement.basechroma = this.baseChroma;
         contextElement.selectMode(state.selectedMode).then();
       }
     });
@@ -74,13 +74,13 @@ export class PreviewApp {
     };
     return (
       <t-context
-        baseHue={this.baseHue}
-        baseChroma={this.baseChroma}
+        basehue={this.baseHue}
+        basechroma={this.baseChroma}
         contrast={this.contrast}
-        hueOffsetCode={this.hueOffsetCode}
-        hueOffsetVisitedLink={this.hueOffsetVisitedLink}
+        hueoffsetcode={this.hueOffsetCode}
+        hueoffsetvisitedlink={this.hueOffsetVisitedLink}
       >
-        <t-layout sitetitle="Tomas sitt designsystem" stickyleftbar>
+        <t-layout sitetitle="Tomas sitt designsystem" stickyleftbar={true}>
           <t-layout-nav slot="nav">
             <t-layout-nav-item open={!isAboutPageOpen}><a href="?">Oversikt</a></t-layout-nav-item>
             <t-layout-nav-item open={isAboutPageOpen}><a href={"?s=" + PATH_ABOUT}>Om</a></t-layout-nav-item>

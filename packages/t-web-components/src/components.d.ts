@@ -110,11 +110,11 @@ export namespace Components {
     interface TColumn {
     }
     interface TContext {
-        "baseChroma": number;
-        "baseHue": number;
+        "basechroma": number;
+        "basehue": number;
         "contrast": number;
-        "hueOffsetCode": number;
-        "hueOffsetVisitedLink": number;
+        "hueoffsetcode": number;
+        "hueoffsetvisitedlink": number;
         "selectMode": (mode: SelectedMode) => Promise<void>;
     }
     interface TDetails {
@@ -827,11 +827,11 @@ declare namespace LocalJSX {
     interface TColumn {
     }
     interface TContext {
-        "baseChroma"?: number;
-        "baseHue"?: number;
+        "basechroma"?: number;
+        "basehue"?: number;
         "contrast"?: number;
-        "hueOffsetCode"?: number;
-        "hueOffsetVisitedLink"?: number;
+        "hueoffsetcode"?: number;
+        "hueoffsetvisitedlink"?: number;
     }
     interface TDetails {
         "openSummary"?: string;

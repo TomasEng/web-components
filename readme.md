@@ -40,11 +40,11 @@ Eksempel:
 ```
 
 ## Lokal utvikling
-Node og NPM må være installert.
-Ved første gangs kjøring, kjør `npm install` i rotmappen for å installere avhengigheter.
-For å kjøre opp prosjektet lokalt, kjør `npm start` enten i rotmappen eller i `packages/t-web-components`.
+Node og Yarn må være installert.
+Ved første gangs kjøring, kjør `yarn install` i rotmappen for å installere avhengigheter.
+For å kjøre opp prosjektet lokalt, kjør `yarn start` enten i rotmappen eller i `packages/t-web-components`.
 Det vil starte demoapplikasjonen på `http://localhost:3333`.
-Den skal oppdatere seg av seg selv når man lagrer, men det kan være man må gi det noen forsøk for at det skal fungere.
+Den skal oppdatere seg av seg selv når man lagrer, men det kan være man må gi det noen forsøk for at det skal fungere, i hvert fall når man jobber med CSS.
 
 ### Testing
 Det er satt opp automatiserte tester for Jest og Playwright.
@@ -71,6 +71,16 @@ yarn run test
 ### Bygging og generering av React-komponenter
 Pakkene blir bygget ved å kjøre `yarn run build` i mappen til pakken det gjelder.
 Når man bygger `t-web-components`, blir også React-komponentene automatisk generert og lagret i `t-web-components-react`.
+
+### Kobling med andre prosjekter
+Pakken kan tas i bruk lokalt i andre prosjekter uten å publisere ny versjon. Det gjøres ved å følge følgende instruksjoner:
+1. Kjør `yarn link` i `packages/`packages/t-web-components``.
+2. Kjør `yarn link t-web-components` i det andre prosjektet.
+3. Kjør `yarn run build` i `packages/t-web-components` hver gang det er gjort en endring som skal gjenspeiles i det andre prosjektet.
+
+Det samme gjelder `packages/t-web-components-react` hvis denne er i bruk.
+
+__Dette vil ikke fungere hvis Stencil kjører i utviklingsmodus samtidig.__
 
 ## Publisering
 Prosjektet bruker verktøyet Lerna til å håndtere publisering av pakkene.
