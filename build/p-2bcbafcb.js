@@ -1,0 +1,2 @@
+const o=(o,c,a)=>{o.style.setProperty(c,a)};const c=(c,a)=>{o(c,"--t-colour-base-component",`oklch(from var(--t-colour-base-app) l c calc(h + ${a.toFixed()}))`);o(c,"--t-colour-base-component-high-contrast",`oklch(from var(--t-colour-base-app-high-contrast) l c calc(h + ${a.toFixed()}))`);o(c,"--t-colour-base-component-low-contrast",`oklch(from var(--t-colour-base-app-low-contrast) l c calc(h + ${a.toFixed()}))`)};const a=o=>"t-resizable-"+o;export{a as r,c as s};
+//# sourceMappingURL=p-2bcbafcb.js.map

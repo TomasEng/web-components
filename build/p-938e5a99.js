@@ -1,0 +1,2 @@
+const s=s=>s.replace(/-([a-z0-9])/g,(s=>s[1].toUpperCase()));const a=a=>s(a).replace(/^[a-z]/,(s=>s.toUpperCase()));const t=s=>s.replace(/^[a-z]/,(s=>s.toUpperCase()));const n=s=>s.replace(/\s+/g," ");const c=s=>s.trim().replace(/^((?<!\|).)*/gm,"");const o=s=>s.charAt(0).toUpperCase()+s.slice(1);const g=s=>s.replace(/^\s*\n/,"").replace(/\n\s*$/,"");const z=()=>Math.random().toString(36).substring(2,9);export{a,t as b,n as c,o as d,g as e,z as g,s as k,c as t};
+//# sourceMappingURL=p-938e5a99.js.map
