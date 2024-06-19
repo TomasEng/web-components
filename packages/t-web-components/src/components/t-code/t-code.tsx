@@ -56,7 +56,7 @@ export class TCode {
           <t-button
             buttonAttributes={{title: this.copyButtonTitle}}
             onClick={() => this.copyToClipboard()}
-            variant='transparent'
+            variant='without-background'
           >
             {this.renderCopyIcon()}
           </t-button>

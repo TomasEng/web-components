@@ -4,6 +4,7 @@ import { ButtonAttributes } from '../../types/HTMLAttributes';
 import { TDropdownMenuItem } from './TDropdownMenuItem';
 import { CheckmarkIcon } from '../../icons/CheckmarkIcon';
 import { setBaseColour } from '../../utils/componentUtils';
+import { ButtonVariant } from '../t-button/ButtonVariant';
 
 @Component({
   tag: 't-dropdown-menu',
@@ -17,6 +18,7 @@ export class TDropdownMenu {
   @Prop() value: string;
   @Prop() buttonAttributes: ButtonAttributes;
   @Prop() items: TDropdownMenuItem[] = [];
+  @Prop() variant: ButtonVariant = 'default';
 
   @State() expanded = false;
   @State() focusedIndex = -1;
@@ -90,6 +92,7 @@ export class TDropdownMenu {
           }}
           hueoffset={this.hueoffset}
           slot="anchor"
+          variant={this.variant}
         >
           <slot slot='icon' name='icon'/>
           {this.label}

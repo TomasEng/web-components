@@ -51,6 +51,7 @@ export const PageComponents = ({colourSettings, onColourSettingsChange}: PageCom
             { title: 'Med ikon og tekst', code: tButtonDemo.withIcon, previewMode: 'hue' },
             { title: 'Med kun ikon', code: tButtonDemo.iconOnly, previewMode: 'hue' },
             { title: 'Gjennomsiktig', code: tButtonDemo.transparent, previewMode: 'hue' },
+            { title: 'Uten bakgrunn', code: tButtonDemo.withoutBackground, previewMode: 'hue' },
             { title: 'Lenkeformat', code: tButtonDemo.link, previewMode: 'inline' },
           ]}
           colourSettings={colourSettings}

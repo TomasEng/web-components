@@ -127,6 +127,7 @@ export namespace Components {
         "items": TDropdownMenuItem[];
         "label": VNode | string;
         "value": string;
+        "variant": ButtonVariant;
     }
     interface TFieldset {
         "legend": string;
@@ -843,6 +844,7 @@ declare namespace LocalJSX {
         "items"?: TDropdownMenuItem[];
         "label"?: VNode | string;
         "value"?: string;
+        "variant"?: ButtonVariant;
     }
     interface TFieldset {
         "legend"?: string;

@@ -1,1 +1,5 @@
-export type ButtonVariant = 'default' | 'transparent' | 'link';
+export type ButtonVariant =
+  | 'default'
+  | 'transparent'
+  | 'link'
+  | 'without-background';

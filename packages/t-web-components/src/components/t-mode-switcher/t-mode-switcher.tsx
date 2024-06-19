@@ -50,6 +50,7 @@ export class TModeSwitcher {
           },
         ]}
         hueoffset={this.hueoffset}
+        variant="transparent"
       >
         {icon}
       </t-dropdown-menu>

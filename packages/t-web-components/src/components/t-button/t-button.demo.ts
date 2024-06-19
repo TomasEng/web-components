@@ -74,6 +74,13 @@ export const tButtonDemo: ComponentDemos = {
     },
     children: [tButtonTestData.text]
   },
+  withoutBackground: {
+    componentName: 't-button',
+    props: {
+      variant: 'without-background'
+    },
+    children: [tButtonTestData.text]
+  },
   link: {
     componentName: 't-button',
     props: {

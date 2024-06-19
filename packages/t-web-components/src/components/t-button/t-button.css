@@ -31,6 +31,10 @@
   }
 
   &.transparent {
+    --button-colour: transparent;
+  }
+
+  &.without-background {
     background: none;
     box-shadow: none;
     color: var(--t-colour-base-component-high-contrast);
