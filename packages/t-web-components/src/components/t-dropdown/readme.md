@@ -14,6 +14,7 @@
 | `items`            | --          |             | `TDropdownMenuItem[]`                                                       | `[]`        |
 | `label`            | `label`     |             | `VNode \| string`                                                           | `undefined` |
 | `value`            | `value`     |             | `string`                                                                    | `undefined` |
+| `variant`          | `variant`   |             | `"default" \| "link" \| "transparent" \| "without-background"`              | `'default'` |
 
 
 ## Dependencies

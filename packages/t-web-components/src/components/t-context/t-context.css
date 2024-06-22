@@ -1,4 +1,19 @@
 .root {
+  --t-background-attachment-app: fixed;
+  --t-background-image-app: var(--t-background-image-app-top-layer), var(--t-background-image-app-bottom-layer);
+  --t-background-image-app-top-layer: radial-gradient(
+    oklch(from var(--t-colour-app-background) l 0 h),
+    transparent 50%
+  );
+  --t-background-image-app-bottom-layer: conic-gradient(
+    in oklch longer hue,
+    var(--t-colour-app-background) 0deg,
+    oklch(from var(--t-colour-app-background) l c calc(h + 360)) 360deg
+  );
+  --t-background-panel:
+    var(--t-background-image-app-top-layer) fixed repeat var(--t-background-size-app),
+    var(--t-background-image-app-bottom-layer) fixed repeat var(--t-background-size-app);
+  --t-background-size-app: 100vw 100vh;
   --t-border-radius-default: 6px;
   --t-border-radius-small: 3px;
   --t-box-shadow-active: color-mix(in oklab, var(--t-colour-base-app-high-contrast) 20%, transparent) 0 0 24px;
@@ -6,7 +21,10 @@
   --t-box-shadow-inset-3d-top: color-mix(in oklab, transparent 65%, white) inset 0 1px;
   --t-box-shadow-inset-3d: var(--t-box-shadow-inset-3d-top), var(--t-box-shadow-inset-3d-bottom);
   --t-clickable-area-size: 44px;
-  --t-colour-app-background: color-mix(in oklab, var(--t-colour-page-background) 90%, black);
+  --t-colour-app-background-chroma: 0.05;
+  --t-colour-app-background-hue: var(--t-colour-base-app-hue);
+  --t-colour-app-background-lightness: calc(0.6 + var(--t-mode-colour-scaling) * 0.3);
+  --t-colour-app-background: oklch(var(--t-colour-app-background-lightness) var(--t-colour-app-background-chroma) var(--t-colour-app-background-hue));
   --t-colour-base-app-chroma: unset; /* Set by JS */
   --t-colour-base-app-high-contrast: unset; /* Set by JS */
   --t-colour-base-app-hue: unset; /* Set by JS */
@@ -23,6 +41,7 @@
   --t-colour-grey: unset; /* Set by JS */
   --t-colour-input-field-background: color-mix(in oklab, var(--t-colour-full-contrast) 5%, transparent);
   --t-colour-page-background: unset; /* Set by JS */
+  --t-colour-panel-background-filter: color-mix(in oklab, var(--t-colour-grey-low-contrast) 75%, transparent);
   --t-default-font-family: ui-sans-serif, Verdana, Arial, Helvetica, sans-serif;
   --t-default-font-size: 1rem;
   --t-font-colour-default: var(--t-colour-full-contrast);
@@ -49,6 +68,8 @@
   --t-heading-spacing-top-5: calc(var(--t-heading-size-5) * var(--t-heading-spacing-top-factor));
   --t-heading-spacing-top-6: calc(var(--t-heading-size-6) * var(--t-heading-spacing-top-factor));
   --t-heading-spacing-top-factor: 1;
+  --t-image-panel-background-filter: linear-gradient(var(--t-colour-panel-background-filter), var(--t-colour-panel-background-filter)); /* The only way to make an image with one colour */
+  --t-image-panel-background: var(--t-image-panel-background-filter), var(--t-background-image-app);
   --t-leftbar-width: 240px;
   --t-line-height-paragraph: 1.75;
   --t-navbar-item-border-radius: 8px;
@@ -57,7 +78,7 @@
   --t-panel-heading-colour: oklch(from var(--t-colour-base-app) l calc(c*0.5) h);
   --t-popover-alpha: 0.75;
   --t-popover-backdrop-filter: blur(12px);
-  --t-popover-background-colour-base: color-mix(in oklab, var(--t-colour-grey) calc(var(--t-popover-alpha) * 100%), transparent);
+  --t-popover-background-colour-base: color-mix(in oklab, var(--t-colour-grey-low-contrast) calc(var(--t-popover-alpha) * 100%), transparent);
   --t-popover-border-radius: var(--t-border-radius-default);
   --t-popover-shadow: #000c 0 4px 12px;
   --t-selection-background-colour: var(--t-colour-base-app-high-contrast);

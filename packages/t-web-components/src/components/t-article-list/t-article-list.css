@@ -9,15 +9,11 @@ ul.t-article-list {
   gap: 1px;
 
   li {
-    --background-colour: var(--t-panel-background-colour);
-
-    &:nth-child(even) {
-      --background-colour: var(--t-colour-grey-low-contrast);
-    }
 
     a {
-
-      background-color: var(--background-colour);
+      background-image: var(--t-image-panel-background);
+      background-size: 100vw 100vh;
+      background-attachment: fixed;
       color: var(--t-font-colour-default);
       gap: var(--t-spacing-in-group);
       display: grid;
@@ -28,9 +24,10 @@ ul.t-article-list {
       text-decoration: none;
 
       &:hover, &:focus {
-        --background-colour: var(--t-colour-base-component-low-contrast);
+        background-attachment: fixed;
+        border-radius: var(--t-border-radius-default);
+        box-shadow: var(--t-box-shadow-inset-3d);
         transform: scale(1.01);
-        transition: var(--t-transition-duration-medium);
       }
 
       .item-title {

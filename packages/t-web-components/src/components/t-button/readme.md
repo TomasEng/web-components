@@ -12,7 +12,7 @@
 | `buttonAttributes` | --          |             | `ButtonHTMLAttributes<HTMLButtonElement> & DataAttributes & AriaAttributes` | `undefined` |
 | `focusable`        | `focusable` |             | `boolean`                                                                   | `true`      |
 | `hueoffset`        | `hueoffset` |             | `number`                                                                    | `0`         |
-| `variant`          | `variant`   |             | `"default" \| "link" \| "transparent"`                                      | `'default'` |
+| `variant`          | `variant`   |             | `"default" \| "link" \| "transparent" \| "without-background"`              | `'default'` |
 
 
 ## Events

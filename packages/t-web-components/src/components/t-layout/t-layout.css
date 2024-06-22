@@ -1,16 +1,7 @@
 .wrapper {
-  width: 100%;
-  --background-colour: oklch(
-    calc(0.5 + var(--t-mode-colour-scaling) * 0.3)
-    0.05
-    var(--t-colour-base-app-hue)
-  );
-  background-image: conic-gradient(
-    in oklch longer hue,
-    var(--background-colour) 0deg,
-    oklch(from var(--background-colour) l c calc(h + 360)) 360deg
-  );
   background-attachment: fixed;
+  background-image: var(--t-background-image-app);
+  width: 100%;
 }
 
 .layout {

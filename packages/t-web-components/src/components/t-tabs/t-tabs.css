@@ -47,9 +47,9 @@
       to bottom,
       var(--selected-colour),
       var(--selected-colour) 3px,
-      var(--t-panel-background-colour) 4px,
-      var(--t-panel-background-colour)
-    );
+      var(--t-colour-panel-background-filter) 4px,
+      var(--t-colour-panel-background-filter)
+    ), var(--t-background-panel);
     position: relative;
     z-index: 1;
 
