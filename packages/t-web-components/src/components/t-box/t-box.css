@@ -1,0 +1,6 @@
+:host {
+  background: var(--t-image-panel-background-filter), var(--t-background-panel);
+  border-radius: var(--t-border-radius-default);
+  display: block;
+  padding: var(--t-spacing-default);
+}

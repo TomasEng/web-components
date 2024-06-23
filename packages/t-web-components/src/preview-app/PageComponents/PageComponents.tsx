@@ -23,6 +23,7 @@ import { tTableOfContentsDemo } from '../../components/t-table-of-contents/t-tab
 import { tIframeDemo } from '../../components/t-iframe/t-iframe.demo';
 import { tHeadingDemo } from '../../components/t-heading/t-heading.demo';
 import { tBreadcrumbsDemo } from '../../components/t-breadcrumbs/t-breadcrumbs.demo';
+import { tBoxDemo } from '../../components/t-box/t-box.demo';
 
 export interface PageComponentsProps {
   colourSettings: ColourSettings;
@@ -69,6 +70,15 @@ export const PageComponents = ({colourSettings, onColourSettingsChange}: PageCom
           examples={[
             { title: 'Alle nivåer', code: tHeadingDemo.allLevels, previewMode: 'iframe' },
             { title: 'Med tilleggsinformasjon', code: tHeadingDemo.withNote, previewMode: 'iframe' },
+          ]}
+          colourSettings={colourSettings}
+        />
+        <component-documentation
+          name='Boks'
+          examples={[
+            { title: 'Uavhengig', code: tBoxDemo.independent, previewMode: 'inline' },
+            { title: 'I lenke', code: tBoxDemo.inLink, previewMode: 'inline' },
+            { title: 'I lenkeliste', code: tBoxDemo.inLinkList, previewMode: 'inline' },
           ]}
           colourSettings={colourSettings}
         />

@@ -90,6 +90,10 @@ export namespace Components {
         "hueoffset": ComponentHue;
         "items": TArticleListItem[];
     }
+    interface TBox {
+    }
+    interface TBoxList {
+    }
     interface TBreadcrumbs {
         "text": TBreadcrumbsText;
     }
@@ -383,6 +387,18 @@ declare global {
     var HTMLTArticleListElement: {
         prototype: HTMLTArticleListElement;
         new (): HTMLTArticleListElement;
+    };
+    interface HTMLTBoxElement extends Components.TBox, HTMLStencilElement {
+    }
+    var HTMLTBoxElement: {
+        prototype: HTMLTBoxElement;
+        new (): HTMLTBoxElement;
+    };
+    interface HTMLTBoxListElement extends Components.TBoxList, HTMLStencilElement {
+    }
+    var HTMLTBoxListElement: {
+        prototype: HTMLTBoxListElement;
+        new (): HTMLTBoxListElement;
     };
     interface HTMLTBreadcrumbsElement extends Components.TBreadcrumbs, HTMLStencilElement {
     }
@@ -731,6 +747,8 @@ declare global {
         "preview-iframe": HTMLPreviewIframeElement;
         "t-article": HTMLTArticleElement;
         "t-article-list": HTMLTArticleListElement;
+        "t-box": HTMLTBoxElement;
+        "t-box-list": HTMLTBoxListElement;
         "t-breadcrumbs": HTMLTBreadcrumbsElement;
         "t-button": HTMLTButtonElement;
         "t-code": HTMLTCodeElement;
@@ -807,6 +825,10 @@ declare namespace LocalJSX {
     interface TArticleList {
         "hueoffset"?: ComponentHue;
         "items"?: TArticleListItem[];
+    }
+    interface TBox {
+    }
+    interface TBoxList {
     }
     interface TBreadcrumbs {
         "text"?: TBreadcrumbsText;
@@ -986,6 +1008,8 @@ declare namespace LocalJSX {
         "preview-iframe": PreviewIframe;
         "t-article": TArticle;
         "t-article-list": TArticleList;
+        "t-box": TBox;
+        "t-box-list": TBoxList;
         "t-breadcrumbs": TBreadcrumbs;
         "t-button": TButton;
         "t-code": TCode;
@@ -1037,6 +1061,8 @@ declare module "@stencil/core" {
             "preview-iframe": LocalJSX.PreviewIframe & JSXBase.HTMLAttributes<HTMLPreviewIframeElement>;
             "t-article": LocalJSX.TArticle & JSXBase.HTMLAttributes<HTMLTArticleElement>;
             "t-article-list": LocalJSX.TArticleList & JSXBase.HTMLAttributes<HTMLTArticleListElement>;
+            "t-box": LocalJSX.TBox & JSXBase.HTMLAttributes<HTMLTBoxElement>;
+            "t-box-list": LocalJSX.TBoxList & JSXBase.HTMLAttributes<HTMLTBoxListElement>;
             "t-breadcrumbs": LocalJSX.TBreadcrumbs & JSXBase.HTMLAttributes<HTMLTBreadcrumbsElement>;
             "t-button": LocalJSX.TButton & JSXBase.HTMLAttributes<HTMLTButtonElement>;
             "t-code": LocalJSX.TCode & JSXBase.HTMLAttributes<HTMLTCodeElement>;

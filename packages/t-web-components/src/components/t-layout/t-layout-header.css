@@ -14,7 +14,7 @@ header {
   .title {
     align-items: center;
     display: flex;
-    filter: drop-shadow(0 0 1em white);
+    filter: drop-shadow(0 0 2px var(--t-colour-mode));
     font-size: 1.5rem;
     gap: var(--t-spacing-default);
     grid-area: title;
