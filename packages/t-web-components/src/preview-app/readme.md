@@ -13,10 +13,10 @@
 - [t-layout](../components/t-layout)
 - [t-layout-nav](../components/t-layout-nav)
 - [t-layout-nav-item](../components/t-layout-nav-item)
+- [t-link](../components/t-link)
 - [component-colour-settings](component-colour-settings)
 - [t-heading](../components/t-heading)
 - [component-documentation](component-documentation)
-- [t-link](../components/t-link)
 
 ### Graph
 ```mermaid
@@ -25,10 +25,10 @@ graph TD;
   preview-app --> t-layout
   preview-app --> t-layout-nav
   preview-app --> t-layout-nav-item
+  preview-app --> t-link
   preview-app --> component-colour-settings
   preview-app --> t-heading
   preview-app --> component-documentation
-  preview-app --> t-link
   t-layout --> t-mode-switcher
   t-layout --> t-button
   t-mode-switcher --> t-dropdown-menu

@@ -24,7 +24,11 @@ import { SelectedMode } from '../../types/Mode';
 
 @Component({
   tag: 't-context',
-  styleUrl: 't-context.css',
+  styleUrls: [
+    't-context.css',
+    '../t-box/t-box.context.css',
+    '../t-box-list/t-box-list.context.css'
+  ],
 })
 export class TContext {
 

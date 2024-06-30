@@ -95,6 +95,7 @@ export class PreviewApp {
               onColourSettingsChange={this.handleColourSettingsChange}
             />
           )}
+          <p slot="footer">&copy; Tomas Engebretsen | <t-link href="https://github.com/TomasEng/web-components">Kildekode på Github</t-link></p>
         </t-layout>
       </t-context>
     );

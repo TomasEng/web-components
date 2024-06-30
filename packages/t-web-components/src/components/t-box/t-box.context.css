@@ -1,0 +1,21 @@
+a {
+  --colour: var(--t-colour-base-app-high-contrast);
+  color: var(--colour);
+  text-decoration: none;
+
+  &:hover:has(> t-box) {
+    text-decoration: none;
+
+    > t-box {
+      background: var(--t-background-panel);
+      border-radius: var(--t-border-radius-default) !important;
+      box-shadow: var(--t-box-shadow-inset-3d);
+      text-decoration: none;
+    }
+  }
+
+  > t-box {
+    color: var(--colour);
+    cursor: pointer;
+  }
+}

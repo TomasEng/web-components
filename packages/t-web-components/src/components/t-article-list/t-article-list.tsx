@@ -5,7 +5,11 @@ import { setBaseColour } from '../../utils/componentUtils';
 
 @Component({
   tag: 't-article-list',
-  styleUrl: 't-article-list.css',
+  styleUrls: [
+    't-article-list.css',
+    '../t-box/t-box.context.css',
+    '../t-box-list/t-box-list.context.css'
+  ],
   shadow: true,
 })
 export class TArticleList {
@@ -21,9 +25,9 @@ export class TArticleList {
 
   render() {
     return (
-      <ul class='t-article-list'>
+      <t-box-list>
         {this.items.map(item => <Item item={item}/>)}
-      </ul>
+      </t-box-list>
     );
   }
 }
@@ -31,9 +35,11 @@ export class TArticleList {
 const Item = ({ item }: { item: TArticleListItem }) => {
   return <li key={item.href}>
     <a href={item.href} title={item.title}>
-      <span class='item-title'>{item.title}</span>
-      <span class='item-intro'>{item.intro}</span>
-      <span class='item-date'>{item.date?.toLocaleDateString()}</span>
+      <t-box>
+        <span class='item-title'>{item.title}</span>
+        <span class='item-intro'>{item.intro}</span>
+        <span class='item-date'>{item.date?.toLocaleDateString()}</span>
+      </t-box>
     </a>
   </li>;
 }

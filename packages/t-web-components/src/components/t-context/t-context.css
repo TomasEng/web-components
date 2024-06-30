@@ -131,38 +131,3 @@ p, dd {
   margin: 1em 0;
   font-size: var(--t-font-size-default);
 }
-
-a {
-  --colour: var(--t-colour-base-app-high-contrast);
-  text-decoration: none;
-
-  &:link {
-    color: var(--colour);
-  }
-
-  &:visited {
-    color: oklch(from var(--colour) l c calc(h + var(--t-colour-base-hue-offset-visited-link)));
-  }
-
-  &[href^="#"]:visited {
-    color: var(--colour);
-  }
-
-  &:hover {
-    text-decoration: underline;
-  }
-
-  &:hover:has(> t-box) {
-    text-decoration: none;
-
-    > t-box {
-      box-shadow: var(--t-box-shadow-inset-3d);
-      filter: saturate(6);
-      text-decoration: none;
-    }
-  }
-
-  > t-box {
-    cursor: pointer;
-  }
-}

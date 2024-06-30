@@ -6,7 +6,7 @@ import { MenuToggleIcon } from '../../icons/MenuToggleIcon';
 
 @Component({
   tag: 't-layout',
-  styleUrls: ['t-layout.css', 't-layout-main.css', 't-layout-header.css'],
+  styleUrls: ['t-layout.css', 't-layout-main.css', 't-layout-header.css', 't-layout-footer.css'],
   shadow: true,
 })
 export class TLayout {
@@ -50,27 +50,30 @@ export class TLayout {
           </div>
           <div class="nav-toggle" onClick={() => this.navOpen ? this.collapseNav() : this.expandNav()}>
             <t-button buttonAttributes={{ title: this.navOpen ? 'Lukk' : 'Meny' }}>
-              {this.navOpen ? <CrossIcon /> : <MenuToggleIcon />}
+              {this.navOpen ? <CrossIcon/> : <MenuToggleIcon/>}
             </t-button>
           </div>
         </header>
         <main class={`main ${stateClass}`}>
           <div class={`leftbar${this.stickyleftbar ? ' sticky' : ''}`}>
             <div class="leftbar-content">
-              <slot name="leftbar" />
+              <slot name="leftbar"/>
             </div>
             <button
               class="leftbar-toggle"
               onClick={() => this.toggleLeftbar()}
               title={this.leftbarOpen ? this.text.collapseSidebar : this.text.expandSidebar}
             >
-              <ChevronRightIcon class="chevron" />
+              <ChevronRightIcon class="chevron"/>
             </button>
           </div>
           <div class="content">
-            <slot name="content" />
+            <slot name="content"/>
           </div>
         </main>
+        <footer>
+          <slot name="footer"/>
+        </footer>
       </div>
     </div>;
   }

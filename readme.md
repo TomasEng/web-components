@@ -94,3 +94,24 @@ Alle kommandoer kjøres i rotmappen.
 Når `t-web-components` bygges, blir det generert en mappe som heter `www` i pakkemappen.
 Det er denne som innholder demoapplikasjonen som kjører på Github Pages.
 Denne kan rulles ut ved å kjøre `yarn run deploy-demo` i rotmappen.
+
+## Filstruktur
+Hver komponent har en egen mappe med komponentens navn i mappen `packages/t-web-components/src/components`. Videre har hver komponent forskjellige filer med ulike prefikser:
+
+### `.tsx`
+Hovedfilen til komponenten. Denne skal inneholde kompoentens klasse med Stencils `@Component`-annotasjon.
+
+### `.css`
+Komponentens CSS-fil. Dersom komponenten har skygge-DOM, blir innholdet av denne filen plassert i skyggens `<style>`-element.
+
+### `.ete.ts`
+Playwright-tester for komponenten.
+
+### `.demo.ts`
+Oppsett for testdata som brukes både i tester og i listen over eksempler.
+
+### `.text.ts`
+Eksporerter et objekt med standard tekstinnhold som brukes i komponenten og en type for dette objektet. Komponenter med slik tekst skal ha et attributt hvor man kan overstyre standardtekstene.
+
+### `.context.css`
+CSS-fil som brukes til å definere stilinformasjon for slissede elementer dypere ned enn på øverste nivå, ettersom dette ikke er mulig med `::slotted`. Denne filen må inkluderes i `t-context`-komponenten samt i komponenter som benytter seg av komponenten i skygge-DOM-en.

@@ -1,0 +1,4 @@
+footer, ::slotted(p[slot='footer']) {
+  font-size: 0.875rem !important;
+  text-align: center;
+}

@@ -1,0 +1,15 @@
+t-box-list {
+  li:first-child t-box {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  li:last-child t-box {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+
+  li:not(:last-child):not(:first-child) t-box {
+    border-radius: 0;
+  }
+}
