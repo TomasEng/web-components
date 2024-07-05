@@ -15,6 +15,7 @@ export type TSourceItem = {
   title?: string;
   url?: string;
   volume?: number;
+  websiteTitle?: string;
 };
 
 export type Author = Person | Organisation;

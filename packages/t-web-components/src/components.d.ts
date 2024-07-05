@@ -80,6 +80,7 @@ export namespace Components {
         "hue": number;
     }
     interface TArticle {
+        "getSourceList": () => Promise<HTMLTSourceListElement>;
         "getSourceOrder": () => Promise<string[]>;
         "heading": string;
         "publisheddate"?: string;
@@ -222,7 +223,7 @@ export namespace Components {
     }
     interface TSourceRef {
         "getSourceId": () => Promise<string>;
-        "sourceId": string;
+        "sourceid": string;
     }
     interface TSpinner {
         "text": TSpinnerText;
@@ -961,7 +962,7 @@ declare namespace LocalJSX {
         "text"?: TSourceListText;
     }
     interface TSourceRef {
-        "sourceId"?: string;
+        "sourceid"?: string;
     }
     interface TSpinner {
         "text"?: TSpinnerText;

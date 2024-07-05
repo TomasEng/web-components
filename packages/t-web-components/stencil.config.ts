@@ -32,5 +32,6 @@ export const config: Config = {
   globalStyle: 'src/style/global.css',
   extras: {
     experimentalSlotFixes: true,
+    enableImportInjection: true, // Must be set to work in production mode with Vite; see https://github.com/vitejs/vite/issues/12434
   }
 };

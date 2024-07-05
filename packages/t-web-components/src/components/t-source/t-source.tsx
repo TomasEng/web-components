@@ -32,14 +32,16 @@ export class TSource {
       title,
       url,
       volume,
+      websiteTitle,
     } = this.source || {}
 
     return (
       <Host>
         <AuthorAndYearInfo authors={authors} date={date}/>
-        {title && <cite class="title">{title}{'. '}</cite>}
+        {title && !websiteTitle && <cite class="title">{title}{'. '}</cite>}
         {bookTitle && <cite class="bookTitle">{bookTitle}{'. '}</cite>}
-        {articleTitle && <cite class="articleTitle">{articleTitle}{'. '}</cite>}
+        <ArticleTitle articleTitle={articleTitle} websiteTitle={websiteTitle} journal={journal}/>
+        <WebsiteTitle articleTitle={articleTitle} websiteTitle={websiteTitle}/>
         <JournalInfo
           doi={doi}
           issue={issue}
@@ -55,6 +57,30 @@ export class TSource {
     );
   }
 }
+
+type ArticleTitleProps = Pick<TSourceItem, 'articleTitle' | 'websiteTitle' | 'journal'>;
+
+const ArticleTitle = ({ articleTitle, websiteTitle }: ArticleTitleProps) => {
+  if (websiteTitle) {
+    return <cite class="webArticleTitle">«{articleTitle}»{'. '}</cite>;
+  } else if (articleTitle) {
+    return <cite class="articleTitle">{articleTitle}{'. '}</cite>;
+  } else {
+    return null;
+  }
+};
+
+type WebsiteTitleProps = Pick<TSourceItem, 'articleTitle' | 'websiteTitle'>;
+
+const WebsiteTitle = ({ articleTitle, websiteTitle }: WebsiteTitleProps) => {
+  if (articleTitle && websiteTitle) {
+    return <cite class="websiteTitle">I: {websiteTitle}{'. '}</cite>;
+  } else if (websiteTitle) {
+    return <cite class="websiteTitle">{websiteTitle}{'. '}</cite>;
+  } else {
+    return null;
+  }
+};
 
 type AuthorAndYearInfoProps = Pick<TSourceItem, 'authors' | 'date'>;
 
@@ -73,7 +99,7 @@ const AuthorAndYearInfo = ({authors, date}: AuthorAndYearInfoProps) => {
     );
   }
   return null;
-}
+};
 
 type JournalInfoProps = Pick<TSourceItem, 'journal' | 'volume' | 'issue' | 'pageStart' | 'pageEnd' | 'doi'> & {
   pagesText: (pages: string) => string;

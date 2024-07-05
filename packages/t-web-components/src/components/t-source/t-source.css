@@ -6,7 +6,7 @@
   font-style: italic;
 }
 
-.articleTitle {
+.articleTitle, .websiteTitle, .webArticleTitle {
   font-style: normal;
 }
 

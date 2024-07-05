@@ -4,6 +4,7 @@ import { Component, h } from '@stencil/core';
   tag: 't-box-list',
   styleUrls: [
     't-box-list.css',
+    't-box-list.context.css',
     '../t-box/t-box.context.css'
   ],
   shadow: true,

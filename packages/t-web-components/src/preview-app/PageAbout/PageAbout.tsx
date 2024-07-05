@@ -16,23 +16,23 @@ export const PageAbout = () => {
         <li>Navigasjonen skal være intuitiv og oversiktlig. Informasjonshierarkiet skal være tydelig og det skal være lett å se hvor man er.</li>
         <li>
           Det skal være tilfredsstillende kontrast mellom tekst og bakgrunn, både i lys og mørk modus. Jeg har laget <t-link href='https://github.com/TomasEng/Chromator' external={true}>et eget verktøy for å håndtere dette</t-link>,
-          slik at kontrasten alltid er lik (i henhold til WCAG-definisjonen) uansett hvilken fargetone man velger.
+          slik at kontrasten tilfredsstiller retningslinjene til WCAG uansett hvilken fargetone man velger.
         </li>
         <li>
           Brukerens preferanser skal følges så langt det lar seg gjøre. Dette gjelder f.eks. tekststørrelse og fargemodus.
-          Dersom brukeren endrer fargemodus i operativsystemet, skal nettsiden umiddelbart følge etter, med mindre brukeren har spesifisert en gitt fargemodus for nettsiden.
+          Dersom brukeren endrer fargemodus i operativsystemet, skal nettsiden umiddelbart følge etter, med mindre brukeren selv har valgt å overstyre dette ved å velge noe annet enn "automatisk" i fargemodusvelgeren.
         </li>
         <li>Nettsiden skal være responsiv og fungere smertefritt på skjermstørrelser ned til moderne mobiltelefonstørrelse.</li>
         <li>
           Hovedinformasjonen på siden skal ta så mye plass som praktisk mulig.
           Det skal ikke være forstyrrende elementer som henger igjen og tar opp plass når brukeren ruller bort fra dem, spesielt ikke når det allerede er lite plass å ta av.
         </li>
-        <li>Etablerte designidiomer skal følges så langt det lar seg gjøre. Ingen firkantede radioknapper.</li>
+        <li>Etablerte designidiomer skal følges så langt det lar seg gjøre, slik at systemet er forutsigbart for brukerne. Ingen firkantede radioknapper eller egne løsninger for datovelgere o.l.</li>
         <li>Det skal tas hensyn til tilgjengelighetsverkøy og søkemotoroptimalisering.</li>
       </ul>
       <p>
         Siden systemet i utgangspunktet er ment for personlig bruk, er det dessverre ikke spesielt godt dokumentert.
-        Ta gjerne kontakt med spørsmål hvis du som leser dette ønsker å ta det i bruk.
+        Ta gjerne kontakt hvis du som leser dette ønsker å ta det i bruk.
       </p>
     </div>
   );

@@ -18,13 +18,18 @@ export class TArticle {
 
   @Element() element: HTMLElement;
 
-  @Method() async getSourceOrder() {
+  @Method() async getSourceOrder(): Promise<string[]> {
     await customElements.whenDefined('t-source-ref');
     const sourceRefElements: NodeListOf<HTMLTSourceRefElement> = this.element.querySelectorAll('t-source-ref');
     const sourceIds = await Promise.all(Array.from(sourceRefElements).map(sourceRefElement => {
       return sourceRefElement.getSourceId();
     }));
     return uniqueItems(sourceIds);
+  }
+
+  @Method() async getSourceList(): Promise<HTMLTSourceListElement> {
+    await customElements.whenDefined('t-source-list');
+    return this.element.shadowRoot.querySelector('t-source-list');
   }
 
   render() {

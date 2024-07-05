@@ -17,6 +17,16 @@
 
 ## Methods
 
+### `getSourceList() => Promise<HTMLTSourceListElement>`
+
+
+
+#### Returns
+
+Type: `Promise<HTMLTSourceListElement>`
+
+
+
 ### `getSourceOrder() => Promise<string[]>`
 
 

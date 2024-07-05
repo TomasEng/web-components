@@ -7,10 +7,10 @@
 
 ## Properties
 
-| Property | Attribute | Description | Type                                                                                                                                                                                                                                                                                                      | Default       |
-| -------- | --------- | ----------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- |
-| `source` | --        |             | `{ articleTitle?: string; authors: Author[]; bookTitle?: string; city?: string; date?: SourceDate; doi?: string; isbn?: string; issue?: number; journal?: string; pageEnd?: number; pageStart?: number; publisher?: string; retrievedDate?: SourceDate; title?: string; url?: string; volume?: number; }` | `undefined`   |
-| `text`   | --        |             | `{ pages: (pages: string) => string; }`                                                                                                                                                                                                                                                                   | `defaultText` |
+| Property | Attribute | Description | Type                                                                                                                                                                                                                                                                                                                             | Default       |
+| -------- | --------- | ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- |
+| `source` | --        |             | `{ articleTitle?: string; authors: Author[]; bookTitle?: string; city?: string; date?: SourceDate; doi?: string; isbn?: string; issue?: number; journal?: string; pageEnd?: number; pageStart?: number; publisher?: string; retrievedDate?: SourceDate; title?: string; url?: string; volume?: number; websiteTitle?: string; }` | `undefined`   |
+| `text`   | --        |             | `{ pages: (pages: string) => string; }`                                                                                                                                                                                                                                                                                          | `defaultText` |
 
 
 ## Dependencies

@@ -9,13 +9,13 @@ import { findUniqueIndex } from '../../utils/arrayUtils';
 })
 export class TSourceRef {
 
-  @Prop() sourceId: string;
+  @Prop() sourceid: string;
 
   @Element() element: HTMLElement;
 
   @Method() async getSourceId() {
     await customElements.whenDefined('t-source-ref');
-    return this.sourceId ?? this.element.getAttribute('sourceid');
+    return this.sourceid ?? this.element.getAttribute('sourceid');
   }
 
   get tLink(): HTMLTLinkElement {
@@ -33,11 +33,11 @@ export class TSourceRef {
       <Host>
         <t-tooltip>
           <sup slot="trigger">
-            <t-link href={`#${SOURCE_ID_PREFIX}${this.sourceId}`}/>
+            <t-link href={`#${SOURCE_ID_PREFIX}${this.sourceid}`}/>
           </sup>
           <t-source
             slot="content"
-            source={article.sources[this.sourceId]}
+            source={article.sources[this.sourceid]}
           />
         </t-tooltip>
       </Host>

@@ -131,3 +131,24 @@ p, dd {
   margin: 1em 0;
   font-size: var(--t-font-size-default);
 }
+
+a {
+  --colour: var(--t-colour-base-component-high-contrast);
+  text-decoration: none;
+
+  &:link {
+    color: var(--colour);
+  }
+
+  &:visited {
+    color: oklch(from var(--colour) l c calc(h + var(--t-colour-base-hue-offset-visited-link)));
+  }
+
+  &[href^="#"]:visited {
+    color: var(--colour);
+  }
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
