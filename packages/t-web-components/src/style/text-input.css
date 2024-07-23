@@ -1,6 +1,6 @@
 .text-input {
   --font-size: var(--t-default-font-size);
-  --height: 1.5rem;
+  --height: var(--t-clickable-area-size);
   --padding: calc((var(--height) - var(--t-default-font-size))/2);
   background-color: var(--t-colour-input-field-background);
   border-radius: 6px;
@@ -8,6 +8,8 @@
   box-shadow: inset 1px 1px 1px rgba(0,0,0,0.3);
   box-sizing: border-box;
   color: var(--t-font-colour-default);
+  font-family: var(--t-default-font-family);
+  font-size: var(--font-size);
   line-height: var(--font-size);
   outline: none;
   padding: var(--padding);

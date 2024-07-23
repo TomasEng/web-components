@@ -3,6 +3,7 @@ import { ChevronRightIcon } from '../../icons/ChevronRightIcon';
 import defaultText, { TLayoutText } from './t-layout.text';
 import { CrossIcon } from '../../icons/CrossIcon';
 import { MenuToggleIcon } from '../../icons/MenuToggleIcon';
+import { TLeftbarVisibility } from './TLeftbarVisibility';
 
 @Component({
   tag: 't-layout',
@@ -14,6 +15,7 @@ export class TLayout {
   @Prop() sitetitle: string;
   @Prop() stickyleftbar: boolean = false;
   @Prop() text: TLayoutText = defaultText;
+  @Prop() leftbarvisibility: TLeftbarVisibility = 'visible';
 
   @State() leftbarOpen: boolean = false;
   @State() navOpen: boolean = false;
@@ -55,7 +57,7 @@ export class TLayout {
           </div>
         </header>
         <main class={`main ${stateClass}`}>
-          <div class={`leftbar${this.stickyleftbar ? ' sticky' : ''}`}>
+          <div class={`leftbar${this.stickyleftbar ? ' sticky' : ''} ${this.leftbarvisibility}`}>
             <div class="leftbar-content">
               <slot name="leftbar"/>
             </div>

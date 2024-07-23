@@ -1,5 +1,5 @@
 import { Component, h, JSX, State } from '@stencil/core';
-import { ColourSettings } from '../components';
+import { ColourSettings, TLeftbarVisibility } from '../components';
 import { DEFAULT_CHROMA, DEFAULT_HUE, DEFAULT_NUMBER_OF_HUES, PATH_ABOUT } from '../constants';
 import state from '../store';
 import { PageComponents } from './PageComponents/PageComponents';
@@ -75,6 +75,7 @@ export class PreviewApp {
       hueOffsetVisitedLink: this.hueOffsetVisitedLink,
       hueOffsetCode: this.hueOffsetCode,
     };
+    const leftbarvisibility: TLeftbarVisibility = isAboutPageOpen ? 'largescreenonly' : 'visible';
     return (
       <t-context
         basehue={this.baseHue}
@@ -83,7 +84,11 @@ export class PreviewApp {
         hueoffsetcode={this.hueOffsetCode}
         hueoffsetvisitedlink={this.hueOffsetVisitedLink}
       >
-        <t-layout sitetitle="Tomas sitt designsystem" stickyleftbar={true}>
+        <t-layout
+          sitetitle="Tomas' designsystem"
+          stickyleftbar={true}
+          leftbarvisibility={leftbarvisibility}
+        >
           <img slot="logo" src={iconUrl(this.baseHue)}  alt='Logo'/>
           <t-layout-nav slot="nav">
             <t-layout-nav-item open={!isAboutPageOpen}><a href="?">Oversikt</a></t-layout-nav-item>

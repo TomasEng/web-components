@@ -20,7 +20,7 @@
   --t-box-shadow-inset-3d-bottom: color-mix(in oklab, transparent 75%, black) inset 0 -1px;
   --t-box-shadow-inset-3d-top: color-mix(in oklab, transparent 65%, white) inset 0 1px;
   --t-box-shadow-inset-3d: var(--t-box-shadow-inset-3d-top), var(--t-box-shadow-inset-3d-bottom);
-  --t-clickable-area-size: 44px;
+  --t-clickable-area-size: 2.75rem;
   --t-colour-app-background-chroma: 0.05;
   --t-colour-app-background-hue: var(--t-colour-base-app-hue);
   --t-colour-app-background-lightness: calc(0.6 + var(--t-mode-colour-scaling) * 0.3);

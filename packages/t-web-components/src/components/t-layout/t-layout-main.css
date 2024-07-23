@@ -15,6 +15,10 @@
   box-sizing: border-box;
   width: var(--t-leftbar-width);
 
+  &.hidden {
+    display: none;
+  }
+
   .leftbar-content {
     padding: 1rem;
   }
@@ -41,11 +45,8 @@
   padding: 1rem;
 }
 
-.leftbar:has(.leftbar-content:empty) {
-  display: none;
-}
-
-.leftbar:has(.leftbar-content:empty) + .content {
+.leftbar.hidden + .content {
+  --closed-bar-width: 0px;
   border-radius: var(--border-radius);
 }
 
@@ -70,6 +71,10 @@
       position: absolute;
       top: 0;
       z-index: 100;
+
+      &.largescreenonly {
+        display: none;
+      }
 
       .leftbar-toggle {
         backdrop-filter: var(--t-popover-backdrop-filter);
@@ -101,6 +106,11 @@
         transition-property: width, padding;
         width: 200px;
       }
+    }
+
+    .leftbar.largescreenonly + .content {
+      --closed-bar-width: 0px;
+      border-radius: var(--border-radius);
     }
 
     .content {

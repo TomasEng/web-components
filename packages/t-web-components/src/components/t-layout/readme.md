@@ -7,11 +7,12 @@
 
 ## Properties
 
-| Property        | Attribute       | Description | Type                                                  | Default       |
-| --------------- | --------------- | ----------- | ----------------------------------------------------- | ------------- |
-| `sitetitle`     | `sitetitle`     |             | `string`                                              | `undefined`   |
-| `stickyleftbar` | `stickyleftbar` |             | `boolean`                                             | `false`       |
-| `text`          | --              |             | `{ expandSidebar: string; collapseSidebar: string; }` | `defaultText` |
+| Property            | Attribute           | Description | Type                                                  | Default       |
+| ------------------- | ------------------- | ----------- | ----------------------------------------------------- | ------------- |
+| `leftbarvisibility` | `leftbarvisibility` |             | `"hidden" \| "largescreenonly" \| "visible"`          | `'visible'`   |
+| `sitetitle`         | `sitetitle`         |             | `string`                                              | `undefined`   |
+| `stickyleftbar`     | `stickyleftbar`     |             | `boolean`                                             | `false`       |
+| `text`              | --                  |             | `{ expandSidebar: string; collapseSidebar: string; }` | `defaultText` |
 
 
 ## Dependencies

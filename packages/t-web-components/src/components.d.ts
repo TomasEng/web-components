@@ -23,6 +23,7 @@ import { TDropdownMenuItem } from "./components/t-dropdown/TDropdownMenuItem";
 import { TFloatingElementPlacement } from "./types/TFloatingElementPlacement";
 import { ResizeMode } from "./types/ResizeMode";
 import { TLayoutText } from "./components/t-layout/t-layout.text";
+import { TLeftbarVisibility } from "./components/t-layout/TLeftbarVisibility";
 import { TSelectOption } from "./components/t-select/TSelectOption";
 import { TSourceItem } from "./types/TSourceItem";
 import { TSourceText } from "./components/t-source/t-source.text";
@@ -46,6 +47,7 @@ export { TDropdownMenuItem } from "./components/t-dropdown/TDropdownMenuItem";
 export { TFloatingElementPlacement } from "./types/TFloatingElementPlacement";
 export { ResizeMode } from "./types/ResizeMode";
 export { TLayoutText } from "./components/t-layout/t-layout.text";
+export { TLeftbarVisibility } from "./components/t-layout/TLeftbarVisibility";
 export { TSelectOption } from "./components/t-select/TSelectOption";
 export { TSourceItem } from "./types/TSourceItem";
 export { TSourceText } from "./components/t-source/t-source.text";
@@ -162,6 +164,7 @@ export namespace Components {
         "value": number;
     }
     interface TLayout {
+        "leftbarvisibility": TLeftbarVisibility;
         "sitetitle": string;
         "stickyleftbar": boolean;
         "text": TLayoutText;
@@ -900,6 +903,7 @@ declare namespace LocalJSX {
         "value"?: number;
     }
     interface TLayout {
+        "leftbarvisibility"?: TLeftbarVisibility;
         "sitetitle"?: string;
         "stickyleftbar"?: boolean;
         "text"?: TLayoutText;

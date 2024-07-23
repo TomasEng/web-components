@@ -1,6 +1,7 @@
 .t-button {
   --button-colour: var(--t-colour-base-component);
-  --button-padding: .5rem;
+  --button-padding: calc((var(--height) - var(--t-default-font-size)) / 2);
+  --height: var(--t-clickable-area-size);
   background: linear-gradient(
     to top,
     color-mix(in oklab, var(--button-colour) 90%, black),
@@ -15,6 +16,7 @@
     rgb(0 0 0 / 0.2) 0 -1px 1px;
   align-items: center;
   border-radius: 100px;
+  box-sizing: border-box;
   border: 0 solid var(--t-colour-base-component-high-contrast);
   color: var(--t-font-colour-default);
   cursor: pointer;
@@ -22,6 +24,7 @@
   font-family: var(--t-default-font-family);
   font-size: var(--t-default-font-size);
   gap: var(--t-spacing-inline);
+  height: var(--height);
   line-height: 1;
   padding: var(--button-padding);
   transition: box-shadow var(--transistion-duration);

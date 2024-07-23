@@ -87,7 +87,7 @@ Prosjektet bruker verktøyet Lerna til å håndtere publisering av pakkene.
 Ved å følge følgende instruksjoner, blir begge pakkene oppdatert med ny patchversjon og publisert til Npm-registret.
 Alle kommandoer kjøres i rotmappen.
 1. Kjør `yarn run build` for å bygge pakkene. Dette må gjøres først for å kjøre genereringsskriptene til Stencil.
-2. Hvis noen filer har blitt endret, commit endringene.
+2. Hvis noen filer har blitt endret, utfør en endringstransaksjon med endringene.
 3. Kjør `yarn run publish` for å bygge nye versjoner og publisere pakkene til Npm-registret. (Siden Lerna håndterer publiseringsprosessen, vil ikke `npm publish` fungere.) Av ukjent grunn kan det hende at det kommer en feilmelding knyttet til publisering av React-pakken selv om pakken faktisk blir publisert.
 
 ## Utrulling av demoapplikasjon

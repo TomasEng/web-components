@@ -10,6 +10,7 @@ export const config: Config = {
     },
     {
       type: 'dist-custom-elements',
+      customElementsExportBehavior: 'auto-define-custom-elements',
     },
     {
       type: 'docs-readme',
@@ -33,5 +34,5 @@ export const config: Config = {
   extras: {
     experimentalSlotFixes: true,
     enableImportInjection: true, // Must be set to work in production mode with Vite; see https://github.com/vitejs/vite/issues/12434
-  }
+  },
 };
