@@ -40,7 +40,7 @@ export class TIframe {
   componentDidLoad() {
     this.iframe.onload = async () => {
       await this.resizeIframe();
-      this.iframeWindow.addEventListener('resize', async () => {
+      this.iframeWindow?.addEventListener('resize', async () => {
         await this.resizeIframe();
       });
     };
@@ -75,7 +75,7 @@ export class TIframe {
     return new Promise(resolve => {
       let resolved = false;
       const interval = setInterval(() => {
-        if (this.iframeDocument.scrollingElement) {
+        if (this.iframeDocument?.scrollingElement) {
           resolve(this.iframeDocument.scrollingElement);
           resolved = true;
         }

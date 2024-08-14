@@ -33,12 +33,13 @@ export class TArticleList {
 }
 
 const Item = ({ item }: { item: TArticleListItem }) => {
-  return <li key={item.href}>
-    <a href={item.href} title={item.title}>
+  const {href, title, intro, date, ...rest} = item;
+  return <li key={href}>
+    <a href={href} title={title} {...rest}>
       <t-box>
-        <span class='item-title'>{item.title}</span>
-        <span class='item-intro'>{item.intro}</span>
-        <span class='item-date'>{item.date?.toLocaleDateString()}</span>
+        <span class='item-title'>{title}</span>
+        <span class='item-intro'>{intro}</span>
+        <span class='item-date'>{date?.toLocaleDateString()}</span>
       </t-box>
     </a>
   </li>;

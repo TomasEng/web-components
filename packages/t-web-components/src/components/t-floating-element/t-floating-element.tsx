@@ -34,7 +34,7 @@ export class TFloatingElement {
 
   disconnectedCallback() {
     document.removeEventListener('click', this.handleClickEverywhere);
-    this.cleanup();
+    this.cleanup?.();
   }
 
   handleClickEverywhere = (event: MouseEvent) => {
