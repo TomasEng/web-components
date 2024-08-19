@@ -5,7 +5,7 @@
   "author": "Tomas <tomas.engebretsen@gmail.com>",
   "homepage": "https://github.com/TomasEng/web-components#readme",
   "license": "MIT",
-  "type": "module",
+  "type": "commonjs",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "types": "dist/types/index.d.ts",
@@ -39,5 +39,5 @@
     "react-dom": "^18.2.0",
     "typescript": "^5.4.5"
   },
-  "gitHead": "6752d75df1d5e62016d683513090697ed1928aaf"
+  "gitHead": "ca91759e6e5578bcac9242456b3cd0d88abdf028"
 }
