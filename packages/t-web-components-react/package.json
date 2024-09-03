@@ -6,6 +6,7 @@
   "homepage": "https://github.com/TomasEng/web-components#readme",
   "license": "MIT",
   "main": "dist/index.js",
+  "type": "module",
   "module": "dist/index.js",
   "types": "dist/types/index.d.ts",
   "directories": {
@@ -19,7 +20,7 @@
     "url": "git+https://github.com/TomasEng/web-components.git"
   },
   "scripts": {
-    "build": "yarn run tsc && node fix-extensions.js",
+    "build": "yarn run tsc && node fix-extensions.cjs",
     "tsc": "tsc -p . --outDir ./dist",
     "publish": "yarn publish"
   },
@@ -38,5 +39,5 @@
     "react-dom": "^18.2.0",
     "typescript": "^5.4.5"
   },
-  "gitHead": "d512b6449c49d9476367abe2403a325016a1455b"
+  "gitHead": "9de3caed50be8053f1348835cef891f372cb46e8"
 }
