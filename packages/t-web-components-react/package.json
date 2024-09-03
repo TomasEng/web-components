@@ -5,7 +5,6 @@
   "author": "Tomas <tomas.engebretsen@gmail.com>",
   "homepage": "https://github.com/TomasEng/web-components#readme",
   "license": "MIT",
-  "type": "commonjs",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "types": "dist/types/index.d.ts",
@@ -20,7 +19,7 @@
     "url": "git+https://github.com/TomasEng/web-components.git"
   },
   "scripts": {
-    "build": "yarn run tsc",
+    "build": "yarn run tsc && node fix-extensions.js",
     "tsc": "tsc -p . --outDir ./dist",
     "publish": "yarn publish"
   },
@@ -39,5 +38,5 @@
     "react-dom": "^18.2.0",
     "typescript": "^5.4.5"
   },
-  "gitHead": "ca91759e6e5578bcac9242456b3cd0d88abdf028"
+  "gitHead": "d512b6449c49d9476367abe2403a325016a1455b"
 }

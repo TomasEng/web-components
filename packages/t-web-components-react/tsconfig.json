@@ -9,8 +9,7 @@
     "skipLibCheck": true,
     "jsx": "react",
     "allowSyntheticDefaultImports": true,
-    "declarationDir": "./dist/types",
-    "esModuleInterop": true
+    "declarationDir": "./dist/types"
   },
   "include": ["lib"],
   "exclude": ["node_modules"]
