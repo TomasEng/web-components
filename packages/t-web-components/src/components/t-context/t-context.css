@@ -60,18 +60,18 @@
   --t-heading-spacing-bottom-4: calc(var(--t-heading-size-4) * var(--t-heading-spacing-bottom-factor));
   --t-heading-spacing-bottom-5: calc(var(--t-heading-size-5) * var(--t-heading-spacing-bottom-factor));
   --t-heading-spacing-bottom-6: calc(var(--t-heading-size-6) * var(--t-heading-spacing-bottom-factor));
-  --t-heading-spacing-bottom-factor: 0.5;
+  --t-heading-spacing-bottom-factor: 0.67;
   --t-heading-spacing-top-1: 0;
   --t-heading-spacing-top-2: calc(var(--t-heading-size-2) * var(--t-heading-spacing-top-factor));
   --t-heading-spacing-top-3: calc(var(--t-heading-size-3) * var(--t-heading-spacing-top-factor));
   --t-heading-spacing-top-4: calc(var(--t-heading-size-4) * var(--t-heading-spacing-top-factor));
   --t-heading-spacing-top-5: calc(var(--t-heading-size-5) * var(--t-heading-spacing-top-factor));
   --t-heading-spacing-top-6: calc(var(--t-heading-size-6) * var(--t-heading-spacing-top-factor));
-  --t-heading-spacing-top-factor: 1;
+  --t-heading-spacing-top-factor: 2;
   --t-image-panel-background-filter: linear-gradient(var(--t-colour-panel-background-filter), var(--t-colour-panel-background-filter)); /* The only way to make an image with one colour */
   --t-image-panel-background: var(--t-image-panel-background-filter), var(--t-background-image-app);
   --t-leftbar-width: 240px;
-  --t-line-height-paragraph: 1.75;
+  --t-line-height-paragraph: 1.67;
   --t-navbar-item-border-radius: 8px;
   --t-page-max-width: 1200px;
   --t-panel-background-colour: color-mix(in oklab, var(--t-colour-base-app) 12%, var(--t-colour-grey-low-contrast));
