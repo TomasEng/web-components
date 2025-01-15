@@ -1,6 +1,6 @@
 :host {
-  --top-shadow-inset: color-mix(in oklab, transparent 65%, white) inset 0 1px;
-  --bottom-shadow-inset: color-mix(in oklab, transparent 75%, black) inset 0 -1px;
+  --top-shadow-inset: color-mix(in oklab, transparent 92%, white) inset 0 1px;
+  --bottom-shadow-inset: color-mix(in oklab, transparent 92%, black) inset 0 -1px;
   --top-shadow: var(--top-shadow-inset);
   --bottom-shadow: var(--bottom-shadow-inset);
   --heading-colour: var(--t-panel-heading-colour);
@@ -9,7 +9,6 @@
   background-image: var(--t-image-panel-background);
   background-size: 100vw 100vh;
   border-radius: var(--t-border-radius-default);
-  border: 1px solid var(--heading-colour);
   box-shadow: var(--top-shadow), var(--bottom-shadow);
   color: var(--t-font-colour-default);
   display: block;

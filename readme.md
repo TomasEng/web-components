@@ -74,7 +74,7 @@ Når man bygger `t-web-components`, blir også React-komponentene automatisk gen
 
 ### Kobling med andre prosjekter
 Pakken kan tas i bruk lokalt i andre prosjekter uten å publisere ny versjon. Det gjøres ved å følge følgende instruksjoner:
-1. Kjør `yarn link` i `packages/`packages/t-web-components``.
+1. Kjør `yarn link` i `packages/t-web-components`.
 2. Kjør `yarn link t-web-components` i det andre prosjektet.
 3. Kjør `yarn run build` i `packages/t-web-components` hver gang det er gjort en endring som skal gjenspeiles i det andre prosjektet.
 
