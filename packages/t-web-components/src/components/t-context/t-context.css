@@ -23,7 +23,7 @@
   --t-clickable-area-size: 2.75rem;
   --t-colour-app-background-chroma: 0.05;
   --t-colour-app-background-hue: var(--t-colour-base-app-hue);
-  --t-colour-app-background-lightness: calc(0.6 + var(--t-mode-colour-scaling) * 0.3);
+  --t-colour-app-background-lightness: calc(0.6 + var(--t-mode-colour-scaling) * 0.4);
   --t-colour-app-background: oklch(var(--t-colour-app-background-lightness) var(--t-colour-app-background-chroma) var(--t-colour-app-background-hue));
   --t-colour-base-app-chroma: unset; /* Set by JS */
   --t-colour-base-app-high-contrast: unset; /* Set by JS */
@@ -41,15 +41,15 @@
   --t-colour-grey: unset; /* Set by JS */
   --t-colour-input-field-background: color-mix(in oklab, var(--t-colour-full-contrast) 5%, transparent);
   --t-colour-page-background: unset; /* Set by JS */
-  --t-colour-panel-background-filter: color-mix(in oklab, var(--t-colour-grey-low-contrast) 75%, transparent);
+  --t-colour-panel-background-filter: color-mix(in oklab, var(--t-colour-grey-low-contrast) 50%, transparent);
   --t-default-font-family: ui-sans-serif, Verdana, Arial, Helvetica, sans-serif;
   --t-default-font-size: 1rem;
   --t-font-colour-default: var(--t-colour-full-contrast);
-  --t-font-family-default: ui-sans-serif, Verdana, Arial, Helvetica, sans-serif;
+  --t-font-family-default: Roboto, Verdana, Arial, Helvetica, sans-serif;
   --t-font-size-default: 1rem;
   --t-heading-font-family: var(--t-font-family-default);
   --t-heading-size-1: 2em;
-  --t-heading-size-2: 1.5em;
+  --t-heading-size-2: 2em;
   --t-heading-size-3: 1.5em;
   --t-heading-size-4: 1.3em;
   --t-heading-size-5: 1em;

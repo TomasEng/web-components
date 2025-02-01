@@ -8,9 +8,8 @@ a {
 
     > t-box {
       background: var(--t-background-panel);
-      border-radius: var(--t-border-radius-default) !important;
-      box-shadow: var(--t-box-shadow-inset-3d);
       text-decoration: none;
+      box-shadow: rgba(0, 0, 0, 0.2) 0 1px 2px 0;
     }
   }
 

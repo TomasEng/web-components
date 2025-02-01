@@ -7,7 +7,7 @@
 }
 
 .main .leftbar {
-  --main-background: color-mix(in oklab, var(--t-colour-grey-low-contrast) 80%, transparent);
+  --main-background: color-mix(in oklab, var(--t-colour-grey-low-contrast) 50%, transparent);
   background-color: var(--main-background);
   border-bottom-left-radius: var(--border-radius);
   border-top-left-radius: var(--border-radius);

@@ -32,12 +32,11 @@
   margin-top: var(--t-heading-spacing-top-2);
 
   .main-line {
-    border-bottom: 1px solid var(--t-colour-grey);
     font-size: var(--t-heading-size-2);
-    font-weight: bold;
+    font-weight: normal;
 
     h2 {
-      font-weight: bold;
+      font-weight: normal;
     }
   }
 }
@@ -47,7 +46,6 @@
   margin-top: var(--t-heading-spacing-top-3);
 
   .main-line {
-    border-bottom: 1px solid var(--t-colour-grey);
     font-size: var(--t-heading-size-3);
     font-weight: normal;
 
