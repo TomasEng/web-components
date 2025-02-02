@@ -42,7 +42,7 @@
   --t-colour-input-field-background: color-mix(in oklab, var(--t-colour-full-contrast) 5%, transparent);
   --t-colour-page-background: unset; /* Set by JS */
   --t-colour-panel-background-filter: color-mix(in oklab, var(--t-colour-grey-low-contrast) 50%, transparent);
-  --t-default-font-family: ui-sans-serif, Verdana, Arial, Helvetica, sans-serif;
+  --t-default-font-family: Roboto, Verdana, Arial, Helvetica, sans-serif;
   --t-default-font-size: 1rem;
   --t-font-colour-default: var(--t-colour-full-contrast);
   --t-font-family-default: Roboto, Verdana, Arial, Helvetica, sans-serif;
@@ -130,6 +130,7 @@ p, dd {
   line-height: var(--t-line-height-paragraph);
   margin: 1em 0;
   font-size: var(--t-font-size-default);
+  font-weight: 300;
 }
 
 a {
