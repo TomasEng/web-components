@@ -34,6 +34,14 @@ export const tCodeDemo: ComponentDemos = {
       mode: 'panel'
     },
   },
+  headingPanel: {
+    componentName: 't-code',
+    props: {
+      code: tCodeTestData.blockCode,
+      language: 'typescript',
+      mode: 'heading-panel'
+    },
+  },
   trimMargin: {
     componentName: 't-code',
     props: {

@@ -1,1 +1,1 @@
-export type TCodeDisplayMode = 'inline' | 'block' | 'panel';
+export type TCodeDisplayMode = 'inline' | 'block' | 'panel' | 'heading-panel';

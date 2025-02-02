@@ -1,6 +1,6 @@
 :host {
-  --top-shadow-inset: color-mix(in oklab, transparent 92%, white) inset 0 1px;
-  --bottom-shadow-inset: color-mix(in oklab, transparent 92%, black) inset 0 -1px;
+  --top-shadow-inset: color-mix(in oklab, transparent 92%, black) inset 0 1px;
+  --bottom-shadow-inset: color-mix(in oklab, transparent 92%, white) inset 0 -1px;
   --top-shadow: var(--top-shadow-inset);
   --bottom-shadow: var(--bottom-shadow-inset);
   --heading-colour: var(--t-panel-heading-colour);

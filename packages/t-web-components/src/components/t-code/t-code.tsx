@@ -33,41 +33,49 @@ export class TCode {
     if (this.copied) {
       setTimeout(
         () => this.copied = false,
-        ACTION_CONFIRMATION_PERIOD_MILLISECONDS
+        ACTION_CONFIRMATION_PERIOD_MILLISECONDS,
       );
     }
   }
 
   render() {
+    console.log('this.mode', this.mode);
     const trimmedCode = this.trimCode();
     const code = this.language
-      ? highlight.highlight(trimmedCode, {language: this.language}).value
+      ? highlight.highlight(trimmedCode, { language: this.language }).value
       : trimmedCode;
     const pre = (
       <pre class={state.mode + ' ' + this.mode}>
         <code innerHTML={code}/>
       </pre>
     );
-    return this.mode === 'panel' ? (
-      <t-panel>
-        <CodeIcon slot="icon" />
-        <span slot="heading" class='heading'>
-          {this.language && findHumanReadableLanguage(this.language)}
-          <t-button
-            buttonAttributes={{title: this.copyButtonTitle}}
-            onClick={() => this.copyToClipboard()}
-            variant='without-background'
-          >
-            {this.renderCopyIcon()}
-          </t-button>
-        </span>
-        {pre}
-      </t-panel>
-    ) : pre;
+    switch (this.mode) {
+      case 'panel':
+        return <t-panel>{pre}</t-panel>;
+      case 'heading-panel':
+        return (
+          <t-panel>
+            <CodeIcon slot="icon"/>
+            <span slot="heading" class="heading">
+              {this.language && findHumanReadableLanguage(this.language)}
+              <t-button
+                buttonAttributes={{ title: this.copyButtonTitle }}
+                onClick={() => this.copyToClipboard()}
+                variant="without-background"
+              >
+                {this.renderCopyIcon()}
+              </t-button>
+            </span>
+            {pre}
+          </t-panel>
+        );
+      default:
+        return pre;
+    }
   }
 
   private renderCopyIcon() {
-    return this.copied ? <CheckmarkIcon slot='icon'/> : <FilesIcon slot='icon'/>;
+    return this.copied ? <CheckmarkIcon slot="icon" /> : <FilesIcon slot="icon" />;
   }
 
   private trimCode(): string {
@@ -81,15 +89,17 @@ export class TCode {
     return navigator
       .clipboard
       .writeText(this.trimCode())
-      .then(() => {this.copied = true;});
+      .then(() => {
+        this.copied = true;
+      });
   }
 }
 
 const findHumanReadableLanguage = (language: string) => {
   return humanReadableLanguages[language] || capitalize(language);
-}
+};
 
-const humanReadableLanguages: {[key: string]: string} = {
+const humanReadableLanguages: { [key: string]: string } = {
   ada: 'Ada',
   angular: 'Angular',
   c: 'C',

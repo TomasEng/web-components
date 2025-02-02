@@ -154,6 +154,7 @@ export const PageComponents = ({colourSettings, onColourSettingsChange}: PageCom
             { title: 'Standard (på linje)', code: tCodeDemo.inline, previewMode: 'inline' },
             { title: 'Blokk', code: tCodeDemo.block, previewMode: 'inline' },
             { title: 'Panel', code: tCodeDemo.panel, previewMode: 'inline' },
+            { title: 'Panel med overskrift', code: tCodeDemo.headingPanel, previewMode: 'inline' },
             { title: 'Trimmet marg', code: tCodeDemo.trimMargin, previewMode: 'inline' },
             { title: 'Direkte', code: tCodeDemo.slot, previewMode: 'inline' },
           ]}

@@ -28,7 +28,7 @@ pre {
     }
   }
 
-  &.block, &.panel {
+  &.block, &.panel, &.heading-panel {
     display: block;
 
     code {
