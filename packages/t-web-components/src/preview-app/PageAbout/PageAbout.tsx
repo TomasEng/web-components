@@ -12,27 +12,27 @@ export const PageAbout = () => {
       </p>
       <p>Systemet er utviklet med fokus på følgende målsetninger:</p>
       <ul>
-        <li>Det skal være lett for alle brukere å se hva ting er. Knapper skal se ut som knapper og faner skal se ut som faner.</li>
-        <li>Navigasjonen skal være intuitiv og oversiktlig. Informasjonshierarkiet skal være tydelig og det skal være lett å se hvor man er.</li>
-        <li>
+        <li><p>Det skal være lett for alle brukere å se hva ting er. Knapper skal se ut som knapper og faner skal se ut som faner.</p></li>
+        <li><p>Navigasjonen skal være intuitiv og oversiktlig. Informasjonshierarkiet skal være tydelig og det skal være lett å se hvor man er.</p></li>
+        <li><p>
           Det skal være tilfredsstillende kontrast mellom tekst og bakgrunn, både i lys og mørk modus. Jeg har laget <t-link href='https://github.com/TomasEng/Chromator' external={true}>et eget verktøy for å håndtere dette</t-link>,
           slik at kontrasten tilfredsstiller retningslinjene til WCAG uansett hvilken fargetone man velger.
-        </li>
-        <li>
-          Brukerens preferanser skal følges så langt det lar seg gjøre. Dette gjelder f.eks. tekststørrelse og fargemodus.
+        </p></li>
+        <li><p>
+          Brukerens preferanser skal følges så langt det lar seg gjøre. Dette gjelder for eksempel tekststørrelse og fargemodus.
           Dersom brukeren endrer fargemodus i operativsystemet, skal nettsiden umiddelbart følge etter, med mindre brukeren selv har valgt å overstyre dette ved å velge noe annet enn "automatisk" i fargemodusvelgeren.
-        </li>
-        <li>Nettsiden skal være responsiv og fungere smertefritt på skjermstørrelser ned til moderne mobiltelefonstørrelse.</li>
-        <li>
+        </p></li>
+        <li><p>Nettsiden skal være responsiv og fungere smertefritt på skjermstørrelser ned til moderne mobiltelefonstørrelse.</p></li>
+        <li><p>
           Hovedinformasjonen på siden skal ta så mye plass som praktisk mulig.
           Det skal ikke være forstyrrende elementer som henger igjen og tar opp plass når brukeren ruller bort fra dem, spesielt ikke når det allerede er lite plass å ta av.
-        </li>
-        <li>Etablerte designidiomer skal følges så langt det lar seg gjøre, slik at systemet er forutsigbart for brukerne. Ingen firkantede radioknapper eller egne løsninger for datovelgere o.l.</li>
-        <li>Det skal tas hensyn til tilgjengelighetsverkøy og søkemotoroptimalisering.</li>
+        </p></li>
+        <li><p>Etablerte designidiomer skal følges så langt det lar seg gjøre, slik at systemet er forutsigbart for brukerne. Ingen firkantede radioknapper eller egne løsninger for datovelgere og liknende.</p></li>
+        <li><p>Det skal tas hensyn til tilgjengelighetsverkøy og søkemotoroptimalisering.</p></li>
       </ul>
       <p>
-        Siden systemet i utgangspunktet er ment for personlig bruk, er det dessverre ikke spesielt godt dokumentert.
-        Ta gjerne kontakt hvis du som leser dette ønsker å ta det i bruk.
+        Siden systemet i utgangspunktet er ment for personlig bruk, finnes det dessverre ikke noe mer dokumentasjon enn eksemplene på oversiktssiden.
+        Ta gjerne kontakt hvis du som leser dette ønsker å ta det i bruk, så skal jeg gjøre noe med det.
       </p>
     </div>
   );
