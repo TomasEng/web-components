@@ -7,13 +7,13 @@
 
 ## Properties
 
-| Property          | Attribute           | Description | Type                             | Default         |
-| ----------------- | ------------------- | ----------- | -------------------------------- | --------------- |
-| `code`            | `code`              |             | `string`                         | `null`          |
-| `copyButtonTitle` | `copy-button-title` |             | `string`                         | `'Kopier kode'` |
-| `language`        | `language`          |             | `string`                         | `null`          |
-| `mode`            | `mode`              |             | `"block" \| "inline" \| "panel"` | `'inline'`      |
-| `trimmargin`      | `trimmargin`        |             | `boolean`                        | `false`         |
+| Property          | Attribute           | Description | Type                                                | Default         |
+| ----------------- | ------------------- | ----------- | --------------------------------------------------- | --------------- |
+| `code`            | `code`              |             | `string`                                            | `null`          |
+| `copyButtonTitle` | `copy-button-title` |             | `string`                                            | `'Kopier kode'` |
+| `language`        | `language`          |             | `string`                                            | `null`          |
+| `mode`            | `mode`              |             | `"block" \| "heading-panel" \| "inline" \| "panel"` | `'inline'`      |
+| `trimmargin`      | `trimmargin`        |             | `boolean`                                           | `false`         |
 
 
 ## Dependencies
