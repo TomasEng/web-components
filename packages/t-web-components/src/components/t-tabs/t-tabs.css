@@ -3,55 +3,52 @@
 }
 
 .t-tabs {
-  --top-shadow-inset: color-mix(in oklab, transparent 75%, white) inset 0 1px;
-  --top-shadow-outset: color-mix(in oklab, black 25%, transparent) 0 -1px 2px;
-  --bottom-shadow-inset: color-mix(in oklab, transparent 75%, black) inset 0 -1px;
-  --bottom-shadow-outset: color-mix(in oklab, white 30%, transparent) 0 1px 2px;
-  --top-shadow: var(--top-shadow-inset);
+  --bottom-shadow-inset: color-mix(in oklab, transparent 92%, white) inset 0 -1px;
   --bottom-shadow: var(--bottom-shadow-inset);
+  --heading-colour: var(--t-panel-heading-colour);
   --selected-colour: var(--t-panel-heading-colour);
+  --tab-margin: 3px;
+  --top-shadow-inset: color-mix(in oklab, transparent 92%, black) inset 0 1px;
+  --top-shadow: var(--top-shadow-inset);
 
   [role='tablist'] {
-    height: var(--t-clickable-area-size);
+    background-color: var(--heading-colour);
+    border-top-left-radius: var(--t-border-radius-default);
+    border-top-right-radius: var(--t-border-radius-default);
+    box-shadow: var(--top-shadow);
+    height: calc(var(--t-clickable-area-size) + var(--tab-margin));
 
     [role='tab'] {
-      margin-left: var(--t-border-radius-default);
       background: var(--selected-colour);
-      border-width: 1px 1px 0 1px;
-      border-style: solid;
-      border-color: var(--selected-colour);
       border-top-left-radius: var(--t-border-radius-default);
       border-top-right-radius: var(--t-border-radius-default);
-      box-shadow: var(--top-shadow);
+      border-width: 0;
       box-sizing: border-box;
       color: var(--t-font-colour-default);
       cursor: pointer;
       font-size: var(--t-default-font-size);
+      height: var(--t-clickable-area-size);
+      margin-left: var(--tab-margin);
+      margin-top: var(--tab-margin);
       padding: .5rem;
-      height: calc(100% + 2px);
 
       &[aria-selected='true'] {
-        position: relative;
-        z-index: 2;
+        background-attachment: fixed;
+        background-image: var(--t-image-panel-background);
+        background-size: 100vw 100vh;
       }
 
       &[aria-selected='false']:not(:hover) {
-        background: var(--t-colour-grey-low-contrast);
         color: color-mix(in oklab, var(--t-font-colour-default) 60%, var(--t-colour-page-background));
       }
     }
   }
 
   [role='tabpanel'] {
-    background: linear-gradient(
-      to bottom,
-      var(--selected-colour),
-      var(--selected-colour) 3px,
-      var(--t-colour-panel-background-filter) 4px,
-      var(--t-colour-panel-background-filter)
-    ), var(--t-background-panel);
-    position: relative;
-    z-index: 1;
+    background-image: var(--t-image-panel-background);
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    box-shadow: var(--bottom-shadow);
 
     &.inactive {
       display: none;
