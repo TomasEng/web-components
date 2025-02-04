@@ -1,2 +1,0 @@
-import{h as e}from"./p-91bd2b52.js";const o=(o,s)=>e("svg",Object.assign({fill:"none",focusable:"false",height:"1em",role:"img",viewBox:"0 0 24 24",width:"1em",xmlns:"http://www.w3.org/2000/svg"},o),s);export{o as S};
-//# sourceMappingURL=p-b3b05428.js.map
