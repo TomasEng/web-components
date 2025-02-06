@@ -13,6 +13,17 @@
   --t-background-panel:
     var(--t-background-image-app-top-layer) fixed repeat var(--t-background-size-app),
     var(--t-background-image-app-bottom-layer) fixed repeat var(--t-background-size-app);
+  --t-background-glass-opacity: 0.5;
+  --t-background-glass-top-layer: radial-gradient(
+    oklch(from var(--t-colour-app-background) l 0 h / calc(var(--t-background-glass-opacity) / 2)),
+    transparent
+  );
+  --t-background-glass-bottom-layer: conic-gradient(
+    in oklch longer hue,
+    oklch(from var(--t-colour-app-background) l c h / calc(var(--t-background-glass-opacity) / 2)) 0deg,
+    oklch(from var(--t-colour-app-background) l c calc(h + 360) / calc(var(--t-background-glass-opacity) / 2)) 360deg
+  );
+  --t-background-glass: var(--t-background-glass-top-layer), var(--t-background-glass-bottom-layer);
   --t-background-size-app: 100vw 100vh;
   --t-border-radius-default: 6px;
   --t-border-radius-small: 3px;
@@ -54,7 +65,7 @@
   --t-heading-size-4: 1.3em;
   --t-heading-size-5: 1em;
   --t-heading-size-6: 1em;
-  --t-heading-spacing-bottom-1: calc(var(--t-heading-size-1) * var(--t-heading-spacing-bottom-factor));
+  --t-heading-spacing-bottom-1: calc(var(--t-heading-size-1) * var(--t-heading-spacing-bottom-factor) * 2);
   --t-heading-spacing-bottom-2: calc(var(--t-heading-size-2) * var(--t-heading-spacing-bottom-factor));
   --t-heading-spacing-bottom-3: calc(var(--t-heading-size-3) * var(--t-heading-spacing-bottom-factor));
   --t-heading-spacing-bottom-4: calc(var(--t-heading-size-4) * var(--t-heading-spacing-bottom-factor));

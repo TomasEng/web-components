@@ -11,8 +11,8 @@
   box-shadow:
     inset color-mix(in oklab, var(--button-colour) 75%, white) 0 1px,
     inset color-mix(in oklab, var(--button-colour) 75%, black) 0 -1px,
-    color-mix(in oklab, white 30%, transparent) 0 1px 1px,
-    color-mix(in oklab, black 10%, transparent) 0 -1px 1px,
+    color-mix(in oklab, white 25%, transparent) 0 1px 1px,
+    color-mix(in oklab, black 25%, transparent) 0 -1px 1px,
     rgb(0 0 0 / 0.2) 0 -1px 1px;
   align-items: center;
   border-radius: 100px;

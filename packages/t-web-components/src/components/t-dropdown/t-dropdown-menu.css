@@ -19,11 +19,14 @@
   padding: 0;
   position: relative;
   z-index: var(--t-z-index-dropdown-menu);
+  background-attachment: fixed;
+  background-image: var(--t-background-glass);
+  background-size: 100vw 100vh;
 }
 
 .t-dropdown-menu .dropdown-menu .dropdown-item {
   --menu-item-background-colour-base: var(--t-popover-background-colour-base);
-  --menu-item-background-colour: var(--menu-item-background-colour-base);
+  --menu-item-background-colour: transparent;
   align-items: center;
   background-color: var(--menu-item-background-colour);
   border: none;
@@ -54,12 +57,12 @@
 .t-dropdown-menu .dropdown-menu .dropdown-item:focus-within {
   --menu-item-background-colour: color-mix(
     in oklab,
-    var(--menu-item-background-colour-base) 90%,
-    var(--t-colour-full-contrast)
+    var(--t-colour-full-contrast) 12%,
+    transparent
   );
 }
 
 .t-dropdown-menu .dropdown-menu .dropdown-item.selected {
-  --menu-item-background-colour: color-mix(in oklab, var(--t-colour-base-component) calc(var(--t-popover-alpha) * 100%), transparent);
+  --menu-item-background-colour: color-mix(in oklab, var(--t-colour-base-component) 80%, transparent);
   );
 }

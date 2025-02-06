@@ -4,12 +4,13 @@
   "description": "Stencil Component Starter",
   "main": "dist/index.cjs.js",
   "module": "dist/index.js",
-  "es2015": "dist/esm/index.js",
-  "es2017": "dist/esm/index.js",
+  "es2015": "dist/esm/t-web-components.js",
+  "es2017": "dist/esm/t-web-components.js",
   "types": "dist/types/index.d.ts",
   "collection": "dist/collection/collection-manifest.json",
   "collection:main": "dist/collection/index.js",
-  "unpkg": "dist/web-components/web-components.esm.js",
+  "unpkg": "dist/t-web-components/t-web-components.esm.js",
+  "exports": "./dist/esm/t-web-components.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/ionic-team/stencil-component-starter.git"
@@ -48,5 +49,5 @@
     "typescript": "^5.4.3"
   },
   "license": "MIT",
-  "gitHead": "7a03c040488699421271cfc016e62dc338431f2e"
+  "gitHead": "1a924a4a409ac69a5be91bcfaea9ef40523baa40"
 }

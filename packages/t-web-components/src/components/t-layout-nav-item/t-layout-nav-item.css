@@ -35,10 +35,10 @@ li {
 @media (width > 900px) {
   li:not(.open) {
     ::slotted(a) {
-      --main-background-colour: color-mix(in oklab, var(--t-colour-page-background) 80%, transparent);
+      --main-background-colour: color-mix(in oklab, var(--t-colour-page-background) 50%, transparent);
       background: linear-gradient(
         to top,
-        color-mix(in oklab, black 12.5%, var(--main-background-colour)),
+        color-mix(in oklab, black 8%, var(--main-background-colour)),
         var(--main-background-colour) 4rem
       );
     }
