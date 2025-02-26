@@ -10,6 +10,7 @@ export const config: Config = {
     {
       type: 'dist-custom-elements',
       customElementsExportBehavior: 'single-export-module',
+      externalRuntime: false,
     },
     {
       type: 'docs-readme',
@@ -22,13 +23,9 @@ export const config: Config = {
       ],
     },
     reactOutputTarget({
-      componentCorePackage: 't-web-components',
-      proxiesFile: '../t-web-components-react/lib/components/stencil-generated/index.ts',
+      outDir: '../t-web-components-react/lib/components/stencil-generated/',
     }),
   ],
-  testing: {
-    browserHeadless: "new",
-  },
   globalStyle: 'src/style/global.css',
   extras: {
     experimentalSlotFixes: true,

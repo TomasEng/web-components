@@ -34,9 +34,9 @@
     "t-web-components": "^0.0.38"
   },
   "devDependencies": {
-    "@types/react": "^18.2.76",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "@types/react": "19.0.10",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
     "typescript": "^5.4.5"
   },
   "gitHead": "1a924a4a409ac69a5be91bcfaea9ef40523baa40"

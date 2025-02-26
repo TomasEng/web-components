@@ -67,6 +67,10 @@ export namespace Components {
     }
     interface InternalInputWrapper {
         "labelPlacement": LabelPlacement;
+        /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "label-placement"?: LabelPlacement;
     }
     interface PreviewApp {
     }
@@ -110,6 +114,10 @@ export namespace Components {
     interface TCode {
         "code": string | null;
         "copyButtonTitle": string;
+        /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "copy-button-title"?: string;
         "language": string | null;
         "mode": TCodeDisplayMode;
         "trimmargin": boolean;
@@ -126,6 +134,10 @@ export namespace Components {
     }
     interface TDetails {
         "openSummary"?: string;
+        /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "open-summary"?: string;
         "summary": string;
     }
     interface TDropdownMenu {
@@ -150,6 +162,10 @@ export namespace Components {
         "label": string;
         "value": number;
         "withOffset": boolean;
+        /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "with-offset"?: boolean;
     }
     interface TIframe {
         "resize": ResizeMode;
@@ -192,6 +208,10 @@ export namespace Components {
         "hueoffset": ComponentHue;
         "label": string;
         "systemSelected": boolean;
+        /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "system-selected"?: boolean;
     }
     interface TPanel {
         "hueoffset": ComponentHue;
@@ -206,6 +226,10 @@ export namespace Components {
         "hueoffset": ComponentHue;
         "label": string;
         "labelPlacement": LabelPlacement;
+        /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "label-placement"?: LabelPlacement;
         "options": TSelectOption[];
         "value": string;
     }
@@ -806,6 +830,10 @@ declare namespace LocalJSX {
     }
     interface InternalInputWrapper {
         "labelPlacement"?: LabelPlacement;
+        /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "label-placement"?: LabelPlacement;
     }
     interface PreviewApp {
     }
@@ -847,6 +875,10 @@ declare namespace LocalJSX {
     interface TCode {
         "code"?: string | null;
         "copyButtonTitle"?: string;
+        /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "copy-button-title"?: string;
         "language"?: string | null;
         "mode"?: TCodeDisplayMode;
         "trimmargin"?: boolean;
@@ -862,6 +894,10 @@ declare namespace LocalJSX {
     }
     interface TDetails {
         "openSummary"?: string;
+        /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "open-summary"?: string;
         "summary"?: string;
     }
     interface TDropdownMenu {
@@ -888,6 +924,10 @@ declare namespace LocalJSX {
         "onHueChange"?: (event: THuePickerCustomEvent<number>) => void;
         "value"?: number;
         "withOffset"?: boolean;
+        /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "with-offset"?: boolean;
     }
     interface TIframe {
         "resize"?: ResizeMode;
@@ -931,6 +971,10 @@ declare namespace LocalJSX {
         "hueoffset"?: ComponentHue;
         "label"?: string;
         "systemSelected"?: boolean;
+        /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "system-selected"?: boolean;
     }
     interface TPanel {
         "hueoffset"?: ComponentHue;
@@ -946,6 +990,10 @@ declare namespace LocalJSX {
         "hueoffset"?: ComponentHue;
         "label"?: string;
         "labelPlacement"?: LabelPlacement;
+        /**
+         * @deprecated use camelCase instead. Support for dash-casing will be removed in Stencil v5.
+         */
+        "label-placement"?: LabelPlacement;
         "options"?: TSelectOption[];
         "value"?: string;
     }
